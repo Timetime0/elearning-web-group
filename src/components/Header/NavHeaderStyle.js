@@ -1,8 +1,15 @@
-export const style = {
-  myBtn: {
-    backgroundColor: "Red",
+const styles = theme => ({
+  nav: {
+    color: theme.palette.primary.dark
   },
-  navUlIcon: {
-    listType: "none",
+
+  title:{
+    color: theme.palette.secondary.dark
   },
-};
+  menuButton:{
+    color: 'red'
+  },
+
+});
+
+export default styles
