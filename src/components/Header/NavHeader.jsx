@@ -18,51 +18,55 @@ function NavHeader(props) {
     <div>
       <AppBar position="static" className={classes.nav}>
         <Toolbar className={classes.nav_Content}>
-          <div>
+          <div className={classes.nav_Content}>
             <Typography color="primary">
               <h1>Elearning</h1>
             </Typography>
           </div>
-          <div className={classes.icon}>
-            <Typography color="primary">
-              <TwitterIcon className={classes.icon_Item} />
-            </Typography>
-            <Typography color="primary">
-              <FacebookIcon className={classes.icon_Item} />
-            </Typography>
-            <Typography color="primary">
-              <InstagramIcon className={classes.icon_Item} />
-            </Typography>
+          <div className={classes.nav_Content}>
+            <div className={classes.icon}>
+              <Typography color="primary">
+                <TwitterIcon className={classes.icon_Item} />
+              </Typography>
+              <Typography color="primary">
+                <FacebookIcon className={classes.icon_Item} />
+              </Typography>
+              <Typography color="primary">
+                <InstagramIcon className={classes.icon_Item} />
+              </Typography>
+            </div>
           </div>
-          <Typography color="primary" variant="h6" className={classes.title}>
-            Home
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Pages
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Course
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Teachers
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            New
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Contact
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Login
-          </Typography>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          <div className={classes.nav_Content}>
+            <Typography color="primary" variant="h6" className={classes.title}>
+              Home
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              Pages
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              Course
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              Teachers
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              New
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              Contact
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              Login
+            </Typography>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+            >
+              <MenuIcon />
+            </IconButton>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
