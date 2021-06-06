@@ -1,25 +1,25 @@
 const styles = (theme) => ({
   nav: {
     backgroundColor: "white",
-    margin: "0px",
+    margin: "o auto",
   },
   nav_Content: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    alignItems: "center",
   },
   icon: {
     display: "flex",
-    verticalAlign: "10px",
-    margin: "0 30px",
+    margin: "0 35px",
   },
   icon_Item: {
     color: "#81868a",
-    padding: "0 5px",
+    padding: "0 20px",
     fontSize: "18px",
   },
   title: {
     color: "#81868a",
-    padding: "0px 20px",
+    margin: "0px 30px",
     fontSize: "14px",
   },
   menuButton: {
