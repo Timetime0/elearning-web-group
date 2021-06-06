@@ -12,6 +12,9 @@ import Icon from "@material-ui/core/Icon";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
+
+import { Link, NavLink, useHistory } from "react-router-dom";
+
 function NavHeader(props) {
   const { classes } = props;
   return (
@@ -37,27 +40,60 @@ function NavHeader(props) {
             </div>
           </div>
           <div className={classes.nav_Content}>
-            <Typography color="primary" variant="h6" className={classes.title}>
-              Home
-            </Typography>
+            <NavLink to="/" exact={true} activeClassName={classes.navActive}>
+              <Typography
+                color="primary"
+                variant="h6"
+                className={classes.title}
+              >
+                Home
+              </Typography>
+            </NavLink>
             <Typography variant="h6" className={classes.title}>
               Pages
             </Typography>
-            <Typography variant="h6" className={classes.title}>
-              Course
-            </Typography>
-            <Typography variant="h6" className={classes.title}>
-              Teachers
-            </Typography>
-            <Typography variant="h6" className={classes.title}>
-              New
-            </Typography>
-            <Typography variant="h6" className={classes.title}>
-              Contact
-            </Typography>
-            <Typography variant="h6" className={classes.title}>
-              Login
-            </Typography>
+            <NavLink
+              to="/course"
+              exact={true}
+              activeClassName={classes.navActive}
+            >
+              <Typography variant="h6" className={classes.title}>
+                Course
+              </Typography>
+            </NavLink>
+
+            <NavLink
+              to="/teachers"
+              exact={true}
+              activeClassName={classes.navActive}
+            >
+              <Typography variant="h6" className={classes.title}>
+                Teachers
+              </Typography>
+            </NavLink>
+            <NavLink to="/new" exact={true} activeClassName={classes.navActive}>
+              <Typography variant="h6" className={classes.title}>
+                New
+              </Typography>
+            </NavLink>
+            <NavLink
+              to="/contact"
+              exact={true}
+              activeClassName={classes.navActive}
+            >
+              <Typography variant="h6" className={classes.title}>
+                Contact
+              </Typography>
+            </NavLink>
+            <NavLink
+              to="/login"
+              exact={true}
+              activeClassName={classes.navActive}
+            >
+              <Typography variant="h6" className={classes.title}>
+                Login
+              </Typography>
+            </NavLink>
             <IconButton
               edge="start"
               className={classes.menuButton}
