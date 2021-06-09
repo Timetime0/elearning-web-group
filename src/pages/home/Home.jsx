@@ -3,6 +3,8 @@ import Carousel from "../../components/Carousel/Carousel";
 import Footer from "../../components/Footer/Footer";
 import NavHeader from "../../components/Header/NavHeader";
 
+import "./style.scss";
+
 function Home(props) {
   const { classes } = props;
   return (
