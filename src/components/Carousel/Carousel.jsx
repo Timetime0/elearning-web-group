@@ -16,16 +16,16 @@ function Carousel() {
   return (
     <div>
       <h1>This is carousel component</h1>
-      <div>
+      <div className="carousel_Container">
         <Slider {...settings}>
           <div>
-            <img src="https://cdn.tgdd.vn//GameApp/1335967//800x-800x462.jpg" />
+            <img src="https://repository-images.githubusercontent.com/192620780/3eb64180-586e-11ea-9178-b8a0245411b7" />
           </div>
           <div>
-            <img src="https://i2.wp.com/lucloi.vn/wp-content/uploads/2020/01/71374138_2456823731309460_5344949859134734336_n.jpg?fit=1214%2C878&ssl=1" />
+            <img src="https://repository-images.githubusercontent.com/192620780/3eb64180-586e-11ea-9178-b8a0245411b7" />
           </div>
           <div>
-            <img src="https://lucloi.vn/wp-content/uploads/2020/07/1de.jpg" />
+            <img src="https://repository-images.githubusercontent.com/192620780/3eb64180-586e-11ea-9178-b8a0245411b7" />
           </div>
         </Slider>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "../../components/Carousel/Carousel";
 import Footer from "../../components/Footer/Footer";
 import NavHeader from "../../components/Header/NavHeader";
-
+import Categories from "../../components/Categories/Categories";
 import "./style.scss";
 
 function Home(props) {
@@ -10,7 +10,10 @@ function Home(props) {
   return (
     <div>
       <NavHeader />
-      <Carousel />
+      <div className="container">
+        <Carousel />
+        <Categories />
+      </div>
       <Footer />
     </div>
   );
