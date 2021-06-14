@@ -2,18 +2,16 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import useStyles from "./NavHeaderStyle";
 import { withStyles } from "@material-ui/core/styles";
 
-import Icon from "@material-ui/core/Icon";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
 
-import { Link, NavLink, useHistory } from "react-router-dom";
+import {  NavLink, useHistory } from "react-router-dom";
 
 function NavHeader(props) {
   const { classes } = props;
