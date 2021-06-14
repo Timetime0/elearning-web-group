@@ -23,7 +23,10 @@ const styles = (theme) => ({
     fontSize: "14px",
   },
   menuButton: {
-    color: "yellow",
+    color: "#f16101",
+  },
+  navActive: {
+    color: "#f16101",
   },
 });
 

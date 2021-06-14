@@ -1,0 +1,33 @@
+.Footer {
+    background-color: #022c46;
+    color: white;
+
+    .footer_Container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        h2 {
+            font-size: 18px;
+        }
+    }
+
+    .footer_Item {
+        text-align: center;
+    }
+
+    .item_Course {
+        grid-column: 1 span 2;
+    }
+
+    .item_Explore {
+        grid-column: 2 span 3;
+    }
+
+    .item_Gallery {
+        grid-column: 3 span 4;
+    }
+
+    .item_About {
+        grid-column: 4 span 5;
+    }
+}

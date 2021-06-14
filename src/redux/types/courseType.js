@@ -1,0 +1,3 @@
+export const GET_DATA_COURSE = "GET_DATA_COURSE";
+
+export const GET_DATA_COURSE_SAGA = "GET_DATA_COURSE_SAGA";

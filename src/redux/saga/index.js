@@ -1,9 +1,7 @@
-import {all} from '@redux-saga/core/effects'
-
+import { all } from "@redux-saga/core/effects";
+import { followGetCourseApiAction } from "./CourseSaga";
 
 // cấu hình
-export default function * rootSaga(){
-    yield all([
-        // chèn saga
-    ])
+export default function* rootSaga() {
+  yield all([followGetCourseApiAction()]);
 }
