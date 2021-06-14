@@ -2,6 +2,7 @@ import Home from "./pages/home/Home";
 import { clientRouters } from "./config/router.config";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
+
 function App() {
   // const renderRouterClientList = () => {
   //   return clientRouters.map((router, index) => {

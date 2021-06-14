@@ -11,7 +11,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
 
-import {  NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 function NavHeader(props) {
   const { classes } = props;
@@ -21,7 +21,7 @@ function NavHeader(props) {
         <Toolbar className={classes.nav_Content}>
           <div className={classes.nav_Content}>
             <Typography color="primary">
-              <h1>Elearning</h1>
+              <Typography>Elearning</Typography>
             </Typography>
           </div>
           <div className={classes.nav_Content}>
