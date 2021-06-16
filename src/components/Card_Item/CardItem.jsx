@@ -8,25 +8,26 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useStyles } from "./Card_Item_Style";
+import { useSelector } from "react-redux";
 
-export default function CardItem() {
+export default function CardItem(props) {
   const classes = useStyles();
 
+  console.log(props.course.maKhoaHoc);
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://i.pinimg.com/originals/89/59/2b/89592b3392fee110134235e95d80dbf7.jpg"
+          image={props.course.hinhAnh}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {props.course.tenKhoaHoc}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {props.course.moTa}
           </Typography>
         </CardContent>
       </CardActionArea>
