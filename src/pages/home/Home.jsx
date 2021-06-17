@@ -10,8 +10,8 @@ function Home(props) {
   return (
     <div>
       <NavHeader />
+      <Carousel />
       <div className="container">
-        <Carousel />
         <Categories />
       </div>
       <Footer />
