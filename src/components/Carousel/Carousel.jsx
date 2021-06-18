@@ -15,7 +15,6 @@ function Carousel() {
 
   return (
     <div>
-      <h1>This is carousel component</h1>
       <div className="carousel_Container">
         <Slider {...settings}>
           <div>
