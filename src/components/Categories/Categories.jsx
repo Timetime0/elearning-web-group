@@ -1,23 +1,10 @@
-import React, { useEffect } from "react";
-import CardItem from "../Card_Item/CardItem";
-import { useDispatch, useSelector } from "react-redux";
-import { GET_DATA_COURSE_SAGA } from "../../redux/types/courseType";
+import React from "react";
 
+import Grid_Category from './Grid_Categories/Grid_Categories'
 function Categories() {
-  let course = useSelector((state) => state.CourseReducer.cousre);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({
-      type: GET_DATA_COURSE_SAGA,
-    });
-  }, [dispatch]);
-
   return (
     <div>
-      {course.map((course, index) => {
-        return <CardItem course={course} key={index}></CardItem>; // truyền prop ở đây nè
-      })}
+      <Grid_Category />
     </div>
   );
 }
