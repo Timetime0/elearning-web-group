@@ -1,20 +1,11 @@
-import React, { useEffect } from "react";
-import CardItem from "../Card_Item/CardItem";
-import { useDispatch } from "react-redux";
-import { GET_DATA_COURSE_SAGA } from "../../redux/types/courseType";
+import React from "react";
 
+import Grid_Category from './Grid_Categories/Grid_Categories'
 function Categories() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({
-      type: GET_DATA_COURSE_SAGA,
-    });
-  }, [dispatch]);
-
   return (
     <div>
-      <CardItem></CardItem>
+    <h1>Coures</h1>
+      <Grid_Category />
     </div>
   );
 }

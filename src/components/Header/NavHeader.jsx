@@ -20,9 +20,15 @@ function NavHeader(props) {
       <AppBar position="static" className={classes.nav}>
         <Toolbar className={classes.nav_Content}>
           <div className={classes.nav_Content}>
-            <Typography color="primary">
-              <Typography>Elearning</Typography>
-            </Typography>
+            <NavLink to="/">
+              <IconButton color="inherit">
+                <img
+                  src="./img/logoElearning.png"
+                  alt="logo"
+                  className={classes.logoNav}
+                />
+              </IconButton>
+            </NavLink>
           </div>
           <div className={classes.nav_Content}>
             <div className={classes.icon}>

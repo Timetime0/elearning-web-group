@@ -28,6 +28,10 @@ const styles = (theme) => ({
   navActive: {
     color: "#f16101",
   },
+  logoNav: {
+    width: "200px",
+    height: "65px",
+  },
 });
 
 export default styles;

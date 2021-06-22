@@ -9,23 +9,23 @@ function Carousel() {
     dots: true,
     infinite: true,
     speed: 500,
+    arrows:true,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
+  
   return (
     <div>
-      <h1>This is carousel component</h1>
       <div className="carousel_Container">
         <Slider {...settings}>
           <div>
-            <img src="https://repository-images.githubusercontent.com/192620780/3eb64180-586e-11ea-9178-b8a0245411b7" />
+            <img src="https://www.promosystech.com/temp/assets/img/train/eree.png" />
           </div>
           <div>
-            <img src="https://repository-images.githubusercontent.com/192620780/3eb64180-586e-11ea-9178-b8a0245411b7" />
+            <img src="https://www.promosystech.com/temp/assets/img/train/eree.png" />
           </div>
           <div>
-            <img src="https://repository-images.githubusercontent.com/192620780/3eb64180-586e-11ea-9178-b8a0245411b7" />
+            <img src="https://www.promosystech.com/temp/assets/img/train/eree.png" />
           </div>
         </Slider>
       </div>
