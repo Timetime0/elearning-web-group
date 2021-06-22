@@ -1,4 +1,4 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 
 import { CourseServices } from "../../services/CourseServices";
 import { GET_DATA_COURSE, GET_DATA_COURSE_SAGA } from "../types/courseType";
@@ -20,5 +20,5 @@ function* getCourseApi() {
 }
 
 export function* followGetCourseApiAction() {
-  yield takeEvery(GET_DATA_COURSE_SAGA, getCourseApi);
+  yield takeLatest(GET_DATA_COURSE_SAGA, getCourseApi);
 }
