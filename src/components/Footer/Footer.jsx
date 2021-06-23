@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink, useHistory } from "react-router-dom";
+
 import "./Footer_Style.scss";
 function Footer() {
   return (
@@ -8,6 +10,25 @@ function Footer() {
         <div className="footer_Item">
           <div className="item_Course">
             <h2>Course</h2>
+          </div>
+          <div className="list_Item">
+            <ul>
+              <li>
+                <a>
+                  React JS
+                </a>
+              </li>
+              <li>
+                <a>
+                  Angular JS
+                </a>
+              </li>
+              <li>
+                <a>
+                  javascript
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="footer_Item">
