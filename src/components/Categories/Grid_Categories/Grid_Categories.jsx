@@ -1,27 +1,25 @@
-import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import CardItem from '../../Card_Item/CardItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { GET_DATA_COURSE_SAGA } from '../../../redux/types/courseType';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_DATA_COURSE_SAGA } from "../../../redux/types/courseType";
+import { makeStyles } from "@material-ui/core/styles";
+
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import CardItem from "../../Card_Item/CardItem";
+
 const useStyles = makeStyles((theme) => ({
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(12, 1fr)',
-    gridGap: theme.spacing(3),
-  },
+
   paper: {
-    padding: theme.spacing(4),
-    textAlign: 'center',
+    padding: theme.spacing(1),
+    // backgroundColor:theme.palette.secondary.main,
+    textAlign: "center",
     color: theme.palette.text.secondary,
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
     marginBottom: theme.spacing(1),
   },
-  divider: {
-    margin: theme.spacing(2, 0),
-  },
+
 }));
+
 
 export default function Grid_Category() {
   const classes = useStyles();
@@ -35,16 +33,16 @@ export default function Grid_Category() {
   }, [dispatch]);
 
   return (
-    <div>
-      <Grid container spacing={3}>
-	  {course.map((course, index) => {
-        return <Grid item xs={3}>
-		<Paper className={classes.paper}>
-		<CardItem course={course} key={index}></CardItem>
-		</Paper>
-		</Grid>
-	})}
-      </Grid>    
-      </div>
+      <Grid container spacing={1} >
+        {course.map((course, index) => {
+          return (
+            <Grid item lg={3} md={4} xs={6}>
+              <Paper className={classes.paper}>
+                <CardItem course={course} key={index}></CardItem>
+              </Paper>
+            </Grid>
+          );
+        })}
+      </Grid>
   );
 }

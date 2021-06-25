@@ -8,7 +8,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useStyles } from "./Card_Item_Style";
-import { useSelector } from "react-redux";
 
 export default function CardItem(props) {
   const classes = useStyles();
@@ -16,29 +15,35 @@ export default function CardItem(props) {
   console.log(props.course.maKhoaHoc);
   return (
     <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.course.hinhAnh}
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.course.tenKhoaHoc}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.course.moTa}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
+      <div className={classes.bg}>
+        <CardActionArea>
+          <CardMedia className={classes.media} image={props.course.hinhAnh} />
+          <CardContent>
+            <Typography
+              className={classes.nameCourse}
+              gutterBottom
+              variant="h5"
+              component="h5"
+            >
+              {props.course.tenKhoaHoc}
+            </Typography>
+            <Typography
+              className={classes.nameDetail}
+              variant="body2"
+              color="textSecondary"
+              component="p"
+            >
+              {props.course.moTa}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+
+        <CardActions className={classes.card_button}>
+          <Button variant="contained" size="small" color="secondary">
+            Learn More
+          </Button>
+        </CardActions>
+      </div>
     </Card>
   );
 }
