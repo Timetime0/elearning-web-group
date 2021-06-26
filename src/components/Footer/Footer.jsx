@@ -59,9 +59,9 @@ function Footer() {
     <footer className="footer-20192">
       <div className="site-section">
         <div className="container">
-          <div className="cta d-block d-md-flex align-items-center px-5">
+          <div className="cta d-block d-md-flex align-items-center px-5 ">
             <div>
-              <h2 className="mb-0">Ready for start learning ?</h2>
+              <h2 className="mb-0 ">Ready for start learning ?</h2>
               <h3 className="text-dark">Let's get started!</h3>
             </div>
             <div className="ml-auto">
