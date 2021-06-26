@@ -1,6 +1,7 @@
 import Home from "./pages/home/Home";
 import { clientRouters } from "./config/router.config";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import CourseDetail from "./pages/courseDetail/CourseDetail";
 
 
 function App() {
@@ -16,7 +17,9 @@ function App() {
           <Redirect to="/"></Redirect>
         </Route>
       </switch> */}
-      <Route path="/" component={Home}></Route>
+      <Route path="/" exact component={Home}></Route>
+      <Route path="/course-detail/:maKhoaHoc" exact component={CourseDetail}></Route>
+
     </BrowserRouter>
   );
 }

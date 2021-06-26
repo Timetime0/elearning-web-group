@@ -8,11 +8,17 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useStyles } from "./Card_Item_Style";
+import CourseDetail from "../../pages/courseDetail/CourseDetail";
+import { useHistory } from "react-router-dom";
 
 export default function CardItem(props) {
   const classes = useStyles();
+  const history = useHistory();
+  const {course} = props;
 
-  console.log(props.course.maKhoaHoc);
+
+
+  // console.log(props.course.maKhoaHoc);
   return (
     <Card className={classes.root}>
       <div className={classes.bg}>
@@ -39,7 +45,7 @@ export default function CardItem(props) {
         </CardActionArea>
 
         <CardActions className={classes.card_button}>
-          <Button variant="contained" size="small" color="secondary">
+          <Button variant="contained" size="small" color="secondary" onClick={() =>{history.push("/course-detail/" + course.maKhoaHoc)}}>
             Learn More
           </Button>
         </CardActions>

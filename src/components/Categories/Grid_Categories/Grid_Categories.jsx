@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Grid_Category() {
   const classes = useStyles();
-  let course = useSelector((state) => state.CourseReducer.cousre);
+  let course = useSelector((state) => state.CourseReducer.course);
   const dispatch = useDispatch();
 
   useEffect(() => {
