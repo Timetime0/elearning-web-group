@@ -16,3 +16,9 @@
  _ lỗi chưa show dữ liệu ra được
  _ đã đưa được maKhoaHoc lên url,
  _ thêm routing trong file App.js
+
+ #Ngày 27/6/2021 Chun:
+ _ Sửa Routing trang App.js,
+ _ tạo function trong file ClientTemplate
+ _ Import ClientTemplate trong App.js
+ _ Xóa padding Carousel

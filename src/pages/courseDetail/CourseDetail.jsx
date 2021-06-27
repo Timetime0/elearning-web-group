@@ -5,23 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { DETAIL_COURSE_SERVICES_SAGA } from "../../redux/types/CourseDetailType";
 
 function CourseDetail(props) {
+  let detail = useSelector((state) => state.CourseReducer.courseDetail);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
       type: DETAIL_COURSE_SERVICES_SAGA,
-
     });
   }, [dispatch]);
-
 
   return (
     <div>
       <h1>Course Detail</h1>
-      <div>
-        
-      </div>
+      {detail.tenKhoaHoc}
     </div>
   );
 }
 
-export default (CourseDetail);
+export default CourseDetail;

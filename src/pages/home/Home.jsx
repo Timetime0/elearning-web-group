@@ -6,15 +6,12 @@ import Categories from "../../components/Categories/Categories";
 import "./style.scss";
 
 function Home(props) {
-  const { classes } = props;
   return (
     <div>
-      <NavHeader />
       <Carousel />
       <div className="container">
         <Categories />
       </div>
-      <Footer />
     </div>
   );
 }
