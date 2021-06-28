@@ -1,4 +1,5 @@
 import { all } from "@redux-saga/core/effects";
+import { followGetCourseListApiAction } from "./CourseListSaga";
 import { followGetCourseApiAction } from "./CourseSaga";
 import { followGetDetailCourseApiAction } from "./DetailSaga";
 
@@ -6,4 +7,5 @@ import { followGetDetailCourseApiAction } from "./DetailSaga";
 export default function* rootSaga() {
   yield all([followGetCourseApiAction()]);
   yield all([followGetDetailCourseApiAction()]);
+  yield all([followGetCourseListApiAction()]);
 }

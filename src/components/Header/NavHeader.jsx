@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useEffect} from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -12,8 +12,18 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
 
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { COURSE_LIST_SERVICES_SAGA } from "../../redux/types/CourseListType";
 
 function NavHeader(props) {
+  let listCourse = useSelector((state) => state.CourseReducer.courseList);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: COURSE_LIST_SERVICES_SAGA, 
+    })
+  },[dispatch])
   const { classes } = props;
   return (
     <div>
@@ -109,6 +119,9 @@ function NavHeader(props) {
           </div>
         </Toolbar>
       </AppBar>
+      <div>{listCourse.map((list,index) => {
+        return <div>{listCourse.tenDanhMuc}</div>
+      })}</div>
     </div>
   );
 }

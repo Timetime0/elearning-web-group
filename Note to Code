@@ -22,3 +22,9 @@
  _ tạo function trong file ClientTemplate
  _ Import ClientTemplate trong App.js
  _ Xóa padding Carousel
+
+ #Ngày 28/6/2021 Chun:
+ _ Thêm CourseListSaga trong folder saga;
+ _ Thêm CourseListType trong folder types;
+ _ Thêm CourseList trong folder services;
+_ update courseList trong file CourseReducer
