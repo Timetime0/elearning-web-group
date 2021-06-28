@@ -4,7 +4,7 @@ import Grid_Category from './Grid_Categories/Grid_Categories'
 function Categories() {
   return (
     <Fragment>
-      <h1>Coures</h1>
+      <h3>Coures recommended for you</h3>
       <Grid_Category />
     </Fragment>
   );

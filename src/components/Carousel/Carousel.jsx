@@ -9,13 +9,13 @@ function Carousel() {
     dots: true,
     infinite: true,
     speed: 500,
-    arrows:true,
+    arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  
+
   return (
-    <div>
+    <div className="Carousel">
       <div className="carousel_Container">
         <Slider {...settings}>
           <div>

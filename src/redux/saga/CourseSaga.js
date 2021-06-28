@@ -10,10 +10,12 @@ function* getCourseApi() {
     yield put({
       type: GET_DATA_COURSE,
       data: res.data,
+
     });
   } catch (err) {
     console.log(err);
   }
+
 }
 
 export function* followGetCourseApiAction() {
