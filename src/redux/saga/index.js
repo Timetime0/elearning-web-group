@@ -5,7 +5,6 @@ import { followGetDetailCourseApiAction } from "./DetailSaga";
 
 // cấu hình
 export default function* rootSaga() {
-  yield all([followGetCourseApiAction()]);
-  yield all([followGetDetailCourseApiAction()]);
-  yield all([followGetCourseListApiAction()]);
+  yield all([followGetCourseApiAction(),followGetDetailCourseApiAction(),followGetCourseListApiAction()]);
+
 }

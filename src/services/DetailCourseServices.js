@@ -6,3 +6,5 @@ export function DetailCourseServices(maKhoaHoc) {
     url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${maKhoaHoc}`,
   });
 }
+
+

@@ -5,13 +5,19 @@ import {
   DETAIL_COURSE_SERVICES_SAGA,
 } from "../types/CourseDetailType";
 
-function* getDetailCourseApi() {
+
+function* getDetailCourseApi(action) {
   try {
-    const res = yield call(() => DetailCourseServices());
+    console.log(action)
+    const res = yield call(() => DetailCourseServices(action.data));
+
+    console.log(res)
+
     yield put({
       type: DETAIL_COURSE_SERVICES,
       data: res.data,
     });
+
   } catch (error) {
     console.log(error);
   }

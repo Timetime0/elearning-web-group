@@ -33,7 +33,7 @@ function NavHeader(props) {
             <NavLink to="/">
               <IconButton color="inherit">
                 <img
-                  src="./img/logoElearning.png"
+                  src="/img/logoElearning.png"
                   alt="logo"
                   className={classes.logoNav}
                 />

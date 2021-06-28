@@ -14,6 +14,7 @@ const CourseReducer = (state = initialState, action) => {
       return { ...state, course: action.data };
     }
     case DETAIL_COURSE_SERVICES: {
+      console.log(action)
       return { ...state, courseDetail: action.data};
     
     }
