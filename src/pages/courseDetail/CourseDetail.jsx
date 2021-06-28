@@ -4,11 +4,14 @@ import { DETAIL_COUESE_SERVICES } from "../../redux/types/CourseDetailType";
 
 function CourseDetail() {
   const dispatch = useDispatch();
+
+  
   useEffect(() => {
     dispatch({
       type: DETAIL_COUESE_SERVICES,
     });
   }, [dispatch]);
+
   return (
     <div>
       <h1>Course Detail</h1>

@@ -27,6 +27,7 @@ export default function Grid_Category() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('useEffect')
     dispatch({
       type: GET_DATA_COURSE_SAGA,
     });
