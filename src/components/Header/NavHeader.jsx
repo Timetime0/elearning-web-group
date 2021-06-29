@@ -119,9 +119,9 @@ function NavHeader(props) {
           </div>
         </Toolbar>
       </AppBar>
-      <div>{listCourse.map((list,index) => {
-        return <div>{listCourse.tenDanhMuc}</div>
-      })}</div>
+      {/* <div>{listCourse.map((list,index) => {
+        return <ul>{list.maDanhMuc}<li>{list.DanhMuc}</li></ul>
+      })}</div> */}
     </div>
   );
 }

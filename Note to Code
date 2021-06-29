@@ -31,3 +31,7 @@ _ update courseList trong file CourseReducer
  #Ngày 28/6/2021 Tan:
  - Chỉnh cho đúng syntax trong index.js (saga)
  - Chỉnh cách gọi api vs param, sử dụng useParma
+
+#Ngày 29/6/2021 Chun:
+_ Thêm dropdown box trong file login
+_ Update routing cho trang Login
