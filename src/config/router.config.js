@@ -1,6 +1,6 @@
 import CourseDetail from "../pages/courseDetail/CourseDetail.jsx";
 import Home from "../pages/home/Home.jsx";
-import Login from "../components/Header/Login.jsx";
+import Login from "../pages/Login/Login.jsx";
 export const clientRouters = [
   {
     path: "/",
