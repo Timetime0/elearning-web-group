@@ -6,7 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../redux/types/CourseListType";
 
@@ -18,7 +18,13 @@ function NavHeader(props) {
     dispatch({
       type: COURSE_LIST_SERVICES_SAGA,
     })
-  }, [dispatch])
+  }, [dispatch]);
+  const history = useHistory();
+
+  // tạo liên kết bằng useHistory
+  const nextPath = () => {
+    history.push("/login");
+  }
   const { classes } = props;
   return (
     <div>
@@ -141,8 +147,8 @@ function NavHeader(props) {
                 </li>
                 <li className="nav-item"><NavLink to="/about" className="nav-link">About</NavLink></li>  
                 <li className="nav-item"><NavLink to="/contact"className="nav-link" >Contact</NavLink></li>
-                <li className="nav-item"><Button variant="outlined" color="secondary" className={classes.buttonSignUp}>Sign Up</Button></li>
-                <li className="nav-item "><Button variant="outlined" color="secondary" className={classes.buttonLogin}>Login</Button></li>
+                <li className="nav-item"><Button variant="outlined" color="secondary" className={classes.buttonSignUp} >Sign Up</Button></li>
+                <li className="nav-item "><Button variant="outlined" color="secondary" className={classes.buttonLogin} onClick={nextPath}>Login</Button></li>
               </ul>
             </div>
           </div>

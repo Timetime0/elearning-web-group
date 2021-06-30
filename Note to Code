@@ -42,3 +42,7 @@ _ Thay mới layout Footer và Navbar
 _ Trong Navbar gọi hiển thị các danh mục khóa học, thêm 2 button sigup và login, chỉnh css trong file NavHeaderStyle.
 _ Thêm các file scss và bootstrap vào client templates
 _ Thêm folder asset , trong folder asset có các file scss và image 
+
+#Ngày 30/6/2021 Chun lần 2:
+_ Thêm API login 
+_ Thêm giao diện login 

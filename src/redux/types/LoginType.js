@@ -1,0 +1,2 @@
+export const LOGIN_SERVICE = "LOGIN_SERVICE";
+export const LOGIN_SERVICE_SAGA = "LOGIN_SERVICE_SAGA";
