@@ -25,6 +25,9 @@ function NavHeader(props) {
   const nextPath = () => {
     history.push("/login");
   }
+  const nextPathSignUp = () => {
+    history.push("/register");
+  }
   const { classes } = props;
   return (
     <div>
@@ -147,7 +150,7 @@ function NavHeader(props) {
                 </li>
                 <li className="nav-item"><NavLink to="/about" className="nav-link">About</NavLink></li>  
                 <li className="nav-item"><NavLink to="/contact"className="nav-link" >Contact</NavLink></li>
-                <li className="nav-item"><Button variant="outlined" color="secondary" className={classes.buttonSignUp} >Sign Up</Button></li>
+                <li className="nav-item"><Button variant="outlined" color="secondary" className={classes.buttonSignUp} onClick={nextPathSignUp}>Sign Up</Button></li>
                 <li className="nav-item "><Button variant="outlined" color="secondary" className={classes.buttonLogin} onClick={nextPath}>Login</Button></li>
               </ul>
             </div>

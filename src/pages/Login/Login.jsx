@@ -1,23 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGIN_SERVICE_SAGA } from '../../redux/types/LoginType';
+import {NavLink} from 'react-router-dom';
 
-
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 	import "./css/util.css";
 	import "./css/main.css";
 
+const random =() =>{
+	return Math.floor(Math.random() * 1050) + 100;
+}
 
-
-function Login() {
+function Login(props) {
 	return (
 		<div>
 			<div className="limiter">
-				<div className="container-login100" style={{ backgroundImage: 'url("/img/img-01.jpg")' }}>
+				<div className="container-login100" style={{ backgroundImage: `url(https://picsum.photos/id/${random()}/1080/1920/?blur=8)` }}>
 					<div className="wrap-login100 p-t-190 p-b-30">
 						<form className="login100-form validate-form">
 							<div className="login100-form-avatar">
-								<img src="/img/avatar-01.jpg" alt="AVATAR" />
+								<img src="https://picsum.photos/id/1050/1080/1920/" alt="AVATAR" />
 							</div>
 							<span className="login100-form-title p-t-20 p-b-45">
 								John Doe
@@ -47,10 +50,10 @@ function Login() {
 								</a>
 							</div>
 							<div className="text-center w-full">
-								<a className="txt1" href="#">
+								<NavLink to="/register" className="txt1" >
 									Create new account
-									<i className="fa fa-long-arrow-right" />
-								</a>
+									<ArrowRightAltIcon />
+								</NavLink>
 							</div>
 						</form>
 					</div>

@@ -46,3 +46,7 @@ _ Thêm folder asset , trong folder asset có các file scss và image
 #Ngày 30/6/2021 Chun lần 2:
 _ Thêm API login 
 _ Thêm giao diện login 
+
+#Ngày 1/7/2021 Chun :
+_ Sửa lại url background trang login bằng hàm random,
+_ Thêm trang register , routing /register 
