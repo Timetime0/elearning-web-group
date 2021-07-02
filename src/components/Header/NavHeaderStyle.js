@@ -30,9 +30,26 @@ const styles = (theme) => ({
     color: "#f16101",
   },
   logoNav: {
-    width: "200px",
+    width: "20px",
     height: "65px",
   },
+  buttonLogin:{
+    background: "#00e676",
+    color: "white",
+    border: "1px solid #00e676",
+    padding: "5px 25px",
+    margin: "5px 10px",
+  },
+  buttonSignUp:{
+    background: "white",
+    color: "#00e676",
+    border: "1px solid #00e676",
+    margin: "5px 10px",
+  },
+  paddingButton:{
+    padding: "4px 5px",
+   
+  }
 });
 
 

@@ -1,17 +1,12 @@
-import React,{ useEffect} from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import React, { useEffect } from "react";
+import Button from '@material-ui/core/Button';
 import useStyles from "./NavHeaderStyle";
 import { withStyles } from "@material-ui/core/styles";
 
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import InstagramIcon from "@material-ui/icons/Instagram";
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-import { NavLink } from "react-router-dom";
+
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../redux/types/CourseListType";
 
@@ -21,13 +16,22 @@ function NavHeader(props) {
 
   useEffect(() => {
     dispatch({
-      type: COURSE_LIST_SERVICES_SAGA, 
+      type: COURSE_LIST_SERVICES_SAGA,
     })
-  },[dispatch])
+  }, [dispatch]);
+  const history = useHistory();
+
+  // tạo liên kết bằng useHistory
+  const nextPath = () => {
+    history.push("/login");
+  }
+  const nextPathSignUp = () => {
+    history.push("/register");
+  }
   const { classes } = props;
   return (
     <div>
-      <AppBar position="static" className={classes.nav}>
+      {/* <AppBar position="static" className={classes.nav}>
         <Toolbar className={classes.nav_Content}>
           <div className={classes.nav_Content}>
             <NavLink to="/">
@@ -118,10 +122,41 @@ function NavHeader(props) {
             </IconButton>
           </div>
         </Toolbar>
-      </AppBar>
-      <div>{listCourse.map((list,index) => {
-        return <div>{listCourse.tenDanhMuc}</div>
-      })}</div>
+      </AppBar> */}
+
+      <header>
+        <nav className="navbar navbar-expand-lg navigation" id="navbar">
+          <div className="container">
+            <NavLink to="/" className="navbar-brand">
+            {/* <img src="/img/logoElearning.png" alt className="logoNav" /> */}
+            <h1>e</h1>
+            </NavLink>
+            <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="icofont-navigation-menu" />
+            </button>
+            <div className="collapse navbar-collapse" id="navbarmain">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item active">
+                  <NavLink to="/" className="nav-link">Home</NavLink>
+                </li>
+                <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course <ArrowDropDownIcon className="icofont-thin-down" /></a>
+                  <ul className="dropdown-menu" aria-labelledby="dropdown02">
+                    {listCourse.map((list,index) => {
+                      return <li><NavLink to="/" className="dropdown-item">{list.maDanhMuc}</NavLink></li>
+                    })}
+                    {/* <li><NavLink to="/" className="dropdown-item">{list.tenDanhMuc}</NavLink></li> */}
+                  </ul>
+                </li>
+                <li className="nav-item"><NavLink to="/about" className="nav-link">About</NavLink></li>  
+                <li className="nav-item"><NavLink to="/contact"className="nav-link" >Contact</NavLink></li>
+                <li className="nav-item"><Button variant="outlined" color="secondary" className={classes.buttonSignUp} onClick={nextPathSignUp}>Sign Up</Button></li>
+                <li className="nav-item "><Button variant="outlined" color="secondary" className={classes.buttonLogin} onClick={nextPath}>Login</Button></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
     </div>
   );
 }

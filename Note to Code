@@ -31,3 +31,26 @@ _ update courseList trong file CourseReducer
  #Ngày 28/6/2021 Tan:
  - Chỉnh cho đúng syntax trong index.js (saga)
  - Chỉnh cách gọi api vs param, sử dụng useParma
+
+#Ngày 29/6/2021 Chun:
+_ Thêm dropdown box trong file login
+_ Update routing cho trang Login
+
+#Ngày 30/6/2021 Chun:
+_ Xóa Footer và Navbar 
+_ Thay mới layout Footer và Navbar 
+_ Trong Navbar gọi hiển thị các danh mục khóa học, thêm 2 button sigup và login, chỉnh css trong file NavHeaderStyle.
+_ Thêm các file scss và bootstrap vào client templates
+_ Thêm folder asset , trong folder asset có các file scss và image 
+
+#Ngày 30/6/2021 Chun lần 2:
+_ Thêm API login 
+_ Thêm giao diện login 
+
+#Ngày 1/7/2021 Chun :
+_ Sửa lại url background trang login bằng hàm random,
+_ Thêm trang register , routing /register 
+
+#Ngày 2/7/2021 Chun: 
+_ Thêm giao diện Register 
+_ Giao diện từ Material UI 

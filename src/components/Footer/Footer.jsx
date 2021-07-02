@@ -4,148 +4,71 @@ import { NavLink, useHistory } from "react-router-dom";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
-
-import "./icomoon/style.css";
-import "./scss/bootstrap/bootstrap.scss";
-import "./scss/style.scss";
-
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 import "./Footer_Style.scss";
 function Footer() {
   return (
-    // <div className="Footer">
-    //   <h1>This is footer component</h1>
-    //   <div className="footer_Container">
-    //     <div className="footer_Item">
-    //       <div className="item_Course">
-    //         <h2>Course</h2>
-    //       </div>
-    //       <div className="list_Item">
-    //         <ul>
-    //           <li>
-    //             <a>
-    //               React JS
-    //             </a>
-    //           </li>
-    //           <li>
-    //             <a>
-    //               Angular JS
-    //             </a>
-    //           </li>
-    //           <li>
-    //             <a>
-    //               javascript
-    //             </a>
-    //           </li>
-    //         </ul>
-    //       </div>
-    //     </div>
-    //     <div className="footer_Item">
-    //       <div className="item_Explore">
-    //         <h2>Explore</h2>
-    //       </div>
-    //     </div>
-    //     <div className="footer_Item">
-    //       <div className="item_Gallery">
-    //         <h2>Gallery</h2>
-    //       </div>
-    //     </div>
-    //     <div className="footer_Item">
-    //       <div className="item_About">
-    //         <h2>About</h2>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-    <footer className="footer-20192">
-      <div className="site-section">
-        <div className="container">
-          <div className="cta d-block d-md-flex align-items-center px-5 ">
-            <div>
-              <h2 className="mb-0 ">Ready for start learning ?</h2>
-              <h3 className="text-dark">Let's get started!</h3>
-            </div>
-            <div className="ml-auto">
-              <a href="#" className="btn btn-dark rounded-0 py-3 px-5">
-                Contact us
-              </a>
+    <footer className="footer section gray-bg">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-4 mr-auto col-sm-6">
+            <div className="widget mb-5 mb-lg-0">
+              <div className="logo mb-4">
+                <img src="/img/logoElearning.png" alt className="img-fluid" />
+              </div>
+              <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
+              <ul className="list-inline footer-socials mt-3">
+                <li className="list-inline-item"><NavLink to="http://facebook.com"><FacebookIcon /></NavLink></li>
+                <li className="list-inline-item"><NavLink to="https://twitter.com/themefisher"><TwitterIcon /></NavLink></li>
+                <li className="list-inline-item"><NavLink to="https://www.pinterest.com/themefisher/"><InstagramIcon /></NavLink></li>
+              </ul>
             </div>
           </div>
-          <div className="row">
-            <div className="col-sm">
-              <a href="#" className="footer-logo">
-                Colorlib
-              </a>
-              <p className="copyright">
-                <small>© 2019</small>
-              </p>
-            </div>
-            <div className="col-sm">
-              <h3>Customers</h3>
-              <ul className="list-unstyled links">
-                <li>
-                  <a href="#">Buyer</a>
-                </li>
-                <li>
-                  <a href="#">Supplier</a>
-                </li>
+          <div className="col-lg-2 col-md-6 col-sm-6">
+            <div className="widget mb-5 mb-lg-0">
+              <h4 className="text-capitalize mb-3">Department</h4>
+              <div className="divider mb-4" />
+              <ul className="list-unstyled footer-menu lh-35">
+                <li><NavLink to="/">Surgery </NavLink></li>
+                <li><NavLink to="/">Wome's Health</NavLink></li>
+                <li><NavLink to="/">Radiology</NavLink></li>
+                <li><NavLink to="/">Cardioc</NavLink></li>
+                <li><NavLink to="/">Medicine</NavLink></li>
               </ul>
             </div>
-            <div className="col-sm">
-              <h3>Company</h3>
-              <ul className="list-unstyled links">
-                <li>
-                  <NavLink to="/teachers">Teachers</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/course" href="#">
-                    Course
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/contact">About us</NavLink>
-                </li>
+          </div>
+          <div className="col-lg-2 col-md-6 col-sm-6">
+            <div className="widget mb-5 mb-lg-0">
+              <h4 className="text-capitalize mb-3">Support</h4>
+              <div className="divider mb-4" />
+              <ul className="list-unstyled footer-menu lh-35">
+                <li><NavLink to="/">Terms &amp; Conditions</NavLink></li>
+                <li><NavLink to="/">Privacy Policy</NavLink></li>
+                <li><NavLink to="/">Company Support </NavLink></li>
+                <li><NavLink to="/">FAQuestions</NavLink></li>
+                <li><NavLink to="/">Company Licence</NavLink></li>
               </ul>
             </div>
-            <div className="col-sm">
-              <h3>Further Information</h3>
-              <ul className="list-unstyled links">
-                <li>
-                  <a href="#">Terms &amp; Conditions</a>
-                </li>
-                <li>
-                  <a href="#">Privacy Policy</a>
-                </li>
-              </ul>
-            </div>
-            <div className="col-md-3">
-              <h3>Follow us</h3>
-              <ul className="list-unstyled social">
-                <li>
-                  <NavLink to="/facebook">
-                    <span className="icon-facebook" />
-                  </NavLink>
-                </li>
-                <li>
-                  <a href="#">
-                    <span className="icon-twitter" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span className="icon-linkedin" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span className="icon-medium" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span className="icon-paper-plane" />
-                  </a>
-                </li>
-              </ul>
+          </div>
+          <div className="col-lg-3 col-md-6 col-sm-6">
+            <div className="widget widget-contact mb-5 mb-lg-0">
+              <h4 className="text-capitalize mb-3">Get in Touch</h4>
+              <div className="divider mb-4" />
+              <div className="footer-contact-block mb-4">
+                <div className="icon d-flex align-items-center">
+                  <MailOutlineIcon className="icofont-email mr-3" />
+                  <span className="h6 mb-0">Support Available for 24/7</span>
+                </div>
+                <h4 className="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
+              </div>
+              <div className="footer-contact-block">
+                <div className="icon d-flex align-items-center">
+                  <ContactPhoneIcon className="icofont-support mr-3" />
+                  <span className="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
+                </div>
+                <h4 className="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
+              </div>
             </div>
           </div>
         </div>
@@ -153,5 +76,4 @@ function Footer() {
     </footer>
   );
 }
-
 export default Footer;
