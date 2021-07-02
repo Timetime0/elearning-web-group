@@ -50,3 +50,7 @@ _ Thêm giao diện login
 #Ngày 1/7/2021 Chun :
 _ Sửa lại url background trang login bằng hàm random,
 _ Thêm trang register , routing /register 
+
+#Ngày 2/7/2021 Chun: 
+_ Thêm giao diện Register 
+_ Giao diện từ Material UI 
