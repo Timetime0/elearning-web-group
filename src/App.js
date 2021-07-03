@@ -1,7 +1,5 @@
-import Home from "./pages/home/Home";
 import { clientRouters } from "./config/router.config";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import CourseDetail from "./pages/courseDetail/CourseDetail";
 import TemplateClient from "./templates/client/TemplateClient";
 function App() {
   const renderRouterClientList = () => {

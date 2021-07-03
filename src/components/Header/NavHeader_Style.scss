@@ -1,0 +1,19 @@
+
+
+.container-fluid{
+    @media screen and (max-width:992px){
+        padding: 0 !important;
+    }
+    .navbar-brand {
+        width: 200px;
+        @media screen and (max-width:992px){
+            width: 130px;
+                margin: 0 !important;
+        }
+    }
+    .navbar-nav{
+        >li:nth-of-type(5),  >li:nth-of-type(6){
+            text-align: right;
+        }   
+    }      
+}   

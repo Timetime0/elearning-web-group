@@ -37,7 +37,7 @@ export default function Grid_Category() {
       <Grid container spacing={1} >
         {course.map((course, index) => {
           return (
-            <Grid item lg={2} md={4} xs={6}>
+            <Grid item lg={2} md={4} xs={6} key={index}>
               <Paper className={classes.paper}>
                 <CardItem course={course} key={index}></CardItem>
               </Paper>

@@ -15,7 +15,7 @@ function Footer() {
           <div className="col-lg-4 mr-auto col-sm-6">
             <div className="widget mb-5 mb-lg-0">
               <div className="logo mb-4">
-                <img src="/img/logoElearning.png" alt className="img-fluid" />
+                <img src="/img/logoElearning.png" alt="true" className="img-fluid" />
               </div>
               <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
               <ul className="list-inline footer-socials mt-3">

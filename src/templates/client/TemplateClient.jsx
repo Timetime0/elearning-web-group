@@ -2,8 +2,8 @@ import React from "react";
 import Header from "../../components/Header/NavHeader";
 import Footer from "../../components/Footer/Footer";
 
-import "../../Assets/plugins/bootstrap/css/bootstrap.min.css";
-import "../../Assets/scss/style.scss";
+import "../../assets/plugins/bootstrap/css/bootstrap.min.css";
+import "../../assets/scss/style.scss";
 
 
 

@@ -48,7 +48,12 @@ const styles = (theme) => ({
   },
   paddingButton:{
     padding: "4px 5px",
-   
+  },
+  img:{
+    width: "100%"
+  },
+  headerLink: {
+    width: '30%'
   }
 });
 
