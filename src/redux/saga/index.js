@@ -6,7 +6,10 @@ import { followGetLoginApiAction } from "./LoginSaga";
 
 // cấu hình
 export default function* rootSaga() {
-  yield all([followGetCourseApiAction(),followGetDetailCourseApiAction(),followGetCourseListApiAction()]);
-  yield all([followGetLoginApiAction()])
-
+  yield all([
+    followGetCourseApiAction(),
+    followGetDetailCourseApiAction(),
+    followGetCourseListApiAction(),
+    followGetLoginApiAction(),
+  ]);
 }

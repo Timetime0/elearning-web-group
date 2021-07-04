@@ -5,3 +5,15 @@
     background-color: #08af80;
  }
     
+
+    @media screen and (max-width:992px){
+        .widget{
+            text-align: center;
+        }
+        .divider{
+            margin: 0 auto;
+        } 
+        .icon {
+            justify-content: center;
+        }
+    }

@@ -5,13 +5,13 @@ function App() {
   const renderRouterClientList = () => {
     return clientRouters.map((router, index) => {
       const { Component, path, exact, checkLogin } = router;
-      if (checkLogin) {
-        return (
-          <Route path={path} exact={exact} key={index}>
-            <TemplateClient Component={Component} />
-          </Route>
-        );
-      }
+      // if (checkLogin) {
+      //   return (
+      //     <Route path={path} exact={exact} key={index}>
+      //       <TemplateClient Component={Component} />
+      //     </Route>
+      //   );
+      // }
       return (
         <Route path={path} exact={exact} key={index}>
           <TemplateClient Component={Component} />
