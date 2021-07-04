@@ -32,99 +32,6 @@ function NavHeader(props) {
   const { classes } = props;
   return (
     <div>
-      {/* <AppBar position="static" className={classes.nav}>
-        <Toolbar className={classes.nav_Content}>
-          <div className={classes.nav_Content}>
-            <NavLink to="/">
-              <IconButton color="inherit">
-                <img
-                  src="/img/logoElearning.png"
-                  alt="logo"
-                  className={classes.logoNav}
-                />
-              </IconButton>
-            </NavLink>
-          </div>
-          <div className={classes.nav_Content}>
-            <div className={classes.icon}>
-              <Typography color="primary">
-                <TwitterIcon className={classes.icon_Item} />
-              </Typography>
-              <Typography color="primary">
-                <FacebookIcon className={classes.icon_Item} />
-              </Typography>
-              <Typography color="primary">
-                <InstagramIcon className={classes.icon_Item} />
-              </Typography>
-            </div>
-          </div>
-          <div className={classes.nav_Content}>
-            <NavLink to="/" exact={true} activeClassName={classes.navActive}>
-              <Typography
-                color="primary"
-                variant="h6"
-                className={classes.title}
-              >
-                Home
-              </Typography>
-            </NavLink>
-            <Typography variant="h6" className={classes.title}>
-              Pages
-            </Typography>
-            <NavLink
-              to="/course"
-              exact={true}
-              activeClassName={classes.navActive}
-            >
-              <Typography variant="h6" className={classes.title}>
-                Course
-              </Typography>
-            </NavLink>
-
-            <NavLink
-              to="/teachers"
-              exact={true}
-              activeClassName={classes.navActive}
-            >
-              <Typography variant="h6" className={classes.title}>
-                Teachers
-              </Typography>
-            </NavLink>
-            <NavLink to="/new" exact={true} activeClassName={classes.navActive}>
-              <Typography variant="h6" className={classes.title}>
-                New
-              </Typography>
-            </NavLink>
-            <NavLink
-              to="/contact"
-              exact={true}
-              activeClassName={classes.navActive}
-            >
-              <Typography variant="h6" className={classes.title}>
-                Contact
-              </Typography>
-            </NavLink>
-            <NavLink
-              to="/login"
-              exact={true}
-              activeClassName={classes.navActive}
-            >
-              <Typography variant="h6" className={classes.title}>
-                Login
-              </Typography>
-            </NavLink>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-            >
-              <MenuIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar> */}
-
       <header>
         <nav className="navbar navbar-expand-md navigation" id="navbar">
           <div className="container-fluid">
@@ -149,7 +56,10 @@ function NavHeader(props) {
               <i className="fa fa-bars"></i>
             </button>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item active">
                   <NavLink to="/" className="nav-link">
