@@ -28,6 +28,7 @@ function* getLoginApi(action) {
     //   }
     // }
     if(res.status === 200){
+      localStorage.setItem("user", JSON.stringify(res.data));
       Swal.fire({
                     icon: 'success',
                     title: 'Đăng nhập thành công',
