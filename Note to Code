@@ -71,3 +71,12 @@ _ SỬa lại LoginServices và LoginSaga
 _ Edit Responsive Component Footer trong Footer_Style.scss
 _ install thư viện sweetalert2
 _ Thêm giao diện Swal trong file LoginSaga
+
+
+#Ngày 5/7/2021 Chun:
+_ Thêm trang Dashboard Admin trong folder Pages/admin
+_ thêm router Admin
+_ Thêm admin template
+_ Thêm hàm renderRouterAdminList ngaoi2 trnag app.js
+_ Sửa lại loginSaga , Thêm điều kiện else khi chuyển qua trang admin và swal error,
+**** Chưa fix được lỗi đúng tài khoản mật khẩu mà vẫn hiện sai tài khoản mật khẩu

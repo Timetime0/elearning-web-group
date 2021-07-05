@@ -1,6 +1,7 @@
-import { clientRouters } from "./config/router.config";
+import { adminRouters, clientRouters } from "./config/router.config";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import TemplateClient from "./templates/client/TemplateClient";
+import TemplateAdmin from './templates/admin/TemplateAdmin';
 function App() {
   const renderRouterClientList = () => {
     return clientRouters.map((router, index) => {
@@ -19,10 +20,25 @@ function App() {
       );
     });
   };
+
+  const renderRouterAdminList = () => {
+    return adminRouters.map((router, index) => {
+      const { Component, path, exact } = router;
+      return (
+        <Route path={path} exact={exact} key={index}>
+            <TemplateAdmin Component={Component} />
+        </Route>
+      );
+    });
+  };
+
+
+  
   return (
     <BrowserRouter>
       <Switch>
         {renderRouterClientList()}
+        {renderRouterAdminList()}
         <Route path="">
           <Redirect to="/"></Redirect>
         </Route>

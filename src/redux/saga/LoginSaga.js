@@ -27,19 +27,27 @@ function* getLoginApi(action) {
     //     return true;
     //   }
     // }
-    if(res.status === 200){
+    if (res.status === 200) {
+      if (res.data.maLoaiNguoiDung === "GV") {
+        localStorage.setItem("user", JSON.stringify(res.data));
+        Swal.fire({
+          icon: 'success',
+          title: 'Đăng nhập thành công',
+        })
+        action.history.push("./admin/dashboard")
+      }
+    } else {
       Swal.fire({
-                    icon: 'success',
-                    title: 'Đăng nhập thành công',
-                })
-    }else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Tài khoản hoặc mật khẩu không chính xác!',
-                })
-            }
+        icon: 'error',
+        title: 'Tài khoản hoặc mật khẩu không chính xác!',
+      })
+    }
   } catch (e) {
     console.log(e);
+    Swal.fire({
+      icon: 'error',
+      title: 'Tài khoản hoặc mật khẩu không chính xác!',
+    })
     // popup
   }
 }
