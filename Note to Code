@@ -80,3 +80,5 @@ _ Thêm admin template
 _ Thêm hàm renderRouterAdminList ngaoi2 trnag app.js
 _ Sửa lại loginSaga , Thêm điều kiện else khi chuyển qua trang admin và swal error,
 **** Chưa fix được lỗi đúng tài khoản mật khẩu mà vẫn hiện sai tài khoản mật khẩu
+
+#
