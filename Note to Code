@@ -86,3 +86,9 @@ _ Sửa lại loginSaga , Thêm điều kiện else khi chuyển qua trang admin
 + chưa add được hàm  action.history.push("./admin/dashboard"); trong LoginSaga
 + Thêm folder HOC , thêm 2 file GuardLogin và GuardAdmin
 + Update lại App.js , thêm GuardLogin và GuardAdmin bọc thẻ <Template....></Template....>
+
+
+#Ngày 6/7/2021 Chun :
+_ Thêm giao diện Admin,
+_ Thêm Folder AdminComponent , thêm các Component trong các folder 
+_ Cập nhật file Dashboard.jsx
