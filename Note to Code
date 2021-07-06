@@ -92,3 +92,11 @@ _ Sửa lại loginSaga , Thêm điều kiện else khi chuyển qua trang admin
 _ Thêm giao diện Admin,
 _ Thêm Folder AdminComponent , thêm các Component trong các folder 
 _ Cập nhật file Dashboard.jsx
+
+#Ngày 6/7/2021 Chun Update: 
+_ Tạo thêm UserReducer,
+_ Tạo thêm GetUserListType,
+_ Tạo thêm UserList,
+_ Tạo TabPanel trong file Header của folder AdminComponent
+_ Thêm Component DataTable trong flder AdminComponent/Content/DataTable,
+* Chưa fix được lỗi binding dữ liệu ra DataTable

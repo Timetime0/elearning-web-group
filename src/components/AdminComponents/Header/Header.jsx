@@ -1,23 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import HelpIcon from '@material-ui/icons/Help';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import Toolbar from '@material-ui/core/Toolbar';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-
-const lightColor = 'rgba(255, 255, 255, 0.7)';
+import React from "react";
+import Box from "@material-ui/core/Box";
+import PropTypes from "prop-types";
+import AppBar from "@material-ui/core/AppBar";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import HelpIcon from "@material-ui/icons/Help";
+import Hidden from "@material-ui/core/Hidden";
+import IconButton from "@material-ui/core/IconButton";
+import Link from "@material-ui/core/Link";
+import MenuIcon from "@material-ui/icons/Menu";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+import Toolbar from "@material-ui/core/Toolbar";
+import Tooltip from "@material-ui/core/Tooltip";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import SwipeableViews from "react-swipeable-views";
+import Content from "../Content/Content";
+const lightColor = "rgba(255, 255, 255, 0.7)";
 
 const styles = (theme) => ({
   secondaryBar: {
@@ -30,9 +33,9 @@ const styles = (theme) => ({
     padding: 4,
   },
   link: {
-    textDecoration: 'none',
+    textDecoration: "none",
     color: lightColor,
-    '&:hover': {
+    "&:hover": {
       color: theme.palette.common.white,
     },
   },
@@ -41,8 +44,52 @@ const styles = (theme) => ({
   },
 });
 
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `full-width-tab-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
+  };
+}
+
 function Header(props) {
   const { classes, onDrawerToggle } = props;
+  const theme = useTheme();
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const handleChangeIndex = (index) => {
+    setValue(index);
+  };
 
   return (
     <React.Fragment>
@@ -97,7 +144,12 @@ function Header(props) {
               </Typography>
             </Grid>
             <Grid item>
-              <Button className={classes.button} variant="outlined" color="inherit" size="small">
+              <Button
+                className={classes.button}
+                variant="outlined"
+                color="inherit"
+                size="small"
+              >
                 Web setup
               </Button>
             </Grid>
@@ -111,20 +163,37 @@ function Header(props) {
           </Grid>
         </Toolbar>
       </AppBar>
-      <AppBar
-        component="div"
-        className={classes.secondaryBar}
-        color="primary"
-        position="static"
-        elevation={0}
-      >
-        <Tabs value={0} textColor="inherit">
-          <Tab textColor="inherit" label="Users" />
-          <Tab textColor="inherit" label="Sign-in method" />
-          <Tab textColor="inherit" label="Templates" />
-          <Tab textColor="inherit" label="Usage" />
-        </Tabs>
-      </AppBar>
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="full width tabs example"
+          >
+            <Tab label="Add Course" {...a11yProps(0)} />
+            <Tab label="Add User" {...a11yProps(1)} />
+            <Tab label="Information" {...a11yProps(2)} />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            Add Course
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <Content />
+          </TabPanel>
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            Information
+          </TabPanel>
+        </SwipeableViews>
+      </div>
     </React.Fragment>
   );
 }
