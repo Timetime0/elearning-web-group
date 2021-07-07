@@ -19,7 +19,10 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import SwipeableViews from "react-swipeable-views";
-import Content from "../Content/Content";
+import ContentUserList from "../Content/ContentUserList/ContentUserList";
+import ContentCourseList from "../Content/ContentCourseList/ContentCourseList";
+import CoureseDataTable from "../DataTable/CourseData/CoureseDataTable";
+import UserDataTable from "../DataTable/UserData/UserDataTable";
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
 const styles = (theme) => ({
@@ -184,10 +187,14 @@ function Header(props) {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            Add Course
+            <ContentCourseList>
+              <CoureseDataTable />
+            </ContentCourseList>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <Content />
+            <ContentUserList>
+              <UserDataTable />
+            </ContentUserList>
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             Information

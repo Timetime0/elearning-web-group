@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { GET_USER_LIST_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 
-export default function DataTable(props) {
+export default function UserDataTable(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,9 +14,6 @@ export default function DataTable(props) {
   }, [dispatch]);
 
   let userList = useSelector((state) => state.UserReducer.userList);
-  let maNguoiDung = userList.map((user, index) => {
-    return user.maLoaiNguoiDung;
-  });
   const columns = [
     { field: "id", headerName: "Mã Người Dùng", width: 200 },
     { field: "fullname", headerName: "Họ Tên", width: 340 },
@@ -35,32 +32,28 @@ export default function DataTable(props) {
     },
   ];
 
-  let rows = [];
+  let rows = [
+    {
+      id: "",
+      fullname: "",
+      email: "",
+      phone: "",
+    },
+  ];
   userList.map((user, index) => {
-    return {
-      rows: [
-        {
-          id: user.maLoaiNguoiDung,
-          fullname: user.hoTen,
-          email: user.email,
-          phone: user.soDt,
-        },
-      ],
-    };
+    return (rows = [
+      {
+        id: user.maLoaiNguoiDung,
+        fullname: user.hoTen,
+        email: user.email,
+        phone: user.soDt,
+      },
+    ]);
   });
 
   return (
     <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={8}
-        checkboxSelection
-        userList={userList}
-      />
-      {/* {userList.map((user, index) => {
-        return;
-      })} */}
+      <DataGrid rows={rows} columns={columns} pageSize={8} checkboxSelection />
     </div>
   );
 }

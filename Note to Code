@@ -100,3 +100,13 @@ _ Tạo thêm UserList,
 _ Tạo TabPanel trong file Header của folder AdminComponent
 _ Thêm Component DataTable trong flder AdminComponent/Content/DataTable,
 * Chưa fix được lỗi binding dữ liệu ra DataTable
+
+
+#Ngày 7/7/2021 Chun: 
+_ Cập nhật lại file Dashboard.jsx
+_ Tách Component Content trong folder AdminComponent,
+_ Tạo thêm Component CourseDataTable,
+_ Edit ui 2 Component ContentUserList & ContentCourseList
+* Chưa fix được lỗi binding dữ liệu ra DataTable
+* Chưa fix được lỗi đăng nhập thành công chuyển về trang chủ hoặc trang admin/....
+

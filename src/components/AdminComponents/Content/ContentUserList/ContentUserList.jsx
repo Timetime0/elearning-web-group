@@ -12,9 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
-
-import DataTable from "./DataTable/DataTable";
-
+import UserDataTable from "../../DataTable/UserData/UserDataTable";
 const styles = (theme) => ({
   paper: {
     maxWidth: 1920,
@@ -33,12 +31,15 @@ const styles = (theme) => ({
   addUser: {
     marginRight: theme.spacing(1),
   },
+  dellUser: {
+    backgroundColor: "red",
+  },
   contentWrapper: {
     margin: "40px 16px",
   },
 });
 
-function Content(props) {
+function ContentUserList(props) {
   const { classes } = props;
 
   return (
@@ -70,7 +71,14 @@ function Content(props) {
                 color="primary"
                 className={classes.addUser}
               >
-                Add user
+                Edit User
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.dellUser}
+              >
+                Delete User
               </Button>
               <Tooltip title="Reload">
                 <IconButton>
@@ -82,17 +90,16 @@ function Content(props) {
         </Toolbar>
       </AppBar>
       <div className={classes.contentWrapper}>
-        {/* <Typography color="textSecondary" align="center">
-          <DataTable />
-        </Typography> */}
-        <DataTable />
+        <Typography color="textSecondary" align="center">
+          <UserDataTable />
+        </Typography>
       </div>
     </Paper>
   );
 }
 
-Content.propTypes = {
+ContentUserList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Content);
+export default withStyles(styles)(ContentUserList);

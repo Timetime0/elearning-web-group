@@ -8,7 +8,6 @@ import {
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Hidden from "@material-ui/core/Hidden";
 import Navigator from "../../../components/AdminComponents/Navigator/Navigator";
-import Content from "../../../components/AdminComponents/Content/Content";
 import Header from "../../../components/AdminComponents/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
