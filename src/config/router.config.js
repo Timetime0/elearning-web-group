@@ -23,14 +23,14 @@ export const clientRouters = [
     path: "/login",
     exact: false,
     Component: Login,
-  },  
+  },
   {
     path: "/register",
     exact: false,
     Component: Register,
-  },  
+  },
 ];
-export const adminRouters =[
+export const adminRouters = [
   {
     path: "/admin/dashboard",
     exact: false,
@@ -41,4 +41,4 @@ export const adminRouters =[
     exact: false,
     // Component: UserManagement,
   },
-]
+];

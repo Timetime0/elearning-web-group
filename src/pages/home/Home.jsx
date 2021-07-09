@@ -8,12 +8,12 @@ import "./style.scss";
 function Home(props) {
   return (
     <div>
-      <NavHeader/>
+      {/* <NavHeader/> */}
       <Carousel />
       <div className="container">
         <Categories />
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

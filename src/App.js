@@ -1,18 +1,23 @@
 import { adminRouters, clientRouters } from "./config/router.config";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import TemplateClient from "./templates/client/TemplateClient";
-import TemplateAdmin from './templates/admin/TemplateAdmin';
+import TemplateAdmin from "./templates/admin/TemplateAdmin";
+import GuardLogin from "./HOC/GuardLogin";
+import GuardAdmin from "./HOC/GuradAdmin";
+
 function App() {
   const renderRouterClientList = () => {
     return clientRouters.map((router, index) => {
       const { Component, path, exact, checkLogin } = router;
-      // if (checkLogin) {
-      //   return (
-      //     <Route path={path} exact={exact} key={index}>
-      //       <TemplateClient Component={Component} />
-      //     </Route>
-      //   );
-      // }
+      if (checkLogin) {
+        return (
+          <Route path={path} exact={exact} key={index}>
+            <GuardLogin>
+              <TemplateClient Component={Component} />
+            </GuardLogin>
+          </Route>
+        );
+      }
       return (
         <Route path={path} exact={exact} key={index}>
           <TemplateClient Component={Component} />
@@ -25,15 +30,15 @@ function App() {
     return adminRouters.map((router, index) => {
       const { Component, path, exact } = router;
       return (
-        <Route path={path} exact={exact} key={index}>
+        <GuardAdmin>
+          <Route path={path} exact={exact} key={index}>
             <TemplateAdmin Component={Component} />
-        </Route>
+          </Route>
+        </GuardAdmin>
       );
     });
   };
 
-
-  
   return (
     <BrowserRouter>
       <Switch>

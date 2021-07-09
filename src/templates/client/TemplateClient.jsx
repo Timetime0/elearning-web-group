@@ -10,15 +10,15 @@ function TemplateClient(props) {
   const { Component } = props;
   return (
     <div>
-      {/* <header>
+      <header>
         <Header />
-      </header> */}
+      </header>
       <main>
         <Component />
       </main>
-      {/* <footer>
+      <footer>
         <Footer />
-      </footer> */}
+      </footer>
     </div>
   );
 }
