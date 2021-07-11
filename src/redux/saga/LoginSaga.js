@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { LoginService } from "../../services/LoginServices";
 import { LOGIN_SERVICE, LOGIN_SERVICE_SAGA } from "../types/LoginType";
+import Home from "../../pages/home/Home.jsx";
 import Swal from "sweetalert2";
 
 function* getLoginApi(action) {
@@ -20,7 +21,8 @@ function* getLoginApi(action) {
           icon: "success",
           title: "Đăng nhập thành công",
         });
-        // action.history.push("./admin/dashboard");
+        // action.history.push("");
+        // <Redirect to="/" />;
       }
     }
   } catch (e) {

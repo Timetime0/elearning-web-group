@@ -2,14 +2,14 @@ import createMiddleWareSaga from "redux-saga";
 import { applyMiddleware, combineReducers, createStore, compose } from "redux";
 import rootSaga from "./saga/index";
 import CourseReducer from "./reducers/CourseReducer";
-import LoginReducer from "./reducers/LoginReducer";
+import Author from "./reducers/Author";
 import UserReducer from "./reducers/AdminReducer/UserReducer";
 
 const middleWareSaga = createMiddleWareSaga();
 
 const rootReducer = combineReducers({
   CourseReducer,
-  LoginReducer,
+  Author,
   UserReducer,
 });
 

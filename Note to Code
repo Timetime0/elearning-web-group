@@ -110,3 +110,9 @@ _ Edit ui 2 Component ContentUserList & ContentCourseList
 * Chưa fix được lỗi binding dữ liệu ra DataTable
 * Chưa fix được lỗi đăng nhập thành công chuyển về trang chủ hoặc trang admin/....
 
+#Ngày 10/7/2021 Chun:
+_ thêm file SighUpServices, SighUpType, SighUpSaga, 
+_ Update LoginReducer.
+
+#Ngày 11/7/2021 Chun: 
+_ Sửa LoginUser -> Author
