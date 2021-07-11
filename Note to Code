@@ -70,3 +70,48 @@ _ SỬa lại LoginServices và LoginSaga
 _ Edit Responsive Component Footer trong Footer_Style.scss
 _ install thư viện sweetalert2
 _ Thêm giao diện Swal trong file LoginSaga
+
+
+#Ngày 5/7/2021 Chun:
+_ Thêm trang Dashboard Admin trong folder Pages/admin
+_ thêm router Admin
+_ Thêm admin template
+_ Thêm hàm renderRouterAdminList ngaoi2 trnag app.js
+_ Sửa lại loginSaga , Thêm điều kiện else khi chuyển qua trang admin và swal error,
+**** Chưa fix được lỗi đúng tài khoản mật khẩu mà vẫn hiện sai tài khoản mật khẩu
+
+#Ngày 5/7/2021 Chun update:
++ fix được lỗi đúng tài khoản mật khẩu mà vẫn hiện sai tài khoản mật khẩu
++ chưa add được hàm  action.history.push("./admin/dashboard"); trong LoginSaga
++ Thêm folder HOC , thêm 2 file GuardLogin và GuardAdmin
++ Update lại App.js , thêm GuardLogin và GuardAdmin bọc thẻ <Template....></Template....>
+
+
+#Ngày 6/7/2021 Chun :
+_ Thêm giao diện Admin,
+_ Thêm Folder AdminComponent , thêm các Component trong các folder 
+_ Cập nhật file Dashboard.jsx
+
+#Ngày 6/7/2021 Chun Update: 
+_ Tạo thêm UserReducer,
+_ Tạo thêm GetUserListType,
+_ Tạo thêm UserList,
+_ Tạo TabPanel trong file Header của folder AdminComponent
+_ Thêm Component DataTable trong flder AdminComponent/Content/DataTable,
+* Chưa fix được lỗi binding dữ liệu ra DataTable
+
+
+#Ngày 7/7/2021 Chun: 
+_ Cập nhật lại file Dashboard.jsx
+_ Tách Component Content trong folder AdminComponent,
+_ Tạo thêm Component CourseDataTable,
+_ Edit ui 2 Component ContentUserList & ContentCourseList
+* Chưa fix được lỗi binding dữ liệu ra DataTable
+* Chưa fix được lỗi đăng nhập thành công chuyển về trang chủ hoặc trang admin/....
+
+#Ngày 10/7/2021 Chun:
+_ thêm file SighUpServices, SighUpType, SighUpSaga, 
+_ Update LoginReducer.
+
+#Ngày 11/7/2021 Chun: 
+_ Sửa LoginUser -> Author
