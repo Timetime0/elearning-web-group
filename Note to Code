@@ -113,3 +113,6 @@ _ Edit ui 2 Component ContentUserList & ContentCourseList
 #Ngày 10/7/2021 Chun:
 _ thêm file SighUpServices, SighUpType, SighUpSaga, 
 _ Update LoginReducer.
+
+#Ngày 11/7/2021 Chun: 
+_ Sửa LoginUser -> Author
