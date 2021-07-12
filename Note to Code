@@ -117,8 +117,25 @@ _ Update LoginReducer.
 #Ngày 11/7/2021 Chun: 
 _ Sửa LoginUser -> Author
 
-#Ngày 11/7/2021 Chun:
+#Ngày 11/7/2021 Chun lan 2:
 _ Update UI Carousel,
 _ Thêm button show popup Carousel
 _ responsive
 _ Thay background Carousel
+
+==================== Big Update ====================
+#Ngày 12/7/2021 Chun Big Update: 
+_ Thay toàn bộ template Client ,
+_ SỬ dụng template Kipso,
+_ Xóa tất cả các Asset của template cũ , xóa các compnent và page cũ , thay bằng template và component mới
+_ Tạo ClientPage & ClientComponent quản lý các page và component của Client ,
+_ Tạo router chuển hướng các trang 
+_ Đã import các link vào trang public/index.html (xóa nếu cần thiết tại vì không thể import file js vào file JSX)
+_ Import các css vào trang TemplateClient
+
+** Chưa fix được lỗi import js vào template,
+** Chưa lấy được icon chính chủ , chưa có icon phù hợp,
+** Chưa fix các lỗi syntax JSX của các file (1 số trang chưa chuyển a -> NavLink, .....)
+** Chưa binding dữ liệu từ redux , chỉ hiển thị giao diện template mới,
+** Chưa tối ưu các component từ các page (còn 1 số code compnent trùng mà không import từ CompnentClient),
+** Chưa import hết các trang Còn thiếu trang (Pricing Plans , Teachers , Teachers Details , Become Teachers)
