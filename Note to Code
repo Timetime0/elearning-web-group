@@ -139,3 +139,11 @@ _ Import các css vào trang TemplateClient
 ** Chưa binding dữ liệu từ redux , chỉ hiển thị giao diện template mới,
 ** Chưa tối ưu các component từ các page (còn 1 số code compnent trùng mà không import từ CompnentClient),
 ** Chưa import hết các trang Còn thiếu trang (Pricing Plans , Teachers , Teachers Details , Become Teachers)
+
+
+
+
+#Ngay2/7/2021 Chun:
+_Cập nhật page trang Pricing Plans , Teachers , Teachers Details , Become Teachers
+_ Tách các Compnent cần Thiết 
+_ Update trang config 

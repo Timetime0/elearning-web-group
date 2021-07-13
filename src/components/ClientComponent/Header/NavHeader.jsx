@@ -72,7 +72,7 @@ function NavHeader(props) {
                       <NavLink to="/gallery">Gallery</NavLink>
                     </li>
                     <li>
-                      <a href="/pricing">Pricing Plans</a>
+                      <NavLink to="/pricing">Pricing Plans</NavLink>
                     </li>
                     <li>
                       <NavLink to="/faq">FAQ'S</NavLink>
@@ -91,16 +91,16 @@ function NavHeader(props) {
                   </ul>
                 </li>
                 <li>
-                  <a href="teachers.html">Teachers</a>
+                  <NavLink to="/teacher">Teachers</NavLink>
                   <ul className="sub-menu">
                     <li>
-                      <a href="/teachers">Teachers</a>
+                      <NavLink to="/teacher">Teachers</NavLink>
                     </li>
                     <li>
-                      <a href="/teacher-details">Teachers Details</a>
+                      <NavLink to="/teacher-details">Teachers Details</NavLink>
                     </li>
                     <li>
-                      <a href="/become-teacher">Become Teacher</a>
+                      <NavLink to="/become-teacher">Become Teacher</NavLink>
                     </li>
                   </ul>
                 </li>

@@ -1,5 +1,7 @@
+import TeacherDetails from "../components/ClientComponent/TeacherDetails/TeacherDetails.jsx";
 import Dashboard from "../pages/AdminPage/Dashboard/Dashboard.jsx";
 import About from "../pages/ClientPage/About/About.jsx";
+import BecomeTeacher from "../pages/ClientPage/BecomeTeacher/BecomeTeacher.jsx";
 import Contact from "../pages/ClientPage/Contact/Contact.jsx";
 import CourseDetail from "../pages/ClientPage/courseDetail/CourseDetail.jsx";
 import CourseList from "../pages/ClientPage/CourseList/CourseList.jsx";
@@ -9,7 +11,9 @@ import Home from "../pages/ClientPage/home/Home.jsx";
 import Login from "../pages/ClientPage/Login/Login.jsx";
 import News from "../pages/ClientPage/News/News.jsx";
 import NewsDetails from "../pages/ClientPage/NewsDetails/NewsDetails.jsx";
+import Pricing from "../pages/ClientPage/Pricing/Pricing.jsx";
 import Register from "../pages/ClientPage/Register/Register.jsx";
+import Teacher from "../pages/ClientPage/Teacher/Teacher.jsx";
 export const clientRouters = [
   {
     path: "/",
@@ -61,6 +65,27 @@ export const clientRouters = [
     exact: false,
     Component: Gallery,
   },
+  {
+    path: "/pricing",
+    exact: false,
+    Component: Pricing,
+  },
+  {
+    path: "/teacher",
+    exact: false,
+    Component: Teacher,
+  },
+  {
+    path: "/become-teacher",
+    exact: false,
+    Component: BecomeTeacher,
+  },
+  {
+    path: "/teacher-details",
+    exact: false,
+    Component: TeacherDetails,
+  },
+
   {
     path: "/login",
     exact: false,
