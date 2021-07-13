@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { LoginService } from "../../services/LoginServices";
 import { LOGIN_SERVICE, LOGIN_SERVICE_SAGA } from "../types/LoginType";
-import Home from "../../pages/home/Home.jsx";
+import Home from "../../pages/ClientPage/home/Home.jsx";
 import Swal from "sweetalert2";
 
 function* getLoginApi(action) {
