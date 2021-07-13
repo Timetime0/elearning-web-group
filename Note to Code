@@ -80,9 +80,7 @@ _ Thêm hàm renderRouterAdminList ngaoi2 trnag app.js
 _ Sửa lại loginSaga , Thêm điều kiện else khi chuyển qua trang admin và swal error,
 **** Chưa fix được lỗi đúng tài khoản mật khẩu mà vẫn hiện sai tài khoản mật khẩu
 
-<<<<<<< HEAD
-#
-=======
+
 #Ngày 5/7/2021 Chun update:
 + fix được lỗi đúng tài khoản mật khẩu mà vẫn hiện sai tài khoản mật khẩu
 + chưa add được hàm  action.history.push("./admin/dashboard"); trong LoginSaga
@@ -141,4 +139,4 @@ _ Import các css vào trang TemplateClient
 ** Chưa binding dữ liệu từ redux , chỉ hiển thị giao diện template mới,
 ** Chưa tối ưu các component từ các page (còn 1 số code compnent trùng mà không import từ CompnentClient),
 ** Chưa import hết các trang Còn thiếu trang (Pricing Plans , Teachers , Teachers Details , Become Teachers)
->>>>>>> 67bfa74703df1e903939050c6cb111d57f658c27
+
