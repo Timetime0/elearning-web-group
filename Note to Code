@@ -143,7 +143,13 @@ _ Import các css vào trang TemplateClient
 
 
 
-#Ngay2/7/2021 Chun:
+#Ngày 13/2021 Chun:
 _Cập nhật page trang Pricing Plans , Teachers , Teachers Details , Become Teachers
 _ Tách các Compnent cần Thiết 
 _ Update trang config 
+
+#Ngày 13/2021 Chun:
+_Tách các component cần thiết (card item trong page courseList)
+_ Binding dữ liệu trang CourseList.
+** Chưa fix lỗi trang template
+** Chưa fix lỗi ui giao diện website
