@@ -1,7 +1,8 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { LoginService } from "../../services/LoginServices";
 import { LOGIN_SERVICE, LOGIN_SERVICE_SAGA } from "../types/LoginType";
-import Swal from 'sweetalert2'
+import Home from "../../pages/ClientPage/home/Home.jsx";
+import Swal from "sweetalert2";
 
 function* getLoginApi(action) {
   try {
@@ -13,41 +14,23 @@ function* getLoginApi(action) {
       data: res.data,
     });
     // popup
-    // switch(res.status){
-    //   case 200: {
-    //     return localStorage.setItem("user", JSON.stringify(res.data));
-    //   }
-    //   case 500: {
-    //      Swal.fire({
-    //                 icon: 'error',
-    //                 title: 'Tài khoản hoặc mật khẩu không chính xác!',
-    //             })
-    //   }
-    //   default: {
-    //     return true;
-    //   }
-    // }
     if (res.status === 200) {
-      if (res.data.maLoaiNguoiDung === "GV") {
+      if (res.data.maLoaiNguoiDung === "HV") {
         localStorage.setItem("user", JSON.stringify(res.data));
         Swal.fire({
-          icon: 'success',
-          title: 'Đăng nhập thành công',
-        })
-        action.history.push("./admin/dashboard")
+          icon: "success",
+          title: "Đăng nhập thành công",
+        });
+        // action.history.push("");
+        // <Redirect to="/" />;
       }
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Tài khoản hoặc mật khẩu không chính xác!',
-      })
     }
   } catch (e) {
     console.log(e);
     Swal.fire({
-      icon: 'error',
-      title: 'Tài khoản hoặc mật khẩu không chính xác!',
-    })
+      icon: "error",
+      title: "Tài khoản hoặc mật khẩu không chính xác!",
+    });
     // popup
   }
 }
