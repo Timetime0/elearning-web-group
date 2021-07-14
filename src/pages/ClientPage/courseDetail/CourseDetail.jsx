@@ -8,7 +8,6 @@ import { DETAIL_COURSE_SERVICES_SAGA } from "../../../redux/types/CourseDetailTy
 function CourseDetail(props) {
   let { maKhoaHoc } = useParams();
   let detail = useSelector((state) => state.CourseReducer.courseDetail);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +17,6 @@ function CourseDetail(props) {
       data: maKhoaHoc,
     });
   }, [dispatch]);
-
   return (
     <div>
       <h1>Course Detail</h1>
@@ -43,14 +41,14 @@ function CourseDetail(props) {
                 <div className="col-lg-8">
                   <div className="course-details__content">
                     <p className="course-details__author">
-                      <img src="/images/team-1-1.jpg" alt />
+                      <img src={"/images/team-1-1.jpg"} alt />
                       by
-                      <a href="#">Addie Walters</a>
+                      {/* <a href="#">{detail.nguoiTao.hoTen}</a> */}
                     </p>
                     <div className="course-details__top">
                       <div className="course-details__top-left">
                         <h2 className="course-details__title">
-                          Improve editing skills
+                          {detail.tenKhoaHoc}
                         </h2>
                         <div className="course-one__stars">
                           <span className="course-one__stars-wrap">
@@ -66,12 +64,12 @@ function CourseDetail(props) {
                       </div>
                       <div className="course-details__top-right">
                         <a href="#" className="course-one__category">
-                          marketing
+                         {/* {detail.danhMucKhoaHoc.maDanhMucKhoahoc} */}
                         </a>
                       </div>
                     </div>
                     <div className="course-one__image">
-                      <img src="/images/course-d-1.jpg" alt />
+                      <img src={detail.hinhAnh} alt />
                       <i className="far fa-heart" />
                     </div>
                     <ul
@@ -116,15 +114,7 @@ function CourseDetail(props) {
                         id="overview"
                       >
                         <p className="course-details__tab-text">
-                          Aelltes port lacus quis enim var sed efficitur turpis
-                          gilla sed sit Lorem Ipsum is simply dummy text of the
-                          printing and typesetting industry. Lorem Ipsum has
-                          been the industry’s standard dummy text ever since the
-                          1500s, when an unknown printer took a galley of type
-                          and scrambled it to make a type specimen book. It has
-                          survived not only five centuries, but also the leap
-                          into electronic typesetting, remaining essentially
-                          unchanged.
+                      {detail.moTa}
                         </p>
                         <br />
                         <p className="course-details__tab-text">
