@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import NavHeader from "../../components/ClientComponent/Header/NavHeader";
 import Footer from "../../components/ClientComponent/Footer/Footer";
 
-// <<<<<<< HEAD
+
 import "../../assets/plugins/bootstrap/bootstrap.min.css";
 // import "../../Assets/";
 import "../../assets/css/style.css";
@@ -88,7 +88,7 @@ const arr = [
 
 function TemplateClient(props) {
   useEffect(() => {
-    
+
     // var i;
     // for(const i in arr){
     //   eval("var_"+ i +" = "+i);
