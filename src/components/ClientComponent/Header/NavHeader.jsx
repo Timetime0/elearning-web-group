@@ -5,11 +5,17 @@ import { withStyles } from "@material-ui/core/styles";
 
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../redux/types/CourseListType";
 
 function NavHeader(props) {
+  const { list } = props;
+  const detailList = () => {
+    history.push("/course-from-list/" + list.maDanhMuc)
+  }
+
+
   let listCourse = useSelector((state) => state.CourseReducer.courseList);
   const dispatch = useDispatch();
 
@@ -82,12 +88,19 @@ function NavHeader(props) {
                 <li>
                   <NavLink to="/course-list">Courses</NavLink>
                   <ul className="sub-menu">
-                    <li>
-                      <NavLink to="/course-list">Courses</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/course-details">Courses Details</NavLink>
-                    </li>
+                    {listCourse.map((list, index) => {
+                      return (
+
+                        <li>
+                          <NavLink to="/course-list">{list.maDanhMuc}</NavLink>
+                          <ul className="sub-menu">
+                            <li><Link onClick={() => {
+                              detailList();
+                            }}>{list.tenDanhMuc}</Link></li>
+                          </ul>
+                        </li>
+                      )
+                    })}
                   </ul>
                 </li>
                 <li>

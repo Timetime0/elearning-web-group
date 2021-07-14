@@ -153,3 +153,12 @@ _Tách các component cần thiết (card item trong page courseList)
 _ Binding dữ liệu trang CourseList.
 ** Chưa fix lỗi trang template
 ** Chưa fix lỗi ui giao diện website
+
+
+#Ngày 14/7/2021 Chun:
+_ Update navbar danh mục khóa học,
+_ tạo API get khóa học theo danh mục , update các router , tạo thêm các file trong redux 
+_ Tạo trang detail , update các tên khóa học trong trang detail
+**** Chưa fix được lỗi đọc file js 
+**** Chưa hiển thị được khóa học trong danh mục 
+**** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 

@@ -4,6 +4,7 @@ import About from "../pages/ClientPage/About/About.jsx";
 import BecomeTeacher from "../pages/ClientPage/BecomeTeacher/BecomeTeacher.jsx";
 import Contact from "../pages/ClientPage/Contact/Contact.jsx";
 import CourseDetail from "../pages/ClientPage/courseDetail/CourseDetail.jsx";
+import CourseFromList from "../pages/ClientPage/CourseList/CourseFromList.jsx";
 import CourseList from "../pages/ClientPage/CourseList/CourseList.jsx";
 import Faq from "../pages/ClientPage/Faq/Faq.jsx";
 import Gallery from "../pages/ClientPage/Gallerry/Gallery.jsx";
@@ -21,7 +22,7 @@ export const clientRouters = [
     Component: Home,
   },
   {
-    path: "/course-details",
+    path: "/course-details/:maKhoaHoc",
     exact: false,
     Component: CourseDetail,
   },
@@ -54,6 +55,11 @@ export const clientRouters = [
     path: "/course-list",
     exact: false,
     Component: CourseList,
+  },
+  {
+    path: "/course-from-list/:maDanhMuc",
+    exact: false,
+    Component: CourseFromList,
   },
   {
     path: "/about",

@@ -1,9 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const random = () => {
   return Math.floor(Math.random() * 500) + 100;
 };
 function CardItem(props) {
+  const history = useHistory();
+  const {course} = props;
+  const detailCourse = () => {
+    history.push("/course-details/" + course.maKhoaHoc);
+
+  };
   return (
     <div className="col-lg-4">
       <div className="course-one__single">
@@ -21,7 +27,9 @@ function CardItem(props) {
             <Link to="/teacher-details">{props.course.nguoiTao.hoTen}</Link>
           </div>
           <h2 className="course-one__title">
-            <Link to="/course-details">{props.course.tenKhoaHoc}</Link>
+            <Link onClick={() => {
+              detailCourse();
+            }}>{props.course.tenKhoaHoc}</Link>
           </h2>
           <div className="course-one__stars">
             <span className="course-one__stars-wrap">
@@ -43,7 +51,9 @@ function CardItem(props) {
             </Link>
             <Link to="/course-details">$18</Link>
           </div>
-          <Link to="#" className="course-one__link">
+          <Link className="course-one__link"  onClick={() => {
+              detailCourse();
+            }}>
             See Preview
           </Link>
         </div>
