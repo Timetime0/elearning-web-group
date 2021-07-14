@@ -88,18 +88,18 @@ const arr = [
 
 function TemplateClient(props) {
   useEffect(() => {
-    
-    // var i;
-    // for(const i in arr){
-    //   eval("var_"+ i +" = "+i);
-    //     window['value'+i] = + i;
-    //     console.log(value`${i}`)
-    //   var_`${i}` = document.createElement(`script${i}`);
-    //   console.log(var_`${i}` )
-    //   [ var_+`_${i}`].src = arr.i;
-    //   [ var_+`_${i}`].async = true;
-    //   document.body.appendChild( var_+`_${i}`);
-    // }
+
+    var i;
+    for(const i in arr){
+      eval("var_"+ i +" = "+i);
+        window['value'+i] = + i;
+        console.log(value`${i}`)
+      var_`${i}` = document.createElement(`script${i}`);
+      console.log(var_`${i}` )
+      [ var_+`_${i}`].src = arr.i;
+      [ var_+`_${i}`].async = true;
+      document.body.appendChild( var_+`_${i}`);
+    }
 
   }, []);
 
