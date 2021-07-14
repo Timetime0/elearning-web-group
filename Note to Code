@@ -55,14 +55,13 @@ _ Thêm trang register , routing /register
 _ Thêm giao diện Register 
 _ Giao diện từ Material UI 
 
-#Ngày 4/7/2021: 
+#Ngày 4/7/2021 Tân: 
 - Responsive header (scss: NavHeadder_Style.scss)
 ** lưu ý bố cục thư mục quá nhiều thứ (những file bootstrap quá nhiều nơi) 
 ** gợi ý (nên xóa những cái console.log vs những cái warning cho dễ bebug)
 => Cần xóa hết và tải về noodmodule
 => Copy code cần lấy phần html theo rồi tải những thư viện mà đoạn html đó cần thôi (đừng có kéo 1 nùi cả template vào)
-
-
+git 
 #Ngày 4/7/2021 Chun:
 _ Dispatch login bên file Login.jsx
 _ SỬa lại LoginServices và LoginSaga
