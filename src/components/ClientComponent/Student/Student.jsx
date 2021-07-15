@@ -45,42 +45,45 @@ function Student() {
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">English</h3>
+
                           <h3 className="progress-one__percent">
                             <span className="counter">98</span>%
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            className="wow slideInLeft"
                             style={{ width: "98%" }}
+                            className="wow slideInLeft"
                           />
                         </div>
                       </div>
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">French</h3>
+
                           <h3 className="progress-one__percent">
                             <span className="counter">64</span>%
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            className="wow slideInLeft"
                             style={{ width: "64%" }}
+                            className="wow slideInLeft"
                           />
                         </div>
                       </div>
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">Spanish</h3>
+
                           <h3 className="progress-one__percent">
                             <span className="counter">34</span>%
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            className="wow slideInLeft"
                             style={{ width: "34%" }}
+                            className="wow slideInLeft"
                           />
                         </div>
                       </div>
@@ -136,42 +139,45 @@ function Student() {
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">English</h3>
+
                           <h3 className="progress-one__percent">
                             <span className="counter">98</span>%
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            className="wow slideInLeft"
                             style={{ width: "98%" }}
+                            className="wow slideInLeft"
                           />
                         </div>
                       </div>
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">French</h3>
+
                           <h3 className="progress-one__percent">
                             <span className="counter">64</span>%
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            className="wow slideInLeft"
                             style={{ width: "64%" }}
+                            className="wow slideInLeft"
                           />
                         </div>
                       </div>
                       <div className="progress-one__single">
                         <div className="progress-one__top">
                           <h3 className="progress-one__title">Spanish</h3>
+
                           <h3 className="progress-one__percent">
                             <span className="counter">34</span>%
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
-                            className="wow slideInLeft"
                             style={{ width: "34%" }}
+                            className="wow slideInLeft"
                           />
                         </div>
                       </div>

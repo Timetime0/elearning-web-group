@@ -18,11 +18,8 @@ function StartOnline() {
         <div className="cta-six__right">
           <img src="/images/fact-1-2.jpg" alt />
           <h2 className="cta-six__title">
-            More than{" "}
-            <span className="counter">
-              <span>0</span>
-            </span>{" "}
-            students are registered
+            More than <span className="counter">7840</span> students are
+            registered
           </h2>
         </div>
       </div>

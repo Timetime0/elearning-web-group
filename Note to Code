@@ -80,6 +80,7 @@ _ Thêm hàm renderRouterAdminList ngaoi2 trnag app.js
 _ Sửa lại loginSaga , Thêm điều kiện else khi chuyển qua trang admin và swal error,
 **** Chưa fix được lỗi đúng tài khoản mật khẩu mà vẫn hiện sai tài khoản mật khẩu
 
+
 #Ngày 5/7/2021 Chun update:
 + fix được lỗi đúng tài khoản mật khẩu mà vẫn hiện sai tài khoản mật khẩu
 + chưa add được hàm  action.history.push("./admin/dashboard"); trong LoginSaga
@@ -139,6 +140,7 @@ _ Import các css vào trang TemplateClient
 ** Chưa tối ưu các component từ các page (còn 1 số code compnent trùng mà không import từ CompnentClient),
 ** Chưa import hết các trang Còn thiếu trang (Pricing Plans , Teachers , Teachers Details , Become Teachers)
 
+=======
 
 
 
@@ -161,3 +163,19 @@ _ Tạo trang detail , update các tên khóa học trong trang detail
 **** Chưa fix được lỗi đọc file js 
 **** Chưa hiển thị được khóa học trong danh mục 
 **** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+
+
+#Ngày 14/7/2021 Tan:
+**** Chưa fix được lỗi đọc file js 
+**** Chưa hiển thị được khóa học trong danh mục 
+**** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+
+
+#NNgày 15/07/2021 Chun: 
+_ Update lại giao diện website, thay theme cũ bằng theme mới 
+_ Chuyển folder assets từ src => public
+_ Import các file css và js của template ngoài file index.html
+_ cập nhật lại khóa học , ...
+****** fix được 80% lỗi ui giao diện website (fix tiếp)
+****** Chưa hiển thị được khóa học trong danh mục 
+****** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 

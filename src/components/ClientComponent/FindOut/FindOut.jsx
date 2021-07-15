@@ -10,18 +10,14 @@ function FindOut() {
               <div className="col-md-6">
                 <div className="video-three__fact thm-base-bg">
                   <i className="kipso-icon-knowledge" />
-                  <p className="video-three__fact-count counter">
-                    <span>0</span>{" "}
-                  </p>
+                  <p className="video-three__fact-count counter">24820 </p>
                   <p className="video-three__fact-text">Courses &amp; Video</p>
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="video-three__fact thm-base-bg-2">
                   <i className="kipso-icon-professor" />
-                  <p className="video-three__fact-count counter">
-                    <span>0</span>{" "}
-                  </p>
+                  <p className="video-three__fact-count counter">4280 </p>
                   <p className="video-three__fact-text">Expert Teachers</p>
                 </div>
               </div>
@@ -42,9 +38,9 @@ function FindOut() {
                 students
               </h2>
               <div className="video-three__btn-box">
-                <div className="video-three__popup">
+                <a href="#" className="video-three__popup">
                   <i className="fas fa-play" />
-                </div>
+                </a>
               </div>
             </div>
           </div>
