@@ -3,6 +3,7 @@ import { followGetUserListApiAction } from "./AdminSaga/UserListSaga";
 import { followGetCourseListApiAction } from "./CourseListSaga";
 import { followGetCourseApiAction } from "./CourseSaga";
 import { followGetDetailCourseApiAction } from "./DetailSaga";
+import { followGetCourseFromListApiAction } from "./GetCourseFromListSaga";
 import { followGetLoginApiAction } from "./LoginSaga";
 
 // cấu hình
@@ -13,5 +14,6 @@ export default function* rootSaga() {
     followGetCourseListApiAction(),
     followGetLoginApiAction(),
     followGetUserListApiAction(),
+    followGetCourseFromListApiAction()
   ]);
 }

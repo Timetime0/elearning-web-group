@@ -140,3 +140,34 @@ _ Import các css vào trang TemplateClient
 ** Chưa tối ưu các component từ các page (còn 1 số code compnent trùng mà không import từ CompnentClient),
 ** Chưa import hết các trang Còn thiếu trang (Pricing Plans , Teachers , Teachers Details , Become Teachers)
 
+<<<<<<< HEAD
+=======
+
+
+
+#Ngày 13/2021 Chun:
+_Cập nhật page trang Pricing Plans , Teachers , Teachers Details , Become Teachers
+_ Tách các Compnent cần Thiết 
+_ Update trang config 
+
+#Ngày 13/2021 Chun:
+_Tách các component cần thiết (card item trong page courseList)
+_ Binding dữ liệu trang CourseList.
+** Chưa fix lỗi trang template
+** Chưa fix lỗi ui giao diện website
+
+
+#Ngày 14/7/2021 Chun:
+_ Update navbar danh mục khóa học,
+_ tạo API get khóa học theo danh mục , update các router , tạo thêm các file trong redux 
+_ Tạo trang detail , update các tên khóa học trong trang detail
+**** Chưa fix được lỗi đọc file js 
+**** Chưa hiển thị được khóa học trong danh mục 
+**** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+
+
+#Ngày 14/7/2021 Tan:
+**** Chưa fix được lỗi đọc file js 
+**** Chưa hiển thị được khóa học trong danh mục 
+**** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+>>>>>>> d152280a0f8c67025c73e93c2ebb143015b9dc07
