@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import store from "./redux/index";
 import { ThemeProvider } from "@material-ui/styles";
 import themeDefault from "./utils/theme/themeDefault";
-import { Helmet } from "react-helmet";
 
 ReactDOM.render(
   <React.StrictMode>

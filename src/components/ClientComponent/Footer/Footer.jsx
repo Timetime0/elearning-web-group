@@ -1,12 +1,6 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import ContactPhoneIcon from "@material-ui/icons/ContactPhone";
-// import "./Footer_Style.scss";
 function Footer() {
   return (
     <footer className="site-footer">

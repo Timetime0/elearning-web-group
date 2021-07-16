@@ -66,12 +66,29 @@ function NavHeader(props) {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li>
+                <NavLink to="/">Pages</NavLink>
+                <ul class="sub-menu">
+                  <li>
+                    <Link to="/about">About Page</Link>
+                  </li>
+                  <li>
+                    <Link to="/gallery">Gallery</Link>
+                  </li>
+                  <li>
+                    <Link to="/pricing">Pricing Plans</Link>
+                  </li>
+                  <li>
+                    <Link to="/faq">FAQ'S</Link>
+                  </li>
+                </ul>
+              </li>
+              <li>
                 <NavLink to="/course-list">Courses</NavLink>
                 <ul className="sub-menu">
                   {listCourse.map((list, index) => {
                     return (
                       <li>
-                        <a href="/">{list.tenDanhMuc}</a>
+                        <NavLink to="/">{list.tenDanhMuc}</NavLink>
                       </li>
                     );
                   })}

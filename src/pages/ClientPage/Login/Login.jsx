@@ -5,9 +5,6 @@ import { NavLink } from "react-router-dom";
 
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
-import "./css/util.css";
-import "./css/main.css";
-
 const random = () => {
   return Math.floor(Math.random() * 1050) + 100;
 };

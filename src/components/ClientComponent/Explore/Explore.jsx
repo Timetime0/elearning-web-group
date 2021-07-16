@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_DATA_COURSE_SAGA } from "../../../redux/types/courseType";
+import ExploreItem from "./ExploreItem";
 
 function Explore() {
+  let course = useSelector((state) => state.CourseReducer.course);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: GET_DATA_COURSE_SAGA,
+    });
+  }, [dispatch]);
+
   return (
     <div>
       <section className="course-one__top-title home-three">
@@ -17,7 +28,11 @@ function Explore() {
         <img src="/images/line-stripe.png" className="course-one__line" alt />
         <div className="container">
           <div className="course-one__carousel owl-carousel owl-theme">
-            <div className="item">
+            {course.map((course, index) => {
+              return <ExploreItem course={course} index={index} />;
+            })}
+
+            {/* <div className="item">
               <div className="course-one__single color-1">
                 <div className="course-one__image">
                   <img src="/images/course-1-1.jpg" alt />
@@ -64,7 +79,7 @@ function Explore() {
             <div className="item">
               <div className="course-one__single color-2">
                 <div className="course-one__image">
-                  <img src="/images/course-1-2.jpg" alt />
+                  <img src="/images/course-1-20.jpg" alt />
                   <i className="far fa-heart" />
                 </div>
                 <div className="course-one__content">
@@ -415,7 +430,7 @@ function Explore() {
                   </a>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

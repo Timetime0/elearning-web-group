@@ -1,18 +1,20 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 const random = () => {
   return Math.floor(Math.random() * 500) + 100;
 };
-
-function CardItem(props) {
+const random2 = () => {
+  return Math.floor(Math.random() * 6) + 100;
+};
+function ExploreItem(props) {
   const history = useHistory();
   const { course } = props;
   const detailCourse = () => {
     history.push("/course-details/" + course.maKhoaHoc);
   };
   return (
-    <div className="col-lg-4">
-      <div className="course-one__single">
+    <div className="item">
+      <div className="`course-one__single color-${random2()}`">
         <div className="course-one__image">
           <img src={props.course.hinhAnh} alt />
           <i className="far fa-heart" />
@@ -22,7 +24,7 @@ function CardItem(props) {
             {props.course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
           </a>
           <div className="course-one__admin">
-            <img src="/images/team-1-2.jpg" alt />
+            <img src="/images/team-1-1.jpg" alt />
             by <a href="teacher-details.html">{props.course.nguoiTao.hoTen}</a>
           </div>
           <h2 className="course-one__title">
@@ -56,10 +58,10 @@ function CardItem(props) {
             <a href="course-details.html">$18</a>
           </div>
           <a
-            className="course-one__link"
             onClick={() => {
               detailCourse();
             }}
+            className="course-one__link"
           >
             See Preview
           </a>
@@ -69,4 +71,4 @@ function CardItem(props) {
   );
 }
 
-export default CardItem;
+export default ExploreItem;
