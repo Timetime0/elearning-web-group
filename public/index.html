@@ -2,77 +2,41 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,800%7CSatisfy&amp;display=swap"
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+
+  <!-- plugin scripts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,800%7CSatisfy&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../src/assets/plugins/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../src/assets/css/animate.min.css">
-  <link rel="stylesheet" href="../src/assets/plugins/fontawesome-free-5.11.2-web/css/all.min.css">
-  <link rel="stylesheet" href="../src/assets/plugins/kipso-icons/style.css">
-  <link rel="stylesheet" href="../src/assets/css/style.css">
-  <link rel="stylesheet" href="../src/assets/css/responsive.css">
-  <meta name="next-head-count" content="14">
-  <link rel="preload" href="../src/_next/static/css/styles.b100dd23.chunk.css" as="style">
-  <link rel="stylesheet" href="../src/_next/static/css/styles.b100dd23.chunk.css">
-  <link rel="preload" href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/index.js" as="script">
-  <link rel="preload" href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/_app.js" as="script">
-  <link rel="preload" href="../src/_next/static/runtime/webpack-9369c5c69dbf6d4912cb.js" as="script">
-  <link rel="preload" href="../src/_next/static/chunks/framework.2689030919a9ba0449ff.js" as="script">
-  <link rel="preload" href="../src/_next/static/chunks/commons.ceaf506e42eea69867d7.js" as="script">
-  <link rel="preload" href="../src/_next/static/chunks/styles.6b75174053ded839d11d.js" as="script">
-  <link rel="preload" href="../src/_next/static/runtime/main-2b7f201882d40b0ce780.js" as="script">
-  <link rel="preload" href="../src/_next/static/chunks/a4c92b5b.b8b875e49990b13703a5.js" as="script">
-  <link rel="preload" href="../src/_next/static/chunks/ff73939d68d7e79f1e0f3ade21d95dd400a3a1cc.04a8c86fb488fd8e6f0d.js"
-    as="script">
-  <link rel="preload" href="../src/_next/static/chunks/08afed86d3fa7bd4ded233c88b82f6c63c41e408.cb0e017598de4268103f.js"
-    as="script">
-  <link rel="preload" href="../src/_next/static/chunks/b788f745097c13fe0fb56597fa921221422fea68.b0884a161c5426e4babd.js"
-    as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/index-2.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/index-3.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/about.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/gallery.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/pricing.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/faq.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/courses.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/course-details.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/teachers.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/teacher-details.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/become-teacher.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/news.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/news-details.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/agIWMwmAuC6_vhQUG9Afp/pages/contact.js" rel="prefetch" as="script">
-  <link href="/_next/static/chunks/a4c92b5b.b8b875e49990b13703a5.js" rel="prefetch" as="script">
-  <link href="../src/_next/static/chunks/ff73939d68d7e79f1e0f3ade21d95dd400a3a1cc.04a8c86fb488fd8e6f0d.js"
-    rel="prefetch" as="script">
-  <link href="../src/_next/static/chunks/08afed86d3fa7bd4ded233c88b82f6c63c41e408.cb0e017598de4268103f.js"
-    rel="prefetch" as="script">
-  <link href="../src/_next/static/chunks/b788f745097c13fe0fb56597fa921221422fea68.b0884a161c5426e4babd.js"
-    rel="prefetch" as="script">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.11.2-web/css/all.min.css">
+  <link rel="stylesheet" href="assets/plugins/kipso-icons/style.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/vegas.min.css">
+
+
+  <!-- Login css -->
+  <link rel="stylesheet" type="text/css" href="assets/css/iofrm-style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/iofrm-theme10.css">
+
+  <!-- template styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
   <title>Elearning</title>
 </head>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <noscript>You need to enable JavaScript to runmn this app.</noscript>
   <div id="root"></div>
   <!--
       This HTML file is a template.
@@ -84,15 +48,23 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
-  </script>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/waypoints.min.js"></script>
+  <script src="assets/js/jquery.counterup.min.js"></script>
+  <script src="assets/js/TweenMax.min.js"></script>
+  <script src="assets/js/wow.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/countdown.min.js"></script>
+  <script src="assets/js/vegas.min.js"></script>
+  <!-- JS From -->
+  <!-- <script type="text/javascript" src="js/main.js"></script> -->
+
+  <!-- template scripts -->
+  <script src="assets/js/theme.js"></script>
+
 </body>
 
 </html>
