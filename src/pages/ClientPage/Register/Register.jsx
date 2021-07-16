@@ -1,8 +1,38 @@
-import { Link } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { SIGN_UP_SAGA } from "../../../redux/types/SignUpType";
 
 function Register() {
+
+  const dispatch = useDispatch()
+
+  let [userRes, setUserRes] = useState({
+    taiKhoan: "",
+    matKhau: "",
+    hoTen:"",
+    email:"",
+    soDT: "",
+    maNhom:"GP01",
+  });
+
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserRes({
+      ...userRes,
+      [name]: value,
+    });}
+
+  const onSubmitRes= (event) => {
+    event.preventDefault()
+    dispatch({
+      type:SIGN_UP_SAGA,
+      user: userRes
+    })
+  }
+
   return (
     <div className="form-body">
       <div className="row">
@@ -31,13 +61,15 @@ function Register() {
                   Register
                 </NavLink>
               </div>
-              <form>
+              <form onSubmit={(event)=>onSubmitRes(event)} method="POST">
                 <input
                   className="form-control"
                   type="text"
-                  name="name"
+                  name="hoTen"
                   placeholder="Full Name"
                   required
+                  onChange={(e) => handleChange(e)}
+
                 />
                 <input
                   className="form-control"
@@ -45,14 +77,37 @@ function Register() {
                   name="email"
                   placeholder="E-mail Address"
                   required
+                  onChange={(e) => handleChange(e)}
+
                 />
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="taiKhoan"
+                    placeholder="Account"
+                    required
+                  onChange={(e) => handleChange(e)}
+
+                  />
                 <input
                   className="form-control"
                   type="password"
-                  name="password"
+                  name="matKhau"
                   placeholder="Password"
                   required
+                  onChange={(e) => handleChange(e)}
+
                 />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="soDT"
+                  placeholder="Phone number"
+                  required
+                  onChange={(e) => handleChange(e)}
+
+                />
+
                 <div className="form-button">
                   <button id="submit" type="submit" className="ibtn">
                     Register
@@ -74,3 +129,4 @@ function Register() {
 }
 
 export default Register;
+

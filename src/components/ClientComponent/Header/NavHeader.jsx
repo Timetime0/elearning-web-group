@@ -67,7 +67,7 @@ function NavHeader(props) {
               </li>
               <li>
                 <NavLink to="/">Pages</NavLink>
-                <ul class="sub-menu">
+                <ul className="sub-menu">
                   <li>
                     <Link to="/about">About Page</Link>
                   </li>

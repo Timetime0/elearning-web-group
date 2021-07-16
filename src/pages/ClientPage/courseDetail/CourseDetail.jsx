@@ -40,7 +40,7 @@ function CourseDetail(props) {
                 <div className="course-details__content">
                   <p className="course-details__author">
                     <img src="/images/team-1-1.jpg" alt />
-                    by <a href="#">{detail.nguoiTao.hoTen}</a>
+                    by <a href="#"></a>
                   </p>
                   <div className="course-details__top">
                     <div className="course-details__top-left">
@@ -62,7 +62,7 @@ function CourseDetail(props) {
                     </div>
                     <div className="course-details__top-right">
                       <a href="#" className="course-one__category">
-                        {detail.danhMucKhoaHoc.tenDanhMucKhoaHoc}
+                       
                       </a>
                     </div>
                   </div>
@@ -107,14 +107,6 @@ function CourseDetail(props) {
                       id="overview"
                     >
                       <p className="course-details__tab-text">
-                        {/* Aelltes port lacus quis enim var sed efficitur turpis
-                        gilla sed sit Lorem Ipsum is simply dummy text of the
-                        printing and typesetting industry. Lorem Ipsum has been
-                        the industry’s standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and
-                        scrambled it to make a type specimen book. It has
-                        survived not only five centuries, but also the leap into
-                        electronic typesetting, remaining essentially unchanged. */}
                         {detail.moTa}
                       </p>
                       <br />

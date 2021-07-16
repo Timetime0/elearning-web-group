@@ -1,8 +1,5 @@
 (function ($) {
     "use strict";
-
-
-
     if ($('.stricky').length) {
         $('.stricky').addClass('original').clone(true).insertAfter('.stricky').addClass('stricked-menu').removeClass('original');
     }
@@ -205,9 +202,7 @@
 
     });
     $(window).on('load', function () {
-
         if ($('.service-one__carousel').length) {
-
             var serviceOneCarousel = $('.service-one__carousel');
             // dynamic count for carousel
             serviceOneCarousel.owlCarousel({
@@ -308,6 +303,8 @@
                 }
             });
         }
+
+        // chỗ cần fix
         if ($('.testimonials-one__carousel').length) {
             $('.testimonials-one__carousel').owlCarousel({
                 loop: true,

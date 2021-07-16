@@ -3,13 +3,13 @@ import React from "react";
 function OurStudents() {
   return (
     <section className="testimonials-one testimonials-one__home-three">
-      <div className="container">
         <div className="block-title text-center">
           <h2 className="block-title__title">
             What our students <br />
             have to say
           </h2>
         </div>
+      <div className="container">
         <div className="testimonials-one__carousel owl-carousel owl-theme">
           <div className="item">
             <div className="testimonials-one__single">

@@ -196,3 +196,26 @@ _ Làm lại trang Login và Register
 =======
 **** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
 
+
+#Ngày 16/7/2021 Tân:
+_ Gọi thành công api đăng ký (thiếu validation, xuất thông báo khi đăng ký thành công hoặc thất bại, chuyển về trang đăng nhập)
+=> functional: thêm chức năng mỗi lần click tab mới (chuyển router) => thì sẽ roll lên đầu trang (gợi ý dùng window.sroll)
+
+~~~~~ Những lỗi cần lưu ý với React
++ Sau mỗi lần map phải có key
++ Chú ý className( sẽ xuất hiện thoong báo lỗi ở console nếu sai => check và sửa liền)
++ alt thì nhớ đặt (Seo) còn nếu hk có thì alt="true" để hk xuất hiện thông báo lỗi
+
+**** fix được 80% lỗi ui giao diện website (fix tiếp) => Đã fix 
+**** Trang detail lỗi hiển thị  mã danh mục & tên người tạo => Đã fix (Vì trong data (detail === courseDetail không có key: 
+    {detail.danhMucKhoaHoc.tenDanhMucKhoaHoc}
+    {detail.nguoiTao.hoTen}
+))
+
+**** Trang detail lỗi hiển thị không ổn định (khi refresh lại thì lỗi template) 
+=> 
+(Manifest: Line: 1, column: 1, Syntax error.) => (lỗi hk đọc được file json) => Chứ fix được (icon của website - góc hiển thị bên trái trên thanh url)
+=> Nếu ẩn 
+  <!-- <link rel="manifest" href="assets/images/favicons/site.webmanifest"> -->
+ở index.html thì vẫn bị lỗi rất nhiều lỗi ở thư viện
+
