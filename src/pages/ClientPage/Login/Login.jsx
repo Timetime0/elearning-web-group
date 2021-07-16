@@ -41,77 +41,65 @@ function Login(props) {
     });
   };
   return (
-    <div>
-      <div className="limiter">
-        <div
-          className="container-login100"
-          style={{
-            backgroundImage: `url(https://picsum.photos/id/${random()}/1080/1920/?blur=8)`,
-          }}
-        >
-          <div className="wrap-login100 p-t-190 p-b-30">
-            <form
-              className="login100-form validate-form"
-              onSubmit={(e) => handleLogin(e)}
-            >
-              <div className="login100-form-avatar">
-                <img
-                  src="https://picsum.photos/id/1050/1080/1920/"
-                  alt="AVATAR"
-                />
+    <div className="form-body">
+      <div className="row">
+        <div className="form-holder">
+          <div className="form-content">
+            <div className="form-items">
+              <div className="website-logo-inside">
+                <a href="index.html">
+                  <div className="logo">
+                    <img
+                      className="logo-size"
+                      src="images/logo-light.svg"
+                      alt
+                    />
+                  </div>
+                </a>
               </div>
-              <span className="login100-form-title p-t-20 p-b-45">
-                John Doe
-              </span>
-              <div
-                className="wrap-input100 validate-input m-b-10"
-                data-validate="Username is required"
-              >
+              <h3>Get more things done with Loggin platform.</h3>
+              <p>
+                Access to the most powerfull tool in the entire design and web
+                industry.
+              </p>
+              <div className="page-links">
+                <NavLink to="/login" className="active">
+                  Login
+                </NavLink>
+                <NavLink to="/register">Register</NavLink>
+              </div>
+              <form onSubmit={(e) => handleLogin(e)}>
                 <input
+                  className="form-control"
                   ref={inputUsername}
-                  className="input100"
                   type="text"
                   name="taiKhoan"
                   placeholder="Username"
                   onChange={(e) => handleChange(e)}
+                  required
                 />
-                <span className="focus-input100" />
-                <span className="symbol-input100">
-                  <i className="fa fa-user" />
-                </span>
-              </div>
-              <div
-                className="wrap-input100 validate-input m-b-10"
-                data-validate="Password is required"
-              >
                 <input
+                  className="form-control"
                   ref={inputPassword}
-                  className="input100"
                   type="password"
                   name="matKhau"
                   placeholder="Password"
                   onChange={(e) => handleChange(e)}
+                  required
                 />
-                <span className="focus-input100" />
-                <span className="symbol-input100">
-                  <i className="fa fa-lock" />
-                </span>
+                <div className="form-button">
+                  <button id="submit" type="submit" className="ibtn">
+                    Login
+                  </button>
+                </div>
+              </form>
+              <div className="other-links">
+                <span>Or login with</span>
+                <a href="#">Facebook</a>
+                <a href="#">Google</a>
+                <a href="#">Linkedin</a>
               </div>
-              <div className="container-login100-form-btn p-t-10">
-                <button className="login100-form-btn">Login</button>
-              </div>
-              <div className="text-center w-full p-t-25 p-b-230">
-                <a href="#" className="txt1">
-                  Forgot Username / Password?
-                </a>
-              </div>
-              <div className="text-center w-full">
-                <NavLink to="/register" className="txt1">
-                  Create new account
-                  <ArrowRightAltIcon />
-                </NavLink>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
