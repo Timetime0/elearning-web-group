@@ -4,7 +4,6 @@ import rootSaga from "./saga/index";
 import CourseReducer from "./reducers/CourseReducer";
 import Author from "./reducers/Author";
 import UserReducer from "./reducers/AdminReducer/UserReducer";
-
 const middleWareSaga = createMiddleWareSaga();
 
 const rootReducer = combineReducers({

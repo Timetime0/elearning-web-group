@@ -141,6 +141,9 @@ _ Import các css vào trang TemplateClient
 ** Chưa import hết các trang Còn thiếu trang (Pricing Plans , Teachers , Teachers Details , Become Teachers)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 79933c306bb0728d5857e112939bb2842b6912fa
 =======
 
 
@@ -170,4 +173,65 @@ _ Tạo trang detail , update các tên khóa học trong trang detail
 **** Chưa fix được lỗi đọc file js 
 **** Chưa hiển thị được khóa học trong danh mục 
 **** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
->>>>>>> d152280a0f8c67025c73e93c2ebb143015b9dc07
+=======
+
+**** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+
+
+#NNgày 15/07/2021 Chun: 
+_ Update lại giao diện website, thay theme cũ bằng theme mới 
+_ Chuyển folder assets từ src => public
+_ Import các file css và js của template ngoài file index.html
+_ cập nhật lại khóa học , ...
+****** fix được 80% lỗi ui giao diện website (fix tiếp)
+****** Chưa hiển thị được khóa học trong danh mục 
+****** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+
+
+#Ngày 16/7/2021 Chun:
+_ Binding dữ liệu ra trang Home phần Explore
+****** fix được 80% lỗi ui giao diện website (fix tiếp)
+****** Chưa hiển thị được khóa học trong danh mục 
+****** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+
+#Ngày 16/7/2021 Chun lần 2 :
+_ Làm lại trang Login và Register
+****** fix được 80% lỗi ui giao diện website (fix tiếp)
+****** Chưa hiển thị được khóa học trong danh mục 
+****** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+=======
+**** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+
+
+#Ngày 16/7/2021 Tân:
+_ Gọi thành công api đăng ký (thiếu validation, xuất thông báo khi đăng ký thành công hoặc thất bại, chuyển về trang đăng nhập)
+=> functional: thêm chức năng mỗi lần click tab mới (chuyển router) => thì sẽ roll lên đầu trang (gợi ý dùng window.sroll)
+
+~~~~~ Những lỗi cần lưu ý với React
++ Sau mỗi lần map phải có key
++ Chú ý className( sẽ xuất hiện thoong báo lỗi ở console nếu sai => check và sửa liền)
++ alt thì nhớ đặt (Seo) còn nếu hk có thì alt="true" để hk xuất hiện thông báo lỗi
+
+**** fix được 80% lỗi ui giao diện website (fix tiếp) => Đã fix 
+**** Trang detail lỗi hiển thị  mã danh mục & tên người tạo => Đã fix (Vì trong data (detail === courseDetail không có key: 
+    {detail.danhMucKhoaHoc.tenDanhMucKhoaHoc}
+    {detail.nguoiTao.hoTen}
+))
+
+**** Trang detail lỗi hiển thị không ổn định (khi refresh lại thì lỗi template) 
+=> 
+(Manifest: Line: 1, column: 1, Syntax error.) => (lỗi hk đọc được file json) => Chứ fix được (icon của website - góc hiển thị bên trái trên thanh url)
+=> Nếu ẩn 
+  <!-- <link rel="manifest" href="assets/images/favicons/site.webmanifest"> -->
+ở index.html thì vẫn bị lỗi rất nhiều lỗi ở thư viện
+
+
+
+#Ngày 17/7/2021 Chun: 
+_ Sửa layout (fix hiện navbar khi roll xuống , fix lỗi tràn màn hình)
+**** Lỗi layout không ổn định lúc bị vỡ lúc bình thường
+**** Lỗi hiển thị 2 thanh navbar 
+- Đã fix được lỗi Scrooll to top => tạo thêm file ScrollToTop torng utils\theme\ScrollToTop rồi import vào App.js 
+_ tạo thêm layout đăng nhập cho admin
+****Chưa fix lỗi lây khóa học từ danh mục khóa học
+****Chưa fix được lỗi active navlink khi click chuyển page

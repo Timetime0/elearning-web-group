@@ -4,6 +4,7 @@ import TemplateClient from "./templates/client/TemplateClient";
 import TemplateAdmin from "./templates/admin/TemplateAdmin";
 import GuardLogin from "./HOC/GuardLogin";
 import GuardAdmin from "./HOC/GuradAdmin";
+import ScrollToTop from "./utils/theme/ScrollToTop";
 
 function App() {
   const renderRouterClientList = () => {
@@ -41,11 +42,12 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Switch>
         {renderRouterClientList()}
         {renderRouterAdminList()}
         <Route path="">
-          <Redirect to="/"></Redirect>
+          <Redirect to="/" />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -4,9 +4,7 @@ function OnlyMission() {
   return (
     <section
       className="cta-one cta-one__home-one"
-      style={{
-        backgroundImage: 'url("/images/cta-bg-1-1.jpg")',
-      }}
+      style={{ backgroundImage: "url(/images/cta-bg-1-1.jpg)" }}
     >
       <div className="container">
         <h2 className="cta-one__title">

@@ -8,13 +8,13 @@ function BecomeTeacher() {
         <div className="container">
           <ul className="list-unstyled thm-breadcrumb">
             <li>
-              <a href="/">Home</a>
+              <a href="#">Home</a>
             </li>
             <li className="active">
-              <a href="#">Become Teacher</a>
+              <a href="#">Become a Teacher</a>
             </li>
           </ul>
-          <h2 className="inner-banner__title">Become Teacher</h2>
+          <h2 className="inner-banner__title">Become a Teacher</h2>
         </div>
       </section>
       <section className="become-teacher">
@@ -53,11 +53,7 @@ function BecomeTeacher() {
                     Apply for teaching
                   </h2>
                 </div>
-                <form
-                  action="#"
-                  className="become-teacher__form-content contact-form-validated"
-                  noValidate
-                >
+                <div className="become-teacher__form-content">
                   <input type="text" placeholder="Your Name" name="name" />
                   <input type="text" placeholder="Email Address" name="email" />
                   <input type="text" placeholder="Phone Number" name="phone" />
@@ -68,14 +64,161 @@ function BecomeTeacher() {
                   >
                     Apply For It
                   </button>
-                </form>
-                <div className="result text-center" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <BestTeacher />
+      <section className="team-one team-one__become-teacher">
+        <div className="container">
+          <div className="block-title text-center">
+            <h2 className="block-title__title">
+              Meet the best <br />
+              teachers
+            </h2>
+          </div>
+          <div className="row">
+            <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+              <div className="team-one__single">
+                <div className="team-one__image">
+                  <img src="/images/team-1-1.jpg" alt />
+                </div>
+                <div className="team-one__content">
+                  <h2 className="team-one__name">
+                    <a href="team-details.html">Adelaide Hunter</a>
+                  </h2>
+
+                  <p className="team-one__designation">Teacher</p>
+                  <p className="team-one__text">
+                    There are many varia of passages of lorem.
+                  </p>
+                </div>
+                <div className="team-one__social">
+                  <a href="#">
+                    <i className="fab fa-twitter" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-facebook-square" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-pinterest-p" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-instagram" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+              <div className="team-one__single">
+                <div className="team-one__image">
+                  <img src="/images/team-1-2.jpg" alt />
+                </div>
+                <div className="team-one__content">
+                  <h2 className="team-one__name">
+                    <a href="team-details.html">Christina Newman</a>
+                  </h2>
+
+                  <p className="team-one__designation">Teacher</p>
+                  <p className="team-one__text">
+                    There are many varia of passages of lorem.
+                  </p>
+                </div>
+                <div className="team-one__social">
+                  <a href="#">
+                    <i className="fab fa-twitter" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-facebook-square" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-pinterest-p" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-instagram" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+              <div className="team-one__single">
+                <div className="team-one__image">
+                  <img src="/images/team-1-3.jpg" alt />
+                </div>
+                <div className="team-one__content">
+                  <h2 className="team-one__name">
+                    <a href="team-details.html">Gilbert Daniels</a>
+                  </h2>
+
+                  <p className="team-one__designation">Teacher</p>
+                  <p className="team-one__text">
+                    There are many varia of passages of lorem.
+                  </p>
+                </div>
+                <div className="team-one__social">
+                  <a href="#">
+                    <i className="fab fa-twitter" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-facebook-square" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-pinterest-p" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-instagram" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+              <div className="team-one__single">
+                <div className="team-one__image">
+                  <img src="/images/team-1-4.jpg" alt />
+                </div>
+                <div className="team-one__content">
+                  <h2 className="team-one__name">
+                    <a href="team-details.html">Austin Caldwell</a>
+                  </h2>
+
+                  <p className="team-one__designation">Teacher</p>
+                  <p className="team-one__text">
+                    There are many varia of passages of lorem.
+                  </p>
+                </div>
+                <div className="team-one__social">
+                  <a href="#">
+                    <i className="fab fa-twitter" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-facebook-square" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-pinterest-p" />
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-instagram" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="cta-one">
+        <div className="container">
+          <h2 className="cta-one__title">
+            Fill form for free to regitser <br />
+            yourself now
+          </h2>
+          <div className="cta-one__btn-block">
+            <a href="#" className="thm-btn cta-one__btn">
+              Start Learning Now
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

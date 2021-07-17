@@ -15,7 +15,7 @@ function* getLoginApi(action) {
     });
     // popup
     if (res.status === 200) {
-      if (res.data.maLoaiNguoiDung === "HV") {
+      if (res.data.maLoaiNguoiDung === "GV") {
         localStorage.setItem("user", JSON.stringify(res.data));
         Swal.fire({
           icon: "success",

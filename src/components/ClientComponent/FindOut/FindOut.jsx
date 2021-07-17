@@ -1,5 +1,5 @@
 import React from "react";
-
+import CountUp from "react-countup";
 function FindOut() {
   return (
     <section className="video-three">
@@ -11,7 +11,7 @@ function FindOut() {
                 <div className="video-three__fact thm-base-bg">
                   <i className="kipso-icon-knowledge" />
                   <p className="video-three__fact-count counter">
-                    <span>0</span>{" "}
+                    <CountUp start={1000} end={24820} duration={70} />{" "}
                   </p>
                   <p className="video-three__fact-text">Courses &amp; Video</p>
                 </div>
@@ -20,7 +20,7 @@ function FindOut() {
                 <div className="video-three__fact thm-base-bg-2">
                   <i className="kipso-icon-professor" />
                   <p className="video-three__fact-count counter">
-                    <span>0</span>{" "}
+                    <CountUp start={1000} end={4280} duration={70} />{" "}
                   </p>
                   <p className="video-three__fact-text">Expert Teachers</p>
                 </div>
@@ -42,9 +42,9 @@ function FindOut() {
                 students
               </h2>
               <div className="video-three__btn-box">
-                <div className="video-three__popup">
+                <a href="#" className="video-three__popup">
                   <i className="fas fa-play" />
-                </div>
+                </a>
               </div>
             </div>
           </div>
