@@ -21,7 +21,7 @@ function CourseFromList(props) {
       type: GET_COURSE_FROM_LIST_TYPE_SAGA,
       data: maDanhMucKhoahoc,
     });
-  },);
+  });
 
   return (
     <div>
@@ -40,7 +40,6 @@ function CourseFromList(props) {
       </section>
 
       {list?.map((list, index) => {
-        console.log(list)
         return <CourseFromListComponent list={list} index={index} key={index}/>;
       })}
     </div>

@@ -127,16 +127,14 @@ function NavHeader(props) {
                 <ul className="sub-menu">
                   {listCourse.map((list, index) => {
                     return (
-                      <li>
-                        <Link>
-                          <a
-                            onClick={() => {
+                      <li key={index} style={{cursor:"pointer"}}>
+                        <a
+                        onClick={() => {
                               detailList(list.maDanhMuc);
                             }}
                           >
                             {list.tenDanhMuc}
-                          </a>
-                        </Link>
+                        </a>
                       </li>
                     );
                   })}

@@ -1,7 +1,6 @@
 import React from "react";
 
 function CourseFromListComponent(props) {
-  console.log(props.list)
   return (
     <div className="col-lg-4">
       <div className="course-one__single">
@@ -11,10 +10,10 @@ function CourseFromListComponent(props) {
         </div>
         <div className="course-one__content">
           <a href="#" className="course-one__category">
-            {props.list.danhMucKhoaHoc.tenDanhMucKhoaHoc}
+            {props.list.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
           </a>
           <div className="course-one__admin">
-            <img src="/images/team-1-2.jpg" alt />
+            <img src="/images/team-1-2.jpg" alt="true" />
             by <a href="teacher-details.html">Họ tên người tạo</a>
           </div>
           <h2 className="course-one__title">
