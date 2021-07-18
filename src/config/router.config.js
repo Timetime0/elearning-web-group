@@ -1,5 +1,6 @@
 import TeacherDetails from "../components/ClientComponent/TeacherDetails/TeacherDetails.jsx";
 import Dashboard from "../pages/AdminPage/Dashboard/Dashboard.jsx";
+import LoginAdmin from "../pages/AdminPage/LoginAdmin/LoginAdmin.jsx";
 import About from "../pages/ClientPage/About/About.jsx";
 import BecomeTeacher from "../pages/ClientPage/BecomeTeacher/BecomeTeacher.jsx";
 import Contact from "../pages/ClientPage/Contact/Contact.jsx";
@@ -57,7 +58,7 @@ export const clientRouters = [
     Component: CourseList,
   },
   {
-    path: "/course-from-list/:maDanhMuc",
+    path: "/course-from-list/:maDanhMucKhoahoc",
     exact: false,
     Component: CourseFromList,
   },
@@ -105,8 +106,15 @@ export const clientRouters = [
 ];
 export const adminRouters = [
   {
+    path: "/admin",
+    exact: true,
+    Component: LoginAdmin,
+  },
+  {
     path: "/admin/dashboard",
     exact: false,
+    checkLogin: true,
+
     Component: Dashboard,
   },
   {

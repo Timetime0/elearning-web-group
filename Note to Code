@@ -140,6 +140,10 @@ _ Import các css vào trang TemplateClient
 ** Chưa tối ưu các component từ các page (còn 1 số code compnent trùng mà không import từ CompnentClient),
 ** Chưa import hết các trang Còn thiếu trang (Pricing Plans , Teachers , Teachers Details , Become Teachers)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 79933c306bb0728d5857e112939bb2842b6912fa
 =======
 
 
@@ -168,6 +172,8 @@ _ Tạo trang detail , update các tên khóa học trong trang detail
 #Ngày 14/7/2021 Tan:
 **** Chưa fix được lỗi đọc file js 
 **** Chưa hiển thị được khóa học trong danh mục 
+**** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
+=======
 
 **** Trang detail lỗi hiển thị không ổn định mã danh mục & tên người tạo 
 
@@ -221,3 +227,27 @@ _ Gọi thành công api đăng ký (thiếu validation, xuất thông báo khi 
 
 
 
+<<<<<<< HEAD
+=======
+#Ngày 17/7/2021 Chun: 
+_ Sửa layout (fix hiện navbar khi roll xuống , fix lỗi tràn màn hình)
+**** Lỗi layout không ổn định lúc bị vỡ lúc bình thường
+**** Lỗi hiển thị 2 thanh navbar 
+- Đã fix được lỗi Scrooll to top => tạo thêm file ScrollToTop torng utils\theme\ScrollToTop rồi import vào App.js 
+_ tạo thêm layout đăng nhập cho admin
+****Chưa fix lỗi lây khóa học từ danh mục khóa học
+****Chưa fix được lỗi active navlink khi click chuyển page
+
+
+#Ngày 18/7/2021 Chun: 
+**** Lỗi layout không ổn định lúc bị vỡ lúc bình thường => Đã fix (import tất cả css vào file ClientTemplate)
+**** Lỗi hiển thị 2 thanh navbar  => đã fix (sử dụng window.scroll trong NavHeadder)
+_ Update login admin vào trang admin, thay đổi 1 số quyền truy cập (GuardAdmin)
+_ Tạo trang 404 not Found
+
+****** Chưa làm được trang lấy khóa học từ danh mục 
+>>>>>>> 864b3670f45f81c48ca54d657820a80f51215f8f
+
+
+#Ngày 18/7/2021 Tan: 
+****** Chưa làm được trang lấy khóa học từ danh: Đã fix

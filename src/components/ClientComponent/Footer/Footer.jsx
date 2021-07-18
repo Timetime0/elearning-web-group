@@ -70,32 +70,32 @@ function Footer() {
                 <ul className="list-unstyled footer-widget__gallery-list">
                   <li>
                     <a href="#">
-                      <img src="/images/footer-1-1.png" alt />
+                      <img src="assets/images/footer-1-1.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src="/images/footer-1-2.png" alt />
+                      <img src="assets/images/footer-1-2.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src="/images/footer-1-3.png" alt />
+                      <img src="assets/images/footer-1-3.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src="/images/footer-1-4.png" alt />
+                      <img src="assets/images/footer-1-4.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src="/images/footer-1-5.png" alt />
+                      <img src="assets/images/footer-1-5.png" alt />
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <img src="/images/footer-1-6.png" alt />
+                      <img src="assets/images/footer-1-6.png" alt />
                     </a>
                   </li>
                 </ul>

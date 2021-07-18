@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../redux/types/CourseListType";
+import CourseFromList from "../../../pages/ClientPage/CourseList/CourseFromList";
+import { cleanup } from "@testing-library/react";
+import { GET_COURSE_FROM_LIST_TYPE_SAGA } from "../../../redux/types/GetCourseFromListType";
 
 function NavHeader(props) {
+  // Lấy khóa học theo danh mục
+
   const { list } = props;
-  const detailList = () => {
-    history.push("/course-from-list/" + list.maDanhMuc);
-  };
 
   let listCourse = useSelector((state) => state.CourseReducer.courseList);
   const dispatch = useDispatch();
@@ -22,6 +24,14 @@ function NavHeader(props) {
   }, [dispatch]);
   const history = useHistory();
 
+  // Lấy khóa học từ danh mục khóa học
+  // let getList = useSelector((state) => state.CourseReducer.getCourse);
+
+  // let showList = listCourse.filter((listKey) => listKey.maDanhMuc);
+  const detailList = (value) => {
+    history.push("/course-from-list/" + value);
+  };
+
   // tạo liên kết bằng useHistory
   const nextPath = () => {
     history.push("/login");
@@ -29,6 +39,25 @@ function NavHeader(props) {
   const nextPathSignUp = () => {
     history.push("/register");
   };
+
+  // Show navbar
+  const [show, setShow] = useState(true);
+  const controlNavbar = () => {
+    if (window.scrollY > 200) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  };
+  useEffect(() => {
+    // Hiện nav khi scroll xuống
+    window.addEventListener("scroll", controlNavbar);
+    // Xóa nav khi scroll lên cùng
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, []);
+
   return (
     <header className="site-header site-header__home-three ">
       <div className="topbar-one">
@@ -44,10 +73,19 @@ function NavHeader(props) {
         </div>
       </div>
 
-      <nav className="navbar navbar-expand-lg navbar-light header-navigation stricky">
+      <nav
+        className={` navbar navbar-expand-lg navbar-light header-navigation stricky ${
+          show && `stricked-menu stricky-fixed`
+        }`}
+      >
         <div className="container clearfix">
           <div className="logo-box clearfix">
-            <NavLink className="navbar-brand" to="/">
+            <NavLink
+              className="navbar-brand"
+              to="/"
+              exact={true}
+              activeClassName="active"
+            >
               <img
                 src="assets/images/logo-light.png"
                 className="main-logo"
@@ -83,12 +121,22 @@ function NavHeader(props) {
                 </ul>
               </li>
               <li>
-                <NavLink to="/course-list">Courses</NavLink>
+                <NavLink to="/course-list" activeClassName="active">
+                  Courses
+                </NavLink>
                 <ul className="sub-menu">
                   {listCourse.map((list, index) => {
                     return (
                       <li>
-                        <NavLink to="/">{list.tenDanhMuc}</NavLink>
+                        <Link>
+                          <a
+                            onClick={() => {
+                              detailList(list.maDanhMuc);
+                            }}
+                          >
+                            {list.tenDanhMuc}
+                          </a>
+                        </Link>
                       </li>
                     );
                   })}

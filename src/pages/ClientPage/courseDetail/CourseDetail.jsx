@@ -8,6 +8,13 @@ import { DETAIL_COURSE_SERVICES_SAGA } from "../../../redux/types/CourseDetailTy
 function CourseDetail(props) {
   let { maKhoaHoc } = useParams();
   let detail = useSelector((state) => state.CourseReducer.courseDetail);
+  // let person = useSelector(
+  //   (state) => state.CourseReducer.courseDetail.nguoiTao
+  // );
+  // if(detail){
+  //   }
+  console.log(detail.nguoiTao);
+  // console.log(person.hoTen);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +23,8 @@ function CourseDetail(props) {
       type: DETAIL_COURSE_SERVICES_SAGA,
       data: maKhoaHoc,
     });
-  }, [dispatch]);
+  }, []);
+
   return (
     <div>
       <div>
@@ -40,14 +48,13 @@ function CourseDetail(props) {
                 <div className="course-details__content">
                   <p className="course-details__author">
                     <img src="/images/team-1-1.jpg" alt />
-                    by <a href="#"></a>
+                    by <a href="#">{detail?.nguoiTao?.hoTen}</a>
                   </p>
                   <div className="course-details__top">
                     <div className="course-details__top-left">
                       <h2 className="course-details__title">
                         {detail.tenKhoaHoc}
                       </h2>
-
                       <div className="course-one__stars">
                         <span className="course-one__stars-wrap">
                           <i className="fa fa-star" />
@@ -62,7 +69,7 @@ function CourseDetail(props) {
                     </div>
                     <div className="course-details__top-right">
                       <a href="#" className="course-one__category">
-                       
+                        {detail?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
                       </a>
                     </div>
                   </div>
@@ -106,9 +113,7 @@ function CourseDetail(props) {
                       role="tabpanel"
                       id="overview"
                     >
-                      <p className="course-details__tab-text">
-                        {detail.moTa}
-                      </p>
+                      <p className="course-details__tab-text">{detail.moTa}</p>
                       <br />
                       <p className="course-details__tab-text">
                         It was popularised in the 1960s with the release of

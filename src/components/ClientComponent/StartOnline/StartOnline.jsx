@@ -1,5 +1,5 @@
 import React from "react";
-
+import CountUp from "react-countup";
 function StartOnline() {
   return (
     <section className="cta-six thm-gray-bg">
@@ -18,8 +18,11 @@ function StartOnline() {
         <div className="cta-six__right">
           <img src="/images/fact-1-2.jpg" alt />
           <h2 className="cta-six__title">
-            More than <span className="counter">7840</span> students are
-            registered
+            More than{" "}
+            <span className="counter">
+              <CountUp start={300} end={7840} duration={70} />
+            </span>{" "}
+            students are registered
           </h2>
         </div>
       </div>
