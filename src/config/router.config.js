@@ -107,12 +107,14 @@ export const clientRouters = [
 export const adminRouters = [
   {
     path: "/admin",
-    exact: false,
+    exact: true,
     Component: LoginAdmin,
   },
   {
     path: "/admin/dashboard",
     exact: false,
+    checkLogin: true,
+
     Component: Dashboard,
   },
   {

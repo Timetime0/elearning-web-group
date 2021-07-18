@@ -5,6 +5,7 @@ import TemplateAdmin from "./templates/admin/TemplateAdmin";
 import GuardLogin from "./HOC/GuardLogin";
 import GuardAdmin from "./HOC/GuradAdmin";
 import ScrollToTop from "./utils/theme/ScrollToTop";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   const renderRouterClientList = () => {
@@ -29,13 +30,20 @@ function App() {
 
   const renderRouterAdminList = () => {
     return adminRouters.map((router, index) => {
-      const { Component, path, exact } = router;
-      return (
-        <GuardAdmin>
+      const { Component, path, exact, checkLogin } = router;
+      if (checkLogin) {
+        return (
           <Route path={path} exact={exact} key={index}>
-            <TemplateAdmin Component={Component} />
+            <GuardAdmin>
+              <TemplateAdmin Component={Component} />
+            </GuardAdmin>
           </Route>
-        </GuardAdmin>
+        );
+      }
+      return (
+        <Route path={path} exact={exact} key={index}>
+          <TemplateAdmin Component={Component} />
+        </Route>
       );
     });
   };
@@ -47,7 +55,8 @@ function App() {
         {renderRouterClientList()}
         {renderRouterAdminList()}
         <Route path="">
-          <Redirect to="/" />
+          {/* <Redirect to="/" /> */}
+          <PageNotFound />
         </Route>
       </Switch>
     </BrowserRouter>
