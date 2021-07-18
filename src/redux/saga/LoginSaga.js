@@ -15,15 +15,13 @@ function* getLoginApi(action) {
     });
     // popup
     if (res.status === 200) {
-      if (res.data.maLoaiNguoiDung === "GV") {
-        localStorage.setItem("user", JSON.stringify(res.data));
-        Swal.fire({
-          icon: "success",
-          title: "Đăng nhập thành công",
-        });
-        // action.history.push("");
-        // <Redirect to="/" />;
-      }
+      localStorage.setItem("user", JSON.stringify(res.data));
+      Swal.fire({
+        icon: "success",
+        title: "Đăng nhập thành công",
+      });
+      // action.history.push("");
+      // <Redirect to="/" />;
     }
   } catch (e) {
     console.log(e);

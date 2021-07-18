@@ -235,3 +235,12 @@ _ Sửa layout (fix hiện navbar khi roll xuống , fix lỗi tràn màn hình)
 _ tạo thêm layout đăng nhập cho admin
 ****Chưa fix lỗi lây khóa học từ danh mục khóa học
 ****Chưa fix được lỗi active navlink khi click chuyển page
+
+
+#Ngày 18/7/2021 Chun: 
+**** Lỗi layout không ổn định lúc bị vỡ lúc bình thường => Đã fix (import tất cả css vào file ClientTemplate)
+**** Lỗi hiển thị 2 thanh navbar  => đã fix (sử dụng window.scroll trong NavHeadder)
+_ Update login admin vào trang admin, thay đổi 1 số quyền truy cập (GuardAdmin)
+_ Tạo trang 404 not Found
+
+****** Chưa làm được trang lấy khóa học từ danh mục 

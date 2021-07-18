@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
@@ -6,19 +6,13 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../redux/types/CourseListType";
 import CourseFromList from "../../../pages/ClientPage/CourseList/CourseFromList";
+import { cleanup } from "@testing-library/react";
+import { GET_COURSE_FROM_LIST_TYPE_SAGA } from "../../../redux/types/GetCourseFromListType";
 
 function NavHeader(props) {
   // Lấy khóa học theo danh mục
 
   const { list } = props;
-  const detailList = () => {
-    history.push("/course-from-list/" + list.maDanhMuc);
-    list.find((list, index) => {
-      if (list.maDanhMuc === list.maDanhMuc) {
-        return <CourseFromList />;
-      }
-    });
-  };
 
   let listCourse = useSelector((state) => state.CourseReducer.courseList);
   const dispatch = useDispatch();
@@ -30,6 +24,15 @@ function NavHeader(props) {
   }, [dispatch]);
   const history = useHistory();
 
+  // Lấy khóa học từ danh mục khóa học
+  let getList = useSelector((state) => state.CourseReducer.getCourse);
+
+  let showList = listCourse.filter((listKey) => listKey.maDanhMuc);
+  const detailList = () => {
+    // history.push("/course-from-list/" + showList);
+    console.log(getList);
+  };
+
   // tạo liên kết bằng useHistory
   const nextPath = () => {
     history.push("/login");
@@ -37,6 +40,25 @@ function NavHeader(props) {
   const nextPathSignUp = () => {
     history.push("/register");
   };
+
+  // Show navbar
+  const [show, setShow] = useState(true);
+  const controlNavbar = () => {
+    if (window.scrollY > 200) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  };
+  useEffect(() => {
+    // Hiện nav khi scroll xuống
+    window.addEventListener("scroll", controlNavbar);
+    // Xóa nav khi scroll lên cùng
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, []);
+
   return (
     <header className="site-header site-header__home-three ">
       <div className="topbar-one">
@@ -52,7 +74,11 @@ function NavHeader(props) {
         </div>
       </div>
 
-      <nav className="navbar navbar-expand-lg navbar-light header-navigation stricky">
+      <nav
+        className={` navbar navbar-expand-lg navbar-light header-navigation stricky ${
+          show && `stricked-menu stricky-fixed`
+        }`}
+      >
         <div className="container clearfix">
           <div className="logo-box clearfix">
             <NavLink
@@ -112,96 +138,6 @@ function NavHeader(props) {
                             {list.tenDanhMuc}
                           </a>
                         </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </li>
-              <li>
-                <NavLink to="/teacher">Teachers</NavLink>
-                <ul className="sub-menu">
-                  <li>
-                    <a href="teachers.html">Teachers</a>
-                  </li>
-                  <li>
-                    <a href="team-details.html">Teachers Details</a>
-                  </li>
-                  <li>
-                    <a href="become-teacher.html">Become Teacher</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <NavLink to="/news">News</NavLink>
-              </li>
-              <li>
-                <NavLink to="/contact">Contact</NavLink>
-              </li>
-            </ul>
-          </div>
-          <div className="right-side-box">
-            <div className="header__social">
-              <Link to="https://twitter.com/?lang=vi">
-                <i className="fab fa-twitter" />
-              </Link>
-              <Link to="https://www.facebook.com/">
-                <i className="fab fa-facebook-square" />
-              </Link>
-              <Link to="https://www.pinterest.com/">
-                <i className="fab fa-pinterest-p" />
-              </Link>
-              <Link to="https://www.instagram.com/">
-                <i className="fab fa-instagram" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <nav className="navbar navbar-expand-lg navbar-light header-navigation stricky stricked-menu stricky-fixed">
-        <div className="container clearfix">
-          <div className="logo-box clearfix">
-            <NavLink className="navbar-brand" to="/">
-              <img
-                src="assets/images/logo-light.png"
-                className="main-logo"
-                width={128}
-                alt="Awesome Image"
-              />
-            </NavLink>
-            <button className="menu-toggler" data-target=".main-navigation">
-              <span className="kipso-icon-menu" />
-            </button>
-          </div>
-
-          <div className="main-navigation">
-            <ul className=" navigation-box">
-              <li className="current">
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/">Pages</NavLink>
-                <ul className="sub-menu">
-                  <li>
-                    <Link to="/about">About Page</Link>
-                  </li>
-                  <li>
-                    <Link to="/gallery">Gallery</Link>
-                  </li>
-                  <li>
-                    <Link to="/pricing">Pricing Plans</Link>
-                  </li>
-                  <li>
-                    <Link to="/faq">FAQ'S</Link>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <NavLink to="/course-list">Courses</NavLink>
-                <ul className="sub-menu">
-                  {listCourse.map((list, index) => {
-                    return (
-                      <li>
-                        <NavLink to="/">{list.tenDanhMuc}</NavLink>
                       </li>
                     );
                   })}

@@ -2,6 +2,22 @@ import React from "react";
 import NavHeader from "../../components/ClientComponent/Header/NavHeader";
 import Footer from "../../components/ClientComponent/Footer/Footer";
 
+import "../../assets/css/animate.min.css";
+import "../../assets/css/bootstrap.min.css";
+import "../../assets/css/owl.carousel.min.css";
+import "../../assets/css/owl.theme.default.min.css";
+import "../../assets/plugins/fontawesome-free-5.11.2-web/css/all.min.css";
+import "../../assets/plugins/kipso-icons/style.css";
+import "../../assets/css/magnific-popup.css";
+import "../../assets/css/vegas.min.css";
+// <!-- Login css -->
+import "../../assets/css/iofrm-style.css";
+import "../../assets/css/iofrm-theme10.css";
+// <!-- template styles -->
+import "../../assets/css/style.css";
+import "../../assets/css/responsive.css";
+import SearchPopUp from "../../components/ClientComponent/SearchPopup/SearchPopUp";
+
 function TemplateClient(props) {
   const { Component } = props;
   return (
@@ -16,28 +32,6 @@ function TemplateClient(props) {
         <footer>
           <Footer />
         </footer>
-      </div>
-
-      <div className="search-popup">
-        <div className="search-popup__overlay custom-cursor__overlay">
-          <div className="cursor" style={{ top: 294, left: 3 }} />
-          <div
-            className="cursor-follower"
-            style={{ top: 272, left: "-19px" }}
-          />
-        </div>
-        <div className="search-popup__inner">
-          <form action="#" className="search-popup__form">
-            <input
-              type="text"
-              name="search"
-              placeholder="Type here to Search...."
-            />
-            <button type="submit">
-              <i className="kipso-icon-magnifying-glass" />
-            </button>
-          </form>
-        </div>
       </div>
     </div>
   );
