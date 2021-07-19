@@ -28,6 +28,7 @@ function TemplateClient(props) {
         </header>
         <main>
           <Component />
+          {/* <SearchPopUp /> */}
         </main>
         <footer>
           <Footer />

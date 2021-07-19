@@ -251,3 +251,13 @@ _ Tạo trang 404 not Found
 
 #Ngày 18/7/2021 Tan: 
 ****** Chưa làm được trang lấy khóa học từ danh: Đã fix
+
+
+#Ngày 19/7/2021 Chun: 
+_ Fix lỗi đăng ký chưa hiển thị thông báo đăng ký thành công
+_ Fix layout trang CourseFromList
+_ Fix các Link trong CardItem
+_ Tạo BookingCourse (Reducer , Saga . Type , Services) , đã import vào trang CourseDetail
+
+********** chưa đăng ký được khóa học
+********** Lỗi layout (Chưa fix được sự kiện click show navbar responsive )

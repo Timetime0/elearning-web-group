@@ -13,10 +13,16 @@ function CardItem(props) {
   return (
     <div className="col-lg-4">
       <div className="course-one__single">
-        <div className="course-one__image">
-          <img src={props.course.hinhAnh} alt />
-          <i className="far fa-heart" />
-        </div>
+        <Link
+          onClick={() => {
+            detailCourse();
+          }}
+        >
+          <div className="course-one__image">
+            <img src={props.course.hinhAnh} alt />
+            <i className="far fa-heart" />
+          </div>
+        </Link>
         <div className="course-one__content">
           <a href="#" className="course-one__category">
             {props.course.danhMucKhoaHoc.tenDanhMucKhoaHoc}

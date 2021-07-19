@@ -5,14 +5,11 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../redux/types/CourseListType";
-import CourseFromList from "../../../pages/ClientPage/CourseList/CourseFromList";
-import { cleanup } from "@testing-library/react";
-import { GET_COURSE_FROM_LIST_TYPE_SAGA } from "../../../redux/types/GetCourseFromListType";
+import { ClickAwayListener } from "@material-ui/core";
+import CardItem from "../CourseListComponent/CardItem";
 
 function NavHeader(props) {
   // Lấy khóa học theo danh mục
-
-  const { list } = props;
 
   let listCourse = useSelector((state) => state.CourseReducer.courseList);
   const dispatch = useDispatch();
@@ -24,13 +21,13 @@ function NavHeader(props) {
   }, [dispatch]);
   const history = useHistory();
 
-  // Lấy khóa học từ danh mục khóa học
-  // let getList = useSelector((state) => state.CourseReducer.getCourse);
-
-  // let showList = listCourse.filter((listKey) => listKey.maDanhMuc);
   const detailList = (value) => {
     history.push("/course-from-list/" + value);
   };
+
+  // Hiển thị drop menu responsive
+  let style;
+  const [click, setClick] = useState(false);
 
   // tạo liên kết bằng useHistory
   const nextPath = () => {
@@ -41,7 +38,7 @@ function NavHeader(props) {
   };
 
   // Show navbar
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const controlNavbar = () => {
     if (window.scrollY > 200) {
       setShow(true);
@@ -93,11 +90,10 @@ function NavHeader(props) {
                 alt="Awesome Image"
               />
             </NavLink>
-            <button className="menu-toggler" data-target=".main-navigation">
+            <button className="menu-toggler" data-target=".main-navigation ">
               <span className="kipso-icon-menu" />
             </button>
           </div>
-
           <div className="main-navigation">
             <ul className=" navigation-box">
               <li className="current">
@@ -127,13 +123,13 @@ function NavHeader(props) {
                 <ul className="sub-menu">
                   {listCourse.map((list, index) => {
                     return (
-                      <li key={index} style={{cursor:"pointer"}}>
+                      <li key={index} style={{ cursor: "pointer" }}>
                         <a
-                        onClick={() => {
-                              detailList(list.maDanhMuc);
-                            }}
-                          >
-                            {list.tenDanhMuc}
+                          onClick={() => {
+                            detailList(list.maDanhMuc);
+                          }}
+                        >
+                          {list.tenDanhMuc}
                         </a>
                       </li>
                     );

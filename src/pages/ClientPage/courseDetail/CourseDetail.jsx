@@ -1,18 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { BOOKING_COURSE_SAGA } from "../../../redux/types/BookingCourseType";
+
 // import { withRouter } from "react-router";
 
 import { DETAIL_COURSE_SERVICES_SAGA } from "../../../redux/types/CourseDetailType";
-
+const random = () => {
+  return Math.floor(Math.random() * 500) + 100;
+};
 function CourseDetail(props) {
+  const [key, setKey] = useState("home");
+
   let { maKhoaHoc } = useParams();
   let detail = useSelector((state) => state.CourseReducer.courseDetail);
-  // let person = useSelector(
-  //   (state) => state.CourseReducer.courseDetail.nguoiTao
-  // );
-  // if(detail){
-  //   }
+
   console.log(detail.nguoiTao);
   // console.log(person.hoTen);
   const dispatch = useDispatch();
@@ -24,6 +27,25 @@ function CourseDetail(props) {
       data: maKhoaHoc,
     });
   }, []);
+  const history = useHistory();
+
+  const detailList = (value) => {
+    history.push("/course-from-list/" + value);
+  };
+
+  // đăng ký khóa học
+  let [bookingRes, setBookingRes] = useState({
+    maKhoaHoc: "",
+    taiKhoan: "",
+  });
+
+  const handleBooking = (event) => {
+    event.preventDefault();
+    dispatch({
+      type: BOOKING_COURSE_SAGA,
+      data: maKhoaHoc,
+    });
+  };
 
   return (
     <div>
@@ -48,7 +70,7 @@ function CourseDetail(props) {
                 <div className="course-details__content">
                   <p className="course-details__author">
                     <img src="/images/team-1-1.jpg" alt />
-                    by <a href="#">{detail?.nguoiTao?.hoTen}</a>
+                    by <a>{detail?.nguoiTao?.hoTen}</a>
                   </p>
                   <div className="course-details__top">
                     <div className="course-details__top-left">
@@ -64,13 +86,20 @@ function CourseDetail(props) {
                           <i className="fa fa-star" />
                         </span>
                         <span className="course-one__count">4.8</span>
-                        <span className="course-one__stars-count">250</span>
+                        <span className="course-one__stars-count">
+                          {random()}
+                        </span>
                       </div>
                     </div>
                     <div className="course-details__top-right">
-                      <a href="#" className="course-one__category">
+                      <Link
+                        className="course-one__category"
+                        onClick={() => {
+                          detailList(detail.danhMucKhoaHoc.tenDanhMucKhoaHoc);
+                        }}
+                      >
                         {detail?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="course-one__image">
@@ -459,7 +488,12 @@ function CourseDetail(props) {
                 <div className="course-details__price">
                   <p className="course-details__price-text">Course price </p>
                   <p className="course-details__price-amount">$18.00</p>
-                  <a href="#" className="thm-btn course-details__price-btn">
+                  <a
+                    onClick={(event) => {
+                      handleBooking(event);
+                    }}
+                    className="thm-btn course-details__price-btn"
+                  >
                     Buy This Course
                   </a>
                 </div>
