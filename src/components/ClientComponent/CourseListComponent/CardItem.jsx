@@ -24,7 +24,7 @@ function CardItem(props) {
           </div>
         </Link>
         <div className="course-one__content">
-          <a href="#" className="course-one__category">
+          <a href="/" className="course-one__category">
             {props.course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
           </a>
           <div className="course-one__admin">
@@ -32,13 +32,13 @@ function CardItem(props) {
             by <a href="teacher-details.html">{props.course.nguoiTao.hoTen}</a>
           </div>
           <h2 className="course-one__title">
-            <a
+            <Link
               onClick={() => {
                 detailCourse();
               }}
             >
               {props.course.tenKhoaHoc}
-            </a>
+            </Link>
           </h2>
 
           <div className="course-one__stars">
@@ -53,13 +53,13 @@ function CardItem(props) {
             <span className="course-one__stars-count">{random()}</span>
           </div>
           <div className="course-one__meta">
-            <a href="course-details.html">
+            <Link to="/course-list">
               <i className="far fa-clock" /> 10 Hours
-            </a>
-            <a href="course-details.html">
+            </Link>
+            <Link to="/course-list">
               <i className="far fa-folder-open" /> 6 Lectures
-            </a>
-            <a href="course-details.html">$18</a>
+            </Link>
+            <Link to="/course-list">$18</Link>
           </div>
           <a
             className="course-one__link"

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LOGIN_SERVICE_SAGA } from "../../../redux/types/LoginType";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
@@ -21,6 +21,8 @@ function Login(props) {
     matKhau: "",
   });
 
+  const history = useHistory();
+  // console.log(history);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserLogin({
@@ -38,6 +40,7 @@ function Login(props) {
     dispatch({
       type: LOGIN_SERVICE_SAGA,
       user: userLogin,
+      history: history,
     });
   };
   return (

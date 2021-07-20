@@ -8,6 +8,7 @@ import { followGetLoginApiAction } from "./LoginSaga";
 import { followGetSignUpAction } from "./SignUpSaga";
 import { followGetLoginAdminApiAction } from "./AdminSaga/LoginAdminSaga";
 import { followGetBookingCourseApi } from "./BookingCourseSaga";
+import { followGetCourseListAdminApi } from "./AdminSaga/CourseListAdminSaga";
 // cấu hình
 export default function* rootSaga() {
   yield all([
@@ -15,10 +16,13 @@ export default function* rootSaga() {
     followGetDetailCourseApiAction(),
     followGetCourseListApiAction(),
     followGetLoginApiAction(),
-    followGetUserListApiAction(),
     followGetCourseFromListApiAction(),
     followGetSignUpAction(),
     followGetLoginAdminApiAction(),
     followGetBookingCourseApi(),
+
+    // Admin
+    followGetUserListApiAction(),
+    followGetCourseListAdminApi(),
   ]);
 }

@@ -6,14 +6,19 @@ import Author from "./reducers/Author";
 import UserReducer from "./reducers/AdminReducer/UserReducer";
 import AdminAuthor from "./reducers/AdminReducer/AdminAuthor";
 import BookingReducer from "./reducers/BookingReducer";
+
+import CourseListAdminrReducer from "./reducers/AdminReducer/CourseAdminReducer";
 const middleWareSaga = createMiddleWareSaga();
 
 const rootReducer = combineReducers({
   CourseReducer,
   Author,
-  UserReducer,
   AdminAuthor,
   BookingReducer,
+
+  // admin reducer
+  UserReducer,
+  CourseListAdminrReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

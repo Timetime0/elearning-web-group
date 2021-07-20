@@ -227,7 +227,6 @@ _ Gọi thành công api đăng ký (thiếu validation, xuất thông báo khi 
 
 
 
-<<<<<<< HEAD
 =======
 #Ngày 17/7/2021 Chun: 
 _ Sửa layout (fix hiện navbar khi roll xuống , fix lỗi tràn màn hình)
@@ -246,11 +245,13 @@ _ Update login admin vào trang admin, thay đổi 1 số quyền truy cập (Gu
 _ Tạo trang 404 not Found
 
 ****** Chưa làm được trang lấy khóa học từ danh mục 
->>>>>>> 864b3670f45f81c48ca54d657820a80f51215f8f
+
+
 
 
 #Ngày 18/7/2021 Tan: 
 ****** Chưa làm được trang lấy khóa học từ danh: Đã fix
+
 
 
 #Ngày 19/7/2021 Chun: 
@@ -258,6 +259,18 @@ _ Fix lỗi đăng ký chưa hiển thị thông báo đăng ký thành công
 _ Fix layout trang CourseFromList
 _ Fix các Link trong CardItem
 _ Tạo BookingCourse (Reducer , Saga . Type , Services) , đã import vào trang CourseDetail
+
+********** chưa đăng ký được khóa học
+********** Lỗi layout (Chưa fix được sự kiện click show navbar responsive )
+
+
+
+
+
+#Ngày 20/7/2021 Chun:
+_ Tạo CourseListAdmin (Reducer , Saga . Type , Services) , đã import vào trang Admi/dashboard
+_ Fix lỗi hiển thị danh sánh khóa học , danh sách user ở trang admin/dashboard
+_ Fix lỗi đăng nhập thành công không trở về trang chủ
 
 ********** chưa đăng ký được khóa học
 ********** Lỗi layout (Chưa fix được sự kiện click show navbar responsive )

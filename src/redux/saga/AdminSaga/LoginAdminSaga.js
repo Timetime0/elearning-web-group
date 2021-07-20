@@ -23,8 +23,9 @@ function* getLoginAdminApi(action) {
           icon: "success",
           title: "Đăng nhập thành công",
         });
-        // action.history.push("/admin/dashboard");
-        // <Redirect to="/" />;
+        setTimeout(() => {
+          action.history.push("/admin/dashboard");
+        }, 2000);
       }
     }
   } catch (e) {
