@@ -1,5 +1,10 @@
 import { all } from "@redux-saga/core/effects";
-import { followGetUserListApiAction } from "./AdminSaga/UserListSaga";
+import {
+  followAddUserApi,
+  followDeleteUserApi,
+  followGetUserListApiAction,
+  followUpdateUserApi,
+} from "./AdminSaga/UserListSaga";
 import { followGetCourseListApiAction } from "./CourseListSaga";
 import { followGetCourseApiAction } from "./CourseSaga";
 import { followGetDetailCourseApiAction } from "./DetailSaga";
@@ -22,7 +27,13 @@ export default function* rootSaga() {
     followGetBookingCourseApi(),
 
     // Admin
-    followGetUserListApiAction(),
+    // Admin Course Saga
     followGetCourseListAdminApi(),
+
+    // Admin User Saga
+    followGetUserListApiAction(),
+    followUpdateUserApi(),
+    followDeleteUserApi(),
+    followAddUserApi(),
   ]);
 }

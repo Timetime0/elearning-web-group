@@ -274,3 +274,14 @@ _ Fix lỗi đăng nhập thành công không trở về trang chủ
 
 ********** chưa đăng ký được khóa học
 ********** Lỗi layout (Chưa fix được sự kiện click show navbar responsive )
+
+
+
+#Ngày 21/07/2021 Chun:
+_ Tạo quản lý user (addUser , deleteUser , updateUser) ở file Saga , type , services
+_ Fix hết các lỗi warning 
+
+********** chưa đăng ký được khóa học
+********** Lỗi layout (Chưa fix được sự kiện click show navbar responsive )
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa làm được thêm xóa sửa user

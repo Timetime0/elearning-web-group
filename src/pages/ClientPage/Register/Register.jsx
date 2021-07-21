@@ -1,37 +1,35 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { SIGN_UP_SAGA } from "../../../redux/types/SignUpType";
 
 function Register() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   let [userRes, setUserRes] = useState({
     taiKhoan: "",
     matKhau: "",
-    hoTen:"",
-    email:"",
+    hoTen: "",
+    email: "",
     soDT: "",
-    maNhom:"GP01",
+    maNhom: "GP01",
   });
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserRes({
       ...userRes,
       [name]: value,
-    });}
+    });
+  };
 
-  const onSubmitRes= (event) => {
-    event.preventDefault()
+  const onSubmitRes = (event) => {
+    event.preventDefault();
     dispatch({
-      type:SIGN_UP_SAGA,
-      user: userRes
-    })
-  }
+      type: SIGN_UP_SAGA,
+      user: userRes,
+    });
+  };
 
   return (
     <div className="form-body">
@@ -45,7 +43,7 @@ function Register() {
                     <img
                       className="logo-size"
                       src="images/logo-light.svg"
-                      alt
+                      alt={"img"}
                     />
                   </div>
                 </a>
@@ -61,7 +59,7 @@ function Register() {
                   Register
                 </NavLink>
               </div>
-              <form onSubmit={(event)=>onSubmitRes(event)} method="POST">
+              <form onSubmit={(event) => onSubmitRes(event)} method="POST">
                 <input
                   className="form-control"
                   type="text"
@@ -69,7 +67,6 @@ function Register() {
                   placeholder="Full Name"
                   required
                   onChange={(e) => handleChange(e)}
-
                 />
                 <input
                   className="form-control"
@@ -78,17 +75,15 @@ function Register() {
                   placeholder="E-mail Address"
                   required
                   onChange={(e) => handleChange(e)}
-
                 />
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="taiKhoan"
-                    placeholder="Account"
-                    required
+                <input
+                  className="form-control"
+                  type="text"
+                  name="taiKhoan"
+                  placeholder="Account"
+                  required
                   onChange={(e) => handleChange(e)}
-
-                  />
+                />
                 <input
                   className="form-control"
                   type="password"
@@ -96,7 +91,6 @@ function Register() {
                   placeholder="Password"
                   required
                   onChange={(e) => handleChange(e)}
-
                 />
                 <input
                   className="form-control"
@@ -105,7 +99,6 @@ function Register() {
                   placeholder="Phone number"
                   required
                   onChange={(e) => handleChange(e)}
-
                 />
 
                 <div className="form-button">
@@ -116,9 +109,9 @@ function Register() {
               </form>
               <div className="other-links">
                 <span>Or register with</span>
-                <a href="#">Facebook</a>
-                <a href="#">Google</a>
-                <a href="#">Linkedin</a>
+                <Link to="/">Facebook</Link>
+                <Link to="/">Google</Link>
+                <Link to="/">Linkedin</Link>
               </div>
             </div>
           </div>
@@ -129,4 +122,3 @@ function Register() {
 }
 
 export default Register;
-

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+// import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../redux/types/CourseListType";
-import { ClickAwayListener } from "@material-ui/core";
-import CardItem from "../CourseListComponent/CardItem";
 
 function NavHeader(props) {
   // Lấy khóa học theo danh mục
@@ -26,16 +24,16 @@ function NavHeader(props) {
   };
 
   // Hiển thị drop menu responsive
-  let style;
-  const [click, setClick] = useState(false);
+
+  // const [click, setClick] = useState(false);
 
   // tạo liên kết bằng useHistory
-  const nextPath = () => {
-    history.push("/login");
-  };
-  const nextPathSignUp = () => {
-    history.push("/register");
-  };
+  // const nextPath = () => {
+  //   history.push("/login");
+  // };
+  // const nextPathSignUp = () => {
+  //   history.push("/register");
+  // };
 
   // Show navbar
   const [show, setShow] = useState(false);
@@ -60,8 +58,8 @@ function NavHeader(props) {
       <div className="topbar-one">
         <div className="container">
           <div className="topbar-one__left">
-            <a href="#">needhelp@kipso.com</a>
-            <a href="#">444 888 0000</a>
+            <a href="/">needhelp@kipso.com</a>
+            <a href="/">444 888 0000</a>
           </div>
           <div className="topbar-one__right">
             <Link to="/login">Login</Link>
@@ -87,7 +85,7 @@ function NavHeader(props) {
                 src="assets/images/logo-light.png"
                 className="main-logo"
                 width={128}
-                alt="Awesome Image"
+                alt={"img"}
               />
             </NavLink>
             <button className="menu-toggler" data-target=".main-navigation ">
@@ -124,13 +122,13 @@ function NavHeader(props) {
                   {listCourse.map((list, index) => {
                     return (
                       <li key={index} style={{ cursor: "pointer" }}>
-                        <a
+                        <Link
                           onClick={() => {
                             detailList(list.maDanhMuc);
                           }}
                         >
                           {list.tenDanhMuc}
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}
@@ -140,13 +138,13 @@ function NavHeader(props) {
                 <NavLink to="/teacher">Teachers</NavLink>
                 <ul className="sub-menu">
                   <li>
-                    <a href="teachers.html">Teachers</a>
+                    <a href="/teachers">Teachers</a>
                   </li>
                   <li>
-                    <a href="team-details.html">Teachers Details</a>
+                    <a href="/team-details">Teachers Details</a>
                   </li>
                   <li>
-                    <a href="become-teacher.html">Become Teacher</a>
+                    <a href="/become-teacher">Become Teacher</a>
                   </li>
                 </ul>
               </li>

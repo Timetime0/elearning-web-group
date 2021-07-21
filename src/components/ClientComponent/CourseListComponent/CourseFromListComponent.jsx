@@ -16,7 +16,7 @@ function CourseFromListComponent(props) {
           }}
         >
           <div className="course-one__image">
-            <img src={props.list.hinhAnh} alt="hình ảnh" />
+            <img src={props.list.hinhAnh} alt={"img"} />
             <i className="far fa-heart" />
           </div>
         </Link>
@@ -31,7 +31,7 @@ function CourseFromListComponent(props) {
             {props.list.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
           </Link>
           <div className="course-one__admin">
-            <img src="/images/team-1-2.jpg" alt="true" />
+            <img src="/images/team-1-2.jpg" alt={"img"} />
             by <a href="teacher-details.html">{props.list.nguoiTao?.hoTen}</a>
           </div>
           <h2 className="course-one__title">
@@ -65,14 +65,14 @@ function CourseFromListComponent(props) {
             </a>
             <a href="course-details.html">$18</a>
           </div>
-          <a
+          <Link
             className="course-one__link"
             onClick={() => {
               detailCourse();
             }}
           >
             See Preview
-          </a>
+          </Link>
         </div>
       </div>
     </div>

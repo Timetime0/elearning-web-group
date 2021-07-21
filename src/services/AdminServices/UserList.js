@@ -18,3 +18,26 @@ export function EditUserServices(user) {
     },
   });
 }
+
+export function DeleteUserServices(taiKhoan) {
+  const admin = JSON.parse(localStorage.getItem("GV"));
+  return Axios({
+    method: "DELETE",
+    url: `http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}
+
+export function AddUserServices(user) {
+  const admin = JSON.parse(localStorage.getItem("GV"));
+  return Axios({
+    method: "POST",
+    url: "http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung",
+    data: user,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}

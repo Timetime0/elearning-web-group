@@ -11,7 +11,7 @@ function TeacherDetails() {
                 <a href="/">Home</a>
               </li>
               <li className="active">
-                <a href="#">Teachers Details</a>
+                <a href="/">Teachers Details</a>
               </li>
             </ul>
             <h2 className="inner-banner__title">Teachers Details</h2>
@@ -33,10 +33,10 @@ function TeacherDetails() {
                   <h3 className="team-details__subtitle">Certificate</h3>
                   <ul className="list-unstyled team-details__certificate-list">
                     <li>
-                      <img src="/images/certificate-1-1.png" alt />
+                      <img src="/images/certificate-1-1.png" alt={"img"} />
                     </li>
                     <li>
-                      <img src="/images/certificate-1-2.png" alt />
+                      <img src="/images/certificate-1-2.png" alt={"img"} />
                     </li>
                   </ul>
                   <div className="progress-one__wrap">
@@ -88,7 +88,7 @@ function TeacherDetails() {
               <div className="col-lg-6">
                 <div className="team-one__single">
                   <div className="team-one__image">
-                    <img src="/images/team-d-1.jpg" alt />
+                    <img src="/images/team-d-1.jpg" alt={"img"} />
                   </div>
                   <div className="team-one__content">
                     <h2 className="team-one__name">
@@ -97,16 +97,16 @@ function TeacherDetails() {
                     <p className="team-one__designation">Teacher</p>
                   </div>
                   <div className="team-one__social">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-square" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-pinterest-p" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
                   </div>

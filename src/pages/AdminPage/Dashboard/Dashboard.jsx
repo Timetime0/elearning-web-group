@@ -9,9 +9,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Hidden from "@material-ui/core/Hidden";
 import Navigator from "../../../components/AdminComponents/Navigator/Navigator";
 import Header from "../../../components/AdminComponents/Header/Header";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { GET_USER_LIST_SAGA } from "../../../redux/types/AdminType/GetUserListType";
 
 let theme = createMuiTheme({
   palette: {

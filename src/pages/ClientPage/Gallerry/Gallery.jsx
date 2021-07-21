@@ -8,10 +8,10 @@ function Gallery() {
           <div className="container">
             <ul className="list-unstyled thm-breadcrumb">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="active">
-                <a href="#">Gallery</a>
+                <a href="/gallery">Gallery</a>
               </li>
             </ul>
             <h2 className="inner-banner__title">Gallery</h2>
@@ -22,7 +22,7 @@ function Gallery() {
             <div className="row">
               <div className="col-lg-4 col-md-6">
                 <div className="gallery-one__single">
-                  <img src=" /images/gallery-1-1.jpg" alt />
+                  <img src=" /images/gallery-1-1.jpg" alt={"img"} />
                   <a
                     href=" /images/gallery-1-1.jpg"
                     className="gallery-one__popup img-popup"
@@ -33,7 +33,7 @@ function Gallery() {
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="gallery-one__single">
-                  <img src=" /images/gallery-1-2.jpg" alt />
+                  <img src=" /images/gallery-1-2.jpg" alt={"img"} />
                   <a
                     href=" /images/gallery-1-2.jpg"
                     className="gallery-one__popup img-popup"
@@ -44,7 +44,7 @@ function Gallery() {
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="gallery-one__single">
-                  <img src=" /images/gallery-1-3.jpg" alt />
+                  <img src=" /images/gallery-1-3.jpg" alt={"img"} />
                   <a
                     href=" /images/gallery-1-3.jpg"
                     className="gallery-one__popup img-popup"
@@ -55,7 +55,7 @@ function Gallery() {
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="gallery-one__single">
-                  <img src=" /images/gallery-1-4.jpg" alt />
+                  <img src=" /images/gallery-1-4.jpg" alt={"img"} />
                   <a
                     href=" /images/gallery-1-4.jpg"
                     className="gallery-one__popup img-popup"
@@ -66,7 +66,7 @@ function Gallery() {
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="gallery-one__single">
-                  <img src=" /images/gallery-1-5.jpg" alt />
+                  <img src=" /images/gallery-1-5.jpg" alt={"img"} />
                   <a
                     href=" /images/gallery-1-5.jpg"
                     className="gallery-one__popup img-popup"
@@ -77,7 +77,7 @@ function Gallery() {
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="gallery-one__single">
-                  <img src=" /images/gallery-1-6.jpg" alt />
+                  <img src=" /images/gallery-1-6.jpg" alt={"img"} />
                   <a
                     href=" /images/gallery-1-6.jpg"
                     className="gallery-one__popup img-popup"
@@ -88,7 +88,7 @@ function Gallery() {
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="gallery-one__single">
-                  <img src=" /images/gallery-1-7.jpg" alt />
+                  <img src=" /images/gallery-1-7.jpg" alt={"img"} />
                   <a
                     href=" /images/gallery-1-7.jpg"
                     className="gallery-one__popup img-popup"
@@ -99,7 +99,7 @@ function Gallery() {
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="gallery-one__single">
-                  <img src=" /images/gallery-1-8.jpg" alt />
+                  <img src=" /images/gallery-1-8.jpg" alt={"img"} />
                   <a
                     href=" /images/gallery-1-8.jpg"
                     className="gallery-one__popup img-popup"
@@ -110,7 +110,7 @@ function Gallery() {
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="gallery-one__single">
-                  <img src=" /images/gallery-1-9.jpg" alt />
+                  <img src=" /images/gallery-1-9.jpg" alt={"img"} />
                   <a
                     href=" /images/gallery-1-9.jpg"
                     className="gallery-one__popup img-popup"

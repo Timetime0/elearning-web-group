@@ -8,10 +8,10 @@ function Teacher() {
           <div className="container">
             <ul className="list-unstyled thm-breadcrumb">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="active">
-                <a href="#">Teachers</a>
+                <a href="/teachers">Teachers</a>
               </li>
             </ul>
             <h2 className="inner-banner__title">Teachers</h2>
@@ -23,7 +23,7 @@ function Teacher() {
               <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div className="team-one__single">
                   <div className="team-one__image">
-                    <img src="/images/team-1-1.jpg" alt />
+                    <img src="/images/team-1-1.jpg" alt={"img"} />
                   </div>
                   <div className="team-one__content">
                     <h2 className="team-one__name">
@@ -35,16 +35,16 @@ function Teacher() {
                     </p>
                   </div>
                   <div className="team-one__social">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-square" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-pinterest-p" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
                   </div>
@@ -53,7 +53,7 @@ function Teacher() {
               <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div className="team-one__single">
                   <div className="team-one__image">
-                    <img src="/images/team-1-2.jpg" alt />
+                    <img src="/images/team-1-2.jpg" alt={"img"} />
                   </div>
                   <div className="team-one__content">
                     <h2 className="team-one__name">
@@ -65,16 +65,16 @@ function Teacher() {
                     </p>
                   </div>
                   <div className="team-one__social">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-square" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-pinterest-p" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
                   </div>
@@ -83,7 +83,7 @@ function Teacher() {
               <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div className="team-one__single">
                   <div className="team-one__image">
-                    <img src="/images/team-1-3.jpg" alt />
+                    <img src="/images/team-1-3.jpg" alt={"img"} />
                   </div>
                   <div className="team-one__content">
                     <h2 className="team-one__name">
@@ -95,16 +95,16 @@ function Teacher() {
                     </p>
                   </div>
                   <div className="team-one__social">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-square" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-pinterest-p" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
                   </div>
@@ -113,7 +113,7 @@ function Teacher() {
               <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div className="team-one__single">
                   <div className="team-one__image">
-                    <img src="/images/team-1-4.jpg" alt />
+                    <img src="/images/team-1-4.jpg" alt={"img"} />
                   </div>
                   <div className="team-one__content">
                     <h2 className="team-one__name">
@@ -125,16 +125,16 @@ function Teacher() {
                     </p>
                   </div>
                   <div className="team-one__social">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-square" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-pinterest-p" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
                   </div>
@@ -143,7 +143,7 @@ function Teacher() {
               <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div className="team-one__single">
                   <div className="team-one__image">
-                    <img src="/images/team-1-5.jpg" alt />
+                    <img src="/images/team-1-5.jpg" alt={"img"} />
                   </div>
                   <div className="team-one__content">
                     <h2 className="team-one__name">
@@ -155,16 +155,16 @@ function Teacher() {
                     </p>
                   </div>
                   <div className="team-one__social">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-square" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-pinterest-p" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
                   </div>
@@ -173,7 +173,7 @@ function Teacher() {
               <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div className="team-one__single">
                   <div className="team-one__image">
-                    <img src="/images/team-1-6.jpg" alt />
+                    <img src="/images/team-1-6.jpg" alt={"img"} />
                   </div>
                   <div className="team-one__content">
                     <h2 className="team-one__name">
@@ -185,16 +185,16 @@ function Teacher() {
                     </p>
                   </div>
                   <div className="team-one__social">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-square" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-pinterest-p" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
                   </div>
@@ -203,7 +203,7 @@ function Teacher() {
               <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div className="team-one__single">
                   <div className="team-one__image">
-                    <img src="/images/team-1-7.jpg" alt />
+                    <img src="/images/team-1-7.jpg" alt={"img"} />
                   </div>
                   <div className="team-one__content">
                     <h2 className="team-one__name">
@@ -215,16 +215,16 @@ function Teacher() {
                     </p>
                   </div>
                   <div className="team-one__social">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-square" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-pinterest-p" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
                   </div>
@@ -233,7 +233,7 @@ function Teacher() {
               <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div className="team-one__single">
                   <div className="team-one__image">
-                    <img src="/images/team-1-8.jpg" alt />
+                    <img src="/images/team-1-8.jpg" alt={"img"} />
                   </div>
                   <div className="team-one__content">
                     <h2 className="team-one__name">
@@ -245,16 +245,16 @@ function Teacher() {
                     </p>
                   </div>
                   <div className="team-one__social">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-square" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-pinterest-p" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
                   </div>
@@ -277,10 +277,10 @@ function Teacher() {
                     <h2 className="cta-two__title">Become an teacher</h2>
                     <p className="cta-two__text">
                       There are many variations of passages of lore available
-                      but <br /> the majority have suffered alteration in some
-                      form.
+                      but <br /> the majority have suffered alt={"img"}eration
+                      in some form.
                     </p>
-                    <a href="#" className="thm-btn cta-two__btn">
+                    <a href="/" className="thm-btn cta-two__btn">
                       Start Teaching
                     </a>
                   </div>
@@ -297,10 +297,10 @@ function Teacher() {
                     <h2 className="cta-two__title">Join our community</h2>
                     <p className="cta-two__text">
                       There are many variations of passages of lore available
-                      but <br /> the majority have suffered alteration in some
-                      form.
+                      but <br /> the majority have suffered alt={"img"}eration
+                      in some form.
                     </p>
-                    <a href="#" className="thm-btn cta-two__btn">
+                    <a href="/" className="thm-btn cta-two__btn">
                       Start Learning
                     </a>
                   </div>

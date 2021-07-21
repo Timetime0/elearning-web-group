@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { BOOKING_COURSE_SAGA } from "../../../redux/types/BookingCourseType";
 
 // import { withRouter } from "react-router";
@@ -10,23 +9,19 @@ import { DETAIL_COURSE_SERVICES_SAGA } from "../../../redux/types/CourseDetailTy
 const random = () => {
   return Math.floor(Math.random() * 500) + 100;
 };
-function CourseDetail(props) {
-  const [key, setKey] = useState("home");
-
+function CourseDetail() {
   let { maKhoaHoc } = useParams();
   let detail = useSelector((state) => state.CourseReducer.courseDetail);
 
-  console.log(detail.nguoiTao);
   // console.log(person.hoTen);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(1);
     dispatch({
       type: DETAIL_COURSE_SERVICES_SAGA,
       data: maKhoaHoc,
     });
-  }, []);
+  }, [dispatch, maKhoaHoc]);
   const history = useHistory();
 
   const detailList = (value) => {
@@ -34,10 +29,10 @@ function CourseDetail(props) {
   };
 
   // đăng ký khóa học
-  let [bookingRes, setBookingRes] = useState({
-    maKhoaHoc: "",
-    taiKhoan: "",
-  });
+  // let [bookingRes, setBookingRes] = useState({
+  //   maKhoaHoc: "",
+  //   taiKhoan: "",
+  // });
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -54,10 +49,10 @@ function CourseDetail(props) {
           <div className="container">
             <ul className="list-unstyled thm-breadcrumb">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="active">
-                <a href="#">Course Details</a>
+                <a href="/course-detail">Course Details</a>
               </li>
             </ul>
             <h2 className="inner-banner__title">Course Details</h2>
@@ -69,8 +64,8 @@ function CourseDetail(props) {
               <div className="col-lg-8">
                 <div className="course-details__content">
                   <p className="course-details__author">
-                    <img src="/images/team-1-1.jpg" alt />
-                    by <a>{detail?.nguoiTao?.hoTen}</a>
+                    <img src="/images/team-1-1.jpg" alt={"img"} />
+                    by <a href="/#">{detail?.nguoiTao?.hoTen}</a>
                   </p>
                   <div className="course-details__top">
                     <div className="course-details__top-left">
@@ -103,7 +98,7 @@ function CourseDetail(props) {
                     </div>
                   </div>
                   <div className="course-one__image">
-                    <img src={detail.hinhAnh} alt />
+                    <img src={detail.hinhAnh} alt={"img"} />
                     <i className="far fa-heart" />
                   </div>
                   <ul
@@ -111,29 +106,29 @@ function CourseDetail(props) {
                     role="tablist"
                   >
                     <li>
-                      <a
+                      <Link
                         className="active"
                         role="tab"
                         data-toggle="tab"
-                        href="#overview"
+                        to="#overview"
                       >
                         Overview
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         className
                         role="tab"
                         data-toggle="tab"
-                        href="#curriculum"
+                        to="#curriculum"
                       >
                         Curriculum
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className role="tab" data-toggle="tab" href="#review">
+                      <Link className role="tab" data-toggle="tab" to="#review">
                         Reviews
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                   <div className="tab-content course-details__tab-content ">
@@ -192,7 +187,7 @@ function CourseDetail(props) {
                             <div className="course-details__meta-icon video-icon">
                               <i className="fas fa-play" />
                             </div>
-                            <a href="#">Introduction to Editing</a>{" "}
+                            <a href="/">Introduction to Editing</a>{" "}
                             <span>Preview</span>
                           </div>
                           <div className="course-details__curriculum-list-right">
@@ -204,7 +199,7 @@ function CourseDetail(props) {
                             <div className="course-details__meta-icon video-icon">
                               <i className="fas fa-play" />
                             </div>
-                            <a href="#">Overview of Editing</a>{" "}
+                            <a href="/">Overview of Editing</a>{" "}
                             <span>Preview</span>
                           </div>
                           <div className="course-details__curriculum-list-right">
@@ -216,7 +211,7 @@ function CourseDetail(props) {
                             <div className="course-details__meta-icon file-icon">
                               <i className="fas fa-folder" />
                             </div>
-                            <a href="#">Basic Editing Technology</a>
+                            <a href="/">Basic Editing Technology</a>
                           </div>
                         </li>
                         <li>
@@ -224,7 +219,7 @@ function CourseDetail(props) {
                             <div className="course-details__meta-icon quiz-icon">
                               <i className="fas fa-comment" />
                             </div>
-                            <a href="#">Quiz</a>
+                            <a href="/">Quiz</a>
                           </div>
                           <div className="course-details__curriculum-list-right">
                             6 questions
@@ -253,7 +248,7 @@ function CourseDetail(props) {
                             <div className="course-details__meta-icon video-icon">
                               <i className="fas fa-play" />
                             </div>
-                            <a href="#">Introduction to Editing</a>{" "}
+                            <a href="/">Introduction to Editing</a>{" "}
                             <span>Preview</span>
                           </div>
                           <div className="course-details__curriculum-list-right">
@@ -265,7 +260,7 @@ function CourseDetail(props) {
                             <div className="course-details__meta-icon file-icon">
                               <i className="fas fa-folder" />
                             </div>
-                            <a href="#">Basic Editing Technology</a>
+                            <a href="/">Basic Editing Technology</a>
                           </div>
                         </li>
                         <li>
@@ -273,7 +268,7 @@ function CourseDetail(props) {
                             <div className="course-details__meta-icon quiz-icon">
                               <i className="fas fa-comment" />
                             </div>
-                            <a href="#">Quiz</a>
+                            <a href="/">Quiz</a>
                           </div>
                           <div className="course-details__curriculum-list-right">
                             6 questions
@@ -393,7 +388,7 @@ function CourseDetail(props) {
                         <div className="course-details__comment-single">
                           <div className="course-details__comment-top">
                             <div className="course-details__comment-img">
-                              <img src="/images/team-1-1.jpg" alt />
+                              <img src="/images/team-1-1.jpg" alt={"img"} />
                             </div>
                             <div className="course-details__comment-right">
                               <h2 className="course-details__comment-name">
@@ -423,7 +418,7 @@ function CourseDetail(props) {
                         <div className="course-details__comment-single">
                           <div className="course-details__comment-top">
                             <div className="course-details__comment-img">
-                              <img src="/images/team-1-2.jpg" alt />
+                              <img src="/images/team-1-2.jpg" alt={"img"} />
                             </div>
                             <div className="course-details__comment-right">
                               <h2 className="course-details__comment-name">
@@ -451,15 +446,15 @@ function CourseDetail(props) {
                           </p>
                         </div>
                       </div>
-                      <form action="#" className="course-details__comment-form">
+                      <form action="/" className="course-details__comment-form">
                         <h2 className="course-details__title">Add a review</h2>
                         <p className="course-details__comment-form-text">
                           Rate this Course?{" "}
-                          <a href="#" className="fas fa-star" />
-                          <a href="#" className="fas fa-star" />
-                          <a href="#" className="fas fa-star" />
-                          <a href="#" className="fas fa-star" />
-                          <a href="#" className="fas fa-star" />
+                          <Link to="/" className="fas fa-star" />
+                          <Link to="/" className="fas fa-star" />
+                          <Link to="/" className="fas fa-star" />
+                          <Link to="/" className="fas fa-star" />
+                          <Link to="/" className="fas fa-star" />
                         </p>
                         <div className="row">
                           <div className="col-lg-6">
@@ -488,47 +483,47 @@ function CourseDetail(props) {
                 <div className="course-details__price">
                   <p className="course-details__price-text">Course price </p>
                   <p className="course-details__price-amount">$18.00</p>
-                  <a
+                  <button
                     onClick={(event) => {
                       handleBooking(event);
                     }}
                     className="thm-btn course-details__price-btn"
                   >
                     Buy This Course
-                  </a>
+                  </button>
                 </div>
                 <div className="course-details__meta">
-                  <a href="#" className="course-details__meta-link">
+                  <a href="/" className="course-details__meta-link">
                     <span className="course-details__meta-icon">
                       <i className="far fa-clock" />
                     </span>
                     Durations: <span>10 hours</span>
                   </a>
-                  <a href="#" className="course-details__meta-link">
+                  <a href="/" className="course-details__meta-link">
                     <span className="course-details__meta-icon">
                       <i className="far fa-folder-open" />
                     </span>
                     Lectures: <span>6</span>
                   </a>
-                  <a href="#" className="course-details__meta-link">
+                  <a href="/" className="course-details__meta-link">
                     <span className="course-details__meta-icon">
                       <i className="far fa-user-circle" />
                     </span>
                     Students: <span>Max 4</span>
                   </a>
-                  <a href="#" className="course-details__meta-link">
+                  <a href="/" className="course-details__meta-link">
                     <span className="course-details__meta-icon">
                       <i className="fas fa-play" />
                     </span>
                     Video: <span>8 hours</span>
                   </a>
-                  <a href="#" className="course-details__meta-link">
+                  <a href="/" className="course-details__meta-link">
                     <span className="course-details__meta-icon">
                       <i className="far fa-flag" />
                     </span>
                     Skill Level: <span>Advanced</span>
                   </a>
-                  <a href="#" className="course-details__meta-link">
+                  <a href="/" className="course-details__meta-link">
                     <span className="course-details__meta-icon">
                       <i className="far fa-bell" />
                     </span>
@@ -540,15 +535,15 @@ function CourseDetail(props) {
 
                   <div className="course-details__list-item">
                     <div className="course-details__list-img">
-                      <img src="/images/lc-1-1.jpg" alt />
+                      <img src="/images/lc-1-1.jpg" alt={"img"} />
                     </div>
 
                     <div className="course-details__list-content">
-                      <a className="course-details__list-author" href="#">
+                      <a className="course-details__list-author" href="/">
                         by <span>Lydia Byrd</span>
                       </a>
                       <h3>
-                        <a href="#">Marketing strategies</a>
+                        <a href="/">Marketing strategies</a>
                       </h3>
                       <div className="course-details__list-stars">
                         <i className="fas fa-star" />
@@ -562,15 +557,15 @@ function CourseDetail(props) {
                   </div>
                   <div className="course-details__list-item">
                     <div className="course-details__list-img">
-                      <img src="/images/lc-1-2.jpg" alt />
+                      <img src="/images/lc-1-2.jpg" alt={"img"} />
                     </div>
 
                     <div className="course-details__list-content">
-                      <a className="course-details__list-author" href="#">
+                      <a className="course-details__list-author" href="/">
                         by <span>Lydia Byrd</span>
                       </a>
                       <h3>
-                        <a href="#">Marketing strategies</a>
+                        <a href="/">Marketing strategies</a>
                       </h3>
                       <div className="course-details__list-stars">
                         <i className="fas fa-star" />
@@ -585,15 +580,15 @@ function CourseDetail(props) {
 
                   <div className="course-details__list-item">
                     <div className="course-details__list-img">
-                      <img src="/images/lc-1-3.jpg" alt />
+                      <img src="/images/lc-1-3.jpg" alt={"img"} />
                     </div>
 
                     <div className="course-details__list-content">
-                      <a className="course-details__list-author" href="#">
+                      <a className="course-details__list-author" href="/">
                         by <span>Lydia Byrd</span>
                       </a>
                       <h3>
-                        <a href="#">Marketing strategies</a>
+                        <a href="/">Marketing strategies</a>
                       </h3>
                       <div className="course-details__list-stars">
                         <i className="fas fa-star" />

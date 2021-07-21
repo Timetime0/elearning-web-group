@@ -8,10 +8,10 @@ function NewsDetails() {
           <div className="container">
             <ul className="list-unstyled thm-breadcrumb">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="active">
-                <a href="#">News Details</a>
+                <a href="/news-details">News Details</a>
               </li>
             </ul>
             <h2 className="inner-banner__title">News Details</h2>
@@ -23,7 +23,7 @@ function NewsDetails() {
               <div className="col-lg-8">
                 <div className="blog-one__single">
                   <div className="blog-one__image">
-                    <img src="/images/blog-d-1-1.jpg" alt />
+                    <img src="/images/blog-d-1-1.jpg" alt={"img"} />
                   </div>
                   <div className="blog-one__content text-center">
                     <div className="blog-one__meta">
@@ -31,7 +31,7 @@ function NewsDetails() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted On Jan 19"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-calendar-alt" />
                       </a>
@@ -39,7 +39,7 @@ function NewsDetails() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="No Comments"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-comments" />
                       </a>
@@ -47,7 +47,7 @@ function NewsDetails() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted By Admin"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-user" />
                       </a>
@@ -88,28 +88,28 @@ function NewsDetails() {
                 <div className="share-block">
                   <div className="left-block">
                     <p>
-                      Tags: <a href="#">Business,</a> <a href="#">Agency,</a>{" "}
-                      <a href="#">Technology</a>
+                      Tags: <a href="/">Business,</a> <a href="/">Agency,</a>{" "}
+                      <a href="/">Technology</a>
                     </p>
                   </div>
                   <div className="social-block">
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-twitter" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-facebook-f" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-instagram" />
                     </a>
-                    <a href="#">
+                    <a href="/">
                       <i className="fab fa-dribbble" />
                     </a>
                   </div>
                 </div>
                 <div className="blog-details__author">
                   <div className="blog-details__author-image">
-                    <img src="/images/author-1-1.jpg" alt="Awesome Image" />
+                    <img src="/images/author-1-1.jpg" alt={"img"} />
                   </div>
                   <div className="blog-details__author-content">
                     <h3>Christine Eve</h3>
@@ -126,10 +126,7 @@ function NewsDetails() {
                   <div className="comment-one__single">
                     <div className="comment-one__image">
                       <div className="inner-block">
-                        <img
-                          src="/images/comment-1-1.jpg"
-                          alt="Awesome Image"
-                        />
+                        <img src="/images/comment-1-1.jpg" alt={"img"} />
                       </div>
                     </div>
                     <div className="comment-one__content">
@@ -153,7 +150,7 @@ function NewsDetails() {
                           </p>
                         </div>
                         <div className="comment-one__top-right">
-                          <a href="#" className="thm-btn comment-one__reply">
+                          <a href="/" className="thm-btn comment-one__reply">
                             Reply
                           </a>
                         </div>
@@ -163,10 +160,7 @@ function NewsDetails() {
                   <div className="comment-one__single">
                     <div className="comment-one__image">
                       <div className="inner-block">
-                        <img
-                          src="/images/comment-1-2.jpg"
-                          alt="Awesome Image"
-                        />
+                        <img src="/images/comment-1-2.jpg" alt={"img"} />
                       </div>
                     </div>
                     <div className="comment-one__content">
@@ -189,7 +183,7 @@ function NewsDetails() {
                           </p>
                         </div>
                         <div className="comment-one__top-right">
-                          <a href="#" className="thm-btn comment-one__reply">
+                          <a href="/" className="thm-btn comment-one__reply">
                             Reply
                           </a>
                         </div>
@@ -198,7 +192,7 @@ function NewsDetails() {
                   </div>
                 </div>
                 <h2 className="blog-details__content-title">Leave a Comment</h2>
-                <form action="#" className="reply-form">
+                <form action="/" className="reply-form">
                   <div className="row">
                     <div className="col-lg-6">
                       <input
@@ -230,7 +224,7 @@ function NewsDetails() {
               <div className="col-lg-4">
                 <div className="sidebar">
                   <div className="sidebar__single sidebar__search">
-                    <form action="#" className="sidebar__search-form">
+                    <form action="/" className="sidebar__search-form">
                       <input
                         type="text"
                         name="search"
@@ -247,12 +241,12 @@ function NewsDetails() {
                       <div className="sidebar__post__single">
                         <div className="sidebar__post-image">
                           <div className="inner-block">
-                            <img src="/images/lp-1-1.jpg" alt="Awesome Image" />
+                            <img src="/images/lp-1-1.jpg" alt={"img"} />
                           </div>
                         </div>
                         <div className="sidebar__post-content">
                           <h4 className="sidebar__post-title">
-                            <a href="#">
+                            <a href="/">
                               Pre launch mobile app marketing pitfalls
                             </a>
                           </h4>
@@ -261,12 +255,12 @@ function NewsDetails() {
                       <div className="sidebar__post__single">
                         <div className="sidebar__post-image">
                           <div className="inner-block">
-                            <img src="/images/lp-1-2.jpg" alt="Awesome Image" />
+                            <img src="/images/lp-1-2.jpg" alt={"img"} />
                           </div>
                         </div>
                         <div className="sidebar__post-content">
                           <h4 className="sidebar__post-title">
-                            <a href="#">
+                            <a href="/">
                               Social currency per- formance keywords or
                             </a>
                           </h4>
@@ -275,12 +269,12 @@ function NewsDetails() {
                       <div className="sidebar__post__single">
                         <div className="sidebar__post-image">
                           <div className="inner-block">
-                            <img src="/images/lp-1-3.jpg" alt="Awesome Image" />
+                            <img src="/images/lp-1-3.jpg" alt={"img"} />
                           </div>
                         </div>
                         <div className="sidebar__post-content">
                           <h4 className="sidebar__post-title">
-                            <a href="#">
+                            <a href="/">
                               Prioritize these items quarterly sales are at
                             </a>
                           </h4>
@@ -292,22 +286,22 @@ function NewsDetails() {
                     <h3 className="sidebar__title">Categories</h3>
                     <ul className="sidebar__category-list">
                       <li className="sidebar__category-list-item">
-                        <a href="#">Business</a>
+                        <a href="/">Business</a>
                       </li>
                       <li className="sidebar__category-list-item">
-                        <a href="#">Introductions</a>
+                        <a href="/">Introductions</a>
                       </li>
                       <li className="sidebar__category-list-item">
-                        <a href="#">One Page Template</a>
+                        <a href="/">One Page Template</a>
                       </li>
                       <li className="sidebar__category-list-item">
-                        <a href="#">Parallax Effects</a>
+                        <a href="/">Parallax Effects</a>
                       </li>
                       <li className="sidebar__category-list-item">
-                        <a href="#">New Technologies</a>
+                        <a href="/">New Technologies</a>
                       </li>
                       <li className="sidebar__category-list-item">
-                        <a href="#">Video Backgrounds</a>
+                        <a href="/">Video Backgrounds</a>
                       </li>
                     </ul>
                   </div>
@@ -315,25 +309,25 @@ function NewsDetails() {
                     <h3 className="sidebar__title">Tags</h3>
                     <ul className="sidebar__tags-list">
                       <li className="sidebar__tags-list-item">
-                        <a href="#">Business,</a>
+                        <a href="/">Business,</a>
                       </li>
                       <li className="sidebar__tags-list-item">
-                        <a href="#">Agency,</a>
+                        <a href="/">Agency,</a>
                       </li>
                       <li className="sidebar__tags-list-item">
-                        <a href="#">Technology,</a>
+                        <a href="/">Technology,</a>
                       </li>
                       <li className="sidebar__tags-list-item">
-                        <a href="#">Parallax,</a>
+                        <a href="/">Parallax,</a>
                       </li>
                       <li className="sidebar__tags-list-item">
-                        <a href="#">Innovative,</a>
+                        <a href="/">Innovative,</a>
                       </li>
                       <li className="sidebar__tags-list-item">
-                        <a href="#">Professional,</a>
+                        <a href="/">Professional,</a>
                       </li>
                       <li className="sidebar__tags-list-item">
-                        <a href="#">Experience,</a>
+                        <a href="/">Experience,</a>
                       </li>
                     </ul>
                   </div>

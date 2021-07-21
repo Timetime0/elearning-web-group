@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,6 +13,10 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import UserDataTable from "../../DataTable/UserData/UserDataTable";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+
 const styles = (theme) => ({
   paper: {
     maxWidth: 1920,
@@ -41,6 +45,29 @@ const styles = (theme) => ({
 
 function ContentUserList(props) {
   const { classes } = props;
+  const dispatch = useDispatch();
+  // Search data
+  const getData = useSelector((state) => state.UserReducer.userList);
+  const [data, setData] = useState([]);
+
+  const [search, setSearch] = useState("");
+  function searchList(list) {
+    const columns = list[0] && Object.keys(list[0]);
+    return list.filter((list) =>
+      columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
+    );
+  }
+
+  // delete user
+  const { userList } = props;
+  useEffect(() => {
+    dispatch({
+      type: DELETE_USER_SAGA,
+    });
+  }, [dispatch]);
+  const handleDeleteUser = () => {
+    alert("delete");
+  };
 
   return (
     <Paper className={classes.paper}>
@@ -63,6 +90,8 @@ function ContentUserList(props) {
                   disableUnderline: true,
                   className: classes.searchInput,
                 }}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
             </Grid>
             <Grid item>
@@ -77,6 +106,7 @@ function ContentUserList(props) {
                 variant="contained"
                 color="secondary"
                 className={classes.dellUser}
+                onClick={() => handleDeleteUser()}
               >
                 Delete User
               </Button>
@@ -91,7 +121,7 @@ function ContentUserList(props) {
       </AppBar>
       <div className={classes.contentWrapper}>
         <Typography color="textSecondary" align="center">
-          <UserDataTable />
+          <UserDataTable data={searchList(data)} />
         </Typography>
       </div>
     </Paper>

@@ -1,14 +1,9 @@
 import React from "react";
-import Slider from "react-slick";
 // import "./Carousel_Style.scss";
-import { Helmet } from "react-helmet";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-
-import Swal from "sweetalert2";
 
 function Carousel(props) {
   return (
@@ -16,27 +11,27 @@ function Carousel(props) {
       <img
         src="/images/slider-3-icon-1-1.png"
         className="slider-three__icon-1"
-        alt
+        alt={"img"}
       />
       <img
         src="/images/slider-3-icon-1-2.png"
         className="slider-three__icon-2"
-        alt
+        alt={"img"}
       />
       <img
         src="/images/slider-3-icon-1-3.png"
         className="slider-three__icon-3"
-        alt
+        alt={"img"}
       />
       <img
         src="/images/slider-3-icon-1-4.png"
         className="slider-three__icon-4"
-        alt
+        alt={"img"}
       />
       <img
         src="/images/slider-3-icon-1-5.png"
         className="slider-three__icon-5"
-        alt
+        alt={"img"}
       />
       <div className="container">
         <div className="row">

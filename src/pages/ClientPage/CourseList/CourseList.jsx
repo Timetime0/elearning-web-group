@@ -9,10 +9,10 @@ function CourseList() {
           <div className="container">
             <ul className="list-unstyled thm-breadcrumb">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="active">
-                <a href="#">Courses</a>
+                <a href="/">Courses</a>
               </li>
             </ul>
             <h2 className="inner-banner__title">Courses</h2>

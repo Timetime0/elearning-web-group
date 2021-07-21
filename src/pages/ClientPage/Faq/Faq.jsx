@@ -8,10 +8,10 @@ function Faq() {
           <div className="container">
             <ul className="list-unstyled thm-breadcrumb">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="active">
-                <a href="#">FAQ</a>
+                <a href="/faq">FAQ</a>
               </li>
             </ul>
             <h2 className="inner-banner__title">FAQ</h2>

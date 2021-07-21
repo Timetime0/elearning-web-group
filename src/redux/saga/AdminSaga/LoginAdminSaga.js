@@ -26,6 +26,11 @@ function* getLoginAdminApi(action) {
         setTimeout(() => {
           action.history.push("/admin/dashboard");
         }, 2000);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Tài khoản hoặc mật khẩu không chính xác!",
+        });
       }
     }
   } catch (e) {

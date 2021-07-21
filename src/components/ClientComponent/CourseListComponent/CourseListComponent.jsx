@@ -20,16 +20,16 @@ function CourseListComponent() {
           })}
         </div>
         <div className="post-pagination">
-          <a href="#">
+          <a href="/">
             <i className="fa fa-angle-double-left" />
           </a>
-          <a className="active" href="#">
+          <a className="active" href="/">
             1
           </a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">
+          <a href="/">2</a>
+          <a href="/">3</a>
+          <a href="/">4</a>
+          <a href="/">
             <i className="fa fa-angle-double-right" />
           </a>
         </div>

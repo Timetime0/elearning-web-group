@@ -13,7 +13,7 @@ function OnlyMission() {
           your knowledge base
         </h2>
         <div className="cta-one__btn-block">
-          <a href="#" className="thm-btn cta-one__btn">
+          <a href="/" className="thm-btn cta-one__btn">
             Learn More
           </a>
         </div>

@@ -3247,6 +3247,10 @@ a:visited {
   background-color: #33a9bb;
 }
 
+.course-one__category:hover {
+  background-color: black !important;
+}
+
 .course-one__single {
   margin-bottom: 30px;
   -webkit-transition: all .4s ease;

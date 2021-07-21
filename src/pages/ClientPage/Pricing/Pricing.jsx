@@ -1,6 +1,4 @@
 import React from "react";
-import OnlyMission from "../../../components/ClientComponent/OnlyMission/OnlyMission";
-
 function Pricing() {
   return (
     <div>
@@ -9,10 +7,10 @@ function Pricing() {
           <div className="container">
             <ul className="list-unstyled thm-breadcrumb">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="active">
-                <a href="#">Pricing plans</a>
+                <a href="/pricing-plans">Pricing plans</a>
               </li>
             </ul>
             <h2 className="inner-banner__title">Pricing plans</h2>
@@ -32,7 +30,7 @@ function Pricing() {
                       <li>Upgrate options</li>
                       <li>9 Days Time</li>
                     </ul>
-                    <a href="#" className="thm-btn pricing-one__btn">
+                    <a href="/" className="thm-btn pricing-one__btn">
                       Choose Plan
                     </a>
                     <p className="pricing-one__tag-line">No hidden charges!</p>
@@ -50,7 +48,7 @@ function Pricing() {
                       <li>Upgrate options</li>
                       <li>9 Days Time</li>
                     </ul>
-                    <a href="#" className="thm-btn pricing-one__btn">
+                    <a href="/" className="thm-btn pricing-one__btn">
                       Choose Plan
                     </a>
                     <p className="pricing-one__tag-line">No hidden charges!</p>
@@ -68,7 +66,7 @@ function Pricing() {
                       <li>Upgrate options</li>
                       <li>9 Days Time</li>
                     </ul>
-                    <a href="#" className="thm-btn pricing-one__btn">
+                    <a href="/" className="thm-btn pricing-one__btn">
                       Choose Plan
                     </a>
                     <p className="pricing-one__tag-line">No hidden charges!</p>
@@ -85,7 +83,7 @@ function Pricing() {
               yourself now
             </h2>
             <div className="cta-one__btn-block">
-              <a href="#" className="thm-btn cta-one__btn">
+              <a href="/" className="thm-btn cta-one__btn">
                 Start Learning Now
               </a>
             </div>

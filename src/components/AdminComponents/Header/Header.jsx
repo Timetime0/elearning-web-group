@@ -17,7 +17,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import SwipeableViews from "react-swipeable-views";
 import ContentUserList from "../Content/ContentUserList/ContentUserList";
 import ContentCourseList from "../Content/ContentCourseList/ContentCourseList";

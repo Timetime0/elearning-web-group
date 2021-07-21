@@ -28,7 +28,7 @@ function* getLoginApi(action) {
     } else {
       Swal.fire({
         icon: "error",
-        title: "Tài khoản hoặc mật khẩu không chínhf xác!",
+        title: "Tài khoản hoặc mật khẩu không chính xác!",
       });
     }
   } catch (e) {

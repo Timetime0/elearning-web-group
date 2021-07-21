@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { GET_USER_LIST_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 
-export default function UserDataTable() {
+export default function UserDataTable(props) {
   const dispatch = useDispatch();
 
   let userList = useSelector((state) => state.UserReducer.userList);
@@ -52,9 +52,17 @@ export default function UserDataTable() {
   //   [dispatch]
   // );
 
+  // Search data
+
   return (
     <div style={{ height: 400, width: "100%" }}>
-      <DataGrid rows={list} columns={columns} pageSize={8} checkboxSelection />
+      <DataGrid
+        rows={list}
+        columns={columns}
+        pageSize={8}
+        checkboxSelection
+        data={props.data}
+      />
     </div>
   );
 }

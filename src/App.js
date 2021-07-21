@@ -1,5 +1,5 @@
 import { adminRouters, clientRouters } from "./config/router.config";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import TemplateClient from "./templates/client/TemplateClient";
 import TemplateAdmin from "./templates/admin/TemplateAdmin";
 import GuardLogin from "./HOC/GuardLogin";
@@ -55,7 +55,6 @@ function App() {
         {renderRouterClientList()}
         {renderRouterAdminList()}
         <Route path="">
-          {/* <Redirect to="/" /> */}
           <PageNotFound />
         </Route>
       </Switch>
