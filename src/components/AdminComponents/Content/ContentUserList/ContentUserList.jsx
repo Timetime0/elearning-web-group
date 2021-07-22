@@ -15,7 +15,10 @@ import RefreshIcon from "@material-ui/icons/Refresh";
 import UserDataTable from "../../DataTable/UserData/UserDataTable";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import {
+  DELETE_USER_SAGA,
+  GET_USER_LIST_SAGA,
+} from "../../../../redux/types/AdminType/GetUserListType";
 
 const styles = (theme) => ({
   paper: {
@@ -47,26 +50,35 @@ function ContentUserList(props) {
   const { classes } = props;
   const dispatch = useDispatch();
   // Search data
-  const getData = useSelector((state) => state.UserReducer.userList);
-  const [data, setData] = useState([]);
+  // const getData = useSelector((state) => state.UserReducer.userList);
+  // const [data, setData] = useState([]);
 
-  const [search, setSearch] = useState("");
-  function searchList(list) {
-    const columns = list[0] && Object.keys(list[0]);
-    return list.filter((list) =>
-      columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
-    );
-  }
+  // const [search, setSearch] = useState("");
+  // function searchList(list) {
+  //   const columns = list[0] && Object.keys(list[0]);
+  //   return list.filter((list) =>
+  //     columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
+  //   );
+  // }
 
   // delete user
-  const { userList } = props;
+  // useEffect(() => {
+  //   dispatch({
+  //     type: DELETE_USER_SAGA,
+  //   });
+  // }, []);
   useEffect(() => {
     dispatch({
-      type: DELETE_USER_SAGA,
+      type: GET_USER_LIST_SAGA,
     });
   }, [dispatch]);
+  let userList = useSelector((state) => state.UserReducer.userList);
+
   const handleDeleteUser = () => {
-    alert("delete");
+    let list = userList.map((user, index) => {
+      return { id: index, ...user };
+    });
+    console.log(list);
   };
 
   return (
@@ -90,8 +102,6 @@ function ContentUserList(props) {
                   disableUnderline: true,
                   className: classes.searchInput,
                 }}
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
               />
             </Grid>
             <Grid item>
@@ -121,7 +131,7 @@ function ContentUserList(props) {
       </AppBar>
       <div className={classes.contentWrapper}>
         <Typography color="textSecondary" align="center">
-          <UserDataTable data={searchList(data)} />
+          <UserDataTable />
         </Typography>
       </div>
     </Paper>

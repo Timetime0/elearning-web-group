@@ -53,7 +53,15 @@ export default function UserDataTable(props) {
   // );
 
   // Search data
-
+  let arrTest: [];
+  const { checkboxSelection } = props;
+  console.log(checkboxSelection);
+  for (let item in arrTest) {
+    if (checkboxSelection.checked) {
+      arrTest.push(...item);
+    }
+    console.log(arrTest);
+  }
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid

@@ -25,7 +25,35 @@ function NavHeader(props) {
 
   // Hiển thị drop menu responsive
 
-  // const [click, setClick] = useState(false);
+  let dropDown = document.getElementsByClassName("main-navigation");
+  let count = 1;
+  const clickToShowMenu = () => {
+    for (let i = 0; i < dropDown.length; i++) {
+      if (count % 2 === 0) {
+        dropDown[i].style.display = "none";
+        count++;
+      } else {
+        dropDown[i].style.display = "block";
+        count++;
+      }
+    }
+  };
+
+  // Hiển thị drop down sub menu
+
+  let dropDownSubMenu = document.getElementsByClassName("sub-menu");
+  let countSub = 1;
+  const clickToShowSubMenu = () => {
+    for (let i = 0; i < dropDownSubMenu.length; i++) {
+      if (countSub % 2 === 0) {
+        dropDownSubMenu[i].style.display = "none";
+        countSub++;
+      } else {
+        dropDownSubMenu[i].style.display = "block";
+        countSub++;
+      }
+    }
+  };
 
   // tạo liên kết bằng useHistory
   // const nextPath = () => {
@@ -88,7 +116,11 @@ function NavHeader(props) {
                 alt={"img"}
               />
             </NavLink>
-            <button className="menu-toggler" data-target=".main-navigation ">
+            <button
+              className="menu-toggler"
+              data-target=".main-navigation "
+              onClick={clickToShowMenu}
+            >
               <span className="kipso-icon-menu" />
             </button>
           </div>
@@ -98,7 +130,19 @@ function NavHeader(props) {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/">Pages</NavLink>
+                <NavLink to="/">
+                  Pages
+                  <button
+                    className="sub-nav-toggler"
+                    onClick={clickToShowSubMenu}
+                  >
+                    {" "}
+                    <span className="sr-only">Toggle navigation</span>{" "}
+                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
+                    <span className="icon-bar" />{" "}
+                  </button>
+                </NavLink>
+
                 <ul className="sub-menu">
                   <li>
                     <Link to="/about">About Page</Link>
@@ -117,6 +161,15 @@ function NavHeader(props) {
               <li>
                 <NavLink to="/course-list" activeClassName="active">
                   Courses
+                  <button
+                    className="sub-nav-toggler"
+                    onClick={clickToShowSubMenu}
+                  >
+                    {" "}
+                    <span className="sr-only">Toggle navigation</span>{" "}
+                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
+                    <span className="icon-bar" />{" "}
+                  </button>
                 </NavLink>
                 <ul className="sub-menu">
                   {listCourse.map((list, index) => {
@@ -135,7 +188,18 @@ function NavHeader(props) {
                 </ul>
               </li>
               <li>
-                <NavLink to="/teacher">Teachers</NavLink>
+                <NavLink to="/teacher">
+                  Teachers
+                  <button
+                    className="sub-nav-toggler"
+                    onClick={clickToShowSubMenu}
+                  >
+                    {" "}
+                    <span className="sr-only">Toggle navigation</span>{" "}
+                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
+                    <span className="icon-bar" />{" "}
+                  </button>
+                </NavLink>
                 <ul className="sub-menu">
                   <li>
                     <a href="/teachers">Teachers</a>

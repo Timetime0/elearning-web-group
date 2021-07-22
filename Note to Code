@@ -285,3 +285,10 @@ _ Fix hết các lỗi warning
 ********** Lỗi layout (Chưa fix được sự kiện click show navbar responsive )
 ********** Chưa làm được tìm kiếm khóa học 
 ********** Chưa làm được thêm xóa sửa user
+
+
+#Ngày 22/07/2021 Chun:
+********** chưa đăng ký được khóa học
+********** Lỗi layout (Chưa fix được sự kiện click show navbar responsive ) => đã fix 
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa làm được thêm xóa sửa user
