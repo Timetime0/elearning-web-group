@@ -8,10 +8,10 @@ function News() {
           <div className="container">
             <ul className="list-unstyled thm-breadcrumb">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="active">
-                <a href="#">Our news</a>
+                <a href="/our-news">Our news</a>
               </li>
             </ul>
             <h2 className="inner-banner__title">Our news</h2>
@@ -23,7 +23,7 @@ function News() {
               <div className="col-lg-4">
                 <div className="blog-one__single">
                   <div className="blog-one__image">
-                    <img src=" /images/blog-1-1.jpg" alt />
+                    <img src=" /images/blog-1-1.jpg" alt={"img"} />
                     <a className="blog-one__plus" href="news-details.html">
                       <i className="kipso-icon-plus-symbol" />
                     </a>
@@ -34,7 +34,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted On Jan 19"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-calendar-alt" />
                       </a>
@@ -42,7 +42,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="No Comments"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-comments" />
                       </a>
@@ -50,7 +50,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted By Admin"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-user" />
                       </a>
@@ -73,7 +73,7 @@ function News() {
               <div className="col-lg-4">
                 <div className="blog-one__single">
                   <div className="blog-one__image">
-                    <img src=" /images/blog-1-2.jpg" alt />
+                    <img src=" /images/blog-1-2.jpg" alt={"img"} />
                     <a className="blog-one__plus" href="news-details.html">
                       <i className="kipso-icon-plus-symbol" />
                     </a>
@@ -84,7 +84,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted On Jan 19"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-calendar-alt" />
                       </a>
@@ -92,7 +92,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="No Comments"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-comments" />
                       </a>
@@ -100,7 +100,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted By Admin"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-user" />
                       </a>
@@ -123,7 +123,7 @@ function News() {
               <div className="col-lg-4">
                 <div className="blog-one__single">
                   <div className="blog-one__image">
-                    <img src=" /images/blog-1-3.jpg" alt />
+                    <img src=" /images/blog-1-3.jpg" alt={"img"} />
                     <a className="blog-one__plus" href="news-details.html">
                       <i className="kipso-icon-plus-symbol" />
                     </a>
@@ -134,7 +134,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted On Jan 19"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-calendar-alt" />
                       </a>
@@ -142,7 +142,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="No Comments"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-comments" />
                       </a>
@@ -150,7 +150,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted By Admin"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-user" />
                       </a>
@@ -173,7 +173,7 @@ function News() {
               <div className="col-lg-4">
                 <div className="blog-one__single">
                   <div className="blog-one__image">
-                    <img src=" /images/blog-1-4.jpg" alt />
+                    <img src=" /images/blog-1-4.jpg" alt={"img"} />
                     <a className="blog-one__plus" href="news-details.html">
                       <i className="kipso-icon-plus-symbol" />
                     </a>
@@ -184,7 +184,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted On Jan 19"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-calendar-alt" />
                       </a>
@@ -192,7 +192,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="No Comments"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-comments" />
                       </a>
@@ -200,7 +200,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted By Admin"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-user" />
                       </a>
@@ -223,7 +223,7 @@ function News() {
               <div className="col-lg-4">
                 <div className="blog-one__single">
                   <div className="blog-one__image">
-                    <img src=" /images/blog-1-5.jpg" alt />
+                    <img src=" /images/blog-1-5.jpg" alt={"img"} />
                     <a className="blog-one__plus" href="news-details.html">
                       <i className="kipso-icon-plus-symbol" />
                     </a>
@@ -234,7 +234,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted On Jan 19"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-calendar-alt" />
                       </a>
@@ -242,7 +242,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="No Comments"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-comments" />
                       </a>
@@ -250,7 +250,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted By Admin"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-user" />
                       </a>
@@ -273,7 +273,7 @@ function News() {
               <div className="col-lg-4">
                 <div className="blog-one__single">
                   <div className="blog-one__image">
-                    <img src=" /images/blog-1-6.jpg" alt />
+                    <img src=" /images/blog-1-6.jpg" alt={"img"} />
                     <a className="blog-one__plus" href="news-details.html">
                       <i className="kipso-icon-plus-symbol" />
                     </a>
@@ -284,7 +284,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted On Jan 19"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-calendar-alt" />
                       </a>
@@ -292,7 +292,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="No Comments"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-comments" />
                       </a>
@@ -300,7 +300,7 @@ function News() {
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Posted By Admin"
-                        href="#"
+                        href="/"
                       >
                         <i className="fa fa-user" />
                       </a>
@@ -322,16 +322,16 @@ function News() {
               </div>
             </div>
             <div className="post-pagination">
-              <a href="#">
+              <a href="/">
                 <i className="fa fa-angle-double-left" />
               </a>
-              <a className="active" href="#">
+              <a className="active" href="/">
                 1
               </a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">
+              <a href="/">2</a>
+              <a href="/">3</a>
+              <a href="/">4</a>
+              <a href="/">
                 <i className="fa fa-angle-double-right" />
               </a>
             </div>

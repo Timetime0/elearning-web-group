@@ -3,7 +3,11 @@ import CountUp from "react-countup";
 function StartOnline() {
   return (
     <section className="cta-six thm-gray-bg">
-      <img src="/images/line-stripe-2.png" className="cta-six__line" alt />
+      <img
+        src="/images/line-stripe-2.png"
+        className="cta-six__line"
+        alt={"img"}
+      />
       <div className="container-fluid clearfix">
         <div className="cta-six__left">
           <div className="cta-six__content">
@@ -12,11 +16,11 @@ function StartOnline() {
                 Start online learning anything
               </h2>
             </div>
-            <img src="/images/fact-1-1.jpg" alt />
+            <img src="/images/fact-1-1.jpg" alt={"img"} />
           </div>
         </div>
         <div className="cta-six__right">
-          <img src="/images/fact-1-2.jpg" alt />
+          <img src="/images/fact-1-2.jpg" alt={"img"} />
           <h2 className="cta-six__title">
             More than{" "}
             <span className="counter">

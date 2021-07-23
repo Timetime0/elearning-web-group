@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+// import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../redux/types/CourseListType";
-import CourseFromList from "../../../pages/ClientPage/CourseList/CourseFromList";
-import { cleanup } from "@testing-library/react";
-import { GET_COURSE_FROM_LIST_TYPE_SAGA } from "../../../redux/types/GetCourseFromListType";
 
 function NavHeader(props) {
   // Lấy khóa học theo danh mục
-
-  const { list } = props;
 
   let listCourse = useSelector((state) => state.CourseReducer.courseList);
   const dispatch = useDispatch();
@@ -24,24 +19,56 @@ function NavHeader(props) {
   }, [dispatch]);
   const history = useHistory();
 
-  // Lấy khóa học từ danh mục khóa học
-  // let getList = useSelector((state) => state.CourseReducer.getCourse);
-
-  // let showList = listCourse.filter((listKey) => listKey.maDanhMuc);
   const detailList = (value) => {
     history.push("/course-from-list/" + value);
   };
 
-  // tạo liên kết bằng useHistory
-  const nextPath = () => {
-    history.push("/login");
+  // Hiển thị drop menu responsive
+  const [showMenu, setShowMenu] = useState(false);
+
+  const clickToShowMenu = () => {
+    setShowMenu((prev) => !prev);
   };
-  const nextPathSignUp = () => {
-    history.push("/register");
+  const showMenuRes = () => {
+    if (window.innerWidth > 1200) {
+      setShowMenu(false);
+    }
   };
 
+  // Hiển thị drop down sub menu
+
+  let dropDownSubMenu = document.getElementsByClassName("sub-menu");
+  let countSub = 1;
+  const clickToShowSubMenu = () => {
+    for (let i = 0; i < dropDownSubMenu.length; i++) {
+      if (countSub % 2 === 0) {
+        dropDownSubMenu[i].style.display = "none";
+        countSub++;
+      } else {
+        dropDownSubMenu[i].style.display = "block";
+        countSub++;
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Hiện nav khi scroll xuống
+    window.addEventListener("resize", showMenuRes);
+    // Xóa nav khi scroll lên cùng
+    return () => {
+      window.removeEventListener("resize", showMenuRes);
+    };
+  }, []);
+  // tạo liên kết bằng useHistory
+  // const nextPath = () => {
+  //   history.push("/login");
+  // };
+  // const nextPathSignUp = () => {
+  //   history.push("/register");
+  // };
+
   // Show navbar
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const controlNavbar = () => {
     if (window.scrollY > 200) {
       setShow(true);
@@ -63,8 +90,8 @@ function NavHeader(props) {
       <div className="topbar-one">
         <div className="container">
           <div className="topbar-one__left">
-            <a href="#">needhelp@kipso.com</a>
-            <a href="#">444 888 0000</a>
+            <a href="/">needhelp@kipso.com</a>
+            <a href="/">444 888 0000</a>
           </div>
           <div className="topbar-one__right">
             <Link to="/login">Login</Link>
@@ -90,14 +117,113 @@ function NavHeader(props) {
                 src="assets/images/logo-light.png"
                 className="main-logo"
                 width={128}
-                alt="Awesome Image"
+                alt={"img"}
               />
             </NavLink>
-            <button className="menu-toggler" data-target=".main-navigation">
+            <button
+              className="menu-toggler"
+              data-target=".main-navigation "
+              onClick={clickToShowMenu}
+            >
               <span className="kipso-icon-menu" />
             </button>
           </div>
-
+          {showMenu ? (
+            <div
+              className={`main-navigation showen ${showMenu && `showen`}`}
+              style={{ display: "block" }}
+            >
+              <ul className=" navigation-box">
+                <li className="current">
+                  <NavLink to="/">Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/">Pages</NavLink>
+                  <button
+                    className="sub-nav-toggler"
+                    onClick={clickToShowSubMenu}
+                  >
+                    {" "}
+                    <span className="sr-only">Toggle navigation</span>{" "}
+                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
+                    <span className="icon-bar" />{" "}
+                  </button>
+                  <ul className="sub-menu">
+                    <li>
+                      <Link to="/about">About Page</Link>
+                    </li>
+                    <li>
+                      <Link to="/gallery">Gallery</Link>
+                    </li>
+                    <li>
+                      <Link to="/pricing">Pricing Plans</Link>
+                    </li>
+                    <li>
+                      <Link to="/faq">FAQ'S</Link>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <NavLink to="/course-list" activeClassName="active">
+                    Courses
+                  </NavLink>
+                  <button
+                    className="sub-nav-toggler"
+                    onClick={clickToShowSubMenu}
+                  >
+                    {" "}
+                    <span className="sr-only">Toggle navigation</span>{" "}
+                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
+                    <span className="icon-bar" />{" "}
+                  </button>
+                  <ul className="sub-menu">
+                    {listCourse.map((list, index) => {
+                      return (
+                        <li key={index} style={{ cursor: "pointer" }}>
+                          <Link
+                            onClick={() => {
+                              detailList(list.maDanhMuc);
+                            }}
+                          >
+                            {list.tenDanhMuc}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+                <li>
+                  <NavLink to="/teacher">Teachers</NavLink>
+                  <button
+                    className="sub-nav-toggler"
+                    onClick={clickToShowSubMenu}
+                  >
+                    {" "}
+                    <span className="sr-only">Toggle navigation</span>{" "}
+                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
+                    <span className="icon-bar" />{" "}
+                  </button>
+                  <ul className="sub-menu">
+                    <li>
+                      <a href="/teachers">Teachers</a>
+                    </li>
+                    <li>
+                      <a href="/team-details">Teachers Details</a>
+                    </li>
+                    <li>
+                      <a href="/become-teacher">Become Teacher</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <NavLink to="/news">News</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/contact">Contact</NavLink>
+                </li>
+              </ul>
+            </div>
+          ) : null}
           <div className="main-navigation">
             <ul className=" navigation-box">
               <li className="current">
@@ -105,6 +231,7 @@ function NavHeader(props) {
               </li>
               <li>
                 <NavLink to="/">Pages</NavLink>
+
                 <ul className="sub-menu">
                   <li>
                     <Link to="/about">About Page</Link>
@@ -127,14 +254,14 @@ function NavHeader(props) {
                 <ul className="sub-menu">
                   {listCourse.map((list, index) => {
                     return (
-                      <li key={index} style={{cursor:"pointer"}}>
-                        <a
-                        onClick={() => {
-                              detailList(list.maDanhMuc);
-                            }}
-                          >
-                            {list.tenDanhMuc}
-                        </a>
+                      <li key={index} style={{ cursor: "pointer" }}>
+                        <Link
+                          onClick={() => {
+                            detailList(list.maDanhMuc);
+                          }}
+                        >
+                          {list.tenDanhMuc}
+                        </Link>
                       </li>
                     );
                   })}
@@ -144,13 +271,13 @@ function NavHeader(props) {
                 <NavLink to="/teacher">Teachers</NavLink>
                 <ul className="sub-menu">
                   <li>
-                    <a href="teachers.html">Teachers</a>
+                    <a href="/teachers">Teachers</a>
                   </li>
                   <li>
-                    <a href="team-details.html">Teachers Details</a>
+                    <a href="/team-details">Teachers Details</a>
                   </li>
                   <li>
-                    <a href="become-teacher.html">Become Teacher</a>
+                    <a href="/become-teacher">Become Teacher</a>
                   </li>
                 </ul>
               </li>

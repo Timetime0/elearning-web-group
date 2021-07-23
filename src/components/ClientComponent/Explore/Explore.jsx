@@ -25,7 +25,11 @@ function Explore() {
         </div>
       </section>
       <section className="course-one home-three">
-        <img src="/images/line-stripe.png" className="course-one__line" alt />
+        <img
+          src="/images/line-stripe.png"
+          className="course-one__line"
+          alt={"img"}
+        />
         <div className="container">
           <div className="course-one__carousel owl-carousel owl-theme">
             {course.map((course, index) => {

@@ -7,7 +7,7 @@ const initialState = {
   course: [],
   courseDetail: [],
   courseList: [],
-  getCourse:[],
+  getCourse: [],
 };
 
 const CourseReducer = (state = initialState, action) => {
@@ -16,15 +16,13 @@ const CourseReducer = (state = initialState, action) => {
       return { ...state, course: action.data };
     }
     case DETAIL_COURSE_SERVICES: {
-      console.log(action)
-      return { ...state, courseDetail: action.data};
-    
+      return { ...state, courseDetail: action.data };
     }
-    case COURSE_LIST_SERVICES:{
-      return { ...state, courseList: action.data};
+    case COURSE_LIST_SERVICES: {
+      return { ...state, courseList: action.data };
     }
-    case GET_COURSE_FROM_LIST_TYPE:{
-      return { ...state, getCourse:action.data}
+    case GET_COURSE_FROM_LIST_TYPE: {
+      return { ...state, getCourse: action.data };
     }
     default: {
       return state;

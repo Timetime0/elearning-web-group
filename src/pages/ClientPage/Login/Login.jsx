@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { LOGIN_SERVICE_SAGA } from "../../../redux/types/LoginType";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 
-import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+// import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
-const random = () => {
-  return Math.floor(Math.random() * 1050) + 100;
-};
+// const random = () => {
+//   return Math.floor(Math.random() * 1050) + 100;
+// };
 
 function Login(props) {
   const [, updateState] = React.useState();
@@ -21,6 +21,8 @@ function Login(props) {
     matKhau: "",
   });
 
+  const history = useHistory();
+  // console.log(history);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserLogin({
@@ -38,6 +40,7 @@ function Login(props) {
     dispatch({
       type: LOGIN_SERVICE_SAGA,
       user: userLogin,
+      history: history,
     });
   };
   return (
@@ -52,7 +55,7 @@ function Login(props) {
                     <img
                       className="logo-size"
                       src="images/logo-light.svg"
-                      alt
+                      alt={"img"}
                     />
                   </div>
                 </a>
@@ -95,9 +98,9 @@ function Login(props) {
               </form>
               <div className="other-links">
                 <span>Or login with</span>
-                <a href="#">Facebook</a>
-                <a href="#">Google</a>
-                <a href="#">Linkedin</a>
+                <Link to="/">Facebook</Link>
+                <Link to="/">Google</Link>
+                <Link to="/">Linkedin</Link>
               </div>
             </div>
           </div>

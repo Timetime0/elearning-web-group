@@ -183,7 +183,7 @@
     transition: background 0.4s ease 0s;
   }
 
-  .header-navigation ul.navigation-box li a .sub-nav-toggler {
+  .sub-nav-toggler {
     background-color: transparent;
     background-image: none;
     border: 1px solid #fff;

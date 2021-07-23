@@ -6,34 +6,34 @@ function OurCompany() {
       <div className="container">
         <div className="brand-one__carousel owl-carousel owl-theme">
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
           <div className="item">
-            <img src="/images/brand-1-1.png" alt />
+            <img src="/images/brand-1-1.png" alt={"img"} />
           </div>
         </div>
       </div>

@@ -29,7 +29,11 @@ function FindOut() {
             <div className="row">
               <div className="col-lg-12">
                 <div className="video-three__image">
-                  <img src="/images/fact-2-1.jpg" className="img-fluid" alt />
+                  <img
+                    src="/images/fact-2-1.jpg"
+                    className="img-fluid"
+                    alt={"img"}
+                  />
                 </div>
               </div>
             </div>
@@ -42,7 +46,7 @@ function FindOut() {
                 students
               </h2>
               <div className="video-three__btn-box">
-                <a href="#" className="video-three__popup">
+                <a href="/" className="video-three__popup">
                   <i className="fas fa-play" />
                 </a>
               </div>

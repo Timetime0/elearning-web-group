@@ -16,7 +16,7 @@ import "../../assets/css/iofrm-theme10.css";
 // <!-- template styles -->
 import "../../assets/css/style.css";
 import "../../assets/css/responsive.css";
-import SearchPopUp from "../../components/ClientComponent/SearchPopup/SearchPopUp";
+// import SearchPopUp from "../../components/ClientComponent/SearchPopup/SearchPopUp";
 
 function TemplateClient(props) {
   const { Component } = props;
@@ -28,6 +28,7 @@ function TemplateClient(props) {
         </header>
         <main>
           <Component />
+          {/* <SearchPopUp /> */}
         </main>
         <footer>
           <Footer />

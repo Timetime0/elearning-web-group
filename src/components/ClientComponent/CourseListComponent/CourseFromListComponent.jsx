@@ -1,23 +1,48 @@
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
 
 function CourseFromListComponent(props) {
+  const history = useHistory();
+  const { list } = props;
+  const detailCourse = () => {
+    history.push("/course-details/" + list.maKhoaHoc);
+  };
   return (
     <div className="col-lg-4">
       <div className="course-one__single">
-        <div className="course-one__image">
-          <img src={props.list.hinhAnh} alt="hình ảnh" />
-          <i className="far fa-heart" />
-        </div>
+        <Link
+          onClick={() => {
+            detailCourse();
+          }}
+        >
+          <div className="course-one__image">
+            <img src={props.list.hinhAnh} alt={"img"} />
+            <i className="far fa-heart" />
+          </div>
+        </Link>
+
         <div className="course-one__content">
-          <a href="#" className="course-one__category">
+          <Link
+            onClick={() => {
+              detailCourse();
+            }}
+            className="course-one__category"
+          >
             {props.list.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
-          </a>
+          </Link>
           <div className="course-one__admin">
-            <img src="/images/team-1-2.jpg" alt="true" />
-            by <a href="teacher-details.html">Họ tên người tạo</a>
+            <img src="/images/team-1-2.jpg" alt={"img"} />
+            by <a href="teacher-details.html">{props.list.nguoiTao?.hoTen}</a>
           </div>
           <h2 className="course-one__title">
-            <a> {props.list.tenKhoaHoc}</a>
+            <Link
+              onClick={() => {
+                detailCourse();
+              }}
+            >
+              {" "}
+              {props.list.tenKhoaHoc}
+            </Link>
           </h2>
 
           <div className="course-one__stars">
@@ -40,7 +65,14 @@ function CourseFromListComponent(props) {
             </a>
             <a href="course-details.html">$18</a>
           </div>
-          <a className="course-one__link">See Preview</a>
+          <Link
+            className="course-one__link"
+            onClick={() => {
+              detailCourse();
+            }}
+          >
+            See Preview
+          </Link>
         </div>
       </div>
     </div>

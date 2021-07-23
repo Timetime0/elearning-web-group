@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { LOGIN_ADMIN_SERVICE_SAGA } from "../../../redux/types/AdminType/LoginAdminType";
 
 function LoginAdmin() {
@@ -24,12 +25,13 @@ function LoginAdmin() {
     //trễ 1 nhịp
     console.log(adminLogin);
   };
-
+  const history = useHistory();
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch({
       type: LOGIN_ADMIN_SERVICE_SAGA,
       user: adminLogin,
+      history: history,
     });
   };
 

@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
 
 function Footer() {
   return (
@@ -19,10 +18,7 @@ function Footer() {
                   </li>
                   <li>
                     <h2>
-                      <a href="course-details.html">
-                        {" "}
-                        Learning MBA Management{" "}
-                      </a>
+                      <a href="/course-details"> Learning MBA Management </a>
                     </h2>
                     <p>Jessica Brown</p>
                   </li>
@@ -35,30 +31,30 @@ function Footer() {
                 <div className="footer-widget__link-wrap">
                   <ul className="list-unstyled footer-widget__link-list">
                     <li>
-                      <a href="#">About</a>
+                      <a href="/">About</a>
                     </li>
                     <li>
-                      <a href="#">Overview</a>
+                      <a href="/">Overview</a>
                     </li>
                     <li>
-                      <a href="#">Teachers</a>
+                      <a href="/">Teachers</a>
                     </li>
                     <li>
-                      <a href="#">Join Us</a>
+                      <a href="/">Join Us</a>
                     </li>
                     <li>
-                      <a href="#">Our News</a>
+                      <a href="/">Our News</a>
                     </li>
                   </ul>
                   <ul className="list-unstyled footer-widget__link-list">
                     <li>
-                      <a href="#">Help </a>
+                      <a href="/">Help </a>
                     </li>
                     <li>
-                      <a href="#">Contact</a>
+                      <a href="/">Contact</a>
                     </li>
                     <li>
-                      <a href="#">Register Now</a>
+                      <a href="/">Register Now</a>
                     </li>
                   </ul>
                 </div>
@@ -69,33 +65,33 @@ function Footer() {
                 <h2 className="footer-widget__title">Gallery</h2>
                 <ul className="list-unstyled footer-widget__gallery-list">
                   <li>
-                    <a href="#">
-                      <img src="assets/images/footer-1-1.png" alt />
+                    <a href="/">
+                      <img src="assets/images/footer-1-1.png" alt={"img"} />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <img src="assets/images/footer-1-2.png" alt />
+                    <a href="/">
+                      <img src="assets/images/footer-1-2.png" alt={"img"} />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <img src="assets/images/footer-1-3.png" alt />
+                    <a href="/">
+                      <img src="assets/images/footer-1-3.png" alt={"img"} />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <img src="assets/images/footer-1-4.png" alt />
+                    <a href="/">
+                      <img src="assets/images/footer-1-4.png" alt={"img"} />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <img src="assets/images/footer-1-5.png" alt />
+                    <a href="/">
+                      <img src="assets/images/footer-1-5.png" alt={"img"} />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <img src="assets/images/footer-1-6.png" alt />
+                    <a href="/">
+                      <img src="assets/images/footer-1-6.png" alt={"img"} />
                     </a>
                   </li>
                 </ul>
@@ -109,10 +105,10 @@ function Footer() {
                   Phasellus vehic sagittis euismod.
                 </p>
                 <div className="footer-widget__btn-block">
-                  <a href="#" className="thm-btn">
+                  <a href="/" className="thm-btn">
                     Contact
                   </a>
-                  <a href="#" className="thm-btn">
+                  <a href="/" className="thm-btn">
                     Purchase
                   </a>
                 </div>
@@ -124,26 +120,26 @@ function Footer() {
       <div className="site-footer__bottom">
         <div className="container">
           <p className="site-footer__copy">
-            © Copyright 2019 by <a href="#">Layerdrops.com</a>
+            © Copyright 2019 by <a href="/">Layerdrops.com</a>
           </p>
           <div className="site-footer__social">
             <a
-              href="#"
+              href="/"
               data-target="html"
               className="scroll-to-target site-footer__scroll-top"
             >
               <i className="kipso-icon-top-arrow" />
             </a>
-            <a href="#">
+            <a href="/">
               <i className="fab fa-twitter" />
             </a>
-            <a href="#">
+            <a href="/">
               <i className="fab fa-facebook-square" />
             </a>
-            <a href="#">
+            <a href="/">
               <i className="fab fa-pinterest-p" />
             </a>
-            <a href="#">
+            <a href="/">
               <i className="fab fa-instagram" />
             </a>
           </div>

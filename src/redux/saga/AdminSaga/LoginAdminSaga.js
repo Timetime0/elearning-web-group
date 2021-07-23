@@ -23,8 +23,14 @@ function* getLoginAdminApi(action) {
           icon: "success",
           title: "Đăng nhập thành công",
         });
-        // action.history.push("/admin/dashboard");
-        // <Redirect to="/" />;
+        setTimeout(() => {
+          action.history.push("/admin/dashboard");
+        }, 2000);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Tài khoản hoặc mật khẩu không chính xác!",
+        });
       }
     }
   } catch (e) {

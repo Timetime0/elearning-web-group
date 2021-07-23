@@ -21,16 +21,16 @@ function Student() {
                       </div>
                       <div className="team-tab__right">
                         <div className="team-tab__social">
-                          <a href="#">
+                          <a href="/">
                             <i className="fab fa-twitter" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <i className="fab fa-facebook-square" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <i className="fab fa-pinterest-p" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <i className="fab fa-instagram" />
                           </a>
                         </div>
@@ -88,14 +88,14 @@ function Student() {
                         </div>
                       </div>
                     </div>
-                    <a href="#" className="thm-btn team-tab__btn">
+                    <a href="/" className="thm-btn team-tab__btn">
                       Learn More
                     </a>
                   </div>
                 </div>
               </div>
               <div className="col-lg-6">
-                <img src="/images/teacher-h3-1-1.jpg" alt />
+                <img src="/images/teacher-h3-1-1.jpg" alt={"img"} />
               </div>
             </div>
           </div>
@@ -115,16 +115,16 @@ function Student() {
                       </div>
                       <div className="team-tab__right">
                         <div className="team-tab__social">
-                          <a href="#">
+                          <a href="/">
                             <i className="fab fa-twitter" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <i className="fab fa-facebook-square" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <i className="fab fa-pinterest-p" />
                           </a>
-                          <a href="#">
+                          <a href="/">
                             <i className="fab fa-instagram" />
                           </a>
                         </div>
@@ -182,14 +182,14 @@ function Student() {
                         </div>
                       </div>
                     </div>
-                    <a href="#" className="thm-btn team-tab__btn">
+                    <a href="/" className="thm-btn team-tab__btn">
                       Learn More
                     </a>
                   </div>
                 </div>
               </div>
               <div className="col-lg-6">
-                <img src="/images/teacher-h3-1-2.jpg" alt />
+                <img src="/images/teacher-h3-1-2.jpg" alt={"img"} />
               </div>
             </div>
           </div>
@@ -199,13 +199,13 @@ function Student() {
           role="tablist"
         >
           <li>
-            <a className="active" role="tab" data-toggle="tab" href="#overview">
-              <img src="/images/team-1-1.jpg" alt />
+            <a className="active" role="tab" data-toggle="tab" href="/overview">
+              <img src="/images/team-1-1.jpg" alt={"img"} />
             </a>
           </li>
           <li>
-            <a className role="tab" data-toggle="tab" href="#curriculum">
-              <img src="/images/team-1-2.jpg" alt />
+            <a className role="tab" data-toggle="tab" href="/curriculum">
+              <img src="/images/team-1-2.jpg" alt={"img"} />
             </a>
           </li>
         </ul>
