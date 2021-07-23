@@ -24,18 +24,14 @@ function NavHeader(props) {
   };
 
   // Hiển thị drop menu responsive
+  const [showMenu, setShowMenu] = useState(false);
 
-  let dropDown = document.getElementsByClassName("main-navigation");
-  let count = 1;
   const clickToShowMenu = () => {
-    for (let i = 0; i < dropDown.length; i++) {
-      if (count % 2 === 0) {
-        dropDown[i].style.display = "none";
-        count++;
-      } else {
-        dropDown[i].style.display = "block";
-        count++;
-      }
+    setShowMenu((prev) => !prev);
+  };
+  const showMenuRes = () => {
+    if (window.innerWidth > 1200) {
+      setShowMenu(false);
     }
   };
 
@@ -55,6 +51,14 @@ function NavHeader(props) {
     }
   };
 
+  useEffect(() => {
+    // Hiện nav khi scroll xuống
+    window.addEventListener("resize", showMenuRes);
+    // Xóa nav khi scroll lên cùng
+    return () => {
+      window.removeEventListener("resize", showMenuRes);
+    };
+  }, []);
   // tạo liên kết bằng useHistory
   // const nextPath = () => {
   //   history.push("/login");
@@ -124,14 +128,17 @@ function NavHeader(props) {
               <span className="kipso-icon-menu" />
             </button>
           </div>
-          <div className="main-navigation">
-            <ul className=" navigation-box">
-              <li className="current">
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/">
-                  Pages
+          {showMenu ? (
+            <div
+              className={`main-navigation showen ${showMenu && `showen`}`}
+              style={{ display: "block" }}
+            >
+              <ul className=" navigation-box">
+                <li className="current">
+                  <NavLink to="/">Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/">Pages</NavLink>
                   <button
                     className="sub-nav-toggler"
                     onClick={clickToShowSubMenu}
@@ -141,7 +148,89 @@ function NavHeader(props) {
                     <span className="icon-bar" /> <span className="icon-bar" />{" "}
                     <span className="icon-bar" />{" "}
                   </button>
-                </NavLink>
+                  <ul className="sub-menu">
+                    <li>
+                      <Link to="/about">About Page</Link>
+                    </li>
+                    <li>
+                      <Link to="/gallery">Gallery</Link>
+                    </li>
+                    <li>
+                      <Link to="/pricing">Pricing Plans</Link>
+                    </li>
+                    <li>
+                      <Link to="/faq">FAQ'S</Link>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <NavLink to="/course-list" activeClassName="active">
+                    Courses
+                  </NavLink>
+                  <button
+                    className="sub-nav-toggler"
+                    onClick={clickToShowSubMenu}
+                  >
+                    {" "}
+                    <span className="sr-only">Toggle navigation</span>{" "}
+                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
+                    <span className="icon-bar" />{" "}
+                  </button>
+                  <ul className="sub-menu">
+                    {listCourse.map((list, index) => {
+                      return (
+                        <li key={index} style={{ cursor: "pointer" }}>
+                          <Link
+                            onClick={() => {
+                              detailList(list.maDanhMuc);
+                            }}
+                          >
+                            {list.tenDanhMuc}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+                <li>
+                  <NavLink to="/teacher">Teachers</NavLink>
+                  <button
+                    className="sub-nav-toggler"
+                    onClick={clickToShowSubMenu}
+                  >
+                    {" "}
+                    <span className="sr-only">Toggle navigation</span>{" "}
+                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
+                    <span className="icon-bar" />{" "}
+                  </button>
+                  <ul className="sub-menu">
+                    <li>
+                      <a href="/teachers">Teachers</a>
+                    </li>
+                    <li>
+                      <a href="/team-details">Teachers Details</a>
+                    </li>
+                    <li>
+                      <a href="/become-teacher">Become Teacher</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <NavLink to="/news">News</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/contact">Contact</NavLink>
+                </li>
+              </ul>
+            </div>
+          ) : null}
+          <div className="main-navigation">
+            <ul className=" navigation-box">
+              <li className="current">
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/">Pages</NavLink>
 
                 <ul className="sub-menu">
                   <li>
@@ -161,15 +250,6 @@ function NavHeader(props) {
               <li>
                 <NavLink to="/course-list" activeClassName="active">
                   Courses
-                  <button
-                    className="sub-nav-toggler"
-                    onClick={clickToShowSubMenu}
-                  >
-                    {" "}
-                    <span className="sr-only">Toggle navigation</span>{" "}
-                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
-                    <span className="icon-bar" />{" "}
-                  </button>
                 </NavLink>
                 <ul className="sub-menu">
                   {listCourse.map((list, index) => {
@@ -188,18 +268,7 @@ function NavHeader(props) {
                 </ul>
               </li>
               <li>
-                <NavLink to="/teacher">
-                  Teachers
-                  <button
-                    className="sub-nav-toggler"
-                    onClick={clickToShowSubMenu}
-                  >
-                    {" "}
-                    <span className="sr-only">Toggle navigation</span>{" "}
-                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
-                    <span className="icon-bar" />{" "}
-                  </button>
-                </NavLink>
+                <NavLink to="/teacher">Teachers</NavLink>
                 <ul className="sub-menu">
                   <li>
                     <a href="/teachers">Teachers</a>

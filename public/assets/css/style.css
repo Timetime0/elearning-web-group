@@ -412,8 +412,8 @@ a:visited {
   list-style: none;
 }
 
-.header-navigation ul.navigation-box li a .sub-nav-toggler {
-  display: none;
+.sub-nav-toggler {
+  /* display: none; */
 }
 
 .header-navigation ul.navigation-box>li {
