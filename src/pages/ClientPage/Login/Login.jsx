@@ -32,7 +32,6 @@ function Login(props) {
 
     forceUpdate();
     //trễ 1 nhịp
-    console.log(userLogin);
   };
 
   const handleLogin = (e) => {

@@ -5,21 +5,26 @@ import Swal from "sweetalert2";
 
 function* getLoginApi(action) {
   try {
-    console.log(action);
     let res = yield call(() => {
       return LoginService(action.user);
     });
-    console.log(res);
     // popup
     if (res.status === 200) {
-      localStorage.setItem("user", JSON.stringify(res.data));
-      Swal.fire({
-        icon: "success",
-        title: "Đăng nhập thành công",
-      });
-      setTimeout(() => {
-        action.history.push("/");
-      }, 2000);
+      if (res.data.maLoaiNguoiDung === "GV") {
+        Swal.fire({
+          icon: "error",
+          title: "Vui lòng đăng nhập bằng tài khoản người dùng",
+        });
+      } else {
+        localStorage.setItem("user", JSON.stringify(res.data));
+        Swal.fire({
+          icon: "success",
+          title: "Đăng nhập thành công",
+        });
+        setTimeout(() => {
+          action.history.push("/");
+        }, 2000);
+      }
 
       yield put({
         type: LOGIN_SERVICE,

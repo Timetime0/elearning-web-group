@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../redux/types/CourseListType";
+import Appbar from "./Appbar";
 
 function NavHeader(props) {
   // Lấy khóa học theo danh mục
@@ -85,21 +86,27 @@ function NavHeader(props) {
     };
   }, []);
 
+  // Show menu sau đăng nhập:
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <header className="site-header site-header__home-three ">
-      <div className="topbar-one">
-        <div className="container">
-          <div className="topbar-one__left">
-            <a href="/">needhelp@kipso.com</a>
-            <a href="/">444 888 0000</a>
-          </div>
-          <div className="topbar-one__right">
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+      {user?.maLoaiNguoiDung === "HV" ? (
+        <Appbar />
+      ) : (
+        <div className="topbar-one">
+          <div className="container">
+            <div className="topbar-one__left">
+              <a href="mailto:quanlydaotao@ou.edu.vn">quanlydaotao@ou.edu.vn</a>
+              <a href="/">(028) 39300072</a>
+            </div>
+            <div className="topbar-one__right">
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </div>
           </div>
         </div>
-      </div>
-
+      )}
       <nav
         className={` navbar navbar-expand-lg navbar-light header-navigation stricky ${
           show && `stricked-menu stricky-fixed`
@@ -107,9 +114,9 @@ function NavHeader(props) {
       >
         <div className="container clearfix">
           <div className="logo-box clearfix">
-            <NavLink
+            <a
               className="navbar-brand"
-              to="/"
+              href="/"
               exact={true}
               activeClassName="active"
             >
@@ -119,7 +126,7 @@ function NavHeader(props) {
                 width={128}
                 alt={"img"}
               />
-            </NavLink>
+            </a>
             <button
               className="menu-toggler"
               data-target=".main-navigation "
@@ -135,7 +142,7 @@ function NavHeader(props) {
             >
               <ul className=" navigation-box">
                 <li className="current">
-                  <NavLink to="/">Home</NavLink>
+                  <a href="/">Home</a>
                 </li>
                 <li>
                   <NavLink to="/">Pages</NavLink>
@@ -227,7 +234,7 @@ function NavHeader(props) {
           <div className="main-navigation">
             <ul className=" navigation-box">
               <li className="current">
-                <NavLink to="/">Home</NavLink>
+                <a href="/">Home</a>
               </li>
               <li>
                 <NavLink to="/">Pages</NavLink>
