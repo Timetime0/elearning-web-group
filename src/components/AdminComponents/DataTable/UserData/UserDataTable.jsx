@@ -53,9 +53,10 @@ export default function UserDataTable(props) {
   // );
 
   // Search data
-  let arrTest: [];
+  // let arrTest: [];
   const { checkboxSelection } = props;
   console.log(checkboxSelection);
+  
   for (let item in arrTest) {
     if (checkboxSelection.checked) {
       arrTest.push(...item);
