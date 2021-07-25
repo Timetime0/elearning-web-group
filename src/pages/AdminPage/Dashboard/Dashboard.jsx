@@ -168,7 +168,7 @@ function DashBoard(props) {
               variant="temporary"
               open={mobileOpen}
               onClose={handleDrawerToggle}
-            />
+            ></Navigator>
           </Hidden>
           <Hidden xsDown implementation="css">
             <Navigator PaperProps={{ style: { width: drawerWidth } }} />

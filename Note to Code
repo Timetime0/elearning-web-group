@@ -300,3 +300,21 @@ _ Tạo popup addUser
 ********** chưa đăng ký được khóa học
 ********** Chưa làm được tìm kiếm khóa học 
 ********** Chưa làm được thêm xóa sửa user
+
+
+#Ngày 24/7/2021 Chun: 
+_ Tạo Navbar cho user sau khi đăng nhập
+=> fix lỗi tài khoản GV chỉ đăng nhập được trang admin
+_ Tạo popup addCourse 
+********** chưa đăng ký được khóa học
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa làm được thêm xóa sửa user
+
+
+
+#Ngày 25/7/2021 Chun: 
+_ Add event add user 
+_ Add event add course 
+********** chưa đăng ký được khóa học
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa làm được thêm xóa sửa user

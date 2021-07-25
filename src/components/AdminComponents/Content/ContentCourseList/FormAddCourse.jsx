@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { ADD_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
-import "./FormStyle.css";
-function FormAdduser(props) {
+import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
+import "../ContentUserList/FormStyle.css";
+function FromAddCourse(props) {
   const { showPopUp, setShowPopUp } = props;
   // close popup add user
   // Show alert to close menu
@@ -44,89 +45,87 @@ function FormAdduser(props) {
       });
   };
 
-  // function add user
+  // Get API danh mục khóa học
+
+  let listCourse = useSelector((state) => state.CourseReducer.courseList);
   const dispatch = useDispatch();
 
-  let [userRes, setUserRes] = useState({
-    taiKhoan: "",
-    matKhau: "",
-    hoTen: "",
-    soDT: "",
-    maLoaiNguoiDung: "",
+  useEffect(() => {
+    dispatch({
+      type: COURSE_LIST_SERVICES_SAGA,
+    });
+  }, [dispatch]);
+
+  // Get user form localStorage
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  // function add course
+
+  let [courseRes, setCourseRes] = useState({
+    maKhoaHoc: "",
+    tenKhoaHoc: "",
+    moTa: "",
+    luotXem: 0,
+    danhGia: 0,
+    hinhAnh: "",
     maNhom: "",
-    email: "",
+    ngayTao: "",
+    maDanhMucKhoaHoc: "",
+    taiKhoanNguoiTao: `${user.taiKhoan}`,
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserRes({
-      ...userRes,
+    setCourseRes({
+      ...courseRes,
       [name]: value,
     });
+    console.log(courseRes);
   };
   const onSubmitRes = (event) => {
     event.preventDefault();
     dispatch({
-      type: ADD_USER_SAGA,
-      user: userRes,
+      // type: ADD_USER_SAGA,
+      course: courseRes,
     });
   };
+
   return (
     <div>
       {showPopUp ? (
-        <div className={`admin_for ${showPopUp && `in_animation`}`}>
+        <div className={`admin_for ${showPopUp && `in_animation_course`}`}>
           <div className="form_container">
-            <div className="title">Add User</div>
+            <div className="title">Add Course</div>
             <div className="content">
               <form onSubmit={(event) => onSubmitRes(event)} method="POST">
                 <div className="user-details">
                   <div className="input-box">
-                    <span className="details">Họ Tên</span>
+                    <span className="details">Tên Khóa Học</span>
                     <input
-                      name="hoTen"
+                      name="tenKhoaHoc"
                       type="text"
-                      placeholder="Nhập họ tên User..."
-                      onChange={(e) => handleChange(e)}
+                      placeholder="Nhập tên khóa học..."
                       required
+                      onChange={(e) => handleChange(e)}
                     />
                   </div>
                   <div className="input-box">
-                    <span className="details">Tài Khoản</span>
+                    <span className="details">Mã Khóa Học</span>
                     <input
-                      name="taiKhoan"
+                      name="maKhoaHoc"
                       type="text"
-                      placeholder="Nhập tài khoản User..."
-                      onChange={(e) => handleChange(e)}
+                      placeholder="Nhập mã khóa học..."
                       required
+                      onChange={(e) => handleChange(e)}
                     />
                   </div>
                   <div className="input-box">
-                    <span className="details">Email</span>
+                    <span className="details">Ngày tạo</span>
                     <input
-                      name="email"
-                      type="text"
-                      placeholder="Nhập email user..."
-                      onChange={(e) => handleChange(e)}
+                      type="date"
+                      name="ngayTao"
                       required
-                    />
-                  </div>
-                  <div className="input-box">
-                    <span className="details">Điện Thoại</span>
-                    <input
-                      name="soDT"
-                      type="text"
-                      placeholder="Nhập điện thoại User..."
                       onChange={(e) => handleChange(e)}
-                      required
-                    />
-                  </div>
-                  <div className="input-box">
-                    <span className="details">Mật Khẩu</span>
-                    <input
-                      name="matKhau"
-                      type="text"
-                      placeholder="Nhập mật khẩu User..."
-                      onChange={(e) => handleChange(e)}
-                      required
                     />
                   </div>
                   <div className="input-box">
@@ -136,7 +135,6 @@ function FormAdduser(props) {
                       id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
-                      value="GP01"
                     >
                       <option value="GP01" onChange={(e) => handleChange(e)}>
                         GP01
@@ -185,38 +183,62 @@ function FormAdduser(props) {
                       </option>
                     </select>
                   </div>
-                </div>
-                <div className="gender-details">
-                  <input
-                    type="radio"
-                    name="maLoaiNguoiDung"
-                    id="dot-1"
-                    value="GV"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <input
-                    type="radio"
-                    name="maLoaiNguoiDung"
-                    id="dot-2"
-                    value="HV"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <span className="gender-title">Mã Loại Người Dùng</span>
-                  <div className="category">
-                    <label htmlFor="dot-1">
-                      <span className="dot one" />
-                      <span className="gender">GV</span>
-                    </label>
-                    <label htmlFor="dot-2">
-                      <span className="dot two" />
-                      <span className="gender">HV</span>
-                    </label>
+                  <div className="input-box">
+                    <span className="details">Mã Danh Mục Khóa Học</span>
+                    <select
+                      name="maDanhMucKhoaHoc"
+                      id="id"
+                      className="select_group"
+                      onChange={(e) => handleChange(e)}
+                    >
+                      {listCourse.map((list, index) => {
+                        return (
+                          <option
+                            value={list.maDanhMuc}
+                            onChange={(e) => handleChange(e)}
+                          >
+                            {list.maDanhMuc}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div className="input-box">
+                    <span className="details">Tài Khoản Người Tạo</span>
+                    <input
+                      name="taiKhoanNguoiTao"
+                      type="text"
+                      placeholder="Nhập mã khóa học..."
+                      value={user.taiKhoan}
+                      disabled
+                    />
+                  </div>
+                  <div className="input-box">
+                    <span className="details">Hình Ảnh</span>
+                    <input
+                      name="hinhAnh"
+                      type="file"
+                      required
+                      className="input_uploadImages"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <span className="details">Mô Tả</span>
+
+                    <textarea
+                      className="form_description"
+                      placeholder="Nhập mô tả...."
+                      type="text"
+                      name="moTa"
+                      onChange={(e) => handleChange(e)}
+                      required
+                    />
                   </div>
                 </div>
+
                 <div className="button">
-                  <button className="button_submit" onClick={onSubmitRes}>
-                    Add
-                  </button>
+                  <input type="submit" defaultValue="Add" />
                   <button className="button_close" onClick={btnClose}>
                     Cancle
                   </button>
@@ -230,4 +252,4 @@ function FormAdduser(props) {
   );
 }
 
-export default FormAdduser;
+export default FromAddCourse;

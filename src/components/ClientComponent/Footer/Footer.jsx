@@ -1,5 +1,4 @@
 import React from "react";
-
 function Footer() {
   return (
     <footer className="site-footer">
@@ -31,19 +30,19 @@ function Footer() {
                 <div className="footer-widget__link-wrap">
                   <ul className="list-unstyled footer-widget__link-list">
                     <li>
-                      <a href="/">About</a>
+                      <a href="/about">About</a>
                     </li>
                     <li>
                       <a href="/">Overview</a>
                     </li>
                     <li>
-                      <a href="/">Teachers</a>
+                      <a href="/teacher">Teachers</a>
                     </li>
                     <li>
                       <a href="/">Join Us</a>
                     </li>
                     <li>
-                      <a href="/">Our News</a>
+                      <a href="/our-news">Our News</a>
                     </li>
                   </ul>
                   <ul className="list-unstyled footer-widget__link-list">
@@ -51,10 +50,10 @@ function Footer() {
                       <a href="/">Help </a>
                     </li>
                     <li>
-                      <a href="/">Contact</a>
+                      <a href="/contact">Contact</a>
                     </li>
                     <li>
-                      <a href="/">Register Now</a>
+                      <a href="/register">Register Now</a>
                     </li>
                   </ul>
                 </div>
@@ -120,8 +119,10 @@ function Footer() {
       <div className="site-footer__bottom">
         <div className="container">
           <p className="site-footer__copy">
-            © Copyright 2019 by <a href="/">Layerdrops.com</a>
+            <a href="mailto:quanlydaotao@ou.edu.vn">quanlydaotao@ou.edu.vn</a>
+            <a href="/">(028) 39300072</a>
           </p>
+
           <div className="site-footer__social">
             <a
               href="/"
