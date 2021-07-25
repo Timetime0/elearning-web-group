@@ -190,7 +190,8 @@ form .button input {
 
 }
 
-.button_close {
+.button_close,
+.button_submit {
     height: 100%;
     width: 100%;
     border-radius: 5px;
@@ -206,7 +207,13 @@ form .button input {
     margin: 0 10px;
 }
 
-form .button input:hover {
+.button_submit {
+    background: #0389D2;
+}
+
+
+
+form .button .button_submit:hover {
     /* transform: scale(0.99); */
     background: #01436b;
 }

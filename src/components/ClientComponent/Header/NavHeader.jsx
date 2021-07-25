@@ -145,7 +145,7 @@ function NavHeader(props) {
                   <a href="/">Home</a>
                 </li>
                 <li>
-                  <NavLink to="/">Pages</NavLink>
+                  <a href="/">Pages</a>
                   <button
                     className="sub-nav-toggler"
                     onClick={clickToShowSubMenu}
@@ -157,7 +157,7 @@ function NavHeader(props) {
                   </button>
                   <ul className="sub-menu">
                     <li>
-                      <Link to="/about">About Page</Link>
+                      <Link to="/about">About</Link>
                     </li>
                     <li>
                       <Link to="/gallery">Gallery</Link>
@@ -212,10 +212,7 @@ function NavHeader(props) {
                   </button>
                   <ul className="sub-menu">
                     <li>
-                      <a href="/teachers">Teachers</a>
-                    </li>
-                    <li>
-                      <a href="/team-details">Teachers Details</a>
+                      <a href="/teacher">Teachers</a>
                     </li>
                     <li>
                       <a href="/become-teacher">Become Teacher</a>
@@ -298,18 +295,18 @@ function NavHeader(props) {
           </div>
           <div className="right-side-box">
             <div className="header__social">
-              <Link to="https://twitter.com/?lang=vi">
+              <a href="https://twitter.com/?lang=vi">
                 <i className="fab fa-twitter" />
-              </Link>
-              <Link to="https://www.facebook.com/">
+              </a>
+              <a href="https://www.facebook.com/">
                 <i className="fab fa-facebook-square" />
-              </Link>
-              <Link to="https://www.pinterest.com/">
+              </a>
+              <a href="https://www.pinterest.com/">
                 <i className="fab fa-pinterest-p" />
-              </Link>
-              <Link to="https://www.instagram.com/">
+              </a>
+              <a href="https://www.instagram.com/">
                 <i className="fab fa-instagram" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

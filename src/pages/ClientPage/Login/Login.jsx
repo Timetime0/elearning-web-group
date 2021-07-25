@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { LOGIN_SERVICE_SAGA } from "../../../redux/types/LoginType";
 import { Link, NavLink, useHistory } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
 
 // import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
@@ -10,6 +11,9 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 // };
 
 function Login(props) {
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
@@ -59,11 +63,8 @@ function Login(props) {
                   </div>
                 </a>
               </div>
-              <h3>Get more things done with Loggin platform.</h3>
-              <p>
-                Access to the most powerfull tool in the entire design and web
-                industry.
-              </p>
+              <h3>Login</h3>
+              <p>Start learning with us now</p>
               <div className="page-links">
                 <NavLink to="/login" className="active">
                   Login
@@ -98,8 +99,22 @@ function Login(props) {
               <div className="other-links">
                 <span>Or login with</span>
                 <Link to="/">Facebook</Link>
-                <Link to="/">Google</Link>
-                <Link to="/">Linkedin</Link>
+                <GoogleLogin
+                  clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                  render={(renderProps) => (
+                    <span
+                      style={{ fontWeight: "bold", cursor: "pointer" }}
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                    >
+                      Google
+                    </span>
+                  )}
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
               </div>
             </div>
           </div>

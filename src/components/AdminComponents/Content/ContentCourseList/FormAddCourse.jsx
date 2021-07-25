@@ -59,7 +59,37 @@ function FromAddCourse(props) {
   // Get user form localStorage
 
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
+
+  // function add course
+
+  let [courseRes, setCourseRes] = useState({
+    maKhoaHoc: "",
+    tenKhoaHoc: "",
+    moTa: "",
+    luotXem: 0,
+    danhGia: 0,
+    hinhAnh: "",
+    maNhom: "",
+    ngayTao: "",
+    maDanhMucKhoaHoc: "",
+    taiKhoanNguoiTao: `${user.taiKhoan}`,
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCourseRes({
+      ...courseRes,
+      [name]: value,
+    });
+    console.log(courseRes);
+  };
+  const onSubmitRes = (event) => {
+    event.preventDefault();
+    dispatch({
+      // type: ADD_USER_SAGA,
+      course: courseRes,
+    });
+  };
+
   return (
     <div>
       {showPopUp ? (
@@ -67,46 +97,90 @@ function FromAddCourse(props) {
           <div className="form_container">
             <div className="title">Add Course</div>
             <div className="content">
-              <form action="#">
+              <form onSubmit={(event) => onSubmitRes(event)} method="POST">
                 <div className="user-details">
                   <div className="input-box">
                     <span className="details">Tên Khóa Học</span>
                     <input
+                      name="tenKhoaHoc"
                       type="text"
                       placeholder="Nhập tên khóa học..."
                       required
+                      onChange={(e) => handleChange(e)}
                     />
                   </div>
                   <div className="input-box">
                     <span className="details">Mã Khóa Học</span>
                     <input
+                      name="maKhoaHoc"
                       type="text"
                       placeholder="Nhập mã khóa học..."
                       required
+                      onChange={(e) => handleChange(e)}
                     />
                   </div>
                   <div className="input-box">
                     <span className="details">Ngày tạo</span>
-                    <input type="datetime-local" name="ngayTao" required />
+                    <input
+                      type="date"
+                      name="ngayTao"
+                      required
+                      onChange={(e) => handleChange(e)}
+                    />
                   </div>
                   <div className="input-box">
                     <span className="details">Mã Nhóm</span>
-                    <select name="maNhom" id="id" className="select_group">
-                      <option value="GP01">GP01</option>
-                      <option value="GP02">GP02</option>
-                      <option value="GP03">GP03</option>
-                      <option value="GP04">GP04</option>
-                      <option value="GP05">GP05</option>
-                      <option value="GP06">GP06</option>
-                      <option value="GP07">GP07</option>
-                      <option value="GP08">GP08</option>
-                      <option value="GP09">GP09</option>
-                      <option value="GP10">GP10</option>
-                      <option value="GP11">GP11</option>
-                      <option value="GP12">GP12</option>
-                      <option value="GP13">GP13</option>
-                      <option value="GP14">GP14</option>
-                      <option value="GP15">GP15</option>
+                    <select
+                      name="maNhom"
+                      id="id"
+                      className="select_group"
+                      onChange={(e) => handleChange(e)}
+                    >
+                      <option value="GP01" onChange={(e) => handleChange(e)}>
+                        GP01
+                      </option>
+                      <option value="GP02" onChange={(e) => handleChange(e)}>
+                        GP02
+                      </option>
+                      <option value="GP03" onChange={(e) => handleChange(e)}>
+                        GP03
+                      </option>
+                      <option value="GP04" onChange={(e) => handleChange(e)}>
+                        GP04
+                      </option>
+                      <option value="GP05" onChange={(e) => handleChange(e)}>
+                        GP05
+                      </option>
+                      <option value="GP06" onChange={(e) => handleChange(e)}>
+                        GP06
+                      </option>
+                      <option value="GP07" onChange={(e) => handleChange(e)}>
+                        GP07
+                      </option>
+                      <option value="GP08" onChange={(e) => handleChange(e)}>
+                        GP08
+                      </option>
+                      <option value="GP09" onChange={(e) => handleChange(e)}>
+                        GP09
+                      </option>
+                      <option value="GP10" onChange={(e) => handleChange(e)}>
+                        GP10
+                      </option>
+                      <option value="GP11" onChange={(e) => handleChange(e)}>
+                        GP11
+                      </option>
+                      <option value="GP12" onChange={(e) => handleChange(e)}>
+                        GP12
+                      </option>
+                      <option value="GP13" onChange={(e) => handleChange(e)}>
+                        GP13
+                      </option>
+                      <option value="GP14" onChange={(e) => handleChange(e)}>
+                        GP14
+                      </option>
+                      <option value="GP15" onChange={(e) => handleChange(e)}>
+                        GP15
+                      </option>
                     </select>
                   </div>
                   <div className="input-box">
@@ -115,10 +189,14 @@ function FromAddCourse(props) {
                       name="maDanhMucKhoaHoc"
                       id="id"
                       className="select_group"
+                      onChange={(e) => handleChange(e)}
                     >
                       {listCourse.map((list, index) => {
                         return (
-                          <option value={list.maDanhMuc}>
+                          <option
+                            value={list.maDanhMuc}
+                            onChange={(e) => handleChange(e)}
+                          >
                             {list.maDanhMuc}
                           </option>
                         );
@@ -128,6 +206,7 @@ function FromAddCourse(props) {
                   <div className="input-box">
                     <span className="details">Tài Khoản Người Tạo</span>
                     <input
+                      name="taiKhoanNguoiTao"
                       type="text"
                       placeholder="Nhập mã khóa học..."
                       value={user.taiKhoan}
@@ -137,9 +216,11 @@ function FromAddCourse(props) {
                   <div className="input-box">
                     <span className="details">Hình Ảnh</span>
                     <input
+                      name="hinhAnh"
                       type="file"
                       required
                       className="input_uploadImages"
+                      onChange={(e) => handleChange(e)}
                     />
                   </div>
                   <div className="input-box">
@@ -150,6 +231,7 @@ function FromAddCourse(props) {
                       placeholder="Nhập mô tả...."
                       type="text"
                       name="moTa"
+                      onChange={(e) => handleChange(e)}
                       required
                     />
                   </div>

@@ -22,7 +22,8 @@ function* getLoginApi(action) {
           title: "Đăng nhập thành công",
         });
         setTimeout(() => {
-          action.history.push("/");
+          action.history.push("");
+          window.location.reload(false);
         }, 2000);
       }
 

@@ -14,7 +14,6 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -106,10 +105,14 @@ function Appbar() {
   };
 
   // log out user
-  const history = useHistory();
   const logOut = () => {
     localStorage.clear();
-    history.push("/");
+    window.location.reload(false);
+  };
+
+  // Random
+  const random = (num) => {
+    return Math.floor(Math.random() * num) + 10;
   };
 
   const menuId = "primary-search-account-menu";
@@ -210,12 +213,12 @@ function Appbar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
+              <Badge badgeContent={random(8)} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
+              <Badge badgeContent={random(11)} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
