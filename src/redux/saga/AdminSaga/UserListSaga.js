@@ -106,6 +106,7 @@ function* addUserApi(action) {
     let result = yield call(() => {
       return AddUserServices(action.user);
     });
+    
     console.log(result);
     if (result.status === 200) {
       Swal.fire({

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,6 +13,7 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import CoureseDataTable from "../../DataTable/CourseData/CoureseDataTable";
+import FromAddCourse from "./FormAddCourse";
 const styles = (theme) => ({
   paper: {
     maxWidth: 1920,
@@ -42,59 +43,69 @@ const styles = (theme) => ({
 function ContentCourseList(props) {
   const { classes } = props;
 
+  // Show popup add User
+  const [showPopUp, setShowPopUp] = useState(false);
+  const btnAddUser = () => {
+    setShowPopUp((prev) => !prev);
+  };
+
   return (
-    <Paper className={classes.paper}>
-      <AppBar
-        className={classes.searchBar}
-        position="static"
-        color="default"
-        elevation={0}
-      >
-        <Toolbar>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item>
-              <SearchIcon className={classes.block} color="inherit" />
+    <div>
+      <Paper className={classes.paper}>
+        <AppBar
+          className={classes.searchBar}
+          position="static"
+          color="default"
+          elevation={0}
+        >
+          <Toolbar>
+            <Grid container spacing={2} alignItems="center">
+              <Grid item>
+                <SearchIcon className={classes.block} color="inherit" />
+              </Grid>
+              <Grid item xs>
+                <TextField
+                  fullWidth
+                  placeholder="Search by email address, phone number, or user UID"
+                  InputProps={{
+                    disableUnderline: true,
+                    className: classes.searchInput,
+                  }}
+                />
+              </Grid>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.addUser}
+                  onClick={btnAddUser}
+                >
+                  Add Course
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className={classes.dellUser}
+                >
+                  Delete Courese
+                </Button>
+                <Tooltip title="Reload">
+                  <IconButton>
+                    <RefreshIcon className={classes.block} color="inherit" />
+                  </IconButton>
+                </Tooltip>
+              </Grid>
             </Grid>
-            <Grid item xs>
-              <TextField
-                fullWidth
-                placeholder="Search by email address, phone number, or user UID"
-                InputProps={{
-                  disableUnderline: true,
-                  className: classes.searchInput,
-                }}
-              />
-            </Grid>
-            <Grid item>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.addUser}
-              >
-                Edit Course
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                className={classes.dellUser}
-              >
-                Delete Courese
-              </Button>
-              <Tooltip title="Reload">
-                <IconButton>
-                  <RefreshIcon className={classes.block} color="inherit" />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.contentWrapper}>
-        <Typography color="textSecondary" align="center">
-          <CoureseDataTable />
-        </Typography>
-      </div>
-    </Paper>
+          </Toolbar>
+        </AppBar>
+        <div className={classes.contentWrapper}>
+          <Typography color="textSecondary" align="center">
+            <CoureseDataTable />
+          </Typography>
+        </div>
+      </Paper>
+      <FromAddCourse showPopUp={showPopUp} setShowPopUp={setShowPopUp} />
+    </div>
   );
 }
 

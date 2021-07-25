@@ -48,11 +48,9 @@ function Register() {
                   </div>
                 </a>
               </div>
-              <h3>Get more things done with Loggin platform.</h3>
-              <p>
-                Access to the most powerfull tool in the entire design and web
-                industry.
-              </p>
+              <h3>Register</h3>
+              <p>Start learning with us now</p>
+
               <div className="page-links">
                 <NavLink to="/login">Login</NavLink>
                 <NavLink to="/register" className="active">

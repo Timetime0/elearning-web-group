@@ -74,25 +74,35 @@ function ContentUserList(props) {
   //   );
   // }
 
-  // delete user
-  // useEffect(() => {
-  //   dispatch({
-  //     type: DELETE_USER_SAGA,
-  //   });
-  // }, []);
+
   useEffect(() => {
     dispatch({
       type: GET_USER_LIST_SAGA,
     });
   }, [dispatch]);
   let userList = useSelector((state) => state.UserReducer.userList);
+  
+  
+  let arrNew = []
 
   const handleDeleteUser = () => {
-    let list = userList.map((user, index) => {
-      return { id: index, ...user };
-    });
-    console.log(list);
+
+    for(let item in arrNew){
+      dispatch({
+            type: DELETE_USER_SAGA,
+            taiKhoan: arrNew[item]
+      });
+    }
+
+    
+
+
   };
+
+
+  const onDeleteChildToParent = (arr) => {
+    arrNew = arr
+  }
 
   // Add User
 
@@ -156,7 +166,7 @@ function ContentUserList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserDataTable />
+            <UserDataTable onDelete={onDeleteChildToParent}  />
           </Typography>
         </div>
       </Paper>

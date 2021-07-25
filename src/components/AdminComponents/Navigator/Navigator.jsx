@@ -18,7 +18,6 @@ import SettingsInputComponentIcon from "@material-ui/icons/SettingsInputComponen
 import TimerIcon from "@material-ui/icons/Timer";
 import SettingsIcon from "@material-ui/icons/Settings";
 import PhonelinkSetupIcon from "@material-ui/icons/PhonelinkSetup";
-import { Link } from "react-router-dom";
 
 const categories = [
   {
@@ -94,7 +93,7 @@ function Navigator(props) {
         >
           Admin Manager
         </ListItem>
-        <Link to="">
+        <a href="/">
           <ListItem className={clsx(classes.item, classes.itemCategory)}>
             <ListItemIcon className={classes.itemIcon}>
               <HomeIcon />
@@ -107,7 +106,7 @@ function Navigator(props) {
               Project Overview
             </ListItemText>
           </ListItem>
-        </Link>
+        </a>
         {categories.map(({ id, children }) => (
           <React.Fragment key={id}>
             <ListItem className={classes.categoryHeader}>
