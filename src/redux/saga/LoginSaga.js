@@ -23,6 +23,7 @@ function* getLoginApi(action) {
         });
         setTimeout(() => {
           action.history.push("");
+
           window.location.reload(false);
         }, 2000);
       }

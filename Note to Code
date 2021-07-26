@@ -336,7 +336,7 @@ admin_test/123456789
 #Ngày 26/7/2021 Chun:
 _ Thêm trang thông tin người dùng (User Profile)
 _ Thêm api thông tin tài khoản => lấy thông tin người dùng
-
+_ Thêm hàm loading mỗi khi load page
 ********** chưa đăng ký được khóa học
 ********** Chưa làm được tìm kiếm khóa học 
 ********** Chưa thêm , xóa ,sửa được course 
