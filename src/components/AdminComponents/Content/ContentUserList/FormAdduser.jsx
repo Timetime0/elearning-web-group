@@ -113,7 +113,7 @@ function FormAdduser(props) {
                     <span className="details">Điện Thoại</span>
                     <input
                       name="soDT"
-                      type="text"
+                      type="number"
                       placeholder="Nhập điện thoại User..."
                       onChange={(e) => handleChange(e)}
                       required
@@ -136,7 +136,7 @@ function FormAdduser(props) {
                       id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
-                     >
+                    >
                       <option value="GP01" onChange={(e) => handleChange(e)}>
                         GP01
                       </option>
@@ -174,7 +174,11 @@ function FormAdduser(props) {
                   </div>
                 </div>
                 <div className="button">
-                  <button className="button_submit" onClick={onSubmitRes}>
+                  <button
+                    type="submit"
+                    className="button_submit"
+                    onClick={onSubmitRes}
+                  >
                     Add
                   </button>
                   <button className="button_close" onClick={btnClose}>

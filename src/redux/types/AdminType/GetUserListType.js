@@ -9,3 +9,6 @@ export const DELETE_USER_SAGA = "DELETE_USER_SAGA";
 
 export const ADD_USER = "ADD_USER";
 export const ADD_USER_SAGA = "ADD_USER_SAGA";
+
+export const VIEW_PROFILE_USER = "VIEW_PROFILE_USER";
+export const VIEW_PROFILE_USER_SAGA = "VIEW_PROFILE_USER_SAGA";

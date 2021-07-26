@@ -13,12 +13,9 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import UserDataTable from "../../DataTable/UserData/UserDataTable";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import {
-  DELETE_USER_SAGA,
-  GET_USER_LIST_SAGA,
-} from "../../../../redux/types/AdminType/GetUserListType";
+import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 import FormAdduser from "./FormAdduser";
 
 const styles = (theme) => ({
@@ -44,6 +41,10 @@ const styles = (theme) => ({
   },
   dellUser: {
     backgroundColor: "red",
+  },
+  viewUser: {
+    backgroundColor: "green",
+    margin: "0 8px",
   },
   contentWrapper: {
     margin: "40px 16px",
@@ -74,35 +75,20 @@ function ContentUserList(props) {
   //   );
   // }
 
-
-  useEffect(() => {
-    dispatch({
-      type: GET_USER_LIST_SAGA,
-    });
-  }, [dispatch]);
-  let userList = useSelector((state) => state.UserReducer.userList);
-  
-  
-  let arrNew = []
+  let arrNew = [];
 
   const handleDeleteUser = () => {
-
-    for(let item in arrNew){
+    for (let item in arrNew) {
       dispatch({
-            type: DELETE_USER_SAGA,
-            taiKhoan: arrNew[item]
+        type: DELETE_USER_SAGA,
+        taiKhoan: arrNew[item],
       });
     }
-
-    
-
-
   };
 
-
   const onDeleteChildToParent = (arr) => {
-    arrNew = arr
-  }
+    arrNew = arr;
+  };
 
   // Add User
 
@@ -111,7 +97,6 @@ function ContentUserList(props) {
   const btnAddUser = () => {
     setShowPopUp((prev) => !prev);
   };
-  // style popup
 
   return (
     <div className={classes.container}>
@@ -141,6 +126,13 @@ function ContentUserList(props) {
                 <Button
                   variant="contained"
                   color="primary"
+                  className={classes.viewUser}
+                >
+                  View User
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
                   className={classes.addUser}
                   onClick={btnAddUser}
                 >
@@ -166,7 +158,7 @@ function ContentUserList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserDataTable onDelete={onDeleteChildToParent}  />
+            <UserDataTable onDelete={onDeleteChildToParent} />
           </Typography>
         </div>
       </Paper>

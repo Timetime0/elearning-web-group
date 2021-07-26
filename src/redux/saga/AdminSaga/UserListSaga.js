@@ -5,6 +5,7 @@ import {
   DeleteUserServices,
   EditUserServices,
   UserListServices,
+  ViewProfileUserServices,
 } from "../../../services/AdminServices/UserList";
 import {
   ADD_USER_SAGA,
@@ -13,6 +14,8 @@ import {
   EDIT_USER_SAGA,
   GET_USER_LIST,
   GET_USER_LIST_SAGA,
+  VIEW_PROFILE_USER,
+  VIEW_PROFILE_USER_SAGA,
 } from "../../types/AdminType/GetUserListType";
 
 function* getUserListApi() {
@@ -46,7 +49,7 @@ function* updateUserApi(action) {
     if (res.status === 200) {
       Swal.fire({
         icon: "success",
-        title: "Cập nhật người dùng",
+        title: "Cập nhật thành công người dùng",
         html: `
           <div className="text-left"><span className="font-weight">Tài khoản:</span> ${action.user.taiKhoan} </div>
           <div className="text-left"><span className="font-weight">Mật Khẩu:</span> ${action.user.matKhau}</div>
@@ -106,20 +109,20 @@ function* addUserApi(action) {
     let result = yield call(() => {
       return AddUserServices(action.user);
     });
-    
+
     console.log(result);
     if (result.status === 200) {
       Swal.fire({
         icon: "success",
-        title: "Thêm người dùng",
+        title: "Thêm thành công người dùng",
         html: `
               <div className="text-left"><span className="font-weight">Tài khoản:</span> ${action.user.taiKhoan} </div>
               <div className="text-left"><span className="font-weight">Mật Khẩu:</span> ${action.user.matKhau}</div>
+              <div className="text-left"><span className="font-weight">Họ Tên: </span>${action.user.hoTen}</div>
               <div className="text-left"><span className="font-weight">Email: </span>${action.user.email} </div>
               <div className="text-left"><span className="font-weight">Số điện thoai:</span> ${action.user.soDt} </div>
               <div className="text-left"><span className="font-weight">Mã nhóm:</span> ${action.user.maNhom}</div>
               <div className="text-left"><span className="font-weight">Mã loại người dùng:</span> ${action.user.maLoaiNguoiDung}</div>
-              <div className="text-left"><span className="font-weight">Họ Tên: </span>${action.user.hoTen}</div>
               `,
       });
     }
@@ -135,4 +138,24 @@ function* addUserApi(action) {
 
 export function* followAddUserApi() {
   yield takeLatest(ADD_USER_SAGA, addUserApi);
+}
+
+// =========================================================================================================================
+// view profile User
+
+function* getProfileUserApi(action) {
+  try {
+    const res = yield call(() => ViewProfileUserServices(action.data));
+    console.log(res);
+    yield put({
+      type: VIEW_PROFILE_USER,
+      data: res.data,
+    });
+  } catch (err) {
+    console.log(err.response.data);
+  }
+}
+
+export function* followGetProfileUserApi() {
+  yield takeLatest(VIEW_PROFILE_USER_SAGA, getProfileUserApi);
 }

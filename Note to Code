@@ -330,3 +330,15 @@ _ làm được thêm, xóa user (chưa tối ưu môi lần xóa xong phải ch
 
 dpnguyen/1232132131
 admin_test/123456789
+
+
+
+#Ngày 26/7/2021 Chun:
+_ Thêm trang thông tin người dùng (User Profile)
+_ Thêm api thông tin tài khoản => lấy thông tin người dùng
+
+********** chưa đăng ký được khóa học
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa thêm , xóa ,sửa được course 
+********** chưa sửa thông tin user được
+********** chưa lấy thông tin tài khoản

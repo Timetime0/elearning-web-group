@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,6 +14,9 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { VIEW_PROFILE_USER_SAGA } from "../../../redux/types/AdminType/GetUserListType";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -103,7 +106,9 @@ function Appbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+  // Get user form localStorage
 
+  const user = JSON.parse(localStorage.getItem("user"));
   // log out user
   const logOut = () => {
     localStorage.clear();
@@ -113,6 +118,24 @@ function Appbar() {
   // Random
   const random = (num) => {
     return Math.floor(Math.random() * num) + 10;
+  };
+  // get profile user
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+  // let [profile, setProfile] = useState({
+  //   taiKhoan: `${user.taiKhoan}`,
+  // });
+  dispatch({
+    type: VIEW_PROFILE_USER_SAGA,
+    data: `${user.taiKhoan}`,
+  });
+  const getProfile = () => {
+    dispatch({
+      type: VIEW_PROFILE_USER_SAGA,
+      data: `${user.taiKhoan}`,
+    });
+    history.push("/profile");
   };
 
   const menuId = "primary-search-account-menu";
@@ -126,7 +149,13 @@ function Appbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem
+        onClick={() => {
+          getProfile();
+        }}
+      >
+        Profile
+      </MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem onClick={logOut}>Log Out</MenuItem>
     </Menu>
@@ -172,9 +201,7 @@ function Appbar() {
       </MenuItem>
     </Menu>
   );
-  // Get user form localStorage
 
-  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div className={classes.grow}>
       <AppBar

@@ -106,29 +106,29 @@ function CourseDetail() {
                     role="tablist"
                   >
                     <li>
-                      <Link
+                      <a
                         className="active"
                         role="tab"
                         data-toggle="tab"
-                        to="#overview"
+                        href="#overview"
                       >
                         Overview
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link
+                      <a
                         className
                         role="tab"
                         data-toggle="tab"
-                        to="#curriculum"
+                        href="#curriculum"
                       >
                         Curriculum
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link className role="tab" data-toggle="tab" to="#review">
+                      <a className role="tab" data-toggle="tab" href="#review">
                         Reviews
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                   <div className="tab-content course-details__tab-content ">
