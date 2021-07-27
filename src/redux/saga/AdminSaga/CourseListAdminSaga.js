@@ -4,11 +4,13 @@ import {
   AddCourseAmdminServices,
   AddImageCourse,
   CourseListAdminServices,
+  DeleteCourseServices,
   UpdateAddImageCourse,
 } from "../../../services/AdminServices/CourseListAdminServices";
 import {
   ADD_COURSE_ADMIN_SAGA,
   ADD_COURSE_IMAGE_ADMIN_SAGA,
+  DELETE_COURSE_ADMIN_SAGA,
   GET_COURSE_LIST_ADMIN,
   GET_COURSE_LIST_ADMIN_SAGA,
   UPDATE_COURSE_IMAGE_ADMIN_SAGA,
@@ -129,4 +131,29 @@ function* updataImgCourse(action) {
 }
 export function* followUpdataImgCourse() {
   yield takeLatest(UPDATE_COURSE_IMAGE_ADMIN_SAGA, updataImgCourse);
+}
+
+// ===========================================================================================================================
+// Delete Course
+function* deleteCourseApi(action) {
+  try {
+    let res = yield call(() => {
+      return DeleteCourseServices(action.maKhoaHoc);
+    });
+    if (res.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Đã xóa",
+      });
+    }
+  } catch (err) {
+    console.log(err.response.data);
+    Swal.fire({
+      icon: "error",
+      title: `${err.response.data}`,
+    });
+  }
+}
+export function* followDeleteCourseApi() {
+  yield takeLatest(DELETE_COURSE_ADMIN_SAGA, deleteCourseApi);
 }

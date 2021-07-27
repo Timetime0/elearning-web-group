@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 export default function CourseDataTable(props) {
   const dispatch = useDispatch();
+  const onDelete = props.onDelete;
 
   let list = useSelector(
     (state) => state.CourseListAdminrReducer.courseListAdmin
@@ -52,9 +53,45 @@ export default function CourseDataTable(props) {
     });
   }, [dispatch]);
 
+  // lấy item trong rows
+  let arrTest = [];
+  const { checkboxSelection } = props;
+  console.log(checkboxSelection);
+
+  for (let item in arrTest) {
+    if (checkboxSelection.checked) {
+      arrTest.push(...item);
+    }
+    console.log(arrTest);
+  }
+
+  let arrNew = [];
+  const handleRowSelection = (e) => {
+    const { data, isSelected } = e;
+    if (isSelected) {
+      const result = arrNew.some((item) => item === data.maKhoaHoc);
+      if (!result) {
+        arrNew.push(data.maKhoaHoc);
+      }
+    } else {
+      const result = arrNew.some((item) => item === data.maKhoaHoc);
+      if (result) {
+        arrNew = arrNew.filter((item) => item !== data.maKhoaHoc);
+      }
+    }
+
+    onDelete(arrNew);
+  };
   return (
     <div style={{ height: 400, width: "100%" }}>
-      <DataGrid rows={rows} columns={columns} pageSize={8} checkboxSelection />
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={8}
+        checkboxSelection={true}
+        data={props.data}
+        onRowSelected={handleRowSelection}
+      />
     </div>
   );
 }

@@ -719,6 +719,11 @@ a:visited {
   transition: all .4s ease;
 }
 
+.header__social button {
+  margin-left: 35px;
+}
+
+
 .header__social a:hover {
   color: #f16101;
 }
@@ -7565,4 +7570,152 @@ input[type="submit"]:hover {
 .profile-tab p {
   font-weight: 600;
   color: #0062cc;
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #012237;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2da39700;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(#38e0d0, #2DA397);
+  border-radius: 0 0 20px 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(#326e68, #04413a);
+}
+
+
+/* side bar */
+.sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background: #1b1b1b;
+  transition: left 0.4s ease;
+  top: 0;
+}
+
+.icon_user {
+  height: 40px;
+}
+
+.sidebar .text {
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 65px;
+  text-align: center;
+  background: #1e1e1e;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  background: #1b1b1b;
+  height: 100%;
+  width: 100%;
+  list-style: none;
+}
+
+.sidebar ul li {
+  line-height: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar ul li:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar ul li a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding-left: 40px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  border-left: 3px solid transparent;
+}
+
+.sidebar ul li.active a {
+  color: cyan;
+  background: #1e1e1e;
+  border-left-color: cyan;
+}
+
+.sidebar ul li a:hover {
+  background: #2DA397;
+}
+
+.sidebar ul ul {
+  position: static;
+  display: none;
+}
+
+.sidebar ul .feat-show.show {
+  display: block;
+}
+
+.sidebar ul .serv-show.show1 {
+  display: block;
+}
+
+.sidebar ul ul li {
+  line-height: 42px;
+  border-top: none;
+}
+
+.sidebar ul ul li a {
+  font-size: 17px;
+  color: #e6e6e6;
+  padding-left: 80px;
+}
+
+.sidebar ul li.active ul li a {
+  color: #e6e6e6;
+  background: #1b1b1b;
+  border-left-color: transparent;
+}
+
+.sidebar button {
+  font-size: 17px;
+  color: #e6e6e6;
+  background: #1b1b1b;
+  width: 100%;
+  border: none;
+}
+
+.sidebar button:hover {
+  background: #2DA397;
+}
+
+.sidebar ul ul li a:hover {
+  color: cyan !important;
+  background: #1e1e1e !important;
+}
+
+.sidebar ul li a span {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: transform 0.4s;
+}
+
+.sidebar ul li a span.rotate {
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+
+/* active menu */
+.active_menu {
+  color: #f16101 !important;
 }

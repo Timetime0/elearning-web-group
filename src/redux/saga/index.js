@@ -17,6 +17,7 @@ import { followGetBookingCourseApi } from "./BookingCourseSaga";
 import {
   followAddCourseApi,
   followAddImgCourse,
+  followDeleteCourseApi,
   followGetCourseListAdminApi,
   followUpdataImgCourse,
 } from "./AdminSaga/CourseListAdminSaga";
@@ -38,6 +39,7 @@ export default function* rootSaga() {
     followAddCourseApi(),
     followAddImgCourse(),
     followUpdataImgCourse(),
+    followDeleteCourseApi(),
 
     // Admin User Saga
     followGetUserListApiAction(),

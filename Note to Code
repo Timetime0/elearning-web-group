@@ -123,7 +123,10 @@ _ Thêm button show popup Carousel
 _ responsive
 _ Thay background Carousel
 
-==================== Big Update ====================
+
+
+
+====================================================================== Big Update ======================================================================
 #Ngày 12/7/2021 Chun Big Update: 
 _ Thay toàn bộ template Client ,
 _ SỬ dụng template Kipso,
@@ -337,6 +340,22 @@ admin_test/123456789
 _ Thêm trang thông tin người dùng (User Profile)
 _ Thêm api thông tin tài khoản => lấy thông tin người dùng
 _ Thêm hàm loading mỗi khi load page
+********** chưa đăng ký được khóa học
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa thêm , xóa ,sửa được course 
+********** chưa sửa thông tin user được
+********** chưa lấy thông tin tài khoản
+
+
+
+#Ngày 27/7/2021 Chun: 
+        Update UI
+_ Thêm component side bar 
+_ sửa top bar sau login 
+_ fix lỗi không hiển thị khi bấm nút tìm kiếm trên thanh menu
+_fix lỗi không active navlink
+_ thêm hình ảnh vảo trang web
+
 ********** chưa đăng ký được khóa học
 ********** Chưa làm được tìm kiếm khóa học 
 ********** Chưa thêm , xóa ,sửa được course 

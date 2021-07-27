@@ -46,3 +46,17 @@ export function UpdateAddImageCourse(img) {
     },
   });
 }
+
+//=======================================================================================================================
+// Delete course
+
+export function DeleteCourseServices(maKhoaHoc) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    type: "DELETE",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?maKhoaHoc=${maKhoaHoc}`,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}

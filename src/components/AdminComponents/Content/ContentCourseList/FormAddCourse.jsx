@@ -115,18 +115,19 @@ function FromAddCourse(props) {
   };
 
   // up load image
+  const [image, setImage] = useState("");
   let getImg = (e) => {
     const hinhAnh = e.target.files[0];
     console.log(hinhAnh);
-    this.setState({
-      img: hinhAnh.name,
+    setImage({
+      image: hinhAnh.name,
       course: { ...this.state.course, hinhAnh: hinhAnh },
     });
 
     let fileReader = new FileReader();
     fileReader.readAsDataURL(hinhAnh);
     fileReader.onload = async (e) => {
-      this.setState({
+      setImage({
         basa64Img: e.target.result,
       });
     };
@@ -224,9 +225,7 @@ function FromAddCourse(props) {
                       type="file"
                       required
                       className="input_uploadImages"
-                      onChange={(event) => {
-                        getImg(event);
-                      }}
+                      onChange={getImg}
                     />
                   </div>
                   <div className="input-box">

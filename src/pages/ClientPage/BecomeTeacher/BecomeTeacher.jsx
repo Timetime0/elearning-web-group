@@ -30,9 +30,7 @@ function BecomeTeacher() {
                   only five centuries, but also the leap into electronic
                   typesetting remaining unchanged.
                 </p>
-                <h2 className="become-teacher__subtitle">
-                  Healt={"img"}h and Pension
-                </h2>
+                <h2 className="become-teacher__subtitle">Health and Pension</h2>
                 <p className="become-teacher__text">
                   Lorem Ipsum has been the standard dummy text ever since the
                   when an unknown was popularised. It has survived not only five

@@ -128,7 +128,7 @@ function ContentUserList(props) {
                   color="primary"
                   className={classes.viewUser}
                 >
-                  View User
+                  Edit User
                 </Button>
                 <Button
                   variant="contained"

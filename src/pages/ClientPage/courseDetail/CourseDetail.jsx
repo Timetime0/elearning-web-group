@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
+import NewCourse from "../../../components/ClientComponent/NewCourse/NewCourse";
 import { BOOKING_COURSE_SAGA } from "../../../redux/types/BookingCourseType";
 
 // import { withRouter } from "react-router";
@@ -530,77 +531,7 @@ function CourseDetail() {
                     Language: <span>English</span>
                   </a>
                 </div>
-                <div className="course-details__list">
-                  <h2 className="course-details__list-title">New Courses</h2>
-
-                  <div className="course-details__list-item">
-                    <div className="course-details__list-img">
-                      <img src="/images/lc-1-1.jpg" alt={"img"} />
-                    </div>
-
-                    <div className="course-details__list-content">
-                      <a className="course-details__list-author" href="/">
-                        by <span>Lydia Byrd</span>
-                      </a>
-                      <h3>
-                        <a href="/">Marketing strategies</a>
-                      </h3>
-                      <div className="course-details__list-stars">
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <span>4.8</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="course-details__list-item">
-                    <div className="course-details__list-img">
-                      <img src="/images/lc-1-2.jpg" alt={"img"} />
-                    </div>
-
-                    <div className="course-details__list-content">
-                      <a className="course-details__list-author" href="/">
-                        by <span>Lydia Byrd</span>
-                      </a>
-                      <h3>
-                        <a href="/">Marketing strategies</a>
-                      </h3>
-                      <div className="course-details__list-stars">
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <span>4.8</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="course-details__list-item">
-                    <div className="course-details__list-img">
-                      <img src="/images/lc-1-3.jpg" alt={"img"} />
-                    </div>
-
-                    <div className="course-details__list-content">
-                      <a className="course-details__list-author" href="/">
-                        by <span>Lydia Byrd</span>
-                      </a>
-                      <h3>
-                        <a href="/">Marketing strategies</a>
-                      </h3>
-                      <div className="course-details__list-stars">
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <span>4.8</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <NewCourse detail={detail} />
               </div>
             </div>
           </div>

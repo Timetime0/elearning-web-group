@@ -7,17 +7,17 @@ import {
 
 function* getCourseFromListApi(action) {
   try {
-    yield put({
-      type: "DISPLAY_LOADING",
-    });
+    // yield put({
+    //   type: "DISPLAY_LOADING",
+    // });
     const res = yield call(() => GetCourseFromListService(action.data));
     yield put({
       type: GET_COURSE_FROM_LIST_TYPE,
       data: res.data,
     });
-    yield put({
-      type: "HIDE_LOADING",
-    });
+    // yield put({
+    //   type: "HIDE_LOADING",
+    // });
   } catch (e) {
     console.log(e);
   }

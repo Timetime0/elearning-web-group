@@ -1,4 +1,4 @@
-import { call, delay, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
 import { DetailCourseServices } from "../../services/DetailCourseServices";
 import {
   DETAIL_COURSE_SERVICES,
