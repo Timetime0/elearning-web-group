@@ -361,3 +361,21 @@ _ thêm hình ảnh vảo trang web
 ********** Chưa thêm , xóa ,sửa được course 
 ********** chưa sửa thông tin user được
 ********** chưa lấy thông tin tài khoản
+
+
+
+#Ngày 28/7/2021 Chun: 
+        Update UI Admin
+_ Thêm component tab (infomation course , infomation user) 
+_ thêm api
+- fix lỗi xóa course
+********** chưa đăng ký được khóa học
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa thêm , xóa ,sửa được course 
+********** chưa sửa thông tin user được
+********** chưa lấy thông tin tài khoản
+
+#Ngày 30/7/2021 Chun:
+_ fix lỗi đăng ký khóa học 
+_ fix lỗi lấy thông tin tài khoản trang Profile
+_ thêm data khóa học user đã đăng ký bên trang profile 

@@ -52,12 +52,12 @@ export function AddUserServices(user) {
 //=======================================================================================================================
 // View user
 
-export function ViewProfileUserServices(taiKhoan) {
+export function ViewProfileUserServices(user) {
   const admin = JSON.parse(localStorage.getItem("user"));
   return Axios({
     method: "POST",
     url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan",
-    data: taiKhoan,
+    data: user,
     headers: {
       Authorization: `Bearer ${admin.accessToken}`,
     },

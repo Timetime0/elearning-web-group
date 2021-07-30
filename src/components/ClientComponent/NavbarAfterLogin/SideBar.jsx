@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import HomeIcon from "@material-ui/icons/Home";
+import SendIcon from "@material-ui/icons/Send";
+import { NavLink, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { VIEW_PROFILE_USER_SAGA } from "../../../redux/types/AdminType/GetUserListType";
 // Get user form localStorage
 
-const user = JSON.parse(localStorage.getItem("user"));
-// log out user
-const logOut = () => {
-  localStorage.clear();
-  window.location.reload(false);
-};
 function SideBar() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  // log out user
+  const logOut = () => {
+    localStorage.clear();
+    window.location.reload(false);
+  };
+
   return (
     <nav className="sidebar">
       <div className="text icon_user">
@@ -19,45 +26,24 @@ function SideBar() {
       <div className="text">{user?.hoTen}</div>
       <ul>
         <li className="active">
-          <a href="/">Dashboard</a>
+          <a href="/">
+            <HomeIcon style={{ margin: "0 5px" }} />
+            Home
+          </a>
         </li>
         <li>
-          <a href="/" className="feat-btn">
-            Features
-            <span className="fas fa-caret-down first" />
-          </a>
-          <ul className="feat-show">
-            <li>
-              <a href="/">Pages</a>
-            </li>
-            <li>
-              <a href="/">Elements</a>
-            </li>
-          </ul>
+          <NavLink to={`/profile/${user.taiKhoan}`} className="feat-btn">
+            <AssignmentIndIcon style={{ margin: "0 5px" }} />
+            Profile
+          </NavLink>
         </li>
         <li>
           <a href="/" className="serv-btn">
-            Services
-            <span className="fas fa-caret-down second" />
+            <SendIcon style={{ margin: "0 5px" }} />
+            Message
           </a>
-          <ul className="serv-show">
-            <li>
-              <a href="/">App Design</a>
-            </li>
-            <li>
-              <a href="/">Web Design</a>
-            </li>
-          </ul>
         </li>
-        <li>
-          <a href="/">Portfolio</a>
-        </li>
-        <li>
-          <a href="/">Overview</a>
-        </li>
-        <li>
-          <a href="/">Shortcuts</a>
-        </li>
+
         <li>
           <button onClick={logOut}>
             <ExitToAppIcon style={{ margin: "0 5px" }} />

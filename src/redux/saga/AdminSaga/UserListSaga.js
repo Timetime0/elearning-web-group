@@ -145,13 +145,14 @@ export function* followAddUserApi() {
 
 function* getProfileUserApi(action) {
   try {
-    const res = yield call(() => ViewProfileUserServices(action.data));
+    const res = yield call(() => ViewProfileUserServices(action.user));
     console.log(res);
     yield put({
       type: VIEW_PROFILE_USER,
       data: res.data,
     });
   } catch (err) {
+    console.log(err);
     console.log(err.response.data);
   }
 }

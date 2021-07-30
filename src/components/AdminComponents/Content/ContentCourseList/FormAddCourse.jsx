@@ -60,6 +60,7 @@ function FromAddCourse(props) {
   // Get user form localStorage
 
   const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user.taiKhoan);
 
   // function add course
 
@@ -80,32 +81,32 @@ function FromAddCourse(props) {
   };
 
   let [courseRes, setCourseRes] = useState({
-    course: {
-      maKhoaHoc: "",
-      biDanh: "",
-      tenKhoaHoc: "",
-      moTa: "",
-      luotXem: 0,
-      danhGia: 0,
-      hinhAnh: "",
-      maNhom: "",
-      ngayTao: `${ngayTao(date)}`,
-      maDanhMucKhoaHoc: "",
-      taiKhoanNguoiTao: `${user.taiKhoan}`,
-    },
-    img: {
-      img: "",
-      basa64Img: "",
-    },
+    maKhoaHoc: "",
+    biDanh: "",
+    tenKhoaHoc: "",
+    moTa: "",
+    luotXem: 0,
+    danhGia: 0,
+    hinhAnh: "",
+    maNhom: "GP01",
+    ngayTao: `${ngayTao(date)}`,
+    maDanhMucKhoaHoc: "BackEnd",
+    taiKhoanNguoiTao: `${user.taiKhoan}`,
   });
+
+  // img: {
+  //   img: "",
+  //   basa64Img: "",
+  // },
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCourseRes({
       ...courseRes,
       [name]: value,
     });
-    console.log(courseRes);
   };
+
   const onSubmitRes = (event) => {
     event.preventDefault();
     dispatch({
@@ -121,7 +122,7 @@ function FromAddCourse(props) {
     console.log(hinhAnh);
     setImage({
       image: hinhAnh.name,
-      course: { ...this.state.course, hinhAnh: hinhAnh },
+      course: { ...courseRes, hinhAnh: hinhAnh },
     });
 
     let fileReader = new FileReader();
@@ -170,6 +171,7 @@ function FromAddCourse(props) {
                       id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
+                      value="GP01"
                     >
                       <option value="GP01" onChange={(e) => handleChange(e)}>
                         GP01
@@ -186,6 +188,7 @@ function FromAddCourse(props) {
                       id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
+                      value="BackEnd"
                     >
                       {listCourse.map((list, index) => {
                         return (
@@ -225,7 +228,7 @@ function FromAddCourse(props) {
                       type="file"
                       required
                       className="input_uploadImages"
-                      onChange={getImg}
+                      onChange={(e) => handleChange(e)}
                     />
                   </div>
                   <div className="input-box">

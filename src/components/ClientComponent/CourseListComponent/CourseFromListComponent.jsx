@@ -4,6 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 function CourseFromListComponent(props) {
   const history = useHistory();
   const { list } = props;
+  const random = () => {
+    return Math.floor(Math.random() * 500) + 100;
+  };
   const detailCourse = () => {
     history.push("/course-details/" + list.maKhoaHoc);
   };
@@ -54,7 +57,7 @@ function CourseFromListComponent(props) {
               <i className="fa fa-star" />
             </span>
             <span className="course-one__count">4.8</span>
-            <span className="course-one__stars-count">random số</span>
+            <span className="course-one__stars-count">{random()}</span>
           </div>
           <div className="course-one__meta">
             <a href="course-details.html">

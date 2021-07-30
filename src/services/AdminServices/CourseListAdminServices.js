@@ -10,6 +10,7 @@ export function CourseListAdminServices() {
 // Add course
 export function AddCourseAmdminServices(course) {
   const admin = JSON.parse(localStorage.getItem("user"));
+
   return Axios({
     method: "POST",
     url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHoc",
@@ -53,8 +54,22 @@ export function UpdateAddImageCourse(img) {
 export function DeleteCourseServices(maKhoaHoc) {
   const admin = JSON.parse(localStorage.getItem("user"));
   return Axios({
-    type: "DELETE",
-    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?maKhoaHoc=${maKhoaHoc}`,
+    method: "DELETE",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${maKhoaHoc}`,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}
+
+//=======================================================================================================================
+// Get User In course
+
+export function GetUserInCourseSerVices(maKhoaHoc) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "GET",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinHocVienKhoaHoc?maKhoaHoc=${maKhoaHoc}`,
     headers: {
       Authorization: `Bearer ${admin.accessToken}`,
     },

@@ -12,14 +12,10 @@ import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
-import UserDataTable from "../../DataTable/UserData/UserDataTable";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import {
-  DELETE_USER_SAGA,
-  EDIT_USER_SAGA,
-} from "../../../../redux/types/AdminType/GetUserListType";
-import FormAdduser from "./FormAdduser";
+import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import InfomationCourseDataTable from "../../DataTable/InfomationData/InfomationCourseDataTable";
 
 const styles = (theme) => ({
   container: {
@@ -63,9 +59,11 @@ const styles = (theme) => ({
   },
 });
 
-function ContentUserList(props) {
+function ContentInfomationCourse(props) {
   const { classes } = props;
   const dispatch = useDispatch();
+  const { course } = props;
+  // console.log(props.course);
   // Search data
   // const getData = useSelector((state) => state.UserReducer.userList);
   // const [data, setData] = useState([]);
@@ -77,11 +75,6 @@ function ContentUserList(props) {
   //     columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
   //   );
   // }
-
-  // hide button
-  const [buttonEdit, setButtonEdit] = useState(false);
-
-  const [dataEdit, setDataEdit] = useState({});
 
   let arrNew = [];
 
@@ -98,21 +91,11 @@ function ContentUserList(props) {
     arrNew = arr;
   };
 
-  const handleEditUser = () => {
-    setShowPopUp((prev) => !prev);
-  };
-
-  const onEditChildToParent = (arr) => {
-    console.log(arr);
-    setDataEdit(arr);
-  };
-
   // Add User
 
   // Show popup add User
   const [showPopUp, setShowPopUp] = useState(false);
   const btnAddUser = () => {
-    setDataEdit(null);
     setShowPopUp((prev) => !prev);
   };
 
@@ -141,17 +124,13 @@ function ContentUserList(props) {
                 />
               </Grid>
               <Grid item>
-                {buttonEdit ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.viewUser}
-                    onClick={handleEditUser}
-                  >
-                    Edit User
-                  </Button>
-                ) : null}
-
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.viewUser}
+                >
+                  Edit User
+                </Button>
                 <Button
                   variant="contained"
                   color="primary"
@@ -180,25 +159,19 @@ function ContentUserList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserDataTable
+            <InfomationCourseDataTable
               onDelete={onDeleteChildToParent}
-              onEdit={onEditChildToParent}
-              inHideEditButton={setButtonEdit}
+              course={course}
             />
           </Typography>
         </div>
       </Paper>
-      <FormAdduser
-        data={dataEdit}
-        showPopUp={showPopUp}
-        setShowPopUp={setShowPopUp}
-      />
     </div>
   );
 }
 
-ContentUserList.propTypes = {
+ContentInfomationCourse.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentUserList);
+export default withStyles(styles)(ContentInfomationCourse);

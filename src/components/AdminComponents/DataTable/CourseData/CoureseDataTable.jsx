@@ -11,6 +11,7 @@ export default function CourseDataTable(props) {
   let list = useSelector(
     (state) => state.CourseListAdminrReducer.courseListAdmin
   );
+  let button = <button>ffffff</button>;
   let rows = list.map((listKey, index) => {
     return {
       id: index,
@@ -25,6 +26,7 @@ export default function CourseDataTable(props) {
       soLuongHocVien: listKey.soLuongHocVien,
       nguoiTao: listKey.nguoiTao.hoTen,
       danhMuc: listKey.danhMucKhoaHoc.tenDanhMucKhoaHoc,
+      viewCourse: button,
     };
   });
   const columns = [
@@ -45,8 +47,12 @@ export default function CourseDataTable(props) {
     },
     { field: "nguoiTao", headerName: "Người Tạo", width: 200 },
     { field: "danhMuc", headerName: "Danh Mục Khóa Học", width: 250 },
+    {
+      field: "viewCourse",
+      headerName: "",
+      width: 200,
+    },
   ];
-
   useEffect(() => {
     dispatch({
       type: GET_COURSE_LIST_ADMIN_SAGA,
@@ -56,7 +62,7 @@ export default function CourseDataTable(props) {
   // lấy item trong rows
   let arrTest = [];
   const { checkboxSelection } = props;
-  console.log(checkboxSelection);
+  // console.log(checkboxSelection);
 
   for (let item in arrTest) {
     if (checkboxSelection.checked) {
@@ -72,6 +78,7 @@ export default function CourseDataTable(props) {
       const result = arrNew.some((item) => item === data.maKhoaHoc);
       if (!result) {
         arrNew.push(data.maKhoaHoc);
+        console.log(arrNew);
       }
     } else {
       const result = arrNew.some((item) => item === data.maKhoaHoc);
@@ -79,9 +86,10 @@ export default function CourseDataTable(props) {
         arrNew = arrNew.filter((item) => item !== data.maKhoaHoc);
       }
     }
-
+    console.log(e);
     onDelete(arrNew);
   };
+
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -91,6 +99,7 @@ export default function CourseDataTable(props) {
         checkboxSelection={true}
         data={props.data}
         onRowSelected={handleRowSelection}
+        // onRowDoubleClick={testClick}
       />
     </div>
   );

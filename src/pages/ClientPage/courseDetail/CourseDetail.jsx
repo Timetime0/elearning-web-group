@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import NewCourse from "../../../components/ClientComponent/NewCourse/NewCourse";
 import { BOOKING_COURSE_SAGA } from "../../../redux/types/BookingCourseType";
 
@@ -28,18 +29,40 @@ function CourseDetail() {
   const detailList = (value) => {
     history.push("/course-from-list/" + value);
   };
-
+  // change button
+  const [changeButton, setChangeButton] = useState(false);
   // đăng ký khóa học
-  // let [bookingRes, setBookingRes] = useState({
-  //   maKhoaHoc: "",
-  //   taiKhoan: "",
-  // });
 
-  const handleBooking = (event) => {
-    event.preventDefault();
-    dispatch({
-      type: BOOKING_COURSE_SAGA,
-      data: maKhoaHoc,
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  let [bookingRes] = useState({
+    maKhoaHoc: maKhoaHoc,
+    taiKhoan: user.taiKhoan,
+  });
+
+  let [unBooking] = useState({
+    maKhoaHoc: maKhoaHoc,
+    taiKhoan: user.taiKhoan,
+  });
+
+  const handleBooking = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Buy This Course",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirm",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({
+          type: BOOKING_COURSE_SAGA,
+          user: bookingRes,
+        });
+        setChangeButton((change) => !change);
+        console.log(bookingRes);
+      }
     });
   };
 
@@ -485,9 +508,7 @@ function CourseDetail() {
                   <p className="course-details__price-text">Course price </p>
                   <p className="course-details__price-amount">$18.00</p>
                   <button
-                    onClick={(event) => {
-                      handleBooking(event);
-                    }}
+                    onClick={handleBooking}
                     className="thm-btn course-details__price-btn"
                   >
                     Buy This Course

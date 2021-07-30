@@ -105,8 +105,9 @@ export const clientRouters = [
     Component: Register,
   },
   {
-    path: "/profile",
+    path: "/profile/:taiKhoan",
     exact: false,
+    checkLogin: true,
     Component: ProfileUserPage,
   },
 ];

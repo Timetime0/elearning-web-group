@@ -1,24 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { VIEW_PROFILE_USER_SAGA } from "../../../redux/types/AdminType/GetUserListType";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DataCourseUserProfile from "./DataCourseUserProfile";
 
 function ProfileUserPage() {
   // Get user form localStorage
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // Get profile user
-  let { taiKhoan } = useParams();
-
+  // Get userProfile
   let profile = useSelector((state) => state.UserReducer.profileUser);
+  const course = profile.chiTietKhoaHocGhiDanh;
   const dispatch = useDispatch();
+  let [taiKhoan] = useState({
+    taiKhoan: user.taiKhoan,
+  });
   useEffect(() => {
     dispatch({
       type: VIEW_PROFILE_USER_SAGA,
-      data: taiKhoan,
+      user: taiKhoan,
     });
   }, [dispatch, taiKhoan]);
+  console.log(taiKhoan);
   console.log(profile);
+
+  // see password
+  const [visible, setVisible] = useState(false);
+  const clickVisible = () => {
+    setVisible((show) => !show);
+  };
 
   return (
     <div className="profileuser_container">
@@ -50,7 +63,7 @@ function ProfileUserPage() {
             </div>
             <div className="col-md-6">
               <div className="profile-head">
-                <h5>{user.hoTen}</h5>
+                <h5>{profile.hoTen}</h5>
                 <h6>{user.maLoaiNguoiDung}</h6>
                 <p className="proile-rating">
                   RANKINGS : <span>8/10</span>
@@ -86,12 +99,12 @@ function ProfileUserPage() {
               </div>
             </div>
             <div className="col-md-2">
-              <input
+              {/* <input
                 type="submit"
                 className="profile-edit-btn"
                 name="btnAddMore"
                 defaultValue="Edit Profile"
-              />
+              /> */}
             </div>
           </div>
           <div className="row">
@@ -129,7 +142,7 @@ function ProfileUserPage() {
                       <label>User Id</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.taiKhoan}</p>
+                      <p>{profile.taiKhoan}</p>
                     </div>
                   </div>
                   <div className="row">
@@ -137,7 +150,7 @@ function ProfileUserPage() {
                       <label>Name</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.hoTen}</p>
+                      <p>{profile.hoTen}</p>
                     </div>
                   </div>
                   <div className="row">
@@ -145,7 +158,7 @@ function ProfileUserPage() {
                       <label>Email</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.email}</p>
+                      <p>{profile.email}</p>
                     </div>
                   </div>
                   <div className="row">
@@ -153,15 +166,26 @@ function ProfileUserPage() {
                       <label>Phone</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{user.soDt}</p>
+                      <p>{profile.soDT}</p>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Profession</label>
+                      <label>Password</label>
                     </div>
                     <div className="col-md-6">
-                      <p>Web Developer and Designer</p>
+                      <input
+                        className="password_profile"
+                        type={visible ? `text` : `password`}
+                        value={profile.matKhau}
+                        disabled
+                      />
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={clickVisible}
+                      >
+                        {visible ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -173,50 +197,18 @@ function ProfileUserPage() {
                 >
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Experience</label>
+                      <label>Courses</label>
                     </div>
                     <div className="col-md-6">
-                      <p>Expert</p>
+                      <p>
+                        {course?.map((key, index) => {
+                          return <span>{index}</span>;
+                        })}
+                      </p>
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-md-6">
-                      <label>Hourly Rate</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>10$/hr</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Total Projects</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>230</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>English Level</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Expert</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Availability</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>6 months</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-12">
-                      <label>Your Bio</label>
-                      <br />
-                      <p>Your detail description</p>
-                    </div>
+                    <DataCourseUserProfile course={course} />
                   </div>
                 </div>
               </div>

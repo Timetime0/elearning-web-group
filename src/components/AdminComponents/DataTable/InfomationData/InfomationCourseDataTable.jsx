@@ -2,18 +2,38 @@ import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { GET_USER_LIST_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { GET_DATA_COURSE_SAGA } from "../../../../redux/types/courseType";
 
-export default function UserDataTable(props) {
+export default function InfomationCourseDataTable(props) {
   const onDelete = props.onDelete;
-  const onEdit = props.onEdit;
-  const inHideEditButton = props.inHideEditButton;
   const dispatch = useDispatch();
-  let userList = useSelector((state) => state.UserReducer.userList);
-  let list = userList.map((user, index) => {
-    return { id: index, ...user };
-  });
+  const { course } = props;
+  console.log(props.course);
+  // console.log(course);
 
+  useEffect(() => {
+    dispatch({
+      type: GET_USER_IN_COURSE_ADMIN_SAGA,
+      data: props.course.maKhoaHoc,
+    });
+  }, [dispatch, props.course.maKhoaHoc]);
+
+  // const maKH = useSelector(
+  //   (state) => state.CourseListAdminrReducer.userInCourse
+  // );
+
+  // console.log(maKH);
+  // let rows = course.map((item, index) => {
+  //   return {
+  //     id: index,
+  //     taiKhoan: item.lstHocVien.taiKhoan,
+  //     hoTen: item.lstHocVien.hoTen,
+  //     maKhoaHoc: item.maKhoaHoc,
+  //     tenKhoaHoc: item.tenKhoaHoc,
+  //   };
+  // });
+  let rows = [];
   const columns = [
     {
       field: "id",
@@ -27,22 +47,33 @@ export default function UserDataTable(props) {
       width: 200,
     },
     { field: "hoTen", headerName: "Họ Tên", type: "text", width: 280 },
-    { field: "email", headerName: "Email", type: "text", width: 320 },
     {
-      field: "soDt",
-      headerName: "Số điện thoại",
-      type: "number",
+      field: "maKhoaHoc",
+      headerName: "Mã Khóa Học",
       width: 230,
     },
-    { field: "maLoaiNguoiDung", headerName: "Mã Loại", width: 320 },
+    { field: "tenKhoaHoc", headerName: "Tên Khóa Học", width: 320 },
   ];
 
-  useEffect(() => {
-    dispatch({
-      type: GET_USER_LIST_SAGA,
-    });
-  }, [dispatch]);
+  // let course = useSelector((state) => state.CourseReducer.course);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: GET_DATA_COURSE_SAGA,
+  //   });
+  // }, [dispatch]);
+  // console.log(course);
 
+  // console.log(arrMaKhoaHoc[item]);
+
+  // let rows = getUser.map((item, index) => {
+  //   return {
+  //     id: index,
+  //     taiKhoan: item.lstHocVien.taiKhoan,
+  //     hoTen: item.lstHocVien.hoTen,
+  //     maKhoaHoc: item.maKhoaHoc,
+  //     tenKhoaHoc: item.tenKhoaHoc,
+  //   };
+  // });
   // Update User
   // useEffect(
   //   (user) => {
@@ -57,7 +88,7 @@ export default function UserDataTable(props) {
   // Search data
   let arrTest = [];
   const { checkboxSelection } = props;
-  console.log(checkboxSelection);
+  // console.log(checkboxSelection);
 
   for (let item in arrTest) {
     if (checkboxSelection.checked) {
@@ -70,14 +101,11 @@ export default function UserDataTable(props) {
   const handleRowSelection = (e) => {
     const { data, isSelected } = e;
     if (isSelected) {
-      inHideEditButton((hide) => !hide);
       const result = arrNew.some((item) => item === data.taiKhoan);
       if (!result) {
         arrNew.push(data.taiKhoan);
       }
     } else {
-      inHideEditButton((hide) => !hide);
-
       const result = arrNew.some((item) => item === data.taiKhoan);
       if (result) {
         arrNew = arrNew.filter((item) => item !== data.taiKhoan);
@@ -85,19 +113,14 @@ export default function UserDataTable(props) {
     }
 
     onDelete(arrNew);
-    onEdit(e.data);
   };
-
-  //   api: {current: mc}
-  // data: {id: 0, taiKhoan: "___abctest", hoTen: "___abctest123123", email: "___abctest", soDt: "___abctest", …}
-  // isSelected: false
 
   // view profile user
 
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={list}
+        rows={rows}
         columns={columns}
         pageSize={8}
         checkboxSelection={true}

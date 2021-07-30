@@ -54,15 +54,16 @@ function ContentCourseList(props) {
   // Delete course
   const dispatch = useDispatch();
   let arrNew = [];
+
   const handleDeleteCourse = () => {
     for (let item in arrNew) {
       dispatch({
         type: DELETE_COURSE_ADMIN_SAGA,
         maKhoaHoc: arrNew[item],
       });
-      console.log(arrNew);
     }
   };
+
   const onDeleteCourse = (arr) => {
     arrNew = arr;
   };
@@ -104,7 +105,7 @@ function ContentCourseList(props) {
                   variant="contained"
                   color="secondary"
                   className={classes.dellUser}
-                  onClick={handleDeleteCourse()}
+                  onClick={() => handleDeleteCourse()}
                 >
                   Delete Courese
                 </Button>
@@ -119,7 +120,7 @@ function ContentCourseList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <CoureseDataTable onDelete={onDeleteCourse} />
+            <CoureseDataTable onDelete={onDeleteCourse}></CoureseDataTable>
           </Typography>
         </div>
       </Paper>

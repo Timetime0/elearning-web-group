@@ -8,7 +8,7 @@ function GuardLogin(props) {
   if (user.accessToken) {
     return props.children;
   } else {
-    return <Redirect to="/admin"> </Redirect>;
+    return <Redirect to="/login"> </Redirect>;
   }
 }
 

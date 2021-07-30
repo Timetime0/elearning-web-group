@@ -5,6 +5,7 @@ import {
   AddImageCourse,
   CourseListAdminServices,
   DeleteCourseServices,
+  GetUserInCourseSerVices,
   UpdateAddImageCourse,
 } from "../../../services/AdminServices/CourseListAdminServices";
 import {
@@ -13,6 +14,8 @@ import {
   DELETE_COURSE_ADMIN_SAGA,
   GET_COURSE_LIST_ADMIN,
   GET_COURSE_LIST_ADMIN_SAGA,
+  GET_USER_IN_COURSE_ADMIN,
+  GET_USER_IN_COURSE_ADMIN_SAGA,
   UPDATE_COURSE_IMAGE_ADMIN_SAGA,
 } from "../../types/AdminType/GetCourseListAdminType";
 function* getCourseListAdminApi() {
@@ -156,4 +159,22 @@ function* deleteCourseApi(action) {
 }
 export function* followDeleteCourseApi() {
   yield takeLatest(DELETE_COURSE_ADMIN_SAGA, deleteCourseApi);
+}
+
+// ===========================================================================================================================
+// Get User In Course
+
+function* getUserInCourseApi(action) {
+  try {
+    const res = yield call(() => GetUserInCourseSerVices(action.data));
+    yield put({
+      type: GET_USER_IN_COURSE_ADMIN,
+      data: res.data,
+    });
+  } catch (err) {
+    console.log(err.response.data);
+  }
+}
+export function* followGetUserInCourseApi() {
+  yield takeLatest(GET_USER_IN_COURSE_ADMIN_SAGA, getUserInCourseApi);
 }
