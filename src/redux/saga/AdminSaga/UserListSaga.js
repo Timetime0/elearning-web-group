@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import {
   AddUserServices,
   DeleteUserServices,
+  EditProfileUserServices,
   EditUserServices,
   UserListServices,
   ViewProfileUserServices,
@@ -10,6 +11,8 @@ import {
 import {
   ADD_USER_SAGA,
   DELETE_USER_SAGA,
+  EDIT_PROFILE_USER,
+  EDIT_PROFILE_USER_SAGA,
   EDIT_USER,
   EDIT_USER_SAGA,
   GET_USER_LIST,
@@ -159,4 +162,41 @@ function* getProfileUserApi(action) {
 
 export function* followGetProfileUserApi() {
   yield takeLatest(VIEW_PROFILE_USER_SAGA, getProfileUserApi);
+}
+
+// edit Profile User
+function* editProfileUserApi(action) {
+  try {
+    const res = yield call(() => EditProfileUserServices(action.user));
+    console.log(res);
+    yield put({
+      type: EDIT_PROFILE_USER,
+      data: res.data,
+    });
+    if (res.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Cập nhật thông tin thành công",
+        html: `
+        <div className="text-left"><span className="font-weight">Họ Tên: </span>${action.user.hoTen}</div>
+          <div className="text-left"><span className="font-weight">Tài khoản:</span> ${action.user.taiKhoan} </div>
+          <div className="text-left"><span className="font-weight">Mật Khẩu:</span> ${action.user.matKhau}</div>
+          <div className="text-left"><span className="font-weight">Email: </span>${action.user.email} </div>
+          <div className="text-left"><span className="font-weight">Số điện thoai:</span> ${action.user.soDT} </div>
+          `,
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    console.log(err.response.data);
+    Swal.fire({
+      icon: "error",
+      title: `Thất bại`,
+      text: `${err.response.data}`,
+    });
+  }
+}
+
+export function* followEditProfileUserApi() {
+  yield takeLatest(EDIT_PROFILE_USER_SAGA, editProfileUserApi);
 }

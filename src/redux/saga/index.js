@@ -2,6 +2,7 @@ import { all } from "@redux-saga/core/effects";
 import {
   followAddUserApi,
   followDeleteUserApi,
+  followEditProfileUserApi,
   followGetProfileUserApi,
   followGetUserListApiAction,
   followUpdateUserApi,
@@ -52,5 +53,6 @@ export default function* rootSaga() {
     followDeleteUserApi(),
     followAddUserApi(),
     followGetProfileUserApi(),
+    followEditProfileUserApi(),
   ]);
 }

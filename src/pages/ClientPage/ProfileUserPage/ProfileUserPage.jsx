@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { VIEW_PROFILE_USER_SAGA } from "../../../redux/types/AdminType/GetUserListType";
+import {
+  EDIT_PROFILE_USER_SAGA,
+  VIEW_PROFILE_USER_SAGA,
+} from "../../../redux/types/AdminType/GetUserListType";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DataCourseUserProfile from "./DataCourseUserProfile";
+import { Button, makeStyles } from "@material-ui/core";
 
 function ProfileUserPage() {
   // Get user form localStorage
@@ -33,6 +37,52 @@ function ProfileUserPage() {
     setVisible((show) => !show);
   };
 
+  // show edit
+  const [showEdit, setShowEdit] = useState(false);
+  const clickToShowEdit = () => {
+    setShowEdit((show) => !show);
+  };
+
+  const useStyles = makeStyles((theme) => ({
+    buttonConfirm: {
+      // margin: theme.spacing(1),
+      margin: "50px 10px",
+      background: "green",
+    },
+
+    buttonCancel: {
+      margin: "50px 10px",
+      background: "red",
+    },
+  }));
+  const classes = useStyles();
+
+  // Edit profile
+  let [userRes, setUserRes] = useState({
+    taiKhoan: "",
+    matKhau: "",
+    hoTen: "",
+    soDT: "",
+    maLoaiNguoiDung: `${user.maLoaiNguoiDung}`,
+    maNhom: "GP01",
+    email: "",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserRes({
+      ...userRes,
+      [name]: value,
+    });
+  };
+
+  const onSubmitRes = (event) => {
+    event.preventDefault();
+    dispatch({
+      type: EDIT_PROFILE_USER_SAGA,
+      user: userRes,
+    });
+  };
+
   return (
     <div className="profileuser_container">
       <section className="inner-banner">
@@ -47,7 +97,7 @@ function ProfileUserPage() {
       </section>
 
       <div className="container emp-profile">
-        <form method="post">
+        <form onSubmit={(event) => onSubmitRes(event)} method="post">
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
@@ -98,14 +148,17 @@ function ProfileUserPage() {
                 </ul>
               </div>
             </div>
-            <div className="col-md-2">
-              {/* <input
-                type="submit"
-                className="profile-edit-btn"
-                name="btnAddMore"
-                defaultValue="Edit Profile"
-              /> */}
-            </div>
+            {showEdit ? null : (
+              <div className="col-md-2">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={clickToShowEdit}
+                >
+                  Edit profile
+                </Button>
+              </div>
+            )}
           </div>
           <div className="row">
             <div className="col-md-4">
@@ -141,52 +194,150 @@ function ProfileUserPage() {
                     <div className="col-md-6">
                       <label>User Id</label>
                     </div>
-                    <div className="col-md-6">
-                      <p>{profile.taiKhoan}</p>
-                    </div>
+                    {showEdit ? (
+                      <div className="col-md-6">
+                        <p>
+                          <input
+                            name="taiKhoan"
+                            type="text"
+                            placeholder={`${profile.taiKhoan}`}
+                            className="input_editProfile_user"
+                            onChange={(e) => handleChange(e)}
+                          />
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="col-md-6">
+                        <p>{profile.taiKhoan}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="row">
                     <div className="col-md-6">
                       <label>Name</label>
                     </div>
-                    <div className="col-md-6">
-                      <p>{profile.hoTen}</p>
-                    </div>
+                    {showEdit ? (
+                      <div className="col-md-6">
+                        <p>
+                          <input
+                            name="hoTen"
+                            type="text"
+                            placeholder={`${profile.hoTen}`}
+                            className="input_editProfile_user"
+                            onChange={(e) => handleChange(e)}
+                          />
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="col-md-6">
+                        <p>{profile.hoTen}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="row">
                     <div className="col-md-6">
                       <label>Email</label>
                     </div>
-                    <div className="col-md-6">
-                      <p>{profile.email}</p>
-                    </div>
+                    {showEdit ? (
+                      <div className="col-md-6">
+                        <p>
+                          <input
+                            name="email"
+                            type="text"
+                            placeholder={`${profile.email}`}
+                            className="input_editProfile_user"
+                            onChange={(e) => handleChange(e)}
+                          />
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="col-md-6">
+                        <p>{profile.email}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="row">
                     <div className="col-md-6">
                       <label>Phone</label>
                     </div>
-                    <div className="col-md-6">
-                      <p>{profile.soDT}</p>
-                    </div>
+                    {showEdit ? (
+                      <div className="col-md-6">
+                        <p>
+                          <input
+                            name="soDT"
+                            type="text"
+                            placeholder={`${profile.soDT}`}
+                            className="input_editProfile_user"
+                            onChange={(e) => handleChange(e)}
+                          />
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="col-md-6">
+                        <p>{profile.soDT}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="row">
                     <div className="col-md-6">
                       <label>Password</label>
                     </div>
+                    {showEdit ? (
+                      <div className="col-md-6">
+                        <input
+                          name="matKhau"
+                          className="input_editProfile_user"
+                          type={visible ? `text` : `password`}
+                          onChange={(e) => handleChange(e)}
+                        />
+                        <span
+                          style={{ cursor: "pointer" }}
+                          onClick={clickVisible}
+                        >
+                          {visible ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="col-md-6">
+                        <input
+                          className="password_profile"
+                          type={visible ? `text` : `password`}
+                          value={profile.matKhau}
+                          disabled
+                        />
+                        <span
+                          style={{ cursor: "pointer" }}
+                          onClick={clickVisible}
+                        >
+                          {visible ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="row">
                     <div className="col-md-6">
-                      <input
-                        className="password_profile"
-                        type={visible ? `text` : `password`}
-                        value={profile.matKhau}
-                        disabled
-                      />
-                      <span
-                        style={{ cursor: "pointer" }}
-                        onClick={clickVisible}
-                      >
-                        {visible ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                      </span>
+                      <label></label>
                     </div>
+                    {showEdit ? (
+                      <div className="col-md-6">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={classes.buttonConfirm}
+                          onClick={(e) => onSubmitRes(e)}
+                        >
+                          Confirm
+                        </Button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={classes.buttonCancel}
+                          onClick={clickToShowEdit}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
                 <div

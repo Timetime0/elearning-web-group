@@ -33,7 +33,6 @@ export default function DataCourseUserProfile(props) {
     };
     Swal.fire({
       title: "Are you sure?",
-      text: "Buy This Course",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -45,7 +44,6 @@ export default function DataCourseUserProfile(props) {
           type: UNBOOKING_COURSE_SAGA,
           user: data,
         });
-        window.location.reload();
       }
     });
   };

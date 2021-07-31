@@ -63,3 +63,17 @@ export function ViewProfileUserServices(user) {
     },
   });
 }
+
+//=======================================================================================================================
+// Edit Profile user
+export function EditProfileUserServices(user) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "PUT",
+    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+    data: user,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}

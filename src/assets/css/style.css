@@ -7572,6 +7572,17 @@ input[type="submit"]:hover {
   color: #0062cc;
 }
 
+.input_editProfile_user {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 300px;
+}
+
+.input_editProfile_user:focus {
+  outline: none;
+}
+
 /* scroll bar */
 ::-webkit-scrollbar {
   width: 8px;

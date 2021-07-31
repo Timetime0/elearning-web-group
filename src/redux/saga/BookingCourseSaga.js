@@ -7,6 +7,7 @@ import {
 import {
   BOOKING_COURSE,
   BOOKING_COURSE_SAGA,
+  UNBOOKING_COURSE,
   UNBOOKING_COURSE_SAGA,
 } from "../types/BookingCourseType";
 
@@ -37,6 +38,9 @@ export function* followGetBookingCourseApi() {
   yield takeLatest(BOOKING_COURSE_SAGA, getBookingCourseApi);
 }
 
+// ==========================================================================
+// hủy đăng ký khóa học
+
 function* getUnBookingCourseApi(action) {
   try {
     const res = yield call(() => UnBookingCourseServices(action.user));
@@ -48,7 +52,7 @@ function* getUnBookingCourseApi(action) {
       });
     }
     yield put({
-      type: BOOKING_COURSE,
+      type: UNBOOKING_COURSE,
       data: res.data,
     });
   } catch (e) {
