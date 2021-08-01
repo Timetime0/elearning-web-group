@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { ADD_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 import "./FormStyle.css";
 function FormAdduser(props) {
+  const dispatch = useDispatch();
+
   const { showPopUp, setShowPopUp } = props;
   let userEdit = props.data;
-  console.log(userEdit);
 
   // close popup add user
   // Show alert to close menu
@@ -47,34 +48,43 @@ function FormAdduser(props) {
       });
   };
 
-  // function add user
-  const dispatch = useDispatch();
-  console.log(userEdit);
-  let [userRes, setUserRes] = useState((userEdit) => {
-    console.log(userEdit);
+  const [userRes, setUserRes] = useState({
+    taiKhoan: "Nguyễn Tân",
+    matKhau: "",
+    hoTen: "",
+    soDT: "",
+    maLoaiNguoiDung: "",
+    maNhom: "GP01",
+    email: "",
+  });
+
+  useEffect(() => {
     if (userEdit) {
-      return {
+
+      
+      setUserRes({
         taiKhoan: userEdit.taiKhoan,
         matKhau: userEdit.matKhau,
         hoTen: userEdit.hoTen,
-        soDT: userEdit.soDT,
+        soDt: userEdit.soDt,
         maLoaiNguoiDung: userEdit.maLoaiNguoiDung,
         maNhom: userEdit.maNhom,
         email: userEdit.email,
-      };
+      });
     } else {
-      return {
-        taiKhoan: "dddd",
+      setUserRes({
+        taiKhoan: "",
         matKhau: "",
         hoTen: "",
-        soDT: "",
+        soDt: "",
         maLoaiNguoiDung: "",
         maNhom: "GP01",
         email: "",
-      };
+      });
     }
-  });
+  }, [userEdit]);
 
+  // function add user
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserRes({
@@ -82,12 +92,19 @@ function FormAdduser(props) {
       [name]: value,
     });
   };
+
+  // btn Submit Res
   const onSubmitRes = (event) => {
     event.preventDefault();
     dispatch({
       type: ADD_USER_SAGA,
       user: userRes,
     });
+  };
+
+  // btn Edit Res
+  const onEditRes = (event) => {
+    event.preventDefault();
   };
   return (
     <div>
@@ -105,6 +122,7 @@ function FormAdduser(props) {
                       type="text"
                       placeholder="Nhập họ tên User..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.hoTen}
                       required
                     />
                   </div>
@@ -115,6 +133,7 @@ function FormAdduser(props) {
                       type="text"
                       placeholder="Nhập tài khoản User..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.taiKhoan}
                       required
                     />
                   </div>
@@ -125,6 +144,7 @@ function FormAdduser(props) {
                       type="text"
                       placeholder="Nhập email user..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.email}
                       required
                     />
                   </div>
@@ -135,6 +155,7 @@ function FormAdduser(props) {
                       type="number"
                       placeholder="Nhập điện thoại User..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.soDt}
                       required
                     />
                   </div>
@@ -145,6 +166,7 @@ function FormAdduser(props) {
                       type="text"
                       placeholder="Nhập mật khẩu User..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.matKhau}
                       required
                     />
                   </div>
@@ -154,30 +176,63 @@ function FormAdduser(props) {
                       name="maNhom"
                       id="id"
                       className="select_group"
+                      value={userRes.maNhom}
                       onChange={(e) => handleChange(e)}
                     >
                       <option value="GP01" onChange={(e) => handleChange(e)}>
                         GP01
                       </option>
-                      <option value="GP02" onChange={(e) => handleChange(e)}>
-                        GP02
-                      </option>
                     </select>
                   </div>
                 </div>
+
                 <div className="gender-details">
+                  {userEdit ? (
+                    <div>
+                      <input
+                        type="radio"
+                        name="maLoaiNguoiDung"
+                        id="dot-1"
+                        onChange={(e) => handleChange(e)}
+                        checked={userRes.maLoaiNguoiDung === "GV"}
+                      />
+                      <input
+                        type="radio"
+                        name="maLoaiNguoiDung"
+                        id="dot-2"
+                        checked={userRes.maLoaiNguoiDung === "HV"}
+                        onChange={(e) => handleChange(e)}
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      <input
+                        type="radio"
+                        name="maLoaiNguoiDung"
+                        id="dot-1"
+                        onChange={(e) => handleChange(e)}
+                      />
+                      <input
+                        type="radio"
+                        name="maLoaiNguoiDung"
+                        id="dot-2"
+                        onChange={(e) => handleChange(e)}
+                      />
+                    </div>
+                  )}
+
                   <input
                     type="radio"
                     name="maLoaiNguoiDung"
                     id="dot-1"
-                    value="GV"
                     onChange={(e) => handleChange(e)}
+                    checked={userRes.maLoaiNguoiDung === "GV"}
                   />
                   <input
                     type="radio"
                     name="maLoaiNguoiDung"
                     id="dot-2"
-                    value="HV"
+                    checked={userRes.maLoaiNguoiDung === "HV"}
                     onChange={(e) => handleChange(e)}
                   />
                   <span className="gender-title">Mã Loại Người Dùng</span>
@@ -193,13 +248,23 @@ function FormAdduser(props) {
                   </div>
                 </div>
                 <div className="button">
-                  <button
-                    type="submit"
-                    className="button_submit"
-                    onClick={onSubmitRes}
-                  >
-                    Add
-                  </button>
+                  {userEdit ? (
+                    <button
+                      type="submit"
+                      className="button_submit"
+                      onClick={onEditRes}
+                    >
+                      Edit
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="button_submit"
+                      onClick={onSubmitRes}
+                    >
+                      Add
+                    </button>
+                  )}
                   <button className="button_close" onClick={btnClose}>
                     Cancle
                   </button>

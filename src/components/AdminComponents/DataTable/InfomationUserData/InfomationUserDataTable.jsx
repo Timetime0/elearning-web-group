@@ -67,8 +67,8 @@ export default function InfomationUserDataTable(props) {
         arrNew = arrNew.filter((item) => item !== data.taiKhoan);
       }
     }
-
     onDelete(arrNew);
+
   };
   const rows = [];
 

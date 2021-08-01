@@ -1,13 +1,17 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GET_USER_LIST_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+
+let arrNew = [];
 
 export default function UserDataTable(props) {
   const onDelete = props.onDelete;
   const onEdit = props.onEdit;
   const inHideEditButton = props.inHideEditButton;
+  const isDeleteCheckBox = props.isDeleteCheckBox
+
   const dispatch = useDispatch();
   let userList = useSelector((state) => state.UserReducer.userList);
   let list = userList.map((user, index) => {
@@ -38,62 +42,54 @@ export default function UserDataTable(props) {
   ];
 
   useEffect(() => {
+    deleteSelectedFile()
     dispatch({
       type: GET_USER_LIST_SAGA,
     });
-  }, [dispatch]);
+  }, [dispatch, isDeleteCheckBox]);
 
-  // Update User
-  // useEffect(
-  //   (user) => {
-  //     dispatch({
-  //       type: EDIT_USER_SAGA,
-  //       data: user,
-  //     });
-  //   },
-  //   [dispatch]
-  // );
 
   // Search data
   let arrTest = [];
   const { checkboxSelection } = props;
-  console.log(checkboxSelection);
 
   for (let item in arrTest) {
     if (checkboxSelection.checked) {
       arrTest.push(...item);
     }
-    console.log(arrTest);
   }
 
-  let arrNew = [];
   const handleRowSelection = (e) => {
     const { data, isSelected } = e;
     if (isSelected) {
-      inHideEditButton((hide) => !hide);
       const result = arrNew.some((item) => item === data.taiKhoan);
       if (!result) {
         arrNew.push(data.taiKhoan);
       }
     } else {
-      inHideEditButton((hide) => !hide);
-
       const result = arrNew.some((item) => item === data.taiKhoan);
       if (result) {
         arrNew = arrNew.filter((item) => item !== data.taiKhoan);
       }
     }
 
+    if(arrNew.length!==0){
+      inHideEditButton(true);
+    }else{
+      inHideEditButton(false);
+    }
     onDelete(arrNew);
-    onEdit(e.data);
+    onEdit(e.data); 
   };
 
-  //   api: {current: mc}
-  // data: {id: 0, taiKhoan: "___abctest", hoTen: "___abctest123123", email: "___abctest", soDt: "___abctest", …}
-  // isSelected: false
+  const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
 
+  const deleteSelectedFile = () => {
+    setSelectionModel([])
+  };
+
+  
   // view profile user
-
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -103,6 +99,10 @@ export default function UserDataTable(props) {
         checkboxSelection={true}
         data={props.data}
         onRowSelected={handleRowSelection}
+        onSelectionModelChange={(newSelection) => {
+          setSelectionModel(newSelection.selectionModel);
+        }}
+        selectionModel={selectionModel}
       />
     </div>
   );

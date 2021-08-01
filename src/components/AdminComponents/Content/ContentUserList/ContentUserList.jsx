@@ -80,8 +80,10 @@ function ContentUserList(props) {
 
   // hide button
   const [buttonEdit, setButtonEdit] = useState(false);
+  const [isClickEdit, setIsClickEdit] = useState(false);
 
   const [dataEdit, setDataEdit] = useState({});
+
 
   let arrNew = [];
 
@@ -99,6 +101,7 @@ function ContentUserList(props) {
   };
 
   const handleEditUser = () => {
+    setIsClickEdit((prev) => !prev);
     setShowPopUp((prev) => !prev);
   };
 
@@ -184,6 +187,7 @@ function ContentUserList(props) {
               onDelete={onDeleteChildToParent}
               onEdit={onEditChildToParent}
               inHideEditButton={setButtonEdit}
+              isDeleteCheckBox={isClickEdit}
             />
           </Typography>
         </div>

@@ -381,12 +381,17 @@ _ fix lỗi lấy thông tin tài khoản trang Profile
 _ thêm data khóa học user đã đăng ký bên trang profile 
 
 
-
-
-
 #Ngày 31/7/2021 Chun:
 _ fix lỗi đăng ký khóa học ở trang profile user 
 _ Làm api cập nhật thông tin khóa học thành công
 
 ********** Chưa thêm , xóa ,sửa được course 
+********** chưa chỉnh sửa thông tin tài khoảng trang admin
+
+
+
+#Ngày 01/8/2021 Chun:
+- sửa được user 
+
+********** Chưa thêm , xóa 
 ********** chưa chỉnh sửa thông tin tài khoảng trang admin
