@@ -14,11 +14,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import UserDataTable from "../../DataTable/UserData/UserDataTable";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import {
-  DELETE_USER_SAGA,
-  EDIT_USER_SAGA,
-} from "../../../../redux/types/AdminType/GetUserListType";
+import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 import FormAdduser from "./FormAdduser";
 
 const styles = (theme) => ({
@@ -45,7 +41,7 @@ const styles = (theme) => ({
   dellUser: {
     backgroundColor: "red",
   },
-  viewUser: {
+  editUser: {
     backgroundColor: "green",
     margin: "0 8px",
   },
@@ -83,7 +79,6 @@ function ContentUserList(props) {
   const [isClickEdit, setIsClickEdit] = useState(false);
 
   const [dataEdit, setDataEdit] = useState({});
-
 
   let arrNew = [];
 
@@ -148,7 +143,7 @@ function ContentUserList(props) {
                   <Button
                     variant="contained"
                     color="primary"
-                    className={classes.viewUser}
+                    className={classes.editUser}
                     onClick={handleEditUser}
                   >
                     Edit User

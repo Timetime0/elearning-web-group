@@ -10,7 +10,7 @@ export default function UserDataTable(props) {
   const onDelete = props.onDelete;
   const onEdit = props.onEdit;
   const inHideEditButton = props.inHideEditButton;
-  const isDeleteCheckBox = props.isDeleteCheckBox
+  const isDeleteCheckBox = props.isDeleteCheckBox;
 
   const dispatch = useDispatch();
   let userList = useSelector((state) => state.UserReducer.userList);
@@ -42,12 +42,11 @@ export default function UserDataTable(props) {
   ];
 
   useEffect(() => {
-    deleteSelectedFile()
+    deleteSelectedFile();
     dispatch({
       type: GET_USER_LIST_SAGA,
     });
   }, [dispatch, isDeleteCheckBox]);
-
 
   // Search data
   let arrTest = [];
@@ -73,22 +72,21 @@ export default function UserDataTable(props) {
       }
     }
 
-    if(arrNew.length!==0){
+    if (arrNew.length !== 0) {
       inHideEditButton(true);
-    }else{
+    } else {
       inHideEditButton(false);
     }
     onDelete(arrNew);
-    onEdit(e.data); 
+    onEdit(e.data);
   };
 
   const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
 
   const deleteSelectedFile = () => {
-    setSelectionModel([])
+    setSelectionModel([]);
   };
 
-  
   // view profile user
   return (
     <div style={{ height: 400, width: "100%" }}>
