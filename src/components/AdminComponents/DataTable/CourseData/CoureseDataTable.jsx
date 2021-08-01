@@ -3,10 +3,15 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_COURSE_LIST_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { useEffect } from "react";
+import { useState } from "react";
 
 export default function CourseDataTable(props) {
   const dispatch = useDispatch();
   const onDelete = props.onDelete;
+  const onEdit = props.onEdit;
+
+  const inHideEditButton = props.inHideEditButton;
+  const isDeleteCheckBox = props.isDeleteCheckBox;
 
   let list = useSelector(
     (state) => state.CourseListAdminrReducer.courseListAdmin
@@ -54,10 +59,11 @@ export default function CourseDataTable(props) {
     },
   ];
   useEffect(() => {
+    deleteSelectedFile();
     dispatch({
       type: GET_COURSE_LIST_ADMIN_SAGA,
     });
-  }, [dispatch]);
+  }, [dispatch, isDeleteCheckBox]);
 
   // lấy item trong rows
   let arrTest = [];
@@ -86,11 +92,27 @@ export default function CourseDataTable(props) {
         arrNew = arrNew.filter((item) => item !== data.maKhoaHoc);
       }
     }
+
+    if (arrNew.length !== 0) {
+      inHideEditButton(true);
+    } else {
+      inHideEditButton(false);
+    }
     console.log(e);
     onDelete(arrNew);
- 
+    onEdit(e.data);
   };
-console.log(list)
+
+  const clickTest = (e) => {
+    alert(list.maKhoaHoc);
+  };
+  console.log(list);
+
+  const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
+
+  const deleteSelectedFile = () => {
+    setSelectionModel([]);
+  };
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -100,7 +122,11 @@ console.log(list)
         checkboxSelection={true}
         data={props.data}
         onRowSelected={handleRowSelection}
-        // onRowDoubleClick={clickTest}
+        onRowDoubleClick={clickTest}
+        onSelectionModelChange={(newSelection) => {
+          setSelectionModel(newSelection.selectionModel);
+        }}
+        selectionModel={selectionModel}
       />
     </div>
   );

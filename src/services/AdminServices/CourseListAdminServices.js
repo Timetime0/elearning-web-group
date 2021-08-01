@@ -70,7 +70,7 @@ export function GetUserInCourseSerVices(maKhoaHoc) {
   return Axios({
     method: "POST",
     url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc`,
-   data: maKhoaHoc,
+    data: maKhoaHoc,
     headers: {
       Authorization: `Bearer ${admin.accessToken}`,
     },

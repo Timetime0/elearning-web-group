@@ -6,6 +6,9 @@ import { ADD_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCour
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
 function FromAddCourse(props) {
+  const inHideEditButton = props.inHideEditButton;
+  let courseEdit = props.data;
+
   const { showPopUp, setShowPopUp } = props;
   // close popup add user
   // Show alert to close menu
@@ -30,8 +33,8 @@ function FromAddCourse(props) {
       })
       .then((result) => {
         if (result.isConfirmed) {
+          inHideEditButton(true);
           setShowPopUp((prev) => !prev);
-
           // showPopUp;
         } else if (
           /* Read more about handling dismissals below */
@@ -94,6 +97,38 @@ function FromAddCourse(props) {
     taiKhoanNguoiTao: `${user.taiKhoan}`,
   });
 
+  useEffect(() => {
+    if (courseEdit) {
+      setCourseRes({
+        maKhoaHoc: courseEdit.maKhoaHoc,
+        biDanh: courseEdit.biDanh,
+        tenKhoaHoc: courseEdit.tenKhoaHoc,
+        moTa: courseEdit.moTa,
+        luotXem: 0,
+        danhGia: 0,
+        hinhAnh: courseEdit.hinhAnh,
+        maNhom: courseEdit.maNhom,
+        ngayTao: `${ngayTao(date)}`,
+        maDanhMucKhoaHoc: courseEdit.maDanhMucKhoaHoc,
+        taiKhoanNguoiTao: courseEdit.taiKhoan,
+      });
+    } else {
+      setCourseRes({
+        maKhoaHoc: "",
+        biDanh: "",
+        tenKhoaHoc: "",
+        moTa: "",
+        luotXem: 0,
+        danhGia: 0,
+        hinhAnh: "",
+        maNhom: "GP01",
+        ngayTao: `${ngayTao(date)}`,
+        maDanhMucKhoaHoc: "BackEnd",
+        taiKhoanNguoiTao: `${user.taiKhoan}`,
+      });
+    }
+  }, [courseEdit]);
+
   // img: {
   //   img: "",
   //   basa64Img: "",
@@ -139,7 +174,9 @@ function FromAddCourse(props) {
       {showPopUp ? (
         <div className={`admin_for ${showPopUp && `in_animation_course`}`}>
           <div className="form_container">
-            <div className="title">Add Course</div>
+            <div className="title">
+              {courseEdit ? "Edit Course" : "Add Course"}
+            </div>
             <div className="content">
               <form onSubmit={(event) => onSubmitRes(event)} method="POST">
                 <div className="user-details">
@@ -151,6 +188,7 @@ function FromAddCourse(props) {
                       placeholder="Nhập tên khóa học..."
                       required
                       onChange={(e) => handleChange(e)}
+                      value={courseRes.tenKhoaHoc}
                     />
                   </div>
                   <div className="input-box">
@@ -161,6 +199,7 @@ function FromAddCourse(props) {
                       placeholder="Nhập mã khóa học..."
                       required
                       onChange={(e) => handleChange(e)}
+                      value={courseRes.maKhoaHoc}
                     />
                   </div>
 
@@ -171,7 +210,7 @@ function FromAddCourse(props) {
                       id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
-                      value="GP01"
+                      value={courseRes.maNhom}
                     >
                       <option value="GP01" onChange={(e) => handleChange(e)}>
                         GP01
@@ -183,24 +222,44 @@ function FromAddCourse(props) {
                   </div>
                   <div className="input-box">
                     <span className="details">Mã Danh Mục Khóa Học</span>
-                    <select
-                      name="maDanhMucKhoaHoc"
-                      id="id"
-                      className="select_group"
-                      onChange={(e) => handleChange(e)}
-                      value="BackEnd"
-                    >
-                      {listCourse.map((list, index) => {
-                        return (
-                          <option
-                            value={list.maDanhMuc}
-                            onChange={(e) => handleChange(e)}
-                          >
-                            {list.maDanhMuc}
-                          </option>
-                        );
-                      })}
-                    </select>
+                    {courseEdit ? (
+                      <select
+                        name="maDanhMucKhoaHoc"
+                        id="id"
+                        className="select_group"
+                        onChange={(e) => handleChange(e)}
+                      >
+                        {listCourse.map((list, index) => {
+                          return (
+                            <option
+                              value={courseRes.maDanhMuc}
+                              onChange={(e) => handleChange(e)}
+                            >
+                              {list.maDanhMuc}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    ) : (
+                      <select
+                        name="maDanhMucKhoaHoc"
+                        id="id"
+                        className="select_group"
+                        onChange={(e) => handleChange(e)}
+                        value="BackEnd"
+                      >
+                        {listCourse.map((list, index) => {
+                          return (
+                            <option
+                              value={list.maDanhMuc}
+                              onChange={(e) => handleChange(e)}
+                            >
+                              {list.maDanhMuc}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    )}
                   </div>
                   <div className="input-box">
                     <span className="details">Bí Danh</span>
@@ -209,17 +268,26 @@ function FromAddCourse(props) {
                       name="biDanh"
                       required
                       onChange={(e) => handleChange(e)}
+                      value={courseRes.biDanh}
                     />
                   </div>
                   <div className="input-box">
                     <span className="details">Tài Khoản Người Tạo</span>
-                    <input
-                      name="taiKhoanNguoiTao"
-                      type="text"
-                      placeholder="Nhập mã khóa học..."
-                      value={user.taiKhoan}
-                      disabled
-                    />
+                    {courseEdit ? (
+                      <input
+                        name="taiKhoanNguoiTao"
+                        type="text"
+                        value={courseRes.taiKhoan}
+                        disabled
+                      />
+                    ) : (
+                      <input
+                        name="taiKhoanNguoiTao"
+                        type="text"
+                        value={user.taiKhoan}
+                        disabled
+                      />
+                    )}
                   </div>
                   <div className="input-box">
                     <span className="details">Hình Ảnh</span>
@@ -239,6 +307,7 @@ function FromAddCourse(props) {
                       placeholder="Nhập mô tả...."
                       type="text"
                       name="moTa"
+                      value={courseRes.moTa}
                       onChange={(e) => handleChange(e)}
                       required
                     />
@@ -246,15 +315,26 @@ function FromAddCourse(props) {
                 </div>
 
                 <div className="button">
-                  <button
-                    type="submit"
-                    className="button_submit"
-                    onClick={onSubmitRes}
-                  >
-                    Add
-                  </button>
+                  {courseEdit ? (
+                    <button
+                      type="submit"
+                      className="button_submit"
+                      onClick={onSubmitRes}
+                    >
+                      Edit
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="button_submit"
+                      onClick={onSubmitRes}
+                    >
+                      Add
+                    </button>
+                  )}
+
                   <button className="button_close" onClick={btnClose}>
-                    Cancle
+                    Cancel
                   </button>
                 </div>
               </form>

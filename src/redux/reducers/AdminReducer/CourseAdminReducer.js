@@ -14,6 +14,7 @@ const CourseListAdminrReducer = (state = initialState, action) => {
       return { ...state, courseListAdmin: action.data };
     }
     case GET_USER_IN_COURSE_ADMIN: {
+      console.log(1);
       return { ...state, userInCourse: action.data };
     }
     default:

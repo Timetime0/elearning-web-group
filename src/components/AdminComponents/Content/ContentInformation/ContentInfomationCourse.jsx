@@ -18,7 +18,6 @@ import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListT
 import InfomationCourseDataTable from "../../DataTable/InfomationData/InfomationCourseDataTable";
 import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 
-
 const styles = (theme) => ({
   container: {
     position: "relative !important",
@@ -97,28 +96,14 @@ function ContentInfomationCourse(props) {
 
   // Show popup add User
   const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddUser = () => {
-    dispatch({
-      type: GET_USER_IN_COURSE_ADMIN_SAGA,
-      maKhoaHoc: maKH,
-    });
-  };
+  const btnAddUser = () => {};
 
-
-
-
-let [maKH] = useState({
-  maKhoaHoc: props.course.maKhoaHoc
-})
-
-console.log(maKH)
   useEffect(() => {
     dispatch({
       type: GET_USER_IN_COURSE_ADMIN_SAGA,
-      maKhoaHoc: maKH,
+      maKhoaHoc: { maKhoaHoc: props.course.maKhoaHoc },
     });
-  }, [dispatch, maKH]);
-
+  }, [props.course.maKhoaHoc]);
 
   return (
     <div className={classes.container}>

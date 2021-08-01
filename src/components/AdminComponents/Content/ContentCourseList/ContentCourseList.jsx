@@ -40,14 +40,22 @@ const styles = (theme) => ({
   contentWrapper: {
     margin: "40px 16px",
   },
+  editCourse: {
+    backgroundColor: "green",
+    margin: "0 8px",
+  },
 });
 
 function ContentCourseList(props) {
   const { classes } = props;
-
+  const [dataEdit, setDataEdit] = useState({});
+  const [buttonEdit, setButtonEdit] = useState(false);
+  const [isClickEdit, setIsClickEdit] = useState(false);
   // Show popup add Course
   const [showPopUp, setShowPopUp] = useState(false);
   const btnAddCourse = () => {
+    setDataEdit(null);
+
     setShowPopUp((prev) => !prev);
   };
 
@@ -66,6 +74,16 @@ function ContentCourseList(props) {
 
   const onDeleteCourse = (arr) => {
     arrNew = arr;
+  };
+
+  const handleEditCourse = () => {
+    setIsClickEdit((prev) => !prev);
+    setShowPopUp((prev) => !prev);
+  };
+
+  const onEditChildToParent = (arr) => {
+    console.log(arr);
+    setDataEdit(arr);
   };
 
   return (
@@ -93,6 +111,17 @@ function ContentCourseList(props) {
                 />
               </Grid>
               <Grid item>
+                {buttonEdit ? (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.editCourse}
+                    onClick={handleEditCourse}
+                  >
+                    Edit Course
+                  </Button>
+                ) : null}
+
                 <Button
                   variant="contained"
                   color="primary"
@@ -120,11 +149,21 @@ function ContentCourseList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <CoureseDataTable onDelete={onDeleteCourse}></CoureseDataTable>
+            <CoureseDataTable
+              onEdit={onEditChildToParent}
+              onDelete={onDeleteCourse}
+              inHideEditButton={setButtonEdit}
+              isDeleteCheckBox={isClickEdit}
+            ></CoureseDataTable>
           </Typography>
         </div>
       </Paper>
-      <FromAddCourse showPopUp={showPopUp} setShowPopUp={setShowPopUp} />
+      <FromAddCourse
+        showPopUp={showPopUp}
+        setShowPopUp={setShowPopUp}
+        data={dataEdit}
+        inHideEditButton={setButtonEdit}
+      />
     </div>
   );
 }

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
-import { ADD_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import {
+  ADD_USER_SAGA,
+  EDIT_USER_SAGA,
+} from "../../../../redux/types/AdminType/GetUserListType";
 import "./FormStyle.css";
 function FormAdduser(props) {
   const dispatch = useDispatch();
@@ -60,8 +63,6 @@ function FormAdduser(props) {
 
   useEffect(() => {
     if (userEdit) {
-
-      
       setUserRes({
         taiKhoan: userEdit.taiKhoan,
         matKhau: userEdit.matKhau,
@@ -78,7 +79,7 @@ function FormAdduser(props) {
         hoTen: "",
         soDt: "",
         maLoaiNguoiDung: "",
-        maNhom: "GP01",
+        maNhom: "",
         email: "",
       });
     }
@@ -105,7 +106,12 @@ function FormAdduser(props) {
   // btn Edit Res
   const onEditRes = (event) => {
     event.preventDefault();
+    dispatch({
+      type: EDIT_USER_SAGA,
+      user: userRes,
+    });
   };
+
   return (
     <div>
       {showPopUp ? (
@@ -155,7 +161,7 @@ function FormAdduser(props) {
                       type="number"
                       placeholder="Nhập điện thoại User..."
                       onChange={(e) => handleChange(e)}
-                      value={userRes.soDt}
+                      // value={userRes.soDt}
                       required
                     />
                   </div>
@@ -179,74 +185,78 @@ function FormAdduser(props) {
                       value={userRes.maNhom}
                       onChange={(e) => handleChange(e)}
                     >
+                      <option>Chọn mã nhóm</option>
                       <option value="GP01" onChange={(e) => handleChange(e)}>
                         GP01
+                      </option>
+                      <option value="GP02" onChange={(e) => handleChange(e)}>
+                        GP02
                       </option>
                     </select>
                   </div>
                 </div>
-
-                <div className="gender-details">
-                  {userEdit ? (
-                    <div>
-                      <input
-                        type="radio"
-                        name="maLoaiNguoiDung"
-                        id="dot-1"
-                        onChange={(e) => handleChange(e)}
-                        checked={userRes.maLoaiNguoiDung === "GV"}
-                      />
-                      <input
-                        type="radio"
-                        name="maLoaiNguoiDung"
-                        id="dot-2"
-                        checked={userRes.maLoaiNguoiDung === "HV"}
-                        onChange={(e) => handleChange(e)}
-                      />
+                {userEdit ? (
+                  <div className="gender-details">
+                    <input
+                      type="radio"
+                      name="maLoaiNguoiDung"
+                      id="dot-1"
+                      onChange={(e) => handleChange(e)}
+                      checked={userRes.maLoaiNguoiDung === "GV"}
+                      value="GV"
+                    />
+                    <input
+                      type="radio"
+                      name="maLoaiNguoiDung"
+                      id="dot-2"
+                      checked={userRes.maLoaiNguoiDung === "HV"}
+                      onChange={(e) => handleChange(e)}
+                      value="HV"
+                    />
+                    <span className="gender-title">Mã Loại Người Dùng</span>
+                    <div className="category">
+                      <label htmlFor="dot-1">
+                        <span className="dot one" />
+                        <span className="gender">GV</span>
+                      </label>
+                      <label htmlFor="dot-2">
+                        <span className="dot two" />
+                        <span className="gender">HV</span>
+                      </label>
                     </div>
-                  ) : (
-                    <div>
-                      <input
-                        type="radio"
-                        name="maLoaiNguoiDung"
-                        id="dot-1"
-                        onChange={(e) => handleChange(e)}
-                      />
-                      <input
-                        type="radio"
-                        name="maLoaiNguoiDung"
-                        id="dot-2"
-                        onChange={(e) => handleChange(e)}
-                      />
-                    </div>
-                  )}
-
-                  <input
-                    type="radio"
-                    name="maLoaiNguoiDung"
-                    id="dot-1"
-                    onChange={(e) => handleChange(e)}
-                    checked={userRes.maLoaiNguoiDung === "GV"}
-                  />
-                  <input
-                    type="radio"
-                    name="maLoaiNguoiDung"
-                    id="dot-2"
-                    checked={userRes.maLoaiNguoiDung === "HV"}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <span className="gender-title">Mã Loại Người Dùng</span>
-                  <div className="category">
-                    <label htmlFor="dot-1">
-                      <span className="dot one" />
-                      <span className="gender">GV</span>
-                    </label>
-                    <label htmlFor="dot-2">
-                      <span className="dot two" />
-                      <span className="gender">HV</span>
-                    </label>
                   </div>
-                </div>
+                ) : (
+                  <div className="gender-details">
+                    <input
+                      type="radio"
+                      name="maLoaiNguoiDung"
+                      id="dot-1"
+                      onChange={(e) => handleChange(e)}
+                      // checked={userRes.maLoaiNguoiDung === "GV"}
+                      value="GV"
+                    />
+                    <input
+                      type="radio"
+                      name="maLoaiNguoiDung"
+                      id="dot-2"
+                      // checked={userRes.maLoaiNguoiDung === "HV"}
+                      onChange={(e) => handleChange(e)}
+                      value="HV"
+                    />
+                    <span className="gender-title">Mã Loại Người Dùng</span>
+                    <div className="category">
+                      <label htmlFor="dot-1">
+                        <span className="dot one" />
+                        <span className="gender">GV</span>
+                      </label>
+                      <label htmlFor="dot-2">
+                        <span className="dot two" />
+                        <span className="gender">HV</span>
+                      </label>
+                    </div>
+                  </div>
+                )}
+
                 <div className="button">
                   {userEdit ? (
                     <button
