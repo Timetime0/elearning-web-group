@@ -166,7 +166,7 @@ export function* followDeleteCourseApi() {
 
 function* getUserInCourseApi(action) {
   try {
-    const res = yield call(() => GetUserInCourseSerVices(action.data));
+    const res = yield call(() => GetUserInCourseSerVices(action.maKhoaHoc));
     yield put({
       type: GET_USER_IN_COURSE_ADMIN,
       data: res.data,

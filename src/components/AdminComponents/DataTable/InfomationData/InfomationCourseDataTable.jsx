@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { GET_DATA_COURSE_SAGA } from "../../../../redux/types/courseType";
 
@@ -9,15 +9,12 @@ export default function InfomationCourseDataTable(props) {
   const onDelete = props.onDelete;
   const dispatch = useDispatch();
   const { course } = props;
-  console.log(props.course);
   // console.log(course);
+  
+  let user = useSelector((state) => state.CourseListAdminrReducer.userInCourse)
+  console.log(user)
 
-  useEffect(() => {
-    dispatch({
-      type: GET_USER_IN_COURSE_ADMIN_SAGA,
-      data: props.course.maKhoaHoc,
-    });
-  }, [dispatch, props.course.maKhoaHoc]);
+
 
   // const maKH = useSelector(
   //   (state) => state.CourseListAdminrReducer.userInCourse

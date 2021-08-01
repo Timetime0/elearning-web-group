@@ -88,8 +88,9 @@ export default function CourseDataTable(props) {
     }
     console.log(e);
     onDelete(arrNew);
+ 
   };
-
+console.log(list)
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -99,7 +100,7 @@ export default function CourseDataTable(props) {
         checkboxSelection={true}
         data={props.data}
         onRowSelected={handleRowSelection}
-        // onRowDoubleClick={testClick}
+        // onRowDoubleClick={clickTest}
       />
     </div>
   );

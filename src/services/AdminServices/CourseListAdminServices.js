@@ -68,8 +68,9 @@ export function DeleteCourseServices(maKhoaHoc) {
 export function GetUserInCourseSerVices(maKhoaHoc) {
   const admin = JSON.parse(localStorage.getItem("user"));
   return Axios({
-    method: "GET",
-    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinHocVienKhoaHoc?maKhoaHoc=${maKhoaHoc}`,
+    method: "POST",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc`,
+   data: maKhoaHoc,
     headers: {
       Authorization: `Bearer ${admin.accessToken}`,
     },
