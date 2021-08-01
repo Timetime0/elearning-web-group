@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,8 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 import InfomationCourseDataTable from "../../DataTable/InfomationData/InfomationCourseDataTable";
 import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
@@ -61,9 +60,11 @@ const styles = (theme) => ({
 });
 
 function ContentInfomationCourse(props) {
-  const { classes } = props;
   const dispatch = useDispatch();
-  const { course } = props;
+
+  const { classes, course } = props;
+
+
   // console.log(props.course);
   // Search data
   // const getData = useSelector((state) => state.UserReducer.userList);
@@ -78,7 +79,6 @@ function ContentInfomationCourse(props) {
   // }
 
   let arrNew = [];
-
   const handleDeleteUser = () => {
     for (let item in arrNew) {
       dispatch({
@@ -101,9 +101,11 @@ function ContentInfomationCourse(props) {
   useEffect(() => {
     dispatch({
       type: GET_USER_IN_COURSE_ADMIN_SAGA,
-      maKhoaHoc: { maKhoaHoc: props.course.maKhoaHoc },
+      maKhoaHoc: { maKhoaHoc: course.maKhoaHoc },
     });
-  }, [props.course.maKhoaHoc]);
+  }, [course.maKhoaHoc]);
+
+
 
   return (
     <div className={classes.container}>
@@ -167,7 +169,7 @@ function ContentInfomationCourse(props) {
           <Typography color="textSecondary" align="center">
             <InfomationCourseDataTable
               onDelete={onDeleteChildToParent}
-              course={course}
+              data={course.maKhoaHoc}
             />
           </Typography>
         </div>

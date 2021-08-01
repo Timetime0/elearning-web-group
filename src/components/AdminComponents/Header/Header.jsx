@@ -202,14 +202,10 @@ function Header(props) {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <ContentCourseList>
-              <CoureseDataTable />
-            </ContentCourseList>
+            <ContentCourseList />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <ContentUserList>
-              <UserDataTable />
-            </ContentUserList>
+            <ContentUserList />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             {course.map((course, index) => {
@@ -218,17 +214,13 @@ function Header(props) {
                   <h3 style={{ marginTop: "100px", textAlign: "center" }}>
                     Course: {course.tenKhoaHoc}
                   </h3>
-                  <ContentInfomationCourse course={course}>
-                    <InfomationCourseDataTable />
-                  </ContentInfomationCourse>
+                  <ContentInfomationCourse course={course} />
                 </div>
               );
             })}
           </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
-            <ContentInfomationUser>
-              <InfomationUserDataTable />
-            </ContentInfomationUser>
+            <ContentInfomationUser />
           </TabPanel>
         </SwipeableViews>
       </div>

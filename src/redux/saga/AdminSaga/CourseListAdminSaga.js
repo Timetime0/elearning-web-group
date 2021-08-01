@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import Swal from "sweetalert2";
 import {
   AddCourseAmdminServices,
@@ -162,21 +162,20 @@ export function* followDeleteCourseApi() {
 }
 
 // ===========================================================================================================================
-// Get User In Course
 
+// Get User In Course
 function* getUserInCourseApi(action) {
   try {
-    console.log(action.maKhoaHoc);
-    const res = yield call(() => GetUserInCourseSerVices(action.maKhoaHoc));
-
+    const res = yield call(() => GetUserInCourseSerVices(action.maKhoaHoc));    
     yield put({
       type: GET_USER_IN_COURSE_ADMIN,
       data: res.data,
+      maKhoaHoc: action.maKhoaHoc,
     });
   } catch (err) {
     console.log(err.response.data);
   }
 }
 export function* followGetUserInCourseApi() {
-  yield takeLatest(GET_USER_IN_COURSE_ADMIN_SAGA, getUserInCourseApi);
+  yield takeEvery(GET_USER_IN_COURSE_ADMIN_SAGA, getUserInCourseApi);
 }
