@@ -14,6 +14,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import CoureseDataTable from "../../DataTable/CourseData/CoureseDataTable";
 import FromAddCourse from "./FormAddCourse";
+import { useDispatch } from "react-redux";
+import { DELETE_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 const styles = (theme) => ({
   paper: {
     maxWidth: 1920,
@@ -43,10 +45,27 @@ const styles = (theme) => ({
 function ContentCourseList(props) {
   const { classes } = props;
 
-  // Show popup add User
+  // Show popup add Course
   const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddUser = () => {
+  const btnAddCourse = () => {
     setShowPopUp((prev) => !prev);
+  };
+
+  // Delete course
+  const dispatch = useDispatch();
+  let arrNew = [];
+
+  const handleDeleteCourse = () => {
+    for (let item in arrNew) {
+      dispatch({
+        type: DELETE_COURSE_ADMIN_SAGA,
+        maKhoaHoc: arrNew[item],
+      });
+    }
+  };
+
+  const onDeleteCourse = (arr) => {
+    arrNew = arr;
   };
 
   return (
@@ -78,7 +97,7 @@ function ContentCourseList(props) {
                   variant="contained"
                   color="primary"
                   className={classes.addUser}
-                  onClick={btnAddUser}
+                  onClick={btnAddCourse}
                 >
                   Add Course
                 </Button>
@@ -86,6 +105,7 @@ function ContentCourseList(props) {
                   variant="contained"
                   color="secondary"
                   className={classes.dellUser}
+                  onClick={() => handleDeleteCourse()}
                 >
                   Delete Courese
                 </Button>
@@ -100,7 +120,7 @@ function ContentCourseList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <CoureseDataTable />
+            <CoureseDataTable onDelete={onDeleteCourse}></CoureseDataTable>
           </Typography>
         </div>
       </Paper>

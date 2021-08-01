@@ -21,7 +21,7 @@ function BrowseOnline() {
               <img src="/images/course-category-1-1.png" alt={"img"} />
               <div className="course-category-three__content">
                 <h3 className="course-category-three__title">
-                  <a href="/">IT &amp; Software </a>
+                  <a href="/course-from-list/Design">Development</a>
                 </h3>
                 <p className="course-category-three__text">Over 752 Courses</p>
               </div>
@@ -32,7 +32,7 @@ function BrowseOnline() {
               <img src="/images/course-category-1-2.png" alt={"img"} />
               <div className="course-category-three__content">
                 <h3 className="course-category-three__title">
-                  <a href="/">Development </a>
+                  <a href="/course-from-list/FrontEnd">Front End Development</a>
                 </h3>
                 <p className="course-category-three__text">Over 752 Courses</p>
               </div>
@@ -43,7 +43,7 @@ function BrowseOnline() {
               <img src="/images/course-category-1-3.png" alt={"img"} />
               <div className="course-category-three__content">
                 <h3 className="course-category-three__title">
-                  <a href="/">Photography</a>
+                  <a href="/course-from-list/FullStack">Full Stack</a>
                 </h3>
                 <p className="course-category-three__text">Over 752 Courses</p>
               </div>
@@ -54,7 +54,7 @@ function BrowseOnline() {
               <img src="/images/course-category-1-4.png" alt={"img"} />
               <div className="course-category-three__content">
                 <h3 className="course-category-three__title">
-                  <a href="/">Marketing</a>
+                  <a href="/course-from-list/BackEnd">Back End Development</a>
                 </h3>
                 <p className="course-category-three__text">Over 752 Courses</p>
               </div>
@@ -62,7 +62,10 @@ function BrowseOnline() {
           </div>
         </div>
         <div className="text-center">
-          <a href="/" className="thm-btn course-category-three__more-link">
+          <a
+            href="/course-list"
+            className="thm-btn course-category-three__more-link"
+          >
             View All Categories
           </a>
         </div>

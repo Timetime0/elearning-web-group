@@ -13,11 +13,11 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import UserDataTable from "../../DataTable/UserData/UserDataTable";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import {
   DELETE_USER_SAGA,
-  GET_USER_LIST_SAGA,
+  EDIT_USER_SAGA,
 } from "../../../../redux/types/AdminType/GetUserListType";
 import FormAdduser from "./FormAdduser";
 
@@ -44,6 +44,10 @@ const styles = (theme) => ({
   },
   dellUser: {
     backgroundColor: "red",
+  },
+  viewUser: {
+    backgroundColor: "green",
+    margin: "0 8px",
   },
   contentWrapper: {
     margin: "40px 16px",
@@ -74,44 +78,43 @@ function ContentUserList(props) {
   //   );
   // }
 
+  // hide button
+  const [buttonEdit, setButtonEdit] = useState(false);
 
-  useEffect(() => {
-    dispatch({
-      type: GET_USER_LIST_SAGA,
-    });
-  }, [dispatch]);
-  let userList = useSelector((state) => state.UserReducer.userList);
-  
-  
-  let arrNew = []
+  const [dataEdit, setDataEdit] = useState({});
+
+  let arrNew = [];
 
   const handleDeleteUser = () => {
-
-    for(let item in arrNew){
+    for (let item in arrNew) {
       dispatch({
-            type: DELETE_USER_SAGA,
-            taiKhoan: arrNew[item]
+        type: DELETE_USER_SAGA,
+        taiKhoan: arrNew[item],
       });
     }
-
-    
-
-
   };
 
-
   const onDeleteChildToParent = (arr) => {
-    arrNew = arr
-  }
+    arrNew = arr;
+  };
+
+  const handleEditUser = () => {
+    setShowPopUp((prev) => !prev);
+  };
+
+  const onEditChildToParent = (arr) => {
+    console.log(arr);
+    setDataEdit(arr);
+  };
 
   // Add User
 
   // Show popup add User
   const [showPopUp, setShowPopUp] = useState(false);
   const btnAddUser = () => {
+    setDataEdit(null);
     setShowPopUp((prev) => !prev);
   };
-  // style popup
 
   return (
     <div className={classes.container}>
@@ -138,6 +141,17 @@ function ContentUserList(props) {
                 />
               </Grid>
               <Grid item>
+                {buttonEdit ? (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.viewUser}
+                    onClick={handleEditUser}
+                  >
+                    Edit User
+                  </Button>
+                ) : null}
+
                 <Button
                   variant="contained"
                   color="primary"
@@ -166,11 +180,19 @@ function ContentUserList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserDataTable onDelete={onDeleteChildToParent}  />
+            <UserDataTable
+              onDelete={onDeleteChildToParent}
+              onEdit={onEditChildToParent}
+              inHideEditButton={setButtonEdit}
+            />
           </Typography>
         </div>
       </Paper>
-      <FormAdduser showPopUp={showPopUp} setShowPopUp={setShowPopUp} />
+      <FormAdduser
+        data={dataEdit}
+        showPopUp={showPopUp}
+        setShowPopUp={setShowPopUp}
+      />
     </div>
   );
 }

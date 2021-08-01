@@ -1,4 +1,5 @@
 import React from "react";
+import CountUp from "react-countup";
 
 function Student() {
   return (
@@ -47,14 +48,17 @@ function Student() {
                           <h3 className="progress-one__title">English</h3>
 
                           <h3 className="progress-one__percent">
-                            <span className="counter">98</span>%
+                            <span className="counter">
+                              <CountUp start={0} end={98} duration={15} />
+                            </span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
                           <span
                             style={{ width: "98%" }}
                             className="wow slideInLeft"
-                          />
+                          ></span>
                         </div>
                       </div>
                       <div className="progress-one__single">
@@ -62,7 +66,11 @@ function Student() {
                           <h3 className="progress-one__title">French</h3>
 
                           <h3 className="progress-one__percent">
-                            <span className="counter">64</span>%
+                            <span className="counter">
+                              {" "}
+                              <CountUp start={0} end={64} duration={15} />
+                            </span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
@@ -77,7 +85,10 @@ function Student() {
                           <h3 className="progress-one__title">Spanish</h3>
 
                           <h3 className="progress-one__percent">
-                            <span className="counter">34</span>%
+                            <span className="counter">
+                              <CountUp start={0} end={34} duration={15} />
+                            </span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
@@ -141,7 +152,10 @@ function Student() {
                           <h3 className="progress-one__title">English</h3>
 
                           <h3 className="progress-one__percent">
-                            <span className="counter">98</span>%
+                            <span className="counter">
+                              <CountUp start={0} end={98} duration={15} />
+                            </span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
@@ -156,7 +170,11 @@ function Student() {
                           <h3 className="progress-one__title">French</h3>
 
                           <h3 className="progress-one__percent">
-                            <span className="counter">64</span>%
+                            <span className="counter">
+                              {" "}
+                              <CountUp start={0} end={64} duration={15} />
+                            </span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
@@ -171,7 +189,11 @@ function Student() {
                           <h3 className="progress-one__title">Spanish</h3>
 
                           <h3 className="progress-one__percent">
-                            <span className="counter">34</span>%
+                            <span className="counter">
+                              {" "}
+                              <CountUp start={0} end={34} duration={15} />
+                            </span>
+                            %
                           </h3>
                         </div>
                         <div className="progress-one__bar">
@@ -199,12 +221,12 @@ function Student() {
           role="tablist"
         >
           <li>
-            <a className="active" role="tab" data-toggle="tab" href="/overview">
+            <a className="active" role="tab" data-toggle="tab" href="#overview">
               <img src="/images/team-1-1.jpg" alt={"img"} />
             </a>
           </li>
           <li>
-            <a className role="tab" data-toggle="tab" href="/curriculum">
+            <a className role="tab" data-toggle="tab" href="#curriculum">
               <img src="/images/team-1-2.jpg" alt={"img"} />
             </a>
           </li>

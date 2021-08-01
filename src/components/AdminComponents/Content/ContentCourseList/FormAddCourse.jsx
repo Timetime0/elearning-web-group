@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import { ADD_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
 function FromAddCourse(props) {
@@ -59,35 +60,78 @@ function FromAddCourse(props) {
   // Get user form localStorage
 
   const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user.taiKhoan);
 
   // function add course
 
+  // format date time
+  var today = new Date();
+  let date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  let ngayTao = (date) => {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [day, month, year].join("/");
+  };
+
   let [courseRes, setCourseRes] = useState({
     maKhoaHoc: "",
+    biDanh: "",
     tenKhoaHoc: "",
     moTa: "",
     luotXem: 0,
     danhGia: 0,
     hinhAnh: "",
-    maNhom: "",
-    ngayTao: "",
-    maDanhMucKhoaHoc: "",
+    maNhom: "GP01",
+    ngayTao: `${ngayTao(date)}`,
+    maDanhMucKhoaHoc: "BackEnd",
     taiKhoanNguoiTao: `${user.taiKhoan}`,
   });
+
+  // img: {
+  //   img: "",
+  //   basa64Img: "",
+  // },
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCourseRes({
       ...courseRes,
       [name]: value,
     });
-    console.log(courseRes);
   };
+
   const onSubmitRes = (event) => {
     event.preventDefault();
     dispatch({
-      // type: ADD_USER_SAGA,
+      type: ADD_COURSE_ADMIN_SAGA,
       course: courseRes,
     });
+  };
+
+  // up load image
+  const [image, setImage] = useState("");
+  let getImg = (e) => {
+    const hinhAnh = e.target.files[0];
+    console.log(hinhAnh);
+    setImage({
+      image: hinhAnh.name,
+      course: { ...courseRes, hinhAnh: hinhAnh },
+    });
+
+    let fileReader = new FileReader();
+    fileReader.readAsDataURL(hinhAnh);
+    fileReader.onload = async (e) => {
+      setImage({
+        basa64Img: e.target.result,
+      });
+    };
   };
 
   return (
@@ -119,15 +163,7 @@ function FromAddCourse(props) {
                       onChange={(e) => handleChange(e)}
                     />
                   </div>
-                  <div className="input-box">
-                    <span className="details">Ngày tạo</span>
-                    <input
-                      type="date"
-                      name="ngayTao"
-                      required
-                      onChange={(e) => handleChange(e)}
-                    />
-                  </div>
+
                   <div className="input-box">
                     <span className="details">Mã Nhóm</span>
                     <select
@@ -135,51 +171,13 @@ function FromAddCourse(props) {
                       id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
+                      value="GP01"
                     >
                       <option value="GP01" onChange={(e) => handleChange(e)}>
                         GP01
                       </option>
                       <option value="GP02" onChange={(e) => handleChange(e)}>
                         GP02
-                      </option>
-                      <option value="GP03" onChange={(e) => handleChange(e)}>
-                        GP03
-                      </option>
-                      <option value="GP04" onChange={(e) => handleChange(e)}>
-                        GP04
-                      </option>
-                      <option value="GP05" onChange={(e) => handleChange(e)}>
-                        GP05
-                      </option>
-                      <option value="GP06" onChange={(e) => handleChange(e)}>
-                        GP06
-                      </option>
-                      <option value="GP07" onChange={(e) => handleChange(e)}>
-                        GP07
-                      </option>
-                      <option value="GP08" onChange={(e) => handleChange(e)}>
-                        GP08
-                      </option>
-                      <option value="GP09" onChange={(e) => handleChange(e)}>
-                        GP09
-                      </option>
-                      <option value="GP10" onChange={(e) => handleChange(e)}>
-                        GP10
-                      </option>
-                      <option value="GP11" onChange={(e) => handleChange(e)}>
-                        GP11
-                      </option>
-                      <option value="GP12" onChange={(e) => handleChange(e)}>
-                        GP12
-                      </option>
-                      <option value="GP13" onChange={(e) => handleChange(e)}>
-                        GP13
-                      </option>
-                      <option value="GP14" onChange={(e) => handleChange(e)}>
-                        GP14
-                      </option>
-                      <option value="GP15" onChange={(e) => handleChange(e)}>
-                        GP15
                       </option>
                     </select>
                   </div>
@@ -190,6 +188,7 @@ function FromAddCourse(props) {
                       id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
+                      value="BackEnd"
                     >
                       {listCourse.map((list, index) => {
                         return (
@@ -202,6 +201,15 @@ function FromAddCourse(props) {
                         );
                       })}
                     </select>
+                  </div>
+                  <div className="input-box">
+                    <span className="details">Bí Danh</span>
+                    <input
+                      type="text"
+                      name="biDanh"
+                      required
+                      onChange={(e) => handleChange(e)}
+                    />
                   </div>
                   <div className="input-box">
                     <span className="details">Tài Khoản Người Tạo</span>
@@ -238,7 +246,13 @@ function FromAddCourse(props) {
                 </div>
 
                 <div className="button">
-                  <input type="submit" defaultValue="Add" />
+                  <button
+                    type="submit"
+                    className="button_submit"
+                    onClick={onSubmitRes}
+                  >
+                    Add
+                  </button>
                   <button className="button_close" onClick={btnClose}>
                     Cancle
                   </button>

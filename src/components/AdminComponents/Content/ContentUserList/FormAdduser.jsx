@@ -5,6 +5,9 @@ import { ADD_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType
 import "./FormStyle.css";
 function FormAdduser(props) {
   const { showPopUp, setShowPopUp } = props;
+  let userEdit = props.data;
+  console.log(userEdit);
+
   // close popup add user
   // Show alert to close menu
   const swalWithBootstrapButtons = Swal.mixin({
@@ -46,16 +49,32 @@ function FormAdduser(props) {
 
   // function add user
   const dispatch = useDispatch();
-
-  let [userRes, setUserRes] = useState({
-    taiKhoan: "",
-    matKhau: "",
-    hoTen: "",
-    soDT: "",
-    maLoaiNguoiDung: "",
-    maNhom: "GP01",
-    email: "",
+  console.log(userEdit);
+  let [userRes, setUserRes] = useState((userEdit) => {
+    console.log(userEdit);
+    if (userEdit) {
+      return {
+        taiKhoan: userEdit.taiKhoan,
+        matKhau: userEdit.matKhau,
+        hoTen: userEdit.hoTen,
+        soDT: userEdit.soDT,
+        maLoaiNguoiDung: userEdit.maLoaiNguoiDung,
+        maNhom: userEdit.maNhom,
+        email: userEdit.email,
+      };
+    } else {
+      return {
+        taiKhoan: "dddd",
+        matKhau: "",
+        hoTen: "",
+        soDT: "",
+        maLoaiNguoiDung: "",
+        maNhom: "GP01",
+        email: "",
+      };
+    }
   });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserRes({
@@ -75,7 +94,7 @@ function FormAdduser(props) {
       {showPopUp ? (
         <div className={`admin_for ${showPopUp && `in_animation`}`}>
           <div className="form_container">
-            <div className="title">Add User</div>
+            <div className="title">{userEdit ? "Edit User" : "Add User"}</div>
             <div className="content">
               <form onSubmit={(event) => onSubmitRes(event)} method="POST">
                 <div className="user-details">
@@ -113,7 +132,7 @@ function FormAdduser(props) {
                     <span className="details">Điện Thoại</span>
                     <input
                       name="soDT"
-                      type="text"
+                      type="number"
                       placeholder="Nhập điện thoại User..."
                       onChange={(e) => handleChange(e)}
                       required
@@ -136,7 +155,7 @@ function FormAdduser(props) {
                       id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
-                     >
+                    >
                       <option value="GP01" onChange={(e) => handleChange(e)}>
                         GP01
                       </option>
@@ -174,7 +193,11 @@ function FormAdduser(props) {
                   </div>
                 </div>
                 <div className="button">
-                  <button className="button_submit" onClick={onSubmitRes}>
+                  <button
+                    type="submit"
+                    className="button_submit"
+                    onClick={onSubmitRes}
+                  >
                     Add
                   </button>
                   <button className="button_close" onClick={btnClose}>

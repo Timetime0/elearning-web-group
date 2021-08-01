@@ -2,6 +2,8 @@ import { all } from "@redux-saga/core/effects";
 import {
   followAddUserApi,
   followDeleteUserApi,
+  followEditProfileUserApi,
+  followGetProfileUserApi,
   followGetUserListApiAction,
   followUpdateUserApi,
 } from "./AdminSaga/UserListSaga";
@@ -12,8 +14,18 @@ import { followGetCourseFromListApiAction } from "./GetCourseFromListSaga";
 import { followGetLoginApiAction } from "./LoginSaga";
 import { followGetSignUpAction } from "./SignUpSaga";
 import { followGetLoginAdminApiAction } from "./AdminSaga/LoginAdminSaga";
-import { followGetBookingCourseApi } from "./BookingCourseSaga";
-import { followGetCourseListAdminApi } from "./AdminSaga/CourseListAdminSaga";
+import {
+  followGetBookingCourseApi,
+  followGetUnBookingCourseApi,
+} from "./BookingCourseSaga";
+import {
+  followAddCourseApi,
+  followAddImgCourse,
+  followDeleteCourseApi,
+  followGetCourseListAdminApi,
+  followGetUserInCourseApi,
+  followUpdataImgCourse,
+} from "./AdminSaga/CourseListAdminSaga";
 // cấu hình
 export default function* rootSaga() {
   yield all([
@@ -25,15 +37,22 @@ export default function* rootSaga() {
     followGetSignUpAction(),
     followGetLoginAdminApiAction(),
     followGetBookingCourseApi(),
-
+    followGetUnBookingCourseApi(),
     // Admin
     // Admin Course Saga
     followGetCourseListAdminApi(),
+    followAddCourseApi(),
+    followAddImgCourse(),
+    followUpdataImgCourse(),
+    followDeleteCourseApi(),
+    followGetUserInCourseApi(),
 
     // Admin User Saga
     followGetUserListApiAction(),
     followUpdateUserApi(),
     followDeleteUserApi(),
     followAddUserApi(),
+    followGetProfileUserApi(),
+    followEditProfileUserApi(),
   ]);
 }

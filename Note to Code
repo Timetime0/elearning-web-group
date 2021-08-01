@@ -123,7 +123,10 @@ _ Thêm button show popup Carousel
 _ responsive
 _ Thay background Carousel
 
-==================== Big Update ====================
+
+
+
+====================================================================== Big Update ======================================================================
 #Ngày 12/7/2021 Chun Big Update: 
 _ Thay toàn bộ template Client ,
 _ SỬ dụng template Kipso,
@@ -330,3 +333,60 @@ _ làm được thêm, xóa user (chưa tối ưu môi lần xóa xong phải ch
 
 dpnguyen/1232132131
 admin_test/123456789
+
+
+
+#Ngày 26/7/2021 Chun:
+_ Thêm trang thông tin người dùng (User Profile)
+_ Thêm api thông tin tài khoản => lấy thông tin người dùng
+_ Thêm hàm loading mỗi khi load page
+********** chưa đăng ký được khóa học
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa thêm , xóa ,sửa được course 
+********** chưa sửa thông tin user được
+********** chưa lấy thông tin tài khoản
+
+
+
+#Ngày 27/7/2021 Chun: 
+        Update UI
+_ Thêm component side bar 
+_ sửa top bar sau login 
+_ fix lỗi không hiển thị khi bấm nút tìm kiếm trên thanh menu
+_fix lỗi không active navlink
+_ thêm hình ảnh vảo trang web
+
+********** chưa đăng ký được khóa học
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa thêm , xóa ,sửa được course 
+********** chưa sửa thông tin user được
+********** chưa lấy thông tin tài khoản
+
+
+
+#Ngày 28/7/2021 Chun: 
+        Update UI Admin
+_ Thêm component tab (infomation course , infomation user) 
+_ thêm api
+- fix lỗi xóa course
+********** chưa đăng ký được khóa học
+********** Chưa làm được tìm kiếm khóa học 
+********** Chưa thêm , xóa ,sửa được course 
+********** chưa sửa thông tin user được
+********** chưa lấy thông tin tài khoản
+
+#Ngày 30/7/2021 Chun:
+_ fix lỗi đăng ký khóa học 
+_ fix lỗi lấy thông tin tài khoản trang Profile
+_ thêm data khóa học user đã đăng ký bên trang profile 
+
+
+
+
+
+#Ngày 31/7/2021 Chun:
+_ fix lỗi đăng ký khóa học ở trang profile user 
+_ Làm api cập nhật thông tin khóa học thành công
+
+********** Chưa thêm , xóa ,sửa được course 
+********** chưa chỉnh sửa thông tin tài khoảng trang admin

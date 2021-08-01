@@ -7,17 +7,22 @@ export function UserListServices() {
   });
 }
 
+//=======================================================================================================================
+// update user
+
 export function EditUserServices(user) {
-  const admin = JSON.parse(localStorage.getItem("GV"));
+  const admin = JSON.parse(localStorage.getItem("user"));
   return Axios({
     method: "PUT",
-    url: "http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
     data: user,
     headers: {
       Authorization: `Bearer ${admin.accessToken}`,
     },
   });
 }
+//=======================================================================================================================
+// Delete user
 
 export function DeleteUserServices(taiKhoan) {
   const admin = JSON.parse(localStorage.getItem("user"));
@@ -29,6 +34,8 @@ export function DeleteUserServices(taiKhoan) {
     },
   });
 }
+//=======================================================================================================================
+// Add user
 
 export function AddUserServices(user) {
   const admin = JSON.parse(localStorage.getItem("user"));
@@ -42,5 +49,31 @@ export function AddUserServices(user) {
   });
 }
 
+//=======================================================================================================================
+// View user
 
+export function ViewProfileUserServices(user) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "POST",
+    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan",
+    data: user,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}
 
+//=======================================================================================================================
+// Edit Profile user
+export function EditProfileUserServices(user) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "PUT",
+    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+    data: user,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}

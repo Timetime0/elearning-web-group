@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import NewCourse from "../../../components/ClientComponent/NewCourse/NewCourse";
 import { BOOKING_COURSE_SAGA } from "../../../redux/types/BookingCourseType";
 
 // import { withRouter } from "react-router";
@@ -27,18 +29,40 @@ function CourseDetail() {
   const detailList = (value) => {
     history.push("/course-from-list/" + value);
   };
-
+  // change button
+  const [changeButton, setChangeButton] = useState(false);
   // đăng ký khóa học
-  // let [bookingRes, setBookingRes] = useState({
-  //   maKhoaHoc: "",
-  //   taiKhoan: "",
-  // });
 
-  const handleBooking = (event) => {
-    event.preventDefault();
-    dispatch({
-      type: BOOKING_COURSE_SAGA,
-      data: maKhoaHoc,
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  let [bookingRes] = useState({
+    maKhoaHoc: maKhoaHoc,
+    taiKhoan: user.taiKhoan,
+  });
+
+  let [unBooking] = useState({
+    maKhoaHoc: maKhoaHoc,
+    taiKhoan: user.taiKhoan,
+  });
+
+  const handleBooking = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Buy This Course",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirm",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({
+          type: BOOKING_COURSE_SAGA,
+          user: bookingRes,
+        });
+        setChangeButton((change) => !change);
+        console.log(bookingRes);
+      }
     });
   };
 
@@ -106,29 +130,29 @@ function CourseDetail() {
                     role="tablist"
                   >
                     <li>
-                      <Link
+                      <a
                         className="active"
                         role="tab"
                         data-toggle="tab"
-                        to="#overview"
+                        href="#overview"
                       >
                         Overview
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link
+                      <a
                         className
                         role="tab"
                         data-toggle="tab"
-                        to="#curriculum"
+                        href="#curriculum"
                       >
                         Curriculum
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link className role="tab" data-toggle="tab" to="#review">
+                      <a className role="tab" data-toggle="tab" href="#review">
                         Reviews
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                   <div className="tab-content course-details__tab-content ">
@@ -484,9 +508,7 @@ function CourseDetail() {
                   <p className="course-details__price-text">Course price </p>
                   <p className="course-details__price-amount">$18.00</p>
                   <button
-                    onClick={(event) => {
-                      handleBooking(event);
-                    }}
+                    onClick={handleBooking}
                     className="thm-btn course-details__price-btn"
                   >
                     Buy This Course
@@ -530,77 +552,7 @@ function CourseDetail() {
                     Language: <span>English</span>
                   </a>
                 </div>
-                <div className="course-details__list">
-                  <h2 className="course-details__list-title">New Courses</h2>
-
-                  <div className="course-details__list-item">
-                    <div className="course-details__list-img">
-                      <img src="/images/lc-1-1.jpg" alt={"img"} />
-                    </div>
-
-                    <div className="course-details__list-content">
-                      <a className="course-details__list-author" href="/">
-                        by <span>Lydia Byrd</span>
-                      </a>
-                      <h3>
-                        <a href="/">Marketing strategies</a>
-                      </h3>
-                      <div className="course-details__list-stars">
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <span>4.8</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="course-details__list-item">
-                    <div className="course-details__list-img">
-                      <img src="/images/lc-1-2.jpg" alt={"img"} />
-                    </div>
-
-                    <div className="course-details__list-content">
-                      <a className="course-details__list-author" href="/">
-                        by <span>Lydia Byrd</span>
-                      </a>
-                      <h3>
-                        <a href="/">Marketing strategies</a>
-                      </h3>
-                      <div className="course-details__list-stars">
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <span>4.8</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="course-details__list-item">
-                    <div className="course-details__list-img">
-                      <img src="/images/lc-1-3.jpg" alt={"img"} />
-                    </div>
-
-                    <div className="course-details__list-content">
-                      <a className="course-details__list-author" href="/">
-                        by <span>Lydia Byrd</span>
-                      </a>
-                      <h3>
-                        <a href="/">Marketing strategies</a>
-                      </h3>
-                      <div className="course-details__list-stars">
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <span>4.8</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <NewCourse detail={detail} />
               </div>
             </div>
           </div>

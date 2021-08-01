@@ -6,6 +6,7 @@ import GuardLogin from "./HOC/GuardLogin";
 import GuardAdmin from "./HOC/GuradAdmin";
 import ScrollToTop from "./utils/theme/ScrollToTop";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   const renderRouterClientList = () => {
@@ -50,6 +51,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Loading />
       <ScrollToTop />
       <Switch>
         {renderRouterClientList()}

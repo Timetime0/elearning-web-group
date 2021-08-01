@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-
 // import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../redux/types/CourseListType";
-import Appbar from "./Appbar";
+import NavbarAfterLogin from "../NavbarAfterLogin/NavbarAfterLogin";
 
 function NavHeader(props) {
   // Lấy khóa học theo danh mục
@@ -22,6 +21,13 @@ function NavHeader(props) {
 
   const detailList = (value) => {
     history.push("/course-from-list/" + value);
+  };
+
+  // show search bar
+  const [showSearchBar, setShowSearchBar] = useState(false);
+
+  const clickToShowSearchBar = () => {
+    setShowSearchBar((prev) => !prev);
   };
 
   // Hiển thị drop menu responsive
@@ -77,6 +83,7 @@ function NavHeader(props) {
       setShow(false);
     }
   };
+
   useEffect(() => {
     // Hiện nav khi scroll xuống
     window.addEventListener("scroll", controlNavbar);
@@ -92,7 +99,7 @@ function NavHeader(props) {
   return (
     <header className="site-header site-header__home-three ">
       {user?.maLoaiNguoiDung === "HV" ? (
-        <Appbar />
+        <NavbarAfterLogin />
       ) : (
         <div className="topbar-one">
           <div className="container">
@@ -107,11 +114,23 @@ function NavHeader(props) {
           </div>
         </div>
       )}
+
       <nav
-        className={` navbar navbar-expand-lg navbar-light header-navigation stricky ${
-          show && `stricked-menu stricky-fixed`
-        }`}
+        className={` navbar navbar-expand-lg navbar-light header-navigation stricky original
+        ${show && `stricked-menu stricky-fixed`}`}
       >
+        <div>
+          <i classname="fab fa-twitter">
+            <i classname="fab fa-facebook-square">
+              <i classname="fab fa-pinterest-p">
+                <i classname="fab fa-instagram">
+                  <i classname="kipso-icon-magnifying-glass"></i>
+                </i>
+              </i>
+            </i>
+          </i>
+        </div>
+
         <div className="container clearfix">
           <div className="logo-box clearfix">
             <a
@@ -121,7 +140,7 @@ function NavHeader(props) {
               activeClassName="active"
             >
               <img
-                src="assets/images/logo-light.png"
+                src="./../../../assets/images/logo-light.png"
                 className="main-logo"
                 width={128}
                 alt={"img"}
@@ -150,10 +169,9 @@ function NavHeader(props) {
                     className="sub-nav-toggler"
                     onClick={clickToShowSubMenu}
                   >
-                    {" "}
-                    <span className="sr-only">Toggle navigation</span>{" "}
-                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
-                    <span className="icon-bar" />{" "}
+                    <span className="sr-only">Toggle navigation</span>
+                    <span className="icon-bar" /> <span className="icon-bar" />
+                    <span className="icon-bar" />
                   </button>
                   <ul className="sub-menu">
                     <li>
@@ -171,17 +189,20 @@ function NavHeader(props) {
                   </ul>
                 </li>
                 <li>
-                  <NavLink to="/course-list" activeClassName="active">
+                  <NavLink
+                    exact
+                    to="/course-list"
+                    activeClassName="active_menu"
+                  >
                     Courses
                   </NavLink>
                   <button
                     className="sub-nav-toggler"
                     onClick={clickToShowSubMenu}
                   >
-                    {" "}
-                    <span className="sr-only">Toggle navigation</span>{" "}
-                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
-                    <span className="icon-bar" />{" "}
+                    <span className="sr-only">Toggle navigation</span>
+                    <span className="icon-bar" /> <span className="icon-bar" />
+                    <span className="icon-bar" />
                   </button>
                   <ul className="sub-menu">
                     {listCourse.map((list, index) => {
@@ -200,19 +221,26 @@ function NavHeader(props) {
                   </ul>
                 </li>
                 <li>
-                  <NavLink to="/teacher">Teachers</NavLink>
+                  <NavLink to="/teacher" exact activeClassName="active_menu">
+                    Teachers
+                  </NavLink>
                   <button
                     className="sub-nav-toggler"
                     onClick={clickToShowSubMenu}
                   >
-                    {" "}
-                    <span className="sr-only">Toggle navigation</span>{" "}
-                    <span className="icon-bar" /> <span className="icon-bar" />{" "}
-                    <span className="icon-bar" />{" "}
+                    <span className="sr-only">Toggle navigation</span>
+                    <span className="icon-bar" /> <span className="icon-bar" />
+                    <span className="icon-bar" />
                   </button>
                   <ul className="sub-menu">
                     <li>
-                      <a href="/teacher">Teachers</a>
+                      <NavLink
+                        to="/teacher"
+                        exact
+                        activeClassName="active_menu"
+                      >
+                        Teachers
+                      </NavLink>
                     </li>
                     <li>
                       <a href="/become-teacher">Become Teacher</a>
@@ -220,10 +248,14 @@ function NavHeader(props) {
                   </ul>
                 </li>
                 <li>
-                  <NavLink to="/news">News</NavLink>
+                  <NavLink to="/news" exact activeClassName="active_menu">
+                    News
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contact">Contact</NavLink>
+                  <NavLink to="/contact" exact activeClassName="active_menu">
+                    Contact
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -231,14 +263,16 @@ function NavHeader(props) {
           <div className="main-navigation">
             <ul className=" navigation-box">
               <li className="current">
-                <a href="/">Home</a>
+                <a href="/" style={{ color: "white" }}>
+                  Home
+                </a>
               </li>
               <li>
-                <NavLink to="/">Pages</NavLink>
+                <a href="/">Pages</a>
 
                 <ul className="sub-menu">
                   <li>
-                    <Link to="/about">About Page</Link>
+                    <Link to="/about">About</Link>
                   </li>
                   <li>
                     <Link to="/gallery">Gallery</Link>
@@ -252,7 +286,7 @@ function NavHeader(props) {
                 </ul>
               </li>
               <li>
-                <NavLink to="/course-list" activeClassName="active">
+                <NavLink to="/course-list" exact activeClassName="active_menu">
                   Courses
                 </NavLink>
                 <ul className="sub-menu">
@@ -272,24 +306,24 @@ function NavHeader(props) {
                 </ul>
               </li>
               <li>
-                <NavLink to="/teacher">Teachers</NavLink>
+                <NavLink to="/teacher" exact activeClassName="active_menu">
+                  Teachers
+                </NavLink>
                 <ul className="sub-menu">
-                  <li>
-                    <a href="/teachers">Teachers</a>
-                  </li>
-                  <li>
-                    <a href="/team-details">Teachers Details</a>
-                  </li>
                   <li>
                     <a href="/become-teacher">Become Teacher</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <NavLink to="/news">News</NavLink>
+                <NavLink to="/news" exact activeClassName="active_menu">
+                  News
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/contact">Contact</NavLink>
+                <NavLink to="/contact" exact activeClassName="active_menu">
+                  Contact
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -301,16 +335,40 @@ function NavHeader(props) {
               <a href="https://www.facebook.com/">
                 <i className="fab fa-facebook-square" />
               </a>
-              <a href="https://www.pinterest.com/">
-                <i className="fab fa-pinterest-p" />
-              </a>
               <a href="https://www.instagram.com/">
                 <i className="fab fa-instagram" />
               </a>
+              <button
+                className="header__search-btn search-popup__toggler"
+                onClick={clickToShowSearchBar}
+              >
+                <i className="kipso-icon-magnifying-glass" />
+              </button>
             </div>
           </div>
         </div>
       </nav>
+      <div className={`search-popup   ${showSearchBar && `active`}`}>
+        <div
+          className="search-popup__overlay custom-cursor__overlay"
+          onClick={clickToShowSearchBar}
+        >
+          <div className="cursor" />
+          <div className="cursor-follower" />
+        </div>
+        <div className="search-popup__inner">
+          <form action="#" className="search-popup__form">
+            <input
+              type="text"
+              name="search"
+              placeholder="Type here to Search...."
+            />
+            <button type="submit">
+              <i className="kipso-icon-magnifying-glass" />
+            </button>
+          </form>
+        </div>
+      </div>
     </header>
   );
 }

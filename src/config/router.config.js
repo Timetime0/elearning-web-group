@@ -14,6 +14,7 @@ import Login from "../pages/ClientPage/Login/Login.jsx";
 import News from "../pages/ClientPage/News/News.jsx";
 import NewsDetails from "../pages/ClientPage/NewsDetails/NewsDetails.jsx";
 import Pricing from "../pages/ClientPage/Pricing/Pricing.jsx";
+import ProfileUserPage from "../pages/ClientPage/ProfileUserPage/ProfileUserPage.jsx";
 import Register from "../pages/ClientPage/Register/Register.jsx";
 import Teacher from "../pages/ClientPage/Teacher/Teacher.jsx";
 export const clientRouters = [
@@ -102,6 +103,12 @@ export const clientRouters = [
     path: "/register",
     exact: false,
     Component: Register,
+  },
+  {
+    path: "/profile/:taiKhoan",
+    exact: false,
+    checkLogin: true,
+    Component: ProfileUserPage,
   },
 ];
 export const adminRouters = [

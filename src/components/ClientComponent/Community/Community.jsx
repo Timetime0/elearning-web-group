@@ -5,32 +5,32 @@ function Community() {
     <div>
       <section className="cta-five">
         <img
-          src="/assets/images/team-1-1.jpg"
+          src="/images/team-1-1.jpg"
           className="cta-five__members-1"
           alt={"img"}
         />
         <img
-          src="/assets/images/team-1-2.jpg"
+          src="/images/team-1-2.jpg"
           className="cta-five__members-2"
           alt={"img"}
         />
         <img
-          src="/assets/images/team-1-3.jpg"
+          src="/images/team-1-3.jpg"
           className="cta-five__members-3"
           alt={"img"}
         />
         <img
-          src="/assets/images/team-1-4.jpg"
+          src="/images/team-1-4.jpg"
           className="cta-five__members-4"
           alt={"img"}
         />
         <img
-          src="/assets/images/team-1-5.jpg"
+          src="/images/team-1-5.jpg"
           className="cta-five__members-5"
           alt={"img"}
         />
         <img
-          src="/assets/images/team-1-6.jpg"
+          src="/images/team-1-6.jpg"
           className="cta-five__members-6"
           alt={"img"}
         />
