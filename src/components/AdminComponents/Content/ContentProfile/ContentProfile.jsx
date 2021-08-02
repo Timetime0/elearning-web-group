@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,8 +13,8 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
-import InfomationCourseDataTable from "../../DataTable/InfomationData/InfomationCourseDataTable";
-import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+
+import FromProfile from "./FromProfile";
 
 const styles = (theme) => ({
   container: {
@@ -40,7 +40,7 @@ const styles = (theme) => ({
   dellUser: {
     backgroundColor: "red",
   },
-  viewUser: {
+  editUser: {
     backgroundColor: "green",
     margin: "0 8px",
   },
@@ -58,34 +58,9 @@ const styles = (theme) => ({
   },
 });
 
-function ContentInfomationCourse(props) {
+function ContentProfile(props) {
+  const { classes } = props;
   const dispatch = useDispatch();
-
-  const { classes, course } = props;
-
-  // console.log(props.course);
-  // Search data
-  // const getData = useSelector((state) => state.UserReducer.userList);
-  // const [data, setData] = useState([]);
-
-  // const [search, setSearch] = useState("");
-  // function searchList(list) {
-  //   const columns = list[0] && Object.keys(list[0]);
-  //   return list.filter((list) =>
-  //     columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
-  //   );
-  // }
-
-  // Show popup add User
-  const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddUser = () => {};
-
-  useEffect(() => {
-    dispatch({
-      type: GET_USER_IN_COURSE_ADMIN_SAGA,
-      maKhoaHoc: { maKhoaHoc: course.maKhoaHoc },
-    });
-  }, [course.maKhoaHoc]);
 
   return (
     <div className={classes.container}>
@@ -114,21 +89,6 @@ function ContentInfomationCourse(props) {
               <Grid item>
                 <Button
                   variant="contained"
-                  color="primary"
-                  className={classes.viewUser}
-                >
-                  Edit User
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.addUser}
-                  onClick={btnAddUser}
-                >
-                  Add User
-                </Button>
-                <Button
-                  variant="contained"
                   color="secondary"
                   className={classes.dellUser}
                 >
@@ -146,7 +106,7 @@ function ContentInfomationCourse(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <InfomationCourseDataTable data={course.maKhoaHoc} />
+            <FromProfile />
           </Typography>
         </div>
       </Paper>
@@ -154,8 +114,8 @@ function ContentInfomationCourse(props) {
   );
 }
 
-ContentInfomationCourse.propTypes = {
+ContentProfile.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentInfomationCourse);
+export default withStyles(styles)(ContentProfile);

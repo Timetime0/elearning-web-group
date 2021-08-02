@@ -12,13 +12,14 @@ import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
-import CoureseDataTable from "../../DataTable/CourseData/CoureseDataTable";
-import FromAddCourse from "./FormAddCourse";
 import { useDispatch } from "react-redux";
-import { DELETE_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
-import { GET_USER_NOT_IN_COURSE_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
-import { useHistory } from "react-router-dom";
+import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
+
 const styles = (theme) => ({
+  container: {
+    position: "relative !important",
+  },
   paper: {
     maxWidth: 1920,
     margin: "auto",
@@ -39,51 +40,50 @@ const styles = (theme) => ({
   dellUser: {
     backgroundColor: "red",
   },
-  contentWrapper: {
-    margin: "40px 16px",
-  },
-  editCourse: {
+  editUser: {
     backgroundColor: "green",
     margin: "0 8px",
   },
-  View: {
-    backgroundColor: "#9f890e",
-    margin: "0 8px",
+  contentWrapper: {
+    margin: "40px 16px",
+  },
+
+  center_popup: {
+    position: "absolute",
+    width: "63%",
+    top: "50%",
+    right: "50%",
+    transform: "translate(50%,-50%)",
+    backgroundColor: "red",
   },
 });
 
-function ContentCourseList(props) {
+function ContentUserManager(props) {
   const { classes } = props;
-  const [dataEdit, setDataEdit] = useState({});
+  const dispatch = useDispatch();
 
+  // hide button
   const [buttonEdit, setButtonEdit] = useState(false);
   const [isClickEdit, setIsClickEdit] = useState(false);
-  // Show popup add Course
-  const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddCourse = () => {
-    setDataEdit(null);
 
-    setShowPopUp((prev) => !prev);
-  };
+  const [dataEdit, setDataEdit] = useState({});
 
-  // Delete course
-  const dispatch = useDispatch();
   let arrNew = [];
 
-  const handleDeleteCourse = () => {
+  const handleDeleteUser = () => {
     for (let item in arrNew) {
       dispatch({
-        type: DELETE_COURSE_ADMIN_SAGA,
-        maKhoaHoc: arrNew[item],
+        type: DELETE_USER_SAGA,
+        taiKhoan: arrNew[item],
       });
     }
   };
 
-  const onDeleteCourse = (arr) => {
+  const onDeleteChildToParent = (arr) => {
     arrNew = arr;
   };
 
-  const handleEditCourse = () => {
+  const handleEditUser = () => {
     setIsClickEdit((prev) => !prev);
     setShowPopUp((prev) => !prev);
   };
@@ -92,18 +92,18 @@ function ContentCourseList(props) {
     console.log(arr);
     setDataEdit(arr);
   };
-  const history = useHistory();
-  const handlelView = () => {
-    history.push(`/admin/user-management/${maKH}`);
-  };
 
-  let maKH = "";
-  const onView = (arr) => {
-    maKH = arr;
+  // Add User
+
+  // Show popup add User
+  const [showPopUp, setShowPopUp] = useState(false);
+  const btnAddUser = () => {
+    setDataEdit(null);
+    setShowPopUp((prev) => !prev);
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       <Paper className={classes.paper}>
         <AppBar
           className={classes.searchBar}
@@ -127,24 +127,14 @@ function ContentCourseList(props) {
                 />
               </Grid>
               <Grid item>
-                {/* {buttonEdit ? ( */}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.View}
-                  onClick={() => handlelView()}
-                >
-                  View
-                </Button>
-                {/* ) : null} */}
                 {buttonEdit ? (
                   <Button
                     variant="contained"
                     color="primary"
-                    className={classes.editCourse}
-                    onClick={handleEditCourse}
+                    className={classes.editUser}
+                    onClick={handleEditUser}
                   >
-                    Edit Course
+                    Edit User
                   </Button>
                 ) : null}
 
@@ -152,18 +142,19 @@ function ContentCourseList(props) {
                   variant="contained"
                   color="primary"
                   className={classes.addUser}
-                  onClick={btnAddCourse}
+                  onClick={btnAddUser}
                 >
-                  Add Course
+                  Add User
                 </Button>
                 <Button
                   variant="contained"
                   color="secondary"
                   className={classes.dellUser}
-                  onClick={() => handleDeleteCourse()}
+                  onClick={() => handleDeleteUser()}
                 >
-                  Delete Course
+                  Delete User
                 </Button>
+
                 <Tooltip title="Reload">
                   <IconButton>
                     <RefreshIcon className={classes.block} color="inherit" />
@@ -175,28 +166,21 @@ function ContentCourseList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <CoureseDataTable
-              onView={onView}
+            <UserManagerDataTable
+              onDelete={onDeleteChildToParent}
               onEdit={onEditChildToParent}
-              onDelete={onDeleteCourse}
               inHideEditButton={setButtonEdit}
               isDeleteCheckBox={isClickEdit}
-            ></CoureseDataTable>
+            />
           </Typography>
         </div>
       </Paper>
-      <FromAddCourse
-        showPopUp={showPopUp}
-        setShowPopUp={setShowPopUp}
-        data={dataEdit}
-        inHideEditButton={setButtonEdit}
-      />
     </div>
   );
 }
 
-ContentCourseList.propTypes = {
+ContentUserManager.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentCourseList);
+export default withStyles(styles)(ContentUserManager);

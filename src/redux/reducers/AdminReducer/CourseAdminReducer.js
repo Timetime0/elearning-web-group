@@ -1,11 +1,13 @@
 import {
   GET_COURSE_LIST_ADMIN,
+  GET_COURSE_NOT_REGISTER,
   GET_USER_IN_COURSE_ADMIN,
 } from "../../types/AdminType/GetCourseListAdminType";
 
 const initialState = {
   courseListAdmin: [],
   userInCourse: {},
+  courseNotRegister: [],
 };
 
 const CourseListAdminrReducer = (state = initialState, action) => {
@@ -14,8 +16,11 @@ const CourseListAdminrReducer = (state = initialState, action) => {
       return { ...state, courseListAdmin: action.data };
     }
     case GET_USER_IN_COURSE_ADMIN: {
-      state.userInCourse[action.maKhoaHoc.maKhoaHoc] = action.data
-      return {...state}
+      state.userInCourse[action.maKhoaHoc.maKhoaHoc] = action.data;
+      return { ...state };
+    }
+    case GET_COURSE_NOT_REGISTER: {
+      return { ...state, courseNotRegister: action.data };
     }
     default:
       return state;

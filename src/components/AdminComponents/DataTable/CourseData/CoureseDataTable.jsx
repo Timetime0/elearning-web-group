@@ -9,14 +9,14 @@ export default function CourseDataTable(props) {
   const dispatch = useDispatch();
   const onDelete = props.onDelete;
   const onEdit = props.onEdit;
-
+  const onView = props.onView;
   const inHideEditButton = props.inHideEditButton;
   const isDeleteCheckBox = props.isDeleteCheckBox;
 
   let list = useSelector(
     (state) => state.CourseListAdminrReducer.courseListAdmin
   );
-  let button = <button>ffffff</button>;
+  const maKhoaHoc = list.maKhoaHoc;
   let rows = list.map((listKey, index) => {
     return {
       id: index,
@@ -31,7 +31,6 @@ export default function CourseDataTable(props) {
       soLuongHocVien: listKey.soLuongHocVien,
       nguoiTao: listKey.nguoiTao.hoTen,
       danhMuc: listKey.danhMucKhoaHoc.tenDanhMucKhoaHoc,
-      viewCourse: button,
     };
   });
   const columns = [
@@ -52,11 +51,6 @@ export default function CourseDataTable(props) {
     },
     { field: "nguoiTao", headerName: "Người Tạo", width: 200 },
     { field: "danhMuc", headerName: "Danh Mục Khóa Học", width: 250 },
-    {
-      field: "viewCourse",
-      headerName: "",
-      width: 200,
-    },
   ];
   useEffect(() => {
     deleteSelectedFile();
@@ -93,20 +87,16 @@ export default function CourseDataTable(props) {
       }
     }
 
-    if (arrNew.length !== 0) {
-      inHideEditButton(true);
-    } else {
-      inHideEditButton(false);
-    }
+    // if (arrNew.length !== 0) {
+    //   inHideEditButton(true);
+    // } else {
+    //   inHideEditButton(false);
+    // }
     console.log(e);
+    onView(e.data.maKhoaHoc);
     onDelete(arrNew);
-    onEdit(e.data);
+    // onEdit(e.data);
   };
-
-  const clickTest = (e) => {
-    alert(list.maKhoaHoc);
-  };
-  console.log(list);
 
   const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
 
@@ -122,7 +112,6 @@ export default function CourseDataTable(props) {
         checkboxSelection={true}
         data={props.data}
         onRowSelected={handleRowSelection}
-        onRowDoubleClick={clickTest}
         onSelectionModelChange={(newSelection) => {
           setSelectionModel(newSelection.selectionModel);
         }}
