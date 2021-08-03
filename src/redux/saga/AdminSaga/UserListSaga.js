@@ -5,6 +5,7 @@ import {
   DeleteUserServices,
   EditProfileUserServices,
   EditUserServices,
+  GetUserNotInCourseServices,
   UserListServices,
   ViewProfileUserServices,
 } from "../../../services/AdminServices/UserList";
@@ -17,6 +18,8 @@ import {
   EDIT_USER_SAGA,
   GET_USER_LIST,
   GET_USER_LIST_SAGA,
+  GET_USER_NOT_IN_COURSE,
+  GET_USER_NOT_IN_COURSE_SAGA,
   VIEW_PROFILE_USER,
   VIEW_PROFILE_USER_SAGA,
 } from "../../types/AdminType/GetUserListType";
@@ -149,7 +152,6 @@ export function* followAddUserApi() {
 function* getProfileUserApi(action) {
   try {
     const res = yield call(() => ViewProfileUserServices(action.user));
-    console.log(res);
     yield put({
       type: VIEW_PROFILE_USER,
       data: res.data,
@@ -168,7 +170,7 @@ export function* followGetProfileUserApi() {
 function* editProfileUserApi(action) {
   try {
     const res = yield call(() => EditProfileUserServices(action.user));
-    console.log(res);
+
     yield put({
       type: EDIT_PROFILE_USER,
       data: res.data,
@@ -199,4 +201,24 @@ function* editProfileUserApi(action) {
 
 export function* followEditProfileUserApi() {
   yield takeLatest(EDIT_PROFILE_USER_SAGA, editProfileUserApi);
+}
+
+//=======================================================================================================================
+// Lấy danh sách người dùng chưa ghi danh
+function* getuserNotInCourseApi(action) {
+  try {
+    const res = yield call(() => GetUserNotInCourseServices(action.maKhoaHoc));
+    console.log(res);
+    yield put({
+      type: GET_USER_NOT_IN_COURSE,
+      data: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+    console.log(err.response.data);
+  }
+}
+
+export function* followGetuserNotInCourseApi() {
+  yield takeLatest(GET_USER_NOT_IN_COURSE_SAGA, getuserNotInCourseApi);
 }

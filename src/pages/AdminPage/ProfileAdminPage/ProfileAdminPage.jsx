@@ -8,7 +8,7 @@ import {
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Hidden from "@material-ui/core/Hidden";
 import Navigator from "../../../components/AdminComponents/Navigator/Navigator";
-import Header from "../../../components/AdminComponents/Header/Header";
+import HeaderProfile from "../../../components/AdminComponents/Header/HeaderProfile";
 
 let theme = createTheme({
   palette: {
@@ -149,7 +149,7 @@ const styles = {
   },
 };
 
-function DashBoard(props) {
+function ProfileAdminPage(props) {
   const { classes } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -175,15 +175,15 @@ function DashBoard(props) {
           </Hidden>
         </nav>
         <div className={classes.app}>
-          <Header onDrawerToggle={handleDrawerToggle} />
+          <HeaderProfile onDrawerToggle={handleDrawerToggle} />
         </div>
       </div>
     </ThemeProvider>
   );
 }
 
-DashBoard.propTypes = {
+ProfileAdminPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DashBoard);
+export default withStyles(styles)(ProfileAdminPage);

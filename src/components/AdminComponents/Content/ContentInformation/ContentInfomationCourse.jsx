@@ -12,8 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
-import { useDispatch, useSelector } from "react-redux";
-import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import { useDispatch } from "react-redux";
 import InfomationCourseDataTable from "../../DataTable/InfomationData/InfomationCourseDataTable";
 import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 
@@ -64,7 +63,6 @@ function ContentInfomationCourse(props) {
 
   const { classes, course } = props;
 
-
   // console.log(props.course);
   // Search data
   // const getData = useSelector((state) => state.UserReducer.userList);
@@ -78,22 +76,6 @@ function ContentInfomationCourse(props) {
   //   );
   // }
 
-  let arrNew = [];
-  const handleDeleteUser = () => {
-    for (let item in arrNew) {
-      dispatch({
-        type: DELETE_USER_SAGA,
-        taiKhoan: arrNew[item],
-      });
-    }
-  };
-
-  const onDeleteChildToParent = (arr) => {
-    arrNew = arr;
-  };
-
-  // Add User
-
   // Show popup add User
   const [showPopUp, setShowPopUp] = useState(false);
   const btnAddUser = () => {};
@@ -104,8 +86,6 @@ function ContentInfomationCourse(props) {
       maKhoaHoc: { maKhoaHoc: course.maKhoaHoc },
     });
   }, [course.maKhoaHoc]);
-
-
 
   return (
     <div className={classes.container}>
@@ -151,7 +131,6 @@ function ContentInfomationCourse(props) {
                   variant="contained"
                   color="secondary"
                   className={classes.dellUser}
-                  onClick={() => handleDeleteUser()}
                 >
                   Delete User
                 </Button>
@@ -167,10 +146,7 @@ function ContentInfomationCourse(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <InfomationCourseDataTable
-              onDelete={onDeleteChildToParent}
-              data={course.maKhoaHoc}
-            />
+            <InfomationCourseDataTable data={course.maKhoaHoc} />
           </Typography>
         </div>
       </Paper>

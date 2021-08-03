@@ -5,6 +5,8 @@ import {
   AddImageCourse,
   CourseListAdminServices,
   DeleteCourseServices,
+  EditCourseServices,
+  GetCourseNotRegister,
   GetUserInCourseSerVices,
   UpdateAddImageCourse,
 } from "../../../services/AdminServices/CourseListAdminServices";
@@ -14,10 +16,16 @@ import {
   DELETE_COURSE_ADMIN_SAGA,
   GET_COURSE_LIST_ADMIN,
   GET_COURSE_LIST_ADMIN_SAGA,
+  GET_COURSE_NOT_REGISTER,
+  GET_COURSE_NOT_REGISTER_SAGA,
   GET_USER_IN_COURSE_ADMIN,
   GET_USER_IN_COURSE_ADMIN_SAGA,
+  UPDATE_COURSE_ADMIN,
+  UPDATE_COURSE_ADMIN_SAGA,
+  UPDATE_COURSE_IMAGE_ADMIN,
   UPDATE_COURSE_IMAGE_ADMIN_SAGA,
 } from "../../types/AdminType/GetCourseListAdminType";
+
 function* getCourseListAdminApi() {
   try {
     const res = yield call(() => CourseListAdminServices());
@@ -86,19 +94,8 @@ function* addImgCourse(action) {
       return AddImageCourse(form_data);
     });
     console.log(res);
-
-    if (res.status === 200) {
-      Swal.fire({
-        icon: "success",
-        title: "Thêm thành công",
-      });
-    }
   } catch (err) {
     console.log(err);
-    Swal.fire({
-      icon: "error",
-      title: `${err.response.data}`,
-    });
   }
 }
 
@@ -166,7 +163,7 @@ export function* followDeleteCourseApi() {
 // Get User In Course
 function* getUserInCourseApi(action) {
   try {
-    const res = yield call(() => GetUserInCourseSerVices(action.maKhoaHoc));    
+    const res = yield call(() => GetUserInCourseSerVices(action.maKhoaHoc));
     yield put({
       type: GET_USER_IN_COURSE_ADMIN,
       data: res.data,
@@ -178,4 +175,67 @@ function* getUserInCourseApi(action) {
 }
 export function* followGetUserInCourseApi() {
   yield takeEvery(GET_USER_IN_COURSE_ADMIN_SAGA, getUserInCourseApi);
+}
+
+// ===============================================================================================================================
+// Update Course
+
+function* updateCourseApi(action) {
+  try {
+    const res = yield call(() => {
+      return EditCourseServices(action.course);
+    });
+    yield put({
+      type: UPDATE_COURSE_ADMIN,
+      data: res.data,
+    });
+    console.log(res);
+    if (res.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Cập nhật thành công khóa học",
+        html: `
+          <div className="text-left"><span className="font-weight">Mã Khóa Học:</span> ${action.course.maKhoaHoc} </div>
+          <div className="text-left"><span className="font-weight">Bí Danh:</span> ${action.course.biDanh}</div>
+          <div className="text-left"><span className="font-weight">Mô Tả: </span>${action.course.moTa} </div>
+          <div className="text-left"><span className="font-weight">Hình Ảnh:</span> ${action.course.hinhAnh} </div>
+          <div className="text-left"><span className="font-weight">Mã nhóm:</span> ${action.course.maNhom}</div>
+          <div className="text-left"><span className="font-weight">Ngày Tạo: </span>${action.course.ngayTao}</div>
+          <div className="text-left"><span className="font-weight">Mã Danh Mục: </span>${action.course.maDanhMucKhoaHoc}</div>
+          <div className="text-left"><span className="font-weight">Tài Khoản Người Tạo: </span>${action.course.taiKhoanNguoiTao}</div>
+
+          `,
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    Swal.fire({
+      icon: "error",
+      title: `Thất bại`,
+      text: `${e.response.data}`,
+    });
+  }
+}
+export function* followUpdateCourseApi() {
+  yield takeLatest(UPDATE_COURSE_ADMIN_SAGA, updateCourseApi);
+}
+
+//=======================================================================================================================
+// Lấy danh sách khóa học chưa ghi danh
+
+function* getCourseNotRegisterApi(action) {
+  try {
+    const res = yield call(() => GetCourseNotRegister(action.taiKhoan));
+    yield put({
+      type: GET_COURSE_NOT_REGISTER,
+      data: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+    console.log(err.response.data);
+  }
+}
+
+export function* followGetCourseNotRegisterApi() {
+  yield takeLatest(GET_COURSE_NOT_REGISTER_SAGA, getCourseNotRegisterApi);
 }

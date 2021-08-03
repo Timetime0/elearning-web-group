@@ -12,10 +12,9 @@ import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
-import UserDataTable from "../../DataTable/UserData/UserDataTable";
 import { useDispatch } from "react-redux";
-import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
-import FormAdduser from "./FormAdduser";
+
+import FromProfile from "./FromProfile";
 
 const styles = (theme) => ({
   container: {
@@ -59,60 +58,9 @@ const styles = (theme) => ({
   },
 });
 
-function ContentUserList(props) {
+function ContentProfile(props) {
   const { classes } = props;
   const dispatch = useDispatch();
-  // Search data
-  // const getData = useSelector((state) => state.UserReducer.userList);
-  // const [data, setData] = useState([]);
-
-  // const [search, setSearch] = useState("");
-  // function searchList(list) {
-  //   const columns = list[0] && Object.keys(list[0]);
-  //   return list.filter((list) =>
-  //     columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
-  //   );
-  // }
-
-  // hide button
-  const [buttonEdit, setButtonEdit] = useState(false);
-  const [isClickEdit, setIsClickEdit] = useState(false);
-
-  const [dataEdit, setDataEdit] = useState({});
-
-  let arrNew = [];
-
-  const handleDeleteUser = () => {
-    // for (let item in arrNew) {
-    dispatch({
-      type: DELETE_USER_SAGA,
-      taiKhoan: arrNew,
-    });
-    // }
-  };
-
-  const onDeleteChildToParent = (arr) => {
-    arrNew = arr;
-  };
-
-  const handleEditUser = () => {
-    setIsClickEdit((prev) => !prev);
-    setShowPopUp((prev) => !prev);
-  };
-
-  const onEditChildToParent = (arr) => {
-    console.log(arr);
-    setDataEdit(arr);
-  };
-
-  // Add User
-
-  // Show popup add User
-  const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddUser = () => {
-    setDataEdit(null);
-    setShowPopUp((prev) => !prev);
-  };
 
   return (
     <div className={classes.container}>
@@ -139,30 +87,10 @@ function ContentUserList(props) {
                 />
               </Grid>
               <Grid item>
-                {buttonEdit ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.editUser}
-                    onClick={handleEditUser}
-                  >
-                    Edit User
-                  </Button>
-                ) : null}
-
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.addUser}
-                  onClick={btnAddUser}
-                >
-                  Add User
-                </Button>
                 <Button
                   variant="contained"
                   color="secondary"
                   className={classes.dellUser}
-                  onClick={() => handleDeleteUser()}
                 >
                   Delete User
                 </Button>
@@ -178,26 +106,16 @@ function ContentUserList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserDataTable
-              onDelete={onDeleteChildToParent}
-              onEdit={onEditChildToParent}
-              inHideEditButton={setButtonEdit}
-              isDeleteCheckBox={isClickEdit}
-            />
+            <FromProfile />
           </Typography>
         </div>
       </Paper>
-      <FormAdduser
-        data={dataEdit}
-        showPopUp={showPopUp}
-        setShowPopUp={setShowPopUp}
-      />
     </div>
   );
 }
 
-ContentUserList.propTypes = {
+ContentProfile.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentUserList);
+export default withStyles(styles)(ContentProfile);

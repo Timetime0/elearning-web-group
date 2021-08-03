@@ -12,10 +12,9 @@ import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
-import UserDataTable from "../../DataTable/UserData/UserDataTable";
 import { useDispatch } from "react-redux";
 import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
-import FormAdduser from "./FormAdduser";
+import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
 
 const styles = (theme) => ({
   container: {
@@ -59,20 +58,9 @@ const styles = (theme) => ({
   },
 });
 
-function ContentUserList(props) {
+function ContentUserManager(props) {
   const { classes } = props;
   const dispatch = useDispatch();
-  // Search data
-  // const getData = useSelector((state) => state.UserReducer.userList);
-  // const [data, setData] = useState([]);
-
-  // const [search, setSearch] = useState("");
-  // function searchList(list) {
-  //   const columns = list[0] && Object.keys(list[0]);
-  //   return list.filter((list) =>
-  //     columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
-  //   );
-  // }
 
   // hide button
   const [buttonEdit, setButtonEdit] = useState(false);
@@ -83,12 +71,12 @@ function ContentUserList(props) {
   let arrNew = [];
 
   const handleDeleteUser = () => {
-    // for (let item in arrNew) {
-    dispatch({
-      type: DELETE_USER_SAGA,
-      taiKhoan: arrNew,
-    });
-    // }
+    for (let item in arrNew) {
+      dispatch({
+        type: DELETE_USER_SAGA,
+        taiKhoan: arrNew[item],
+      });
+    }
   };
 
   const onDeleteChildToParent = (arr) => {
@@ -178,7 +166,7 @@ function ContentUserList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserDataTable
+            <UserManagerDataTable
               onDelete={onDeleteChildToParent}
               onEdit={onEditChildToParent}
               inHideEditButton={setButtonEdit}
@@ -187,17 +175,12 @@ function ContentUserList(props) {
           </Typography>
         </div>
       </Paper>
-      <FormAdduser
-        data={dataEdit}
-        showPopUp={showPopUp}
-        setShowPopUp={setShowPopUp}
-      />
     </div>
   );
 }
 
-ContentUserList.propTypes = {
+ContentUserManager.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentUserList);
+export default withStyles(styles)(ContentUserManager);

@@ -2,11 +2,8 @@ import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
-import { GET_DATA_COURSE_SAGA } from "../../../../redux/types/courseType";
 
 export default function InfomationCourseDataTable(props) {
-  const onDelete = props.onDelete;
   const dispatch = useDispatch();
   const { data } = props;
 
@@ -15,6 +12,7 @@ export default function InfomationCourseDataTable(props) {
   const userInCourse = useSelector(
     (state) => state.CourseListAdminrReducer.userInCourse
   );
+  // console.log(userInCourse.taiKhoan);
 
   useEffect(() => {
     if (userInCourse.length !== 0) {
@@ -29,10 +27,6 @@ export default function InfomationCourseDataTable(props) {
       console.log(dataUser);
     }
   }, [dataUser]);
-
-  // const maKH = useSelector(
-  //   (state) => state.CourseListAdminrReducer.userInCourse
-  // );
 
   // console.log(maKH);
   // let rows = course.map((item, index) => {
@@ -64,52 +58,11 @@ export default function InfomationCourseDataTable(props) {
       width: 230,
     },
   ];
-
-  // let course = useSelector((state) => state.CourseReducer.course);
-  // useEffect(() => {
-  //   dispatch({
-  //     type: GET_DATA_COURSE_SAGA,
-  //   });
-  // }, [dispatch]);
-  // console.log(course);
-
-  // console.log(arrMaKhoaHoc[item]);
-
-  // let rows = getUser.map((item, index) => {
-  //   return {
-  //     id: index,
-  //     taiKhoan: item.lstHocVien.taiKhoan,
-  //     hoTen: item.lstHocVien.hoTen,
-  //     maKhoaHoc: item.maKhoaHoc,
-  //     tenKhoaHoc: item.tenKhoaHoc,
-  //   };
-  // });
-  // Update User
-  // useEffect(
-  //   (user) => {
-  //     dispatch({
-  //       type: EDIT_USER_SAGA,
-  //       data: user,
-  //     });
-  //   },
-  //   [dispatch]
-  // );
-
-  // Search data
-  let arrTest = [];
-  const { checkboxSelection } = props;
-
-  for (let item in arrTest) {
-    if (checkboxSelection.checked) {
-      arrTest.push(...item);
-    }
-  }
-
-  // view profile user
+  const rows = [];
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={arrTest}
+        rows={rows}
         columns={columns}
         pageSize={8}
         checkboxSelection={true}

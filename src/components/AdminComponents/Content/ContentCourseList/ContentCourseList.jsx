@@ -16,6 +16,7 @@ import CoureseDataTable from "../../DataTable/CourseData/CoureseDataTable";
 import FromAddCourse from "./FormAddCourse";
 import { useDispatch } from "react-redux";
 import { DELETE_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { useHistory } from "react-router-dom";
 const styles = (theme) => ({
   paper: {
     maxWidth: 1920,
@@ -44,11 +45,16 @@ const styles = (theme) => ({
     backgroundColor: "green",
     margin: "0 8px",
   },
+  View: {
+    backgroundColor: "#9f890e",
+    margin: "0 8px",
+  },
 });
 
 function ContentCourseList(props) {
   const { classes } = props;
   const [dataEdit, setDataEdit] = useState({});
+
   const [buttonEdit, setButtonEdit] = useState(false);
   const [isClickEdit, setIsClickEdit] = useState(false);
   // Show popup add Course
@@ -64,12 +70,10 @@ function ContentCourseList(props) {
   let arrNew = [];
 
   const handleDeleteCourse = () => {
-    for (let item in arrNew) {
-      dispatch({
-        type: DELETE_COURSE_ADMIN_SAGA,
-        maKhoaHoc: arrNew[item],
-      });
-    }
+    dispatch({
+      type: DELETE_COURSE_ADMIN_SAGA,
+      maKhoaHoc: arrNew,
+    });
   };
 
   const onDeleteCourse = (arr) => {
@@ -84,6 +88,15 @@ function ContentCourseList(props) {
   const onEditChildToParent = (arr) => {
     console.log(arr);
     setDataEdit(arr);
+  };
+  const history = useHistory();
+  const handlelView = () => {
+    history.push(`/admin/user-management/${maKH}`);
+  };
+
+  let maKH = "";
+  const onView = (arr) => {
+    maKH = arr;
   };
 
   return (
@@ -111,6 +124,16 @@ function ContentCourseList(props) {
                 />
               </Grid>
               <Grid item>
+                {/* {buttonEdit ? ( */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.View}
+                  onClick={() => handlelView()}
+                >
+                  View
+                </Button>
+                {/* ) : null} */}
                 {buttonEdit ? (
                   <Button
                     variant="contained"
@@ -136,7 +159,7 @@ function ContentCourseList(props) {
                   className={classes.dellUser}
                   onClick={() => handleDeleteCourse()}
                 >
-                  Delete Courese
+                  Delete Course
                 </Button>
                 <Tooltip title="Reload">
                   <IconButton>
@@ -150,6 +173,7 @@ function ContentCourseList(props) {
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
             <CoureseDataTable
+              onView={onView}
               onEdit={onEditChildToParent}
               onDelete={onDeleteCourse}
               inHideEditButton={setButtonEdit}

@@ -1,6 +1,8 @@
 import TeacherDetails from "../components/ClientComponent/TeacherDetails/TeacherDetails.jsx";
 import Dashboard from "../pages/AdminPage/Dashboard/Dashboard.jsx";
 import LoginAdmin from "../pages/AdminPage/LoginAdmin/LoginAdmin.jsx";
+import ProfileAdminPage from "../pages/AdminPage/ProfileAdminPage/ProfileAdminPage.jsx";
+import UserManagerPage from "../pages/AdminPage/UserManagerPage/UserManagerPage.jsx";
 import About from "../pages/ClientPage/About/About.jsx";
 import BecomeTeacher from "../pages/ClientPage/BecomeTeacher/BecomeTeacher.jsx";
 import Contact from "../pages/ClientPage/Contact/Contact.jsx";
@@ -125,8 +127,13 @@ export const adminRouters = [
     Component: Dashboard,
   },
   {
-    path: "/admin/user-management",
+    path: "/admin/user-management/:maKhoaHoc",
     exact: false,
-    // Component: UserManagement,
+    Component: UserManagerPage,
+  },
+  {
+    path: "/admin/profile-admin/:taiKhoan",
+    exact: false,
+    Component: ProfileAdminPage,
   },
 ];

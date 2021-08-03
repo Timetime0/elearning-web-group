@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { ADD_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import {
+  ADD_COURSE_ADMIN_SAGA,
+  UPDATE_COURSE_ADMIN_SAGA,
+} from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
 function FromAddCourse(props) {
@@ -63,7 +66,6 @@ function FromAddCourse(props) {
   // Get user form localStorage
 
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user.taiKhoan);
 
   // function add course
 
@@ -82,6 +84,27 @@ function FromAddCourse(props) {
 
     return [day, month, year].join("/");
   };
+  // up load image
+  const [image] = useState("");
+
+  // let getImg = (e) => {
+  // const hinhAnh = e.target.files[0];
+  // console.log(hinhAnh);
+  // setImage({
+  //   image: hinhAnh.name,
+  //   course: { ...courseRes, hinhAnh: hinhAnh },
+  // });
+
+  // let fileReader = new FileReader();
+  // fileReader.readAsDataURL(hinhAnh);
+  // fileReader.onload = async (e) => {
+  //   setImage({
+  //     basa64Img: e.target.result,
+  //   });
+  // };
+
+  // setImage(URL.createObjectURL(e.target.files[0]));
+  // };
 
   let [courseRes, setCourseRes] = useState({
     maKhoaHoc: "",
@@ -90,11 +113,11 @@ function FromAddCourse(props) {
     moTa: "",
     luotXem: 0,
     danhGia: 0,
-    hinhAnh: "",
+    hinhAnh: ``,
     maNhom: "GP01",
     ngayTao: `${ngayTao(date)}`,
     maDanhMucKhoaHoc: "BackEnd",
-    taiKhoanNguoiTao: `${user.taiKhoan}`,
+    taiKhoanNguoiTao: ``,
   });
 
   useEffect(() => {
@@ -110,7 +133,7 @@ function FromAddCourse(props) {
         maNhom: courseEdit.maNhom,
         ngayTao: `${ngayTao(date)}`,
         maDanhMucKhoaHoc: courseEdit.maDanhMucKhoaHoc,
-        taiKhoanNguoiTao: courseEdit.taiKhoan,
+        taiKhoanNguoiTao: `${user.taiKhoan}`,
       });
     } else {
       setCourseRes({
@@ -120,7 +143,7 @@ function FromAddCourse(props) {
         moTa: "",
         luotXem: 0,
         danhGia: 0,
-        hinhAnh: "",
+        hinhAnh: ``,
         maNhom: "GP01",
         ngayTao: `${ngayTao(date)}`,
         maDanhMucKhoaHoc: "BackEnd",
@@ -128,11 +151,6 @@ function FromAddCourse(props) {
       });
     }
   }, [courseEdit]);
-
-  // img: {
-  //   img: "",
-  //   basa64Img: "",
-  // },
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -148,25 +166,18 @@ function FromAddCourse(props) {
       type: ADD_COURSE_ADMIN_SAGA,
       course: courseRes,
     });
+    dispatch({
+      type: UPDATE_COURSE_ADMIN_SAGA,
+      image: image,
+    });
   };
 
-  // up load image
-  const [image, setImage] = useState("");
-  let getImg = (e) => {
-    const hinhAnh = e.target.files[0];
-    console.log(hinhAnh);
-    setImage({
-      image: hinhAnh.name,
-      course: { ...courseRes, hinhAnh: hinhAnh },
+  const onEditRes = (event) => {
+    event.preventDefault();
+    dispatch({
+      type: UPDATE_COURSE_ADMIN_SAGA,
+      course: courseRes,
     });
-
-    let fileReader = new FileReader();
-    fileReader.readAsDataURL(hinhAnh);
-    fileReader.onload = async (e) => {
-      setImage({
-        basa64Img: e.target.result,
-      });
-    };
   };
 
   return (
@@ -298,6 +309,7 @@ function FromAddCourse(props) {
                       className="input_uploadImages"
                       onChange={(e) => handleChange(e)}
                     />
+                    <img src={image} alt={""} />
                   </div>
                   <div className="input-box">
                     <span className="details">Mô Tả</span>
@@ -319,7 +331,7 @@ function FromAddCourse(props) {
                     <button
                       type="submit"
                       className="button_submit"
-                      onClick={onSubmitRes}
+                      onClick={onEditRes}
                     >
                       Edit
                     </button>

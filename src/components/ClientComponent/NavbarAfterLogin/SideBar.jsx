@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import HomeIcon from "@material-ui/icons/Home";
 import SendIcon from "@material-ui/icons/Send";
-import { NavLink, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { VIEW_PROFILE_USER_SAGA } from "../../../redux/types/AdminType/GetUserListType";
+import { NavLink } from "react-router-dom";
 // Get user form localStorage
 
 function SideBar() {
