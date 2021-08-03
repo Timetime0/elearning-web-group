@@ -38,7 +38,7 @@ export default function CourseDataTable(props) {
     { field: "maKhoaHoc", headerName: "Mã Khóa Hoc", width: 180 },
     { field: "biDanh", headerName: "Bí Danh", width: 340 },
     { field: "tenKhoaHoc", headerName: "Tên Khóa Học", width: 340 },
-    { field: "moTa", headerName: "Mô Tả", type: "textArea", width: 350 },
+    { field: "moTa", headerName: "Mô Tả", width: 350 },
     { field: "luotXem", headerName: "Lượt Xem", width: 140 },
     { field: "hinhAnh", headerName: "Hình Ảnh", width: 150 },
     { field: "maNhom", headerName: "Mã Nhóm", width: 200 },
@@ -73,28 +73,28 @@ export default function CourseDataTable(props) {
 
   let arrNew = [];
   const handleRowSelection = (e) => {
-    const { data, isSelected } = e;
-    if (isSelected) {
-      const result = arrNew.some((item) => item === data.maKhoaHoc);
-      if (!result) {
-        arrNew.push(data.maKhoaHoc);
-        console.log(arrNew);
-      }
-    } else {
-      const result = arrNew.some((item) => item === data.maKhoaHoc);
-      if (result) {
-        arrNew = arrNew.filter((item) => item !== data.maKhoaHoc);
-      }
-    }
+    // const { data, isSelected } = e;
+    // if (isSelected) {
+    //   const result = arrNew.some((item) => item === data.maKhoaHoc);
+    //   if (!result) {
+    //     arrNew.push(data.maKhoaHoc);
+    //     console.log(arrNew);
+    //   }
+    // } else {
+    //   const result = arrNew.some((item) => item === data.maKhoaHoc);
+    //   if (result) {
+    //     arrNew = arrNew.filter((item) => item !== data.maKhoaHoc);
+    //   }
+    // }
 
     // if (arrNew.length !== 0) {
     //   inHideEditButton(true);
     // } else {
     //   inHideEditButton(false);
     // }
-    console.log(e);
-    onView(e.data.maKhoaHoc);
-    onDelete(arrNew);
+    console.log(e.row);
+    onView(e.row.maKhoaHoc);
+    onDelete(e.row.maKhoaHoc);
     // onEdit(e.data);
   };
 
@@ -103,15 +103,14 @@ export default function CourseDataTable(props) {
   const deleteSelectedFile = () => {
     setSelectionModel([]);
   };
+
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={8}
-        checkboxSelection={true}
         data={props.data}
-        onRowSelected={handleRowSelection}
+        onRowClick={handleRowSelection}
         onSelectionModelChange={(newSelection) => {
           setSelectionModel(newSelection.selectionModel);
         }}

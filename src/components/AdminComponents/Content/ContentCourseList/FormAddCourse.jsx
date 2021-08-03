@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import {
   ADD_COURSE_ADMIN_SAGA,
-  ADD_COURSE_IMAGE_ADMIN_SAGA,
   UPDATE_COURSE_ADMIN_SAGA,
-  UPDATE_COURSE_IMAGE_ADMIN_SAGA,
 } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
@@ -87,26 +85,26 @@ function FromAddCourse(props) {
     return [day, month, year].join("/");
   };
   // up load image
-  const [image, setImage] = useState("");
+  const [image] = useState("");
 
-  let getImg = (e) => {
-    // const hinhAnh = e.target.files[0];
-    // console.log(hinhAnh);
-    // setImage({
-    //   image: hinhAnh.name,
-    //   course: { ...courseRes, hinhAnh: hinhAnh },
-    // });
+  // let getImg = (e) => {
+  // const hinhAnh = e.target.files[0];
+  // console.log(hinhAnh);
+  // setImage({
+  //   image: hinhAnh.name,
+  //   course: { ...courseRes, hinhAnh: hinhAnh },
+  // });
 
-    // let fileReader = new FileReader();
-    // fileReader.readAsDataURL(hinhAnh);
-    // fileReader.onload = async (e) => {
-    //   setImage({
-    //     basa64Img: e.target.result,
-    //   });
-    // };
+  // let fileReader = new FileReader();
+  // fileReader.readAsDataURL(hinhAnh);
+  // fileReader.onload = async (e) => {
+  //   setImage({
+  //     basa64Img: e.target.result,
+  //   });
+  // };
 
-    setImage(URL.createObjectURL(e.target.files[0]));
-  };
+  // setImage(URL.createObjectURL(e.target.files[0]));
+  // };
 
   let [courseRes, setCourseRes] = useState({
     maKhoaHoc: "",

@@ -19,6 +19,7 @@ import { useTheme } from "@material-ui/core/styles";
 import SwipeableViews from "react-swipeable-views";
 import ContentUserManager from "../Content/ContentUserManager/ContentUserManager";
 import AppBarComponent from "./AppBarComponent";
+import ContentUserNotInCourse from "../Content/ContentUserManager/ContentUserNotInCourse";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
@@ -138,8 +139,8 @@ function HeaderUserManager(props) {
             variant="fullWidth"
             aria-label="full width tabs example"
           >
-            <Tab label="Add Course" {...a11yProps(0)} />
-            <Tab label="Add User" {...a11yProps(1)} />
+            <Tab label="User In Course" {...a11yProps(0)} />
+            <Tab label="User Not Register" {...a11yProps(1)} />
             <Tab label="Information Course" {...a11yProps(2)} />
             <Tab label="Information User" {...a11yProps(3)} />
           </Tabs>
@@ -151,6 +152,9 @@ function HeaderUserManager(props) {
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
             <ContentUserManager />
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <ContentUserNotInCourse />
           </TabPanel>
         </SwipeableViews>
       </div>

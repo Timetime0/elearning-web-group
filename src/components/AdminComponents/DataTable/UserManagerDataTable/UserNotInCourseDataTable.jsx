@@ -3,7 +3,8 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+// import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { GET_USER_NOT_IN_COURSE_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 
 let arrNew = [];
 
@@ -18,7 +19,7 @@ export default function UserManagerDataTable(props) {
   const { maKhoaHoc } = useParams();
   useEffect(() => {
     dispatch({
-      type: GET_USER_IN_COURSE_ADMIN_SAGA,
+      type: GET_USER_NOT_IN_COURSE_SAGA,
       maKhoaHoc: { maKhoaHoc: maKhoaHoc },
     });
   }, [dispatch]);

@@ -27,11 +27,10 @@ export default function UserDataTable(props) {
     {
       field: "taiKhoan",
       headerName: "Tài Khoản",
-      type: "text",
       width: 200,
     },
-    { field: "hoTen", headerName: "Họ Tên", type: "text", width: 280 },
-    { field: "email", headerName: "Email", type: "text", width: 320 },
+    { field: "hoTen", headerName: "Họ Tên", width: 280 },
+    { field: "email", headerName: "Email", width: 320 },
     {
       field: "soDt",
       headerName: "Số điện thoại",
@@ -59,26 +58,27 @@ export default function UserDataTable(props) {
   }
 
   const handleRowSelection = (e) => {
-    const { data, isSelected } = e;
-    if (isSelected) {
-      const result = arrNew.some((item) => item === data.taiKhoan);
-      if (!result) {
-        arrNew.push(data.taiKhoan);
-      }
-    } else {
-      const result = arrNew.some((item) => item === data.taiKhoan);
-      if (result) {
-        arrNew = arrNew.filter((item) => item !== data.taiKhoan);
-      }
-    }
+    // const { data, isSelected } = e;
+    // if (isSelected) {
+    //   const result = arrNew.some((item) => item === data.taiKhoan);
+    //   if (!result) {
+    //     arrNew.push(data.taiKhoan);
+    //   }
+    // } else {
+    //   const result = arrNew.some((item) => item === data.taiKhoan);
+    //   if (result) {
+    //     arrNew = arrNew.filter((item) => item !== data.taiKhoan);
+    //   }
+    // }
 
-    if (arrNew.length !== 0) {
-      inHideEditButton(true);
-    } else {
-      inHideEditButton(false);
-    }
-    onDelete(arrNew);
-    onEdit(e.data);
+    // if (arrNew.length !== 0) {
+    //   inHideEditButton(true);
+    // } else {
+    //   inHideEditButton(false);
+    // }
+    console.log(e.row);
+    onDelete(e.row.taiKhoan);
+    // onEdit(e.data);
   };
 
   const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
@@ -93,10 +93,9 @@ export default function UserDataTable(props) {
       <DataGrid
         rows={list}
         columns={columns}
-        pageSize={8}
-        checkboxSelection={true}
+        // checkboxSelection={true}
         data={props.data}
-        onRowSelected={handleRowSelection}
+        onRowClick={handleRowSelection}
         onSelectionModelChange={(newSelection) => {
           setSelectionModel(newSelection.selectionModel);
         }}

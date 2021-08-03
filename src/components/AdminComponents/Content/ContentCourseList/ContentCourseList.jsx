@@ -16,7 +16,6 @@ import CoureseDataTable from "../../DataTable/CourseData/CoureseDataTable";
 import FromAddCourse from "./FormAddCourse";
 import { useDispatch } from "react-redux";
 import { DELETE_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
-import { GET_USER_NOT_IN_COURSE_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 import { useHistory } from "react-router-dom";
 const styles = (theme) => ({
   paper: {
@@ -71,12 +70,10 @@ function ContentCourseList(props) {
   let arrNew = [];
 
   const handleDeleteCourse = () => {
-    for (let item in arrNew) {
-      dispatch({
-        type: DELETE_COURSE_ADMIN_SAGA,
-        maKhoaHoc: arrNew[item],
-      });
-    }
+    dispatch({
+      type: DELETE_COURSE_ADMIN_SAGA,
+      maKhoaHoc: arrNew,
+    });
   };
 
   const onDeleteCourse = (arr) => {
