@@ -14,7 +14,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
 import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
-import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
+
+import UserNotInCourseDataTable from "../../DataTable/UserManagerDataTable/UserNotInCourseDataTable";
 
 const styles = (theme) => ({
   container: {
@@ -166,7 +167,7 @@ function ContentUserNotInCourse(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserManagerDataTable
+            <UserNotInCourseDataTable
               onDelete={onDeleteChildToParent}
               onEdit={onEditChildToParent}
               inHideEditButton={setButtonEdit}

@@ -85,7 +85,7 @@ function FromAddCourse(props) {
     return [day, month, year].join("/");
   };
   // up load image
-  const [image] = useState("");
+  const [image, setImage] = useState("");
 
   // let getImg = (e) => {
   // const hinhAnh = e.target.files[0];

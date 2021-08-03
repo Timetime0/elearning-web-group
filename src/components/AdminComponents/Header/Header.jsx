@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
@@ -21,11 +21,6 @@ import { useTheme } from "@material-ui/core/styles";
 import SwipeableViews from "react-swipeable-views";
 import ContentUserList from "../Content/ContentUserList/ContentUserList";
 import ContentCourseList from "../Content/ContentCourseList/ContentCourseList";
-import InfomationCourseDataTable from "../DataTable/InfomationData/InfomationCourseDataTable";
-import ContentInfomationCourse from "../Content/ContentInformation/ContentInfomationCourse";
-import ContentInfomationUser from "../Content/ContentInformation/ContentInfomationUser";
-import { useDispatch, useSelector } from "react-redux";
-import { GET_DATA_COURSE_SAGA } from "../../../redux/types/courseType";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
@@ -97,13 +92,6 @@ function Header(props) {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
-  let course = useSelector((state) => state.CourseReducer.course);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({
-      type: GET_DATA_COURSE_SAGA,
-    });
-  }, [dispatch]);
 
   return (
     <React.Fragment>
@@ -189,8 +177,6 @@ function Header(props) {
           >
             <Tab label="Add Course" {...a11yProps(0)} />
             <Tab label="Add User" {...a11yProps(1)} />
-            <Tab label="Information Course" {...a11yProps(2)} />
-            <Tab label="Information User" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -203,21 +189,6 @@ function Header(props) {
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <ContentUserList />
-          </TabPanel>
-          <TabPanel value={value} index={2} dir={theme.direction}>
-            {course.map((course, index) => {
-              return (
-                <div>
-                  <h3 style={{ marginTop: "100px", textAlign: "center" }}>
-                    Course: {course.tenKhoaHoc}
-                  </h3>
-                  <ContentInfomationCourse course={course} />
-                </div>
-              );
-            })}
-          </TabPanel>
-          <TabPanel value={value} index={3} dir={theme.direction}>
-            <ContentInfomationUser />
           </TabPanel>
         </SwipeableViews>
       </div>

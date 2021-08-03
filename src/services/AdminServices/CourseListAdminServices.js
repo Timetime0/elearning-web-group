@@ -97,3 +97,33 @@ export function GetCourseNotRegister(taiKhoan) {
     },
   });
 }
+
+//=======================================================================================================================
+// Lấy danh sách khóa học đã ghi danh
+
+export function GetCourseHasRegister(taiKhoan) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "POST",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet`,
+    data: taiKhoan,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}
+
+//=======================================================================================================================
+// Lấy danh sách khóa học chờ ghi danh
+
+export function GetCourseWaitingAccept(taiKhoan) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "POST",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet`,
+    data: taiKhoan,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}

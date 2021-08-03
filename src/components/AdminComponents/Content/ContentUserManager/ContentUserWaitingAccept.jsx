@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,8 +13,9 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
-import InfomationCourseDataTable from "../../DataTable/InfomationData/InfomationCourseDataTable";
-import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+
+import UserWaitingAcceptDataTable from "../../DataTable/UserManagerDataTable/UserWaitingAcceptDataTable";
 
 const styles = (theme) => ({
   container: {
@@ -40,7 +41,7 @@ const styles = (theme) => ({
   dellUser: {
     backgroundColor: "red",
   },
-  viewUser: {
+  editUser: {
     backgroundColor: "green",
     margin: "0 8px",
   },
@@ -58,34 +59,49 @@ const styles = (theme) => ({
   },
 });
 
-function ContentInfomationCourse(props) {
+function ContentUserWaitingAccept(props) {
+  const { classes } = props;
   const dispatch = useDispatch();
 
-  const { classes, course } = props;
+  // hide button
+  const [buttonEdit, setButtonEdit] = useState(false);
+  const [isClickEdit, setIsClickEdit] = useState(false);
 
-  // console.log(props.course);
-  // Search data
-  // const getData = useSelector((state) => state.UserReducer.userList);
-  // const [data, setData] = useState([]);
+  const [dataEdit, setDataEdit] = useState({});
 
-  // const [search, setSearch] = useState("");
-  // function searchList(list) {
-  //   const columns = list[0] && Object.keys(list[0]);
-  //   return list.filter((list) =>
-  //     columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
-  //   );
-  // }
+  let arrNew = [];
+
+  const handleDeleteUser = () => {
+    for (let item in arrNew) {
+      dispatch({
+        type: DELETE_USER_SAGA,
+        taiKhoan: arrNew[item],
+      });
+    }
+  };
+
+  const onDeleteChildToParent = (arr) => {
+    arrNew = arr;
+  };
+
+  const handleEditUser = () => {
+    setIsClickEdit((prev) => !prev);
+    setShowPopUp((prev) => !prev);
+  };
+
+  const onEditChildToParent = (arr) => {
+    console.log(arr);
+    setDataEdit(arr);
+  };
+
+  // Add User
 
   // Show popup add User
   const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddUser = () => {};
-
-  useEffect(() => {
-    dispatch({
-      type: GET_USER_IN_COURSE_ADMIN_SAGA,
-      maKhoaHoc: { maKhoaHoc: course.maKhoaHoc },
-    });
-  }, [course.maKhoaHoc]);
+  const btnAddUser = () => {
+    setDataEdit(null);
+    setShowPopUp((prev) => !prev);
+  };
 
   return (
     <div className={classes.container}>
@@ -112,13 +128,17 @@ function ContentInfomationCourse(props) {
                 />
               </Grid>
               <Grid item>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.viewUser}
-                >
-                  Edit User
-                </Button>
+                {buttonEdit ? (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.editUser}
+                    onClick={handleEditUser}
+                  >
+                    Edit User
+                  </Button>
+                ) : null}
+
                 <Button
                   variant="contained"
                   color="primary"
@@ -131,6 +151,7 @@ function ContentInfomationCourse(props) {
                   variant="contained"
                   color="secondary"
                   className={classes.dellUser}
+                  onClick={() => handleDeleteUser()}
                 >
                   Delete User
                 </Button>
@@ -146,7 +167,12 @@ function ContentInfomationCourse(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <InfomationCourseDataTable data={course.maKhoaHoc} />
+            <UserWaitingAcceptDataTable
+              onDelete={onDeleteChildToParent}
+              onEdit={onEditChildToParent}
+              inHideEditButton={setButtonEdit}
+              isDeleteCheckBox={isClickEdit}
+            />
           </Typography>
         </div>
       </Paper>
@@ -154,8 +180,8 @@ function ContentInfomationCourse(props) {
   );
 }
 
-ContentInfomationCourse.propTypes = {
+ContentUserWaitingAccept.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentInfomationCourse);
+export default withStyles(styles)(ContentUserWaitingAccept);

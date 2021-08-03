@@ -6,6 +6,7 @@ import {
   followGetProfileUserApi,
   followGetUserListApiAction,
   followGetuserNotInCourseApi,
+  followGetUserWaitingAcceptsApi,
   followUpdateUserApi,
 } from "./AdminSaga/UserListSaga";
 import { followGetCourseListApiAction } from "./CourseListSaga";
@@ -60,5 +61,6 @@ export default function* rootSaga() {
     followGetProfileUserApi(),
     followEditProfileUserApi(),
     followGetuserNotInCourseApi(),
+    followGetUserWaitingAcceptsApi(),
   ]);
 }

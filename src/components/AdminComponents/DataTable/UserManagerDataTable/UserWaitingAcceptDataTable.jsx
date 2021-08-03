@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
-import { GET_USER_NOT_IN_COURSE_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import { GET_USER_WAITING_ACCEPT_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 
-export default function UserNotInCourseDataTable(props) {
+export default function UserWaitingAcceptDataTable(props) {
   const onDelete = props.onDelete;
   const onEdit = props.onEdit;
   const inHideEditButton = props.inHideEditButton;
@@ -17,12 +17,12 @@ export default function UserNotInCourseDataTable(props) {
   const { maKhoaHoc } = useParams();
   useEffect(() => {
     dispatch({
-      type: GET_USER_NOT_IN_COURSE_SAGA,
+      type: GET_USER_WAITING_ACCEPT_SAGA,
       maKhoaHoc: { maKhoaHoc: maKhoaHoc },
     });
   }, [dispatch]);
 
-  let user = useSelector((state) => state.UserReducer.userNotInCourse);
+  let user = useSelector((state) => state.UserReducer.userWaitingAccept);
   console.log(user);
   const rows = user?.map((item, index) => {
     return {

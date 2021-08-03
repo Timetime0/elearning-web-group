@@ -23,9 +23,11 @@ export default function UserManagerDataTable(props) {
     });
   }, [dispatch]);
 
-  let user = useSelector((state) => state.CourseListAdminrReducer.userInCourse);
-
-  const rows = user[maKhoaHoc]?.map((item, index) => {
+  let users = useSelector(
+    (state) => state.CourseListAdminrReducer.userInCourse
+  );
+  console.log(users);
+  const rows = users.map((item, index) => {
     return {
       id: index,
       ...item,
@@ -54,9 +56,8 @@ export default function UserManagerDataTable(props) {
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={temp}
+        rows={rows}
         columns={columns}
-        pageSize={8}
         checkboxSelection={true}
         data={props.data}
         onRowSelected={handleRowSelection}

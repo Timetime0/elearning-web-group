@@ -20,6 +20,7 @@ import SwipeableViews from "react-swipeable-views";
 import ContentUserManager from "../Content/ContentUserManager/ContentUserManager";
 import AppBarComponent from "./AppBarComponent";
 import ContentUserNotInCourse from "../Content/ContentUserManager/ContentUserNotInCourse";
+import ContentUserWaitingAccept from "../Content/ContentUserManager/ContentUserWaitingAccept";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
@@ -141,7 +142,7 @@ function HeaderUserManager(props) {
           >
             <Tab label="User In Course" {...a11yProps(0)} />
             <Tab label="User Not Register" {...a11yProps(1)} />
-            <Tab label="Information Course" {...a11yProps(2)} />
+            <Tab label="User Waiting For Accept" {...a11yProps(2)} />
             <Tab label="Information User" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
@@ -155,6 +156,9 @@ function HeaderUserManager(props) {
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <ContentUserNotInCourse />
+          </TabPanel>
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <ContentUserWaitingAccept />
           </TabPanel>
         </SwipeableViews>
       </div>
