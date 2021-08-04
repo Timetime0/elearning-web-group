@@ -16,6 +16,8 @@ import { useDispatch } from "react-redux";
 import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 
 import UserNotInCourseDataTable from "../../DataTable/UserManagerDataTable/UserNotInCourseDataTable";
+import { REGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
+import { useParams } from "react-router-dom";
 
 const styles = (theme) => ({
   container: {
@@ -63,45 +65,25 @@ function ContentUserNotInCourse(props) {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  // hide button
-  const [buttonEdit, setButtonEdit] = useState(false);
-  const [isClickEdit, setIsClickEdit] = useState(false);
+  const { maKhoaHoc } = useParams();
 
-  const [dataEdit, setDataEdit] = useState({});
+  let taiKhoan = {};
 
-  let arrNew = [];
-
-  const handleDeleteUser = () => {
-    for (let item in arrNew) {
+  const handleRegisterCourse = () => {
+    for (let item in taiKhoan) {
       dispatch({
-        type: DELETE_USER_SAGA,
-        taiKhoan: arrNew[item],
+        type: REGISTER_COURSE_SAGA,
+        data: { maKhoaHoc, taiKhoan },
       });
     }
+    console.log(taiKhoan);
   };
 
-  const onDeleteChildToParent = (arr) => {
-    arrNew = arr;
-  };
-
-  const handleEditUser = () => {
-    setIsClickEdit((prev) => !prev);
-    setShowPopUp((prev) => !prev);
-  };
-
-  const onEditChildToParent = (arr) => {
-    console.log(arr);
-    setDataEdit(arr);
+  const onRegisterCourse = (arr) => {
+    taiKhoan = arr;
   };
 
   // Add User
-
-  // Show popup add User
-  const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddUser = () => {
-    setDataEdit(null);
-    setShowPopUp((prev) => !prev);
-  };
 
   return (
     <div className={classes.container}>
@@ -128,34 +110,14 @@ function ContentUserNotInCourse(props) {
                 />
               </Grid>
               <Grid item>
-                {buttonEdit ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.editUser}
-                    onClick={handleEditUser}
-                  >
-                    Edit User
-                  </Button>
-                ) : null}
-
                 <Button
                   variant="contained"
                   color="primary"
                   className={classes.addUser}
-                  onClick={btnAddUser}
+                  onClick={handleRegisterCourse}
                 >
-                  Add User
+                  Register Course
                 </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  className={classes.dellUser}
-                  onClick={() => handleDeleteUser()}
-                >
-                  Delete User
-                </Button>
-
                 <Tooltip title="Reload">
                   <IconButton>
                     <RefreshIcon className={classes.block} color="inherit" />
@@ -167,12 +129,7 @@ function ContentUserNotInCourse(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserNotInCourseDataTable
-              onDelete={onDeleteChildToParent}
-              onEdit={onEditChildToParent}
-              inHideEditButton={setButtonEdit}
-              isDeleteCheckBox={isClickEdit}
-            />
+            <UserNotInCourseDataTable onRegisterCourse={onRegisterCourse} />
           </Typography>
         </div>
       </Paper>

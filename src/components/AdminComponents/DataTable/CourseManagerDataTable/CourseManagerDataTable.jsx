@@ -3,47 +3,33 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
-import { GET_USER_WAITING_ACCEPT_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import {
+  GET_COURSE_NOT_REGISTER_SAGA,
+  GET_USER_IN_COURSE_ADMIN_SAGA,
+} from "../../../../redux/types/AdminType/GetCourseListAdminType";
 
-export default function UserWaitingAcceptDataTable(props) {
-  const onRegisterCourse = props.onRegisterCourse;
+export default function CourseManagerDataTable(props) {
+  const onUnRegister = props.onUnRegister;
 
   const dispatch = useDispatch();
 
-  const { maKhoaHoc } = useParams();
+  const { taiKhoan } = useParams();
   useEffect(() => {
     dispatch({
-      type: GET_USER_WAITING_ACCEPT_SAGA,
-      maKhoaHoc: { maKhoaHoc: maKhoaHoc },
+      type: GET_COURSE_NOT_REGISTER_SAGA,
+      taiKhoan: taiKhoan,
     });
   }, [dispatch]);
 
-  let user = useSelector((state) => state.UserReducer.userWaitingAccept);
-  console.log(user);
-  const rows = user?.map((item, index) => {
+  let users = useSelector(
+    (state) => state.CourseListAdminrReducer.courseNotRegister
+  );
+  const rows = users.map((item, index) => {
     return {
       id: index,
       ...item,
     };
   });
-
-  const columns = [
-    {
-      field: "id",
-      headerName: "id",
-      width: 100,
-    },
-    {
-      field: "taiKhoan",
-      headerName: "Tài Khoản",
-
-      width: 200,
-    },
-    { field: "biDanh", headerName: "Bí Danh", width: 280 },
-    { field: "hoTen", headerName: "Họ Tên", width: 320 },
-  ];
-
   let arrNew = [];
 
   const selectUser = (e) => {
@@ -57,9 +43,26 @@ export default function UserWaitingAcceptDataTable(props) {
         console.log(arrNew);
       }
     }
-    onRegisterCourse(e.row.taiKhoan);
+    onUnRegister(e.row.taiKhoan);
   };
 
+  const columns = [
+    {
+      field: "id",
+      headerName: "id",
+      width: 100,
+    },
+    {
+      field: "maKhoaHoc",
+      headerName: "Mã Khóa Học",
+
+      width: 200,
+    },
+    { field: "biDanh", headerName: "Bí Danh", width: 280 },
+    { field: "tenKhoaHoc", headerName: "Tên Khóa Học", width: 320 },
+  ];
+
+  // view profile user
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid

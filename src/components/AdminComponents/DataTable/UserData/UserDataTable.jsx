@@ -9,7 +9,8 @@ let arrNew = [];
 export default function UserDataTable(props) {
   const onDelete = props.onDelete;
   const onEdit = props.onEdit;
-  const inHideEditButton = props.inHideEditButton;
+  const onView = props.onView;
+
   const isDeleteCheckBox = props.isDeleteCheckBox;
 
   const dispatch = useDispatch();
@@ -77,6 +78,8 @@ export default function UserDataTable(props) {
     //   inHideEditButton(false);
     // }
     console.log(e.row);
+    onView(e.row.taiKhoan);
+
     onDelete(e.row.taiKhoan);
     // onEdit(e.data);
   };
@@ -96,10 +99,6 @@ export default function UserDataTable(props) {
         // checkboxSelection={true}
         data={props.data}
         onRowClick={handleRowSelection}
-        onSelectionModelChange={(newSelection) => {
-          setSelectionModel(newSelection.selectionModel);
-        }}
-        selectionModel={selectionModel}
       />
     </div>
   );

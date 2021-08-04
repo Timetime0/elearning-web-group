@@ -16,6 +16,9 @@ import { useDispatch } from "react-redux";
 import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
 import { UNREGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
 import { useParams } from "react-router-dom";
+import CourseManagerDataTable from "../../DataTable/CourseManagerDataTable/CourseManagerDataTable";
+import CourseWasRegisterDataTable from "../../DataTable/CourseManagerDataTable/CourseWasRegisterDataTable";
+import CourseWaitingRegisterDataTable from "../../DataTable/CourseManagerDataTable/CourseWaitingRegisterDataTable";
 
 const styles = (theme) => ({
   container: {
@@ -59,7 +62,7 @@ const styles = (theme) => ({
   },
 });
 
-function ContentUserManager(props) {
+function ContentCourseWaitingRegister(props) {
   const { classes } = props;
   const dispatch = useDispatch();
   const { maKhoaHoc } = useParams();
@@ -125,7 +128,7 @@ function ContentUserManager(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserManagerDataTable onUnRegister={onUnRegister} />
+            <CourseWaitingRegisterDataTable onUnRegister={onUnRegister} />
           </Typography>
         </div>
       </Paper>
@@ -133,8 +136,8 @@ function ContentUserManager(props) {
   );
 }
 
-ContentUserManager.propTypes = {
+ContentCourseWaitingRegister.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentUserManager);
+export default withStyles(styles)(ContentCourseWaitingRegister);

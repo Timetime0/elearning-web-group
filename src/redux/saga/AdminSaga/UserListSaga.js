@@ -53,7 +53,6 @@ function* updateUserApi(action) {
       type: EDIT_USER,
       data: res.data,
     });
-    console.log(res);
     if (res.status === 200) {
       Swal.fire({
         icon: "success",
@@ -210,7 +209,6 @@ export function* followEditProfileUserApi() {
 function* getuserNotInCourseApi(action) {
   try {
     const res = yield call(() => GetUserNotInCourseServices(action.maKhoaHoc));
-    console.log(res);
     yield put({
       type: GET_USER_NOT_IN_COURSE,
       data: res.data,
@@ -230,7 +228,6 @@ export function* followGetuserNotInCourseApi() {
 function* getUserWaitingAcceptsApi(action) {
   try {
     const res = yield call(() => GetUserNotInCourseServices(action.maKhoaHoc));
-    console.log(res);
     yield put({
       type: GET_USER_WAITING_ACCEPT,
       data: res.data,

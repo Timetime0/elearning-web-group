@@ -16,6 +16,8 @@ import { useDispatch } from "react-redux";
 import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
 import { UNREGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
 import { useParams } from "react-router-dom";
+import CourseManagerDataTable from "../../DataTable/CourseManagerDataTable/CourseManagerDataTable";
+import CourseWasRegisterDataTable from "../../DataTable/CourseManagerDataTable/CourseWasRegisterDataTable";
 
 const styles = (theme) => ({
   container: {
@@ -59,25 +61,24 @@ const styles = (theme) => ({
   },
 });
 
-function ContentUserManager(props) {
+function ContentCourseWasRegister(props) {
   const { classes } = props;
   const dispatch = useDispatch();
-  const { maKhoaHoc } = useParams();
-
-  let taiKhoan = {};
+  const { taiKhoan } = useParams();
+  let maKhoaHoc = {};
 
   const handleUnRegister = () => {
-    for (let item in taiKhoan) {
+    for (let item in maKhoaHoc) {
       dispatch({
         type: UNREGISTER_COURSE_SAGA,
         data: { maKhoaHoc, taiKhoan },
       });
     }
-    console.log(taiKhoan);
+    console.log(maKhoaHoc);
   };
 
   const onUnRegister = (arr) => {
-    taiKhoan = arr;
+    maKhoaHoc = arr;
   };
 
   return (
@@ -125,7 +126,7 @@ function ContentUserManager(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserManagerDataTable onUnRegister={onUnRegister} />
+            <CourseWasRegisterDataTable onUnRegister={onUnRegister} />
           </Typography>
         </div>
       </Paper>
@@ -133,8 +134,8 @@ function ContentUserManager(props) {
   );
 }
 
-ContentUserManager.propTypes = {
+ContentCourseWasRegister.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentUserManager);
+export default withStyles(styles)(ContentCourseWasRegister);

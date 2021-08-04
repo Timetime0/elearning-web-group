@@ -7,10 +7,7 @@ import { useParams } from "react-router-dom";
 import { GET_USER_NOT_IN_COURSE_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 
 export default function UserNotInCourseDataTable(props) {
-  const onDelete = props.onDelete;
-  const onEdit = props.onEdit;
-  const inHideEditButton = props.inHideEditButton;
-  const isDeleteCheckBox = props.isDeleteCheckBox;
+  const onRegisterCourse = props.onRegisterCourse;
 
   const dispatch = useDispatch();
 
@@ -23,7 +20,6 @@ export default function UserNotInCourseDataTable(props) {
   }, [dispatch]);
 
   let user = useSelector((state) => state.UserReducer.userNotInCourse);
-  console.log(user);
   const rows = user?.map((item, index) => {
     return {
       id: index,
@@ -43,12 +39,26 @@ export default function UserNotInCourseDataTable(props) {
 
       width: 200,
     },
-    { field: "biDanh", headerName: "Họ Tên", width: 280 },
-    { field: "hoTen", headerName: "Email", width: 320 },
+    { field: "biDanh", headerName: "Bí Danh", width: 280 },
+    { field: "hoTen", headerName: "Họ Tên", width: 320 },
   ];
 
-  const handleRowSelection = (e) => {};
-  const temp = [];
+  let arrNew = [];
+
+  const selectUser = (e) => {
+    if (e) {
+      const result = arrNew.some((item) => item === e.row.taiKhoan);
+      if (!result) {
+        arrNew.push(e.row.taiKhoan);
+        console.log(arrNew);
+      } else {
+        arrNew = arrNew.filter((item) => item !== e.row.taiKhoan);
+        console.log(arrNew);
+      }
+    }
+    onRegisterCourse(e.row.taiKhoan);
+  };
+
   // view profile user
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -57,7 +67,7 @@ export default function UserNotInCourseDataTable(props) {
         columns={columns}
         checkboxSelection={true}
         data={props.data}
-        onRowSelected={handleRowSelection}
+        onRowClick={selectUser}
       />
     </div>
   );

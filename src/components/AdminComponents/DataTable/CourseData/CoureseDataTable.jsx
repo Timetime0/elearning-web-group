@@ -111,10 +111,6 @@ export default function CourseDataTable(props) {
         columns={columns}
         data={props.data}
         onRowClick={handleRowSelection}
-        onSelectionModelChange={(newSelection) => {
-          setSelectionModel(newSelection.selectionModel);
-        }}
-        selectionModel={selectionModel}
       />
     </div>
   );

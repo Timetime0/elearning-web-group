@@ -16,6 +16,7 @@ import UserDataTable from "../../DataTable/UserData/UserDataTable";
 import { useDispatch } from "react-redux";
 import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 import FormAdduser from "./FormAdduser";
+import { useHistory } from "react-router-dom";
 
 const styles = (theme) => ({
   container: {
@@ -57,6 +58,10 @@ const styles = (theme) => ({
     transform: "translate(50%,-50%)",
     backgroundColor: "red",
   },
+  View: {
+    backgroundColor: "#9f890e",
+    margin: "0 8px",
+  },
 });
 
 function ContentUserList(props) {
@@ -81,7 +86,14 @@ function ContentUserList(props) {
   const [dataEdit, setDataEdit] = useState({});
 
   let arrNew = [];
-
+  const history = useHistory();
+  const handlelView = () => {
+    history.push(`/admin/course-management/${id}`);
+  };
+  let id = "";
+  const onView = (arr) => {
+    id = arr;
+  };
   const handleDeleteUser = () => {
     // for (let item in arrNew) {
     dispatch({
@@ -149,7 +161,14 @@ function ContentUserList(props) {
                     Edit User
                   </Button>
                 ) : null}
-
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.View}
+                  onClick={() => handlelView()}
+                >
+                  View
+                </Button>
                 <Button
                   variant="contained"
                   color="primary"
@@ -179,6 +198,7 @@ function ContentUserList(props) {
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
             <UserDataTable
+              onView={onView}
               onDelete={onDeleteChildToParent}
               onEdit={onEditChildToParent}
               inHideEditButton={setButtonEdit}
