@@ -32,16 +32,16 @@ export default function CourseWaitingRegisterDataTable(props) {
 
   const selectUser = (e) => {
     if (e) {
-      const result = arrNew.some((item) => item === e.row.taiKhoan);
+      const result = arrNew.some((item) => item === e.row.maKhoaHoc);
       if (!result) {
-        arrNew.push(e.row.taiKhoan);
+        arrNew.push(e.row.maKhoaHoc);
         console.log(arrNew);
       } else {
-        arrNew = arrNew.filter((item) => item !== e.row.taiKhoan);
+        arrNew = arrNew.filter((item) => item !== e.row.maKhoaHoc);
         console.log(arrNew);
       }
     }
-    onUnRegister(e.row.taiKhoan);
+    onUnRegister(e.row.maKhoaHoc);
   };
 
   const columns = [

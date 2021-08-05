@@ -1,12 +1,9 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {
-  GET_COURSE_NOT_REGISTER_SAGA,
-  GET_USER_IN_COURSE_ADMIN_SAGA,
-} from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { GET_COURSE_NOT_REGISTER_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 
 export default function CourseManagerDataTable(props) {
   const onUnRegister = props.onUnRegister;
@@ -34,16 +31,16 @@ export default function CourseManagerDataTable(props) {
 
   const selectUser = (e) => {
     if (e) {
-      const result = arrNew.some((item) => item === e.row.taiKhoan);
+      const result = arrNew.some((item) => item === e.row.maKhoaHoc);
       if (!result) {
-        arrNew.push(e.row.taiKhoan);
+        arrNew.push(e.row.maKhoaHoc);
         console.log(arrNew);
       } else {
-        arrNew = arrNew.filter((item) => item !== e.row.taiKhoan);
+        arrNew = arrNew.filter((item) => item !== e.row.maKhoaHoc);
         console.log(arrNew);
       }
     }
-    onUnRegister(e.row.taiKhoan);
+    onUnRegister(e.row.maKhoaHoc);
   };
 
   const columns = [

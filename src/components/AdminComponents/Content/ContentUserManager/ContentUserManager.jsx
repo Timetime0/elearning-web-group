@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -67,13 +67,12 @@ function ContentUserManager(props) {
   let taiKhoan = {};
 
   const handleUnRegister = () => {
-    for (let item in taiKhoan) {
-      dispatch({
-        type: UNREGISTER_COURSE_SAGA,
-        data: { maKhoaHoc, taiKhoan },
-      });
-    }
-    console.log(taiKhoan);
+    // for (let item in taiKhoan) {
+    dispatch({
+      type: UNREGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
+    // }
   };
 
   const onUnRegister = (arr) => {

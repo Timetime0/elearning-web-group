@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,11 +13,13 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
-import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
-import { UNREGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
+
+import {
+  REGISTER_COURSE_SAGA,
+  UNREGISTER_COURSE_SAGA,
+} from "../../../../redux/types/AdminType/RegisterCourse";
 import { useParams } from "react-router-dom";
-import CourseManagerDataTable from "../../DataTable/CourseManagerDataTable/CourseManagerDataTable";
-import CourseWasRegisterDataTable from "../../DataTable/CourseManagerDataTable/CourseWasRegisterDataTable";
+
 import CourseWaitingRegisterDataTable from "../../DataTable/CourseManagerDataTable/CourseWaitingRegisterDataTable";
 
 const styles = (theme) => ({
@@ -65,22 +67,31 @@ const styles = (theme) => ({
 function ContentCourseWaitingRegister(props) {
   const { classes } = props;
   const dispatch = useDispatch();
-  const { maKhoaHoc } = useParams();
 
-  let taiKhoan = {};
+  const { taiKhoan } = useParams();
+  let maKhoaHoc = {};
+
+  const handleRegisterCourse = () => {
+    // for (let item in maKhoaHoc) {
+    dispatch({
+      type: REGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
+    // }
+    console.log(maKhoaHoc);
+  };
 
   const handleUnRegister = () => {
-    for (let item in taiKhoan) {
-      dispatch({
-        type: UNREGISTER_COURSE_SAGA,
-        data: { maKhoaHoc, taiKhoan },
-      });
-    }
-    console.log(taiKhoan);
+    // for (let item in taiKhoan) {
+    dispatch({
+      type: UNREGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
+    // }
   };
 
   const onUnRegister = (arr) => {
-    taiKhoan = arr;
+    maKhoaHoc = arr;
   };
 
   return (
@@ -110,13 +121,20 @@ function ContentCourseWaitingRegister(props) {
               <Grid item>
                 <Button
                   variant="contained"
-                  color="secondary"
-                  className={classes.dellUser}
-                  onClick={() => handleUnRegister()}
+                  color="primary"
+                  className={classes.addUser}
+                  onClick={handleRegisterCourse}
                 >
-                  UnRegister
+                  Register Course
                 </Button>
-
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.dellUser}
+                  onClick={handleUnRegister}
+                >
+                  UnRegister Course
+                </Button>
                 <Tooltip title="Reload">
                   <IconButton>
                     <RefreshIcon className={classes.block} color="inherit" />

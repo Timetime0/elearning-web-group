@@ -409,3 +409,11 @@ _ Hoàn thành hết các API
 *********** Chưa fix được tính năng sửa khóa học và người dùng
 *********** chưa làm tìm kiếm khóa học và người dùng 
 *********** Chưa fix được lỗi hủy ghi danh không thành công 
+
+
+#Ngày 05/08/2021 Chun: 
+_ Hoàn thành hết các API 
+_ tạo thêm 2 form eidt user và edit course
+*********** Chưa fix được tính năng sửa khóa học và người dùng
+*********** chưa làm tìm kiếm khóa học và người dùng 
+*********** Chưa fix được lỗi hủy ghi danh không thành công => đã fix

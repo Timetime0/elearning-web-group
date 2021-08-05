@@ -1,10 +1,8 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { GET_USER_LIST_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
-
-let arrNew = [];
 
 export default function UserDataTable(props) {
   const onDelete = props.onDelete;
@@ -42,7 +40,6 @@ export default function UserDataTable(props) {
   ];
 
   useEffect(() => {
-    deleteSelectedFile();
     dispatch({
       type: GET_USER_LIST_SAGA,
     });
@@ -59,35 +56,11 @@ export default function UserDataTable(props) {
   }
 
   const handleRowSelection = (e) => {
-    // const { data, isSelected } = e;
-    // if (isSelected) {
-    //   const result = arrNew.some((item) => item === data.taiKhoan);
-    //   if (!result) {
-    //     arrNew.push(data.taiKhoan);
-    //   }
-    // } else {
-    //   const result = arrNew.some((item) => item === data.taiKhoan);
-    //   if (result) {
-    //     arrNew = arrNew.filter((item) => item !== data.taiKhoan);
-    //   }
-    // }
-
-    // if (arrNew.length !== 0) {
-    //   inHideEditButton(true);
-    // } else {
-    //   inHideEditButton(false);
-    // }
     console.log(e.row);
     onView(e.row.taiKhoan);
 
     onDelete(e.row.taiKhoan);
-    // onEdit(e.data);
-  };
-
-  const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
-
-  const deleteSelectedFile = () => {
-    setSelectionModel([]);
+    onEdit(e.row);
   };
 
   // view profile user

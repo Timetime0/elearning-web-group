@@ -7,7 +7,6 @@ import {
 import {
   REGISTER_COURSE,
   REGISTER_COURSE_SAGA,
-  UNREGISTER_COURSE,
   UNREGISTER_COURSE_SAGA,
 } from "../../types/AdminType/RegisterCourse";
 // ==================================================================================================
@@ -22,12 +21,8 @@ function* unRegisterCourseApi(action) {
         title: "Hủy ghi danh thành công",
       });
     }
-    yield put({
-      type: UNREGISTER_COURSE,
-      data: res.data,
-    });
   } catch (e) {
-    console.log(e);
+    console.log(e.response.data);
     Swal.fire({
       icon: "error",
       title: "Hủy ghi danh không thành công",

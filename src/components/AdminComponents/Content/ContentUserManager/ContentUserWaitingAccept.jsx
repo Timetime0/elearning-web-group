@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,7 +13,6 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
-import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 
 import UserWaitingAcceptDataTable from "../../DataTable/UserManagerDataTable/UserWaitingAcceptDataTable";
 import { REGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
@@ -70,13 +69,10 @@ function ContentUserWaitingAccept(props) {
   let taiKhoan = {};
 
   const handleRegisterCourse = () => {
-    for (let item in taiKhoan) {
-      dispatch({
-        type: REGISTER_COURSE_SAGA,
-        data: { maKhoaHoc, taiKhoan },
-      });
-    }
-    console.log(taiKhoan);
+    dispatch({
+      type: REGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
   };
 
   const onRegisterCourse = (arr) => {

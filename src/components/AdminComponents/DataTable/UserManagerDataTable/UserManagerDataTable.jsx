@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 
@@ -40,6 +40,8 @@ export default function UserManagerDataTable(props) {
         console.log(arrNew);
       }
     }
+    console.log(e.row.taiKhoan);
+
     onUnRegister(e.row.taiKhoan);
   };
 

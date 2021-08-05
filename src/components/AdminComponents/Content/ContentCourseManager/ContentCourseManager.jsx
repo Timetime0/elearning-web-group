@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,8 +13,7 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
-import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
-import { UNREGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
+import { REGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
 import { useParams } from "react-router-dom";
 import CourseManagerDataTable from "../../DataTable/CourseManagerDataTable/CourseManagerDataTable";
 
@@ -67,13 +66,13 @@ function ContentCourseManager(props) {
   const { taiKhoan } = useParams();
   let maKhoaHoc = {};
 
-  const handleUnRegister = () => {
-    for (let item in maKhoaHoc) {
-      dispatch({
-        type: UNREGISTER_COURSE_SAGA,
-        data: { maKhoaHoc, taiKhoan },
-      });
-    }
+  const handleRegisterCourse = () => {
+    // for (let item in maKhoaHoc) {
+    dispatch({
+      type: REGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
+    // }
     console.log(maKhoaHoc);
   };
 
@@ -108,11 +107,11 @@ function ContentCourseManager(props) {
               <Grid item>
                 <Button
                   variant="contained"
-                  color="secondary"
-                  className={classes.dellUser}
-                  onClick={() => handleUnRegister()}
+                  color="primary"
+                  className={classes.addUser}
+                  onClick={handleRegisterCourse}
                 >
-                  UnRegister
+                  Register Course
                 </Button>
 
                 <Tooltip title="Reload">

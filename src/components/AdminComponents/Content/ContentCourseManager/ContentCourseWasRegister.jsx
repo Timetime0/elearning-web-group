@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,10 +13,10 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
-import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
+
 import { UNREGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
 import { useParams } from "react-router-dom";
-import CourseManagerDataTable from "../../DataTable/CourseManagerDataTable/CourseManagerDataTable";
+
 import CourseWasRegisterDataTable from "../../DataTable/CourseManagerDataTable/CourseWasRegisterDataTable";
 
 const styles = (theme) => ({
@@ -68,12 +68,12 @@ function ContentCourseWasRegister(props) {
   let maKhoaHoc = {};
 
   const handleUnRegister = () => {
-    for (let item in maKhoaHoc) {
-      dispatch({
-        type: UNREGISTER_COURSE_SAGA,
-        data: { maKhoaHoc, taiKhoan },
-      });
-    }
+    // for (let item in maKhoaHoc) {
+    dispatch({
+      type: UNREGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
+    // }
     console.log(maKhoaHoc);
   };
 

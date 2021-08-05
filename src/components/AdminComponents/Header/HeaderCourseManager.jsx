@@ -2,13 +2,10 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
-
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
-
 import IconButton from "@material-ui/core/IconButton";
-
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -18,11 +15,8 @@ import { withStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
 import SwipeableViews from "react-swipeable-views";
 import AppBarComponent from "./AppBarComponent";
-import ContentUserNotInCourse from "../Content/ContentUserManager/ContentUserNotInCourse";
-import ContentUserWaitingAccept from "../Content/ContentUserManager/ContentUserWaitingAccept";
 import ContentCourseManager from "../Content/ContentCourseManager/ContentCourseManager";
 import ContentCourseWasRegister from "../Content/ContentCourseManager/ContentCourseWasRegister";
-import CourseWaitingRegisterDataTable from "../DataTable/CourseManagerDataTable/CourseWaitingRegisterDataTable";
 import ContentCourseWaitingRegister from "../Content/ContentCourseManager/ContentCourseWaitingRegister";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
