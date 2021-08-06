@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { ADD_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { UPDATE_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { DETAIL_COURSE_SERVICES_SAGA } from "../../../../redux/types/CourseDetailType";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
 function FormEditCourse(props) {
   let courseEdit = props.data;
+  const onEdit = props.onEdit;
+  console.log(onEdit);
   const { showPopUpEdit, setShowPopUpEdit } = props;
   // close popup add user
   // Show alert to close menu
@@ -59,6 +62,15 @@ function FormEditCourse(props) {
 
   // Get user form localStorage
 
+  useEffect(() => {
+    if (onEdit) {
+      dispatch({
+        type: DETAIL_COURSE_SERVICES_SAGA,
+        data: onEdit,
+      });
+    }
+  }, [onEdit]);
+  const data = useSelector((state) => state.CourseReducer.courseDetail);
   const user = JSON.parse(localStorage.getItem("user"));
 
   // function add course
@@ -80,25 +92,6 @@ function FormEditCourse(props) {
   };
   // up load image
   const [image, setImage] = useState("");
-
-  // let getImg = (e) => {
-  // const hinhAnh = e.target.files[0];
-  // console.log(hinhAnh);
-  // setImage({
-  //   image: hinhAnh.name,
-  //   course: { ...courseRes, hinhAnh: hinhAnh },
-  // });
-
-  // let fileReader = new FileReader();
-  // fileReader.readAsDataURL(hinhAnh);
-  // fileReader.onload = async (e) => {
-  //   setImage({
-  //     basa64Img: e.target.result,
-  //   });
-  // };
-
-  // setImage(URL.createObjectURL(e.target.files[0]));
-  // };
 
   let [courseRes, setCourseRes] = useState({});
 
@@ -129,7 +122,7 @@ function FormEditCourse(props) {
   const onSubmitRes = (event) => {
     event.preventDefault();
     dispatch({
-      type: ADD_COURSE_ADMIN_SAGA,
+      type: UPDATE_COURSE_ADMIN_SAGA,
       course: courseRes,
     });
   };
@@ -145,6 +138,7 @@ function FormEditCourse(props) {
                 <div className="user-details">
                   <div className="input-box">
                     <span className="details">Tên Khóa Học</span>
+
                     <input
                       name="tenKhoaHoc"
                       type="text"
@@ -162,6 +156,7 @@ function FormEditCourse(props) {
                       placeholder="Nhập mã khóa học..."
                       required
                       onChange={(e) => handleChange(e)}
+                      value={courseRes.maKhoaHoc}
                     />
                   </div>
 
@@ -206,6 +201,7 @@ function FormEditCourse(props) {
                       name="biDanh"
                       required
                       onChange={(e) => handleChange(e)}
+                      value={courseRes.biDanh}
                     />
                   </div>
                   <div className="input-box">
@@ -239,6 +235,7 @@ function FormEditCourse(props) {
                       name="moTa"
                       onChange={(e) => handleChange(e)}
                       required
+                      value={courseRes.moTa}
                     />
                   </div>
                 </div>

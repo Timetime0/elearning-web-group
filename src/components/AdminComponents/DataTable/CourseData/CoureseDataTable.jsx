@@ -6,9 +6,7 @@ import { useEffect } from "react";
 
 export default function CourseDataTable(props) {
   const dispatch = useDispatch();
-  const onDelete = props.onDelete;
-  const onEdit = props.onEdit;
-  const onView = props.onView;
+  const onDataMaKhoaHoc = props.onDataMaKhoaHoc;
 
   let list = useSelector(
     (state) => state.CourseListAdminrReducer.courseListAdmin
@@ -68,10 +66,7 @@ export default function CourseDataTable(props) {
   }
 
   const handleRowSelection = (e) => {
-    onView(e.row.maKhoaHoc);
-    onDelete(e.row.maKhoaHoc);
-    onEdit(e.row.maKhoaHoc);
-    console.log(e.row.maKhoaHoc);
+    onDataMaKhoaHoc(e.row.maKhoaHoc);
   };
 
   // const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
