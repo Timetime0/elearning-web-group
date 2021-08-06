@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { GET_USER_WAITING_ACCEPT_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import { useState } from "react";
 
 export default function UserWaitingAcceptDataTable(props) {
   const onRegisterCourse = props.onRegisterCourse;
@@ -12,10 +13,13 @@ export default function UserWaitingAcceptDataTable(props) {
   const dispatch = useDispatch();
 
   const { maKhoaHoc } = useParams();
+  const [maKH] = useState({
+    maKhoaHoc: maKhoaHoc,
+  });
   useEffect(() => {
     dispatch({
       type: GET_USER_WAITING_ACCEPT_SAGA,
-      maKhoaHoc: { maKhoaHoc: maKhoaHoc },
+      maKhoaHoc: maKH,
     });
   }, [dispatch]);
 

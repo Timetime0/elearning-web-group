@@ -15,7 +15,10 @@ import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
 
 import UserWaitingAcceptDataTable from "../../DataTable/UserManagerDataTable/UserWaitingAcceptDataTable";
-import { REGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
+import {
+  REGISTER_COURSE_SAGA,
+  UNREGISTER_COURSE_SAGA,
+} from "../../../../redux/types/AdminType/RegisterCourse";
 import { useParams } from "react-router-dom";
 
 const styles = (theme) => ({
@@ -74,7 +77,14 @@ function ContentUserWaitingAccept(props) {
       data: { maKhoaHoc, taiKhoan },
     });
   };
-
+  const handleUnRegister = () => {
+    // for (let item in taiKhoan) {
+    dispatch({
+      type: UNREGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
+    // }
+  };
   const onRegisterCourse = (arr) => {
     taiKhoan = arr;
   };
@@ -112,7 +122,14 @@ function ContentUserWaitingAccept(props) {
                 >
                   Register Course
                 </Button>
-
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.dellUser}
+                  onClick={handleUnRegister}
+                >
+                  UnRegister Course
+                </Button>
                 <Tooltip title="Reload">
                   <IconButton>
                     <RefreshIcon className={classes.block} color="inherit" />

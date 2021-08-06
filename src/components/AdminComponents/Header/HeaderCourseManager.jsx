@@ -18,6 +18,7 @@ import AppBarComponent from "./AppBarComponent";
 import ContentCourseManager from "../Content/ContentCourseManager/ContentCourseManager";
 import ContentCourseWasRegister from "../Content/ContentCourseManager/ContentCourseWasRegister";
 import ContentCourseWaitingRegister from "../Content/ContentCourseManager/ContentCourseWaitingRegister";
+import ProfileAdminData from "../DataTable/ProfileAdminData/ProfileAdminData";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
@@ -104,7 +105,7 @@ function HeaderCourseManager(props) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                User Manager
+                Course Manager
               </Typography>
             </Grid>
             <Grid item>
@@ -156,6 +157,9 @@ function HeaderCourseManager(props) {
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             <ContentCourseWaitingRegister />
+          </TabPanel>
+          <TabPanel value={value} index={3} dir={theme.direction}>
+            <ProfileAdminData />
           </TabPanel>
         </SwipeableViews>
       </div>

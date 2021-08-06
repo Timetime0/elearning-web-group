@@ -6,6 +6,7 @@ import {
   EditProfileUserServices,
   EditUserServices,
   GetUserNotInCourseServices,
+  GetUserWaitingAcceptServices,
   UserListServices,
   ViewProfileUserServices,
 } from "../../../services/AdminServices/UserList";
@@ -227,7 +228,9 @@ export function* followGetuserNotInCourseApi() {
 // Lấy danh sách người dùng chờ ghi danh
 function* getUserWaitingAcceptsApi(action) {
   try {
-    const res = yield call(() => GetUserNotInCourseServices(action.maKhoaHoc));
+    const res = yield call(() =>
+      GetUserWaitingAcceptServices(action.maKhoaHoc)
+    );
     yield put({
       type: GET_USER_WAITING_ACCEPT,
       data: res.data,

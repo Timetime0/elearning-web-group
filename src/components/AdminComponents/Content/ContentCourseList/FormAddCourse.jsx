@@ -9,8 +9,6 @@ import {
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
 function FromAddCourse(props) {
-  let courseEdit = props.data;
-
   const { showPopUp, setShowPopUp } = props;
   // close popup add user
   // Show alert to close menu
@@ -100,31 +98,25 @@ function FromAddCourse(props) {
       maDanhMucKhoaHoc: "BackEnd",
       taiKhoanNguoiTao: `${user.taiKhoan}`,
     });
-  }, [courseEdit]);
+  }, [dispatch]);
 
   const handleChange = (e) => {
-    let target = e.target;
-    if (target.name === "hinhAnh") {
-      setCourseRes({ hinhAnh: e.target.files[0] });
-    } else {
-      setCourseRes({ [e.target.name]: e.target.value });
-    }
-    setImage(URL.createObjectURL(e.target.files[0]));
     const { name, value } = e.target;
     setCourseRes({
       ...courseRes,
       [name]: value,
     });
   };
-  // const handleChangeImage = (e) => {
-  //   let target = e.target;
-  //   if (target.name === "hinhAnh") {
-  //     setImage(URL.createObjectURL(e.target.files[0]));
-  //   } else {
-  //     setImage({ [e.target.name]: e.target.value });
-  //   }
-  //   // let form_data = new FormData();
-  // };
+  const handleChangeImage = (e) => {
+    let target = e.target;
+    if (target.name === "hinhAnh") {
+      setImage(URL.createObjectURL(e.target.files[0]));
+    } else {
+      setImage({ [e.target.name]: e.target.value });
+    }
+    // let form_data = new FormData();
+  };
+
   const onSubmitRes = (event) => {
     let formData = new FormData();
     for (let key in setCourseRes) {
