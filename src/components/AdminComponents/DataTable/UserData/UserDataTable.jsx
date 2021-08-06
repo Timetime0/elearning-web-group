@@ -60,7 +60,6 @@ export default function UserDataTable(props) {
     onView(e.row.taiKhoan);
 
     onDelete(e.row.taiKhoan);
-    onEdit(e.row);
   };
 
   // view profile user
