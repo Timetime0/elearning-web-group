@@ -67,30 +67,23 @@ function ContentCourseList(props) {
 
   // Delete course
   const dispatch = useDispatch();
-  let arrNew = [];
+  const [edit, setEdit] = useState("");
 
   const handleDeleteCourse = () => {
     dispatch({
       type: DELETE_COURSE_ADMIN_SAGA,
-      maKhoaHoc: arrNew,
+      maKhoaHoc: edit,
     });
   };
 
-  const onDeleteCourse = (arr) => {
-    arrNew = arr;
-  };
-
   const history = useHistory();
-  let maKH = "";
-  const onView = (arr) => {
-    maKH = arr;
-  };
-  const onEdit = (arr) => {
-    maKH = arr;
+
+  const onDataMaKhoaHoc = (arr) => {
+    setEdit(arr);
   };
 
   const handlelView = () => {
-    history.push(`/admin/user-management/${maKH}`);
+    history.push(`/admin/user-management/${edit}`);
   };
 
   return (
@@ -163,11 +156,7 @@ function ContentCourseList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <CoureseDataTable
-              onView={onView}
-              onDelete={onDeleteCourse}
-              onEdit={onEdit}
-            />
+            <CoureseDataTable onDataMaKhoaHoc={onDataMaKhoaHoc} />
           </Typography>
         </div>
       </Paper>
@@ -175,7 +164,7 @@ function ContentCourseList(props) {
       <FormEditCourse
         showPopUpEdit={showPopUpEdit}
         setShowPopUpEdit={setShowPopUpEdit}
-        onEdit={onEdit}
+        onEdit={edit}
       />
     </div>
   );

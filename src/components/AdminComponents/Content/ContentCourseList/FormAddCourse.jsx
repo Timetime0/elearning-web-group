@@ -131,7 +131,6 @@ function FromAddCourse(props) {
       type: ADD_COURSE_IMAGE_ADMIN_SAGA,
       img: image,
     });
-    console.log(image);
   };
 
   return (
