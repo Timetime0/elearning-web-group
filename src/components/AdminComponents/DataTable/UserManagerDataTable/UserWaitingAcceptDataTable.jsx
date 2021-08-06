@@ -3,47 +3,29 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+// import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { GET_USER_WAITING_ACCEPT_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 
-export default function UserManagerDataTable(props) {
-  const onUnRegister = props.onUnRegister;
+export default function UserWaitingAcceptDataTable(props) {
+  const onRegisterCourse = props.onRegisterCourse;
 
   const dispatch = useDispatch();
 
   const { maKhoaHoc } = useParams();
   useEffect(() => {
     dispatch({
-      type: GET_USER_IN_COURSE_ADMIN_SAGA,
+      type: GET_USER_WAITING_ACCEPT_SAGA,
       maKhoaHoc: { maKhoaHoc: maKhoaHoc },
     });
   }, [dispatch]);
 
-  let users = useSelector(
-    (state) => state.CourseListAdminrReducer.userInCourse
-  );
-  const rows = users.map((item, index) => {
+  let user = useSelector((state) => state.UserReducer.userWaitingAccept);
+  const rows = user?.map((item, index) => {
     return {
       id: index,
       ...item,
     };
   });
-  let arrNew = [];
-
-  const selectUser = (e) => {
-    if (e) {
-      const result = arrNew.some((item) => item === e.row.taiKhoan);
-      if (!result) {
-        arrNew.push(e.row.taiKhoan);
-        console.log(arrNew);
-      } else {
-        arrNew = arrNew.filter((item) => item !== e.row.taiKhoan);
-        console.log(arrNew);
-      }
-    }
-    console.log(e.row.taiKhoan);
-
-    onUnRegister(e.row.taiKhoan);
-  };
 
   const columns = [
     {
@@ -61,7 +43,22 @@ export default function UserManagerDataTable(props) {
     { field: "hoTen", headerName: "Họ Tên", width: 320 },
   ];
 
-  // view profile user
+  let arrNew = [];
+
+  const selectUser = (e) => {
+    if (e) {
+      const result = arrNew.some((item) => item === e.row.taiKhoan);
+      if (!result) {
+        arrNew.push(e.row.taiKhoan);
+        console.log(arrNew);
+      } else {
+        arrNew = arrNew.filter((item) => item !== e.row.taiKhoan);
+        console.log(arrNew);
+      }
+    }
+    onRegisterCourse(e.row.taiKhoan);
+  };
+
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid

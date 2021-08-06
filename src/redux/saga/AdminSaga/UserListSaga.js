@@ -20,6 +20,8 @@ import {
   GET_USER_LIST_SAGA,
   GET_USER_NOT_IN_COURSE,
   GET_USER_NOT_IN_COURSE_SAGA,
+  GET_USER_WAITING_ACCEPT,
+  GET_USER_WAITING_ACCEPT_SAGA,
   VIEW_PROFILE_USER,
   VIEW_PROFILE_USER_SAGA,
 } from "../../types/AdminType/GetUserListType";
@@ -51,7 +53,6 @@ function* updateUserApi(action) {
       type: EDIT_USER,
       data: res.data,
     });
-    console.log(res);
     if (res.status === 200) {
       Swal.fire({
         icon: "success",
@@ -208,7 +209,6 @@ export function* followEditProfileUserApi() {
 function* getuserNotInCourseApi(action) {
   try {
     const res = yield call(() => GetUserNotInCourseServices(action.maKhoaHoc));
-    console.log(res);
     yield put({
       type: GET_USER_NOT_IN_COURSE,
       data: res.data,
@@ -221,4 +221,23 @@ function* getuserNotInCourseApi(action) {
 
 export function* followGetuserNotInCourseApi() {
   yield takeLatest(GET_USER_NOT_IN_COURSE_SAGA, getuserNotInCourseApi);
+}
+
+//=======================================================================================================================
+// Lấy danh sách người dùng chờ ghi danh
+function* getUserWaitingAcceptsApi(action) {
+  try {
+    const res = yield call(() => GetUserNotInCourseServices(action.maKhoaHoc));
+    yield put({
+      type: GET_USER_WAITING_ACCEPT,
+      data: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+    console.log(err.response.data);
+  }
+}
+
+export function* followGetUserWaitingAcceptsApi() {
+  yield takeLatest(GET_USER_WAITING_ACCEPT_SAGA, getUserWaitingAcceptsApi);
 }

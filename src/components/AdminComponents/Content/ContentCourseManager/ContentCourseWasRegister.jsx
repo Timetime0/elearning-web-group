@@ -14,9 +14,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
 
-import UserNotInCourseDataTable from "../../DataTable/UserManagerDataTable/UserNotInCourseDataTable";
-import { REGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
+import { UNREGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
 import { useParams } from "react-router-dom";
+
+import CourseWasRegisterDataTable from "../../DataTable/CourseManagerDataTable/CourseWasRegisterDataTable";
 
 const styles = (theme) => ({
   container: {
@@ -60,26 +61,25 @@ const styles = (theme) => ({
   },
 });
 
-function ContentUserNotInCourse(props) {
+function ContentCourseWasRegister(props) {
   const { classes } = props;
   const dispatch = useDispatch();
+  const { taiKhoan } = useParams();
+  let maKhoaHoc = {};
 
-  const { maKhoaHoc } = useParams();
-
-  let taiKhoan = {};
-
-  const handleRegisterCourse = () => {
+  const handleUnRegister = () => {
+    // for (let item in maKhoaHoc) {
     dispatch({
-      type: REGISTER_COURSE_SAGA,
+      type: UNREGISTER_COURSE_SAGA,
       data: { maKhoaHoc, taiKhoan },
     });
+    // }
+    console.log(maKhoaHoc);
   };
 
-  const onRegisterCourse = (arr) => {
-    taiKhoan = arr;
+  const onUnRegister = (arr) => {
+    maKhoaHoc = arr;
   };
-
-  // Add User
 
   return (
     <div className={classes.container}>
@@ -108,12 +108,13 @@ function ContentUserNotInCourse(props) {
               <Grid item>
                 <Button
                   variant="contained"
-                  color="primary"
-                  className={classes.addUser}
-                  onClick={handleRegisterCourse}
+                  color="secondary"
+                  className={classes.dellUser}
+                  onClick={() => handleUnRegister()}
                 >
-                  Register Course
+                  UnRegister
                 </Button>
+
                 <Tooltip title="Reload">
                   <IconButton>
                     <RefreshIcon className={classes.block} color="inherit" />
@@ -125,7 +126,7 @@ function ContentUserNotInCourse(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserNotInCourseDataTable onRegisterCourse={onRegisterCourse} />
+            <CourseWasRegisterDataTable onUnRegister={onUnRegister} />
           </Typography>
         </div>
       </Paper>
@@ -133,8 +134,8 @@ function ContentUserNotInCourse(props) {
   );
 }
 
-ContentUserNotInCourse.propTypes = {
+ContentCourseWasRegister.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentUserNotInCourse);
+export default withStyles(styles)(ContentCourseWasRegister);

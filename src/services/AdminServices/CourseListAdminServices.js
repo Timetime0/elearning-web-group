@@ -25,7 +25,7 @@ export function AddCourseAmdminServices(course) {
 export function AddImageCourse(img) {
   return Axios({
     method: "POST",
-    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc",
+    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh",
     data: img,
   });
 }
@@ -91,6 +91,66 @@ export function GetCourseNotRegister(taiKhoan) {
   return Axios({
     method: "POST",
     url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocChuaGhiDanh?TaiKhoan=${taiKhoan}`,
+    data: taiKhoan,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}
+
+//=======================================================================================================================
+// Lấy danh sách khóa học đã ghi danh
+
+export function GetCourseWasRegister(taiKhoan) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "POST",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet`,
+    data: taiKhoan,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}
+
+//=======================================================================================================================
+// Lấy danh sách khóa học chờ ghi danh
+
+export function GetCourseWaitingAccept(taiKhoan) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "POST",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet`,
+    data: taiKhoan,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}
+
+//=======================================================================================================================
+// Lấy danh sách khóa học chưa ghi danh
+
+export function GetCourseNotAccept(taiKhoan) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "POST",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocChuaGhiDanh?TaiKhoan=${taiKhoan}`,
+    data: taiKhoan,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}
+
+//=======================================================================================================================
+// Lấy danh sách khóa học đã ghi danh
+
+export function GetCourseWasAccept(taiKhoan) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "POST",
+    url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet`,
     data: taiKhoan,
     headers: {
       Authorization: `Bearer ${admin.accessToken}`,

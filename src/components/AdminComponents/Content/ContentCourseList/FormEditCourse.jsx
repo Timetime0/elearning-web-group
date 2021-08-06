@@ -2,16 +2,12 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import {
-  ADD_COURSE_ADMIN_SAGA,
-  ADD_COURSE_IMAGE_ADMIN_SAGA,
-} from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { ADD_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
-function FromAddCourse(props) {
+function FormEditCourse(props) {
   let courseEdit = props.data;
-
-  const { showPopUp, setShowPopUp } = props;
+  const { showPopUpEdit, setShowPopUpEdit } = props;
   // close popup add user
   // Show alert to close menu
   const swalWithBootstrapButtons = Swal.mixin({
@@ -22,7 +18,7 @@ function FromAddCourse(props) {
     buttonsStyling: false,
   });
   const btnClose = () => {
-    setShowPopUp((prev) => !prev);
+    setShowPopUpEdit((prev) => !prev);
     swalWithBootstrapButtons
       .fire({
         title: "Are you sure?",
@@ -35,7 +31,7 @@ function FromAddCourse(props) {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          setShowPopUp((prev) => !prev);
+          setShowPopUpEdit((prev) => !prev);
           // showPopUp;
         } else if (
           /* Read more about handling dismissals below */
@@ -83,9 +79,29 @@ function FromAddCourse(props) {
     return [day, month, year].join("/");
   };
   // up load image
+  const [image, setImage] = useState("");
 
-  const [image, setImage] = useState({});
+  // let getImg = (e) => {
+  // const hinhAnh = e.target.files[0];
+  // console.log(hinhAnh);
+  // setImage({
+  //   image: hinhAnh.name,
+  //   course: { ...courseRes, hinhAnh: hinhAnh },
+  // });
+
+  // let fileReader = new FileReader();
+  // fileReader.readAsDataURL(hinhAnh);
+  // fileReader.onload = async (e) => {
+  //   setImage({
+  //     basa64Img: e.target.result,
+  //   });
+  // };
+
+  // setImage(URL.createObjectURL(e.target.files[0]));
+  // };
+
   let [courseRes, setCourseRes] = useState({});
+
   useEffect(() => {
     setCourseRes({
       maKhoaHoc: "",
@@ -94,7 +110,7 @@ function FromAddCourse(props) {
       moTa: "",
       luotXem: 0,
       danhGia: 0,
-      hinhAnh: {},
+      hinhAnh: ``,
       maNhom: "GP01",
       ngayTao: `${ngayTao(date)}`,
       maDanhMucKhoaHoc: "BackEnd",
@@ -103,51 +119,27 @@ function FromAddCourse(props) {
   }, [courseEdit]);
 
   const handleChange = (e) => {
-    let target = e.target;
-    if (target.name === "hinhAnh") {
-      setCourseRes({ hinhAnh: e.target.files[0] });
-    } else {
-      setCourseRes({ [e.target.name]: e.target.value });
-    }
-    setImage(URL.createObjectURL(e.target.files[0]));
     const { name, value } = e.target;
     setCourseRes({
       ...courseRes,
       [name]: value,
     });
   };
-  // const handleChangeImage = (e) => {
-  //   let target = e.target;
-  //   if (target.name === "hinhAnh") {
-  //     setImage(URL.createObjectURL(e.target.files[0]));
-  //   } else {
-  //     setImage({ [e.target.name]: e.target.value });
-  //   }
-  //   // let form_data = new FormData();
-  // };
+
   const onSubmitRes = (event) => {
-    let formData = new FormData();
-    for (let key in setCourseRes) {
-      formData.append(key, setCourseRes[key]);
-    }
     event.preventDefault();
     dispatch({
       type: ADD_COURSE_ADMIN_SAGA,
       course: courseRes,
     });
-    dispatch({
-      type: ADD_COURSE_IMAGE_ADMIN_SAGA,
-      img: image,
-    });
-    console.log(image);
   };
 
   return (
     <div>
-      {showPopUp ? (
-        <div className={`admin_for ${showPopUp && `in_animation_course`}`}>
+      {showPopUpEdit ? (
+        <div className={`admin_for ${showPopUpEdit && `in_animation_course`}`}>
           <div className="form_container">
-            <div className="title">Add Course</div>
+            <div className="title">Edit Course</div>
             <div className="content">
               <form onSubmit={(event) => onSubmitRes(event)} method="POST">
                 <div className="user-details">
@@ -177,7 +169,6 @@ function FromAddCourse(props) {
                     <span className="details">Mã Nhóm</span>
                     <select
                       name="maNhom"
-                      id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
                     >
@@ -193,7 +184,6 @@ function FromAddCourse(props) {
                     <span className="details">Mã Danh Mục Khóa Học</span>
                     <select
                       name="maDanhMucKhoaHoc"
-                      id="id"
                       className="select_group"
                       onChange={(e) => handleChange(e)}
                     >
@@ -237,11 +227,7 @@ function FromAddCourse(props) {
                       className="input_uploadImages"
                       onChange={(e) => handleChange(e)}
                     />
-                    <img
-                      src={image}
-                      alt={""}
-                      style={{ position: "absolute", width: "26%" }}
-                    />
+                    <img src={image} alt={""} />
                   </div>
                   <div className="input-box">
                     <span className="details">Mô Tả</span>
@@ -279,4 +265,4 @@ function FromAddCourse(props) {
   );
 }
 
-export default FromAddCourse;
+export default FormEditCourse;

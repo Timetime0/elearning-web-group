@@ -6,6 +6,7 @@ import {
   followGetProfileUserApi,
   followGetUserListApiAction,
   followGetuserNotInCourseApi,
+  followGetUserWaitingAcceptsApi,
   followUpdateUserApi,
 } from "./AdminSaga/UserListSaga";
 import { followGetCourseListApiAction } from "./CourseListSaga";
@@ -25,10 +26,16 @@ import {
   followDeleteCourseApi,
   followGetCourseListAdminApi,
   followGetCourseNotRegisterApi,
+  followGetCourseWaitingRegisterApi,
+  followGetCourseWasRegisterApi,
   followGetUserInCourseApi,
   followUpdataImgCourse,
   followUpdateCourseApi,
 } from "./AdminSaga/CourseListAdminSaga";
+import {
+  followRegisterCourseApi,
+  followUnRegisterCourseApi,
+} from "./AdminSaga/RegisterCourseSaga";
 // cấu hình
 export default function* rootSaga() {
   yield all([
@@ -51,7 +58,8 @@ export default function* rootSaga() {
     followGetUserInCourseApi(),
     followUpdateCourseApi(),
     followGetCourseNotRegisterApi(),
-
+    followGetCourseWasRegisterApi(),
+    followGetCourseWaitingRegisterApi(),
     // Admin User Saga
     followGetUserListApiAction(),
     followUpdateUserApi(),
@@ -60,5 +68,10 @@ export default function* rootSaga() {
     followGetProfileUserApi(),
     followEditProfileUserApi(),
     followGetuserNotInCourseApi(),
+    followGetUserWaitingAcceptsApi(),
+
+    // Register Course
+    followUnRegisterCourseApi(),
+    followRegisterCourseApi(),
   ]);
 }

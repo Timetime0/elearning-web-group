@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,8 +13,9 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
-import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
+import { UNREGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
+import { useParams } from "react-router-dom";
 
 const styles = (theme) => ({
   container: {
@@ -61,45 +62,21 @@ const styles = (theme) => ({
 function ContentUserManager(props) {
   const { classes } = props;
   const dispatch = useDispatch();
+  const { maKhoaHoc } = useParams();
 
-  // hide button
-  const [buttonEdit, setButtonEdit] = useState(false);
-  const [isClickEdit, setIsClickEdit] = useState(false);
+  let taiKhoan = {};
 
-  const [dataEdit, setDataEdit] = useState({});
-
-  let arrNew = [];
-
-  const handleDeleteUser = () => {
-    for (let item in arrNew) {
-      dispatch({
-        type: DELETE_USER_SAGA,
-        taiKhoan: arrNew[item],
-      });
-    }
+  const handleUnRegister = () => {
+    // for (let item in taiKhoan) {
+    dispatch({
+      type: UNREGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
+    // }
   };
 
-  const onDeleteChildToParent = (arr) => {
-    arrNew = arr;
-  };
-
-  const handleEditUser = () => {
-    setIsClickEdit((prev) => !prev);
-    setShowPopUp((prev) => !prev);
-  };
-
-  const onEditChildToParent = (arr) => {
-    console.log(arr);
-    setDataEdit(arr);
-  };
-
-  // Add User
-
-  // Show popup add User
-  const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddUser = () => {
-    setDataEdit(null);
-    setShowPopUp((prev) => !prev);
+  const onUnRegister = (arr) => {
+    taiKhoan = arr;
   };
 
   return (
@@ -127,32 +104,13 @@ function ContentUserManager(props) {
                 />
               </Grid>
               <Grid item>
-                {buttonEdit ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.editUser}
-                    onClick={handleEditUser}
-                  >
-                    Edit User
-                  </Button>
-                ) : null}
-
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.addUser}
-                  onClick={btnAddUser}
-                >
-                  Add User
-                </Button>
                 <Button
                   variant="contained"
                   color="secondary"
                   className={classes.dellUser}
-                  onClick={() => handleDeleteUser()}
+                  onClick={() => handleUnRegister()}
                 >
-                  Delete User
+                  UnRegister
                 </Button>
 
                 <Tooltip title="Reload">
@@ -166,12 +124,7 @@ function ContentUserManager(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserManagerDataTable
-              onDelete={onDeleteChildToParent}
-              onEdit={onEditChildToParent}
-              inHideEditButton={setButtonEdit}
-              isDeleteCheckBox={isClickEdit}
-            />
+            <UserManagerDataTable onUnRegister={onUnRegister} />
           </Typography>
         </div>
       </Paper>

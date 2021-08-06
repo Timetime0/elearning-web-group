@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,9 +13,10 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
-import InfomationUserDataTable from "../../DataTable/InfomationUserData/InfomationUserDataTable";
+
+import UserWaitingAcceptDataTable from "../../DataTable/UserManagerDataTable/UserWaitingAcceptDataTable";
+import { REGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
+import { useParams } from "react-router-dom";
 
 const styles = (theme) => ({
   container: {
@@ -41,7 +42,7 @@ const styles = (theme) => ({
   dellUser: {
     backgroundColor: "red",
   },
-  viewUser: {
+  editUser: {
     backgroundColor: "green",
     margin: "0 8px",
   },
@@ -59,42 +60,23 @@ const styles = (theme) => ({
   },
 });
 
-function ContentInfomationUser(props) {
+function ContentUserWaitingAccept(props) {
   const { classes } = props;
   const dispatch = useDispatch();
-  // Search data
-  // const getData = useSelector((state) => state.UserReducer.userList);
-  // const [data, setData] = useState([]);
 
-  // const [search, setSearch] = useState("");
-  // function searchList(list) {
-  //   const columns = list[0] && Object.keys(list[0]);
-  //   return list.filter((list) =>
-  //     columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
-  //   );
-  // }
+  const { maKhoaHoc } = useParams();
 
-  let arrNew = [];
+  let taiKhoan = {};
 
-  const handleDeleteUser = () => {
-    for (let item in arrNew) {
-      dispatch({
-        type: DELETE_USER_SAGA,
-        taiKhoan: arrNew[item],
-      });
-    }
+  const handleRegisterCourse = () => {
+    dispatch({
+      type: REGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
   };
 
-  const onDeleteChildToParent = (arr) => {
-    arrNew = arr;
-  };
-
-  // Add User
-
-  // Show popup add User
-  const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddUser = () => {
-    setShowPopUp((prev) => !prev);
+  const onRegisterCourse = (arr) => {
+    taiKhoan = arr;
   };
 
   return (
@@ -125,25 +107,10 @@ function ContentInfomationUser(props) {
                 <Button
                   variant="contained"
                   color="primary"
-                  className={classes.viewUser}
-                >
-                  Edit User
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
                   className={classes.addUser}
-                  onClick={btnAddUser}
+                  onClick={handleRegisterCourse}
                 >
-                  Add User
-                </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  className={classes.dellUser}
-                  onClick={() => handleDeleteUser()}
-                >
-                  Delete User
+                  Register Course
                 </Button>
 
                 <Tooltip title="Reload">
@@ -157,7 +124,7 @@ function ContentInfomationUser(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <InfomationUserDataTable onDelete={onDeleteChildToParent} />
+            <UserWaitingAcceptDataTable onRegisterCourse={onRegisterCourse} />
           </Typography>
         </div>
       </Paper>
@@ -165,8 +132,8 @@ function ContentInfomationUser(props) {
   );
 }
 
-ContentInfomationUser.propTypes = {
+ContentUserWaitingAccept.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentInfomationUser);
+export default withStyles(styles)(ContentUserWaitingAccept);

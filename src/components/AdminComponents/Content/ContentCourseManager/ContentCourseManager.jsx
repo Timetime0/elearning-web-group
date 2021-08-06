@@ -13,10 +13,9 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch } from "react-redux";
-
-import UserNotInCourseDataTable from "../../DataTable/UserManagerDataTable/UserNotInCourseDataTable";
 import { REGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
 import { useParams } from "react-router-dom";
+import CourseManagerDataTable from "../../DataTable/CourseManagerDataTable/CourseManagerDataTable";
 
 const styles = (theme) => ({
   container: {
@@ -60,26 +59,26 @@ const styles = (theme) => ({
   },
 });
 
-function ContentUserNotInCourse(props) {
+function ContentCourseManager(props) {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  const { maKhoaHoc } = useParams();
-
-  let taiKhoan = {};
+  const { taiKhoan } = useParams();
+  let maKhoaHoc = {};
 
   const handleRegisterCourse = () => {
+    // for (let item in maKhoaHoc) {
     dispatch({
       type: REGISTER_COURSE_SAGA,
       data: { maKhoaHoc, taiKhoan },
     });
+    // }
+    console.log(maKhoaHoc);
   };
 
-  const onRegisterCourse = (arr) => {
-    taiKhoan = arr;
+  const onUnRegister = (arr) => {
+    maKhoaHoc = arr;
   };
-
-  // Add User
 
   return (
     <div className={classes.container}>
@@ -114,6 +113,7 @@ function ContentUserNotInCourse(props) {
                 >
                   Register Course
                 </Button>
+
                 <Tooltip title="Reload">
                   <IconButton>
                     <RefreshIcon className={classes.block} color="inherit" />
@@ -125,7 +125,7 @@ function ContentUserNotInCourse(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserNotInCourseDataTable onRegisterCourse={onRegisterCourse} />
+            <CourseManagerDataTable onUnRegister={onUnRegister} />
           </Typography>
         </div>
       </Paper>
@@ -133,8 +133,8 @@ function ContentUserNotInCourse(props) {
   );
 }
 
-ContentUserNotInCourse.propTypes = {
+ContentCourseManager.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentUserNotInCourse);
+export default withStyles(styles)(ContentCourseManager);

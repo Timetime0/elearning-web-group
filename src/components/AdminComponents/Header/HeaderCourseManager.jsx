@@ -5,16 +5,19 @@ import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
-
 import IconButton from "@material-ui/core/IconButton";
-
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-
-import FromProfile from "../Content/ContentProfile/FromProfile";
+import { useTheme } from "@material-ui/core/styles";
+import SwipeableViews from "react-swipeable-views";
 import AppBarComponent from "./AppBarComponent";
+import ContentCourseManager from "../Content/ContentCourseManager/ContentCourseManager";
+import ContentCourseWasRegister from "../Content/ContentCourseManager/ContentCourseWasRegister";
+import ContentCourseWaitingRegister from "../Content/ContentCourseManager/ContentCourseWaitingRegister";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
@@ -66,8 +69,26 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function HeaderProfile(props) {
+function a11yProps(index) {
+  return {
+    id: `full-width-tab-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
+  };
+}
+
+function HeaderCourseManager(props) {
   const { classes } = props;
+  const theme = useTheme();
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const handleChangeIndex = (index) => {
+    setValue(index);
+  };
 
   return (
     <React.Fragment>
@@ -107,15 +128,44 @@ function HeaderProfile(props) {
         </Toolbar>
       </AppBar>
       <div className={classes.root}>
-        <FromProfile />
+        <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="full width tabs example"
+          >
+            <Tab label="Course Was Register" {...a11yProps(0)} />
+            <Tab label="Course Not Register" {...a11yProps(1)} />
+            <Tab label="Course Waiting For Register" {...a11yProps(2)} />
+            <Tab label="Information User" {...a11yProps(3)} />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <ContentCourseWasRegister />
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <ContentCourseManager />
+          </TabPanel>
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <ContentCourseWaitingRegister />
+          </TabPanel>
+        </SwipeableViews>
       </div>
     </React.Fragment>
   );
 }
 
-HeaderProfile.propTypes = {
+HeaderCourseManager.propTypes = {
   classes: PropTypes.object.isRequired,
   onDrawerToggle: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(HeaderProfile);
+export default withStyles(styles)(HeaderCourseManager);

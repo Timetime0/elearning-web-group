@@ -395,3 +395,25 @@ _ Làm api cập nhật thông tin khóa học thành công
 
 ********** Chưa thêm , xóa 
 ********** chưa chỉnh sửa thông tin tài khoảng trang admin
+
+
+#Ngày 03/08/2021 Chun: 
+_ sửa lỗi binding dữ liệu trang user manager
+_ thêm các api thông tin người dùng trong khóa học 
+
+*********** Chưa fix được tính năng sửa khóa học và người dùng
+
+
+#Ngày 04/08/2021 Chun: 
+_ Hoàn thành hết các API 
+*********** Chưa fix được tính năng sửa khóa học và người dùng
+*********** chưa làm tìm kiếm khóa học và người dùng 
+*********** Chưa fix được lỗi hủy ghi danh không thành công 
+
+
+#Ngày 05/08/2021 Chun: 
+_ Hoàn thành hết các API 
+_ tạo thêm 2 form eidt user và edit course
+*********** Chưa fix được tính năng sửa khóa học và người dùng
+*********** chưa làm tìm kiếm khóa học và người dùng 
+*********** Chưa fix được lỗi hủy ghi danh không thành công => đã fix

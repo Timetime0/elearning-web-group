@@ -3,20 +3,16 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_COURSE_LIST_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { useEffect } from "react";
-import { useState } from "react";
 
 export default function CourseDataTable(props) {
   const dispatch = useDispatch();
   const onDelete = props.onDelete;
   const onEdit = props.onEdit;
   const onView = props.onView;
-  const inHideEditButton = props.inHideEditButton;
-  const isDeleteCheckBox = props.isDeleteCheckBox;
 
   let list = useSelector(
     (state) => state.CourseListAdminrReducer.courseListAdmin
   );
-  const maKhoaHoc = list.maKhoaHoc;
   let rows = list.map((listKey, index) => {
     return {
       id: index,
@@ -53,11 +49,11 @@ export default function CourseDataTable(props) {
     { field: "danhMuc", headerName: "Danh Mục Khóa Học", width: 250 },
   ];
   useEffect(() => {
-    deleteSelectedFile();
+    // deleteSelectedFile();
     dispatch({
       type: GET_COURSE_LIST_ADMIN_SAGA,
     });
-  }, [dispatch, isDeleteCheckBox]);
+  }, [dispatch]);
 
   // lấy item trong rows
   let arrTest = [];
@@ -71,38 +67,18 @@ export default function CourseDataTable(props) {
     console.log(arrTest);
   }
 
-  let arrNew = [];
   const handleRowSelection = (e) => {
-    // const { data, isSelected } = e;
-    // if (isSelected) {
-    //   const result = arrNew.some((item) => item === data.maKhoaHoc);
-    //   if (!result) {
-    //     arrNew.push(data.maKhoaHoc);
-    //     console.log(arrNew);
-    //   }
-    // } else {
-    //   const result = arrNew.some((item) => item === data.maKhoaHoc);
-    //   if (result) {
-    //     arrNew = arrNew.filter((item) => item !== data.maKhoaHoc);
-    //   }
-    // }
-
-    // if (arrNew.length !== 0) {
-    //   inHideEditButton(true);
-    // } else {
-    //   inHideEditButton(false);
-    // }
-    console.log(e.row);
     onView(e.row.maKhoaHoc);
     onDelete(e.row.maKhoaHoc);
-    // onEdit(e.data);
+    onEdit(e.row.maKhoaHoc);
+    console.log(e.row.maKhoaHoc);
   };
 
-  const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
+  // const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
 
-  const deleteSelectedFile = () => {
-    setSelectionModel([]);
-  };
+  // const deleteSelectedFile = () => {
+  //   setSelectionModel([]);
+  // };
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -111,10 +87,6 @@ export default function CourseDataTable(props) {
         columns={columns}
         data={props.data}
         onRowClick={handleRowSelection}
-        onSelectionModelChange={(newSelection) => {
-          setSelectionModel(newSelection.selectionModel);
-        }}
-        selectionModel={selectionModel}
       />
     </div>
   );

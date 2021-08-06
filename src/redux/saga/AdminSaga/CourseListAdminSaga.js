@@ -7,6 +7,8 @@ import {
   DeleteCourseServices,
   EditCourseServices,
   GetCourseNotRegister,
+  GetCourseWaitingAccept,
+  GetCourseWasRegister,
   GetUserInCourseSerVices,
   UpdateAddImageCourse,
 } from "../../../services/AdminServices/CourseListAdminServices";
@@ -18,11 +20,14 @@ import {
   GET_COURSE_LIST_ADMIN_SAGA,
   GET_COURSE_NOT_REGISTER,
   GET_COURSE_NOT_REGISTER_SAGA,
+  GET_COURSE_WAITING_REGISTER,
+  GET_COURSE_WAITING_REGISTER_SAGA,
+  GET_COURSE_WAS_REGISTER,
+  GET_COURSE_WAS_REGISTER_SAGA,
   GET_USER_IN_COURSE_ADMIN,
   GET_USER_IN_COURSE_ADMIN_SAGA,
   UPDATE_COURSE_ADMIN,
   UPDATE_COURSE_ADMIN_SAGA,
-  UPDATE_COURSE_IMAGE_ADMIN,
   UPDATE_COURSE_IMAGE_ADMIN_SAGA,
 } from "../../types/AdminType/GetCourseListAdminType";
 
@@ -86,12 +91,8 @@ export function* followAddCourseApi() {
 
 function* addImgCourse(action) {
   try {
-    let form_data = new FormData();
-    for (let key in action.course) {
-      form_data.append(key, action.course[key]);
-    }
     let res = yield call(() => {
-      return AddImageCourse(form_data);
+      return AddImageCourse(action.img);
     });
     console.log(res);
   } catch (err) {
@@ -238,4 +239,47 @@ function* getCourseNotRegisterApi(action) {
 
 export function* followGetCourseNotRegisterApi() {
   yield takeLatest(GET_COURSE_NOT_REGISTER_SAGA, getCourseNotRegisterApi);
+}
+
+//=======================================================================================================================
+// Lấy danh sách khóa học đã ghi danh
+
+function* getCourseWasRegisterApi(action) {
+  try {
+    const res = yield call(() => GetCourseWasRegister(action.taiKhoan));
+    yield put({
+      type: GET_COURSE_WAS_REGISTER,
+      data: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+    console.log(err.response.data);
+  }
+}
+
+export function* followGetCourseWasRegisterApi() {
+  yield takeLatest(GET_COURSE_WAS_REGISTER_SAGA, getCourseWasRegisterApi);
+}
+
+//=======================================================================================================================
+// Lấy danh sách khóa học chờ ghi danh
+
+function* getCourseWaitingRegisterApi(action) {
+  try {
+    const res = yield call(() => GetCourseWaitingAccept(action.taiKhoan));
+    yield put({
+      type: GET_COURSE_WAITING_REGISTER,
+      data: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+    console.log(err.response.data);
+  }
+}
+
+export function* followGetCourseWaitingRegisterApi() {
+  yield takeLatest(
+    GET_COURSE_WAITING_REGISTER_SAGA,
+    getCourseWaitingRegisterApi
+  );
 }

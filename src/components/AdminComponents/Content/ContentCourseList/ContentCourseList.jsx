@@ -17,6 +17,7 @@ import FromAddCourse from "./FormAddCourse";
 import { useDispatch } from "react-redux";
 import { DELETE_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { useHistory } from "react-router-dom";
+import FormEditCourse from "./FormEditCourse";
 const styles = (theme) => ({
   paper: {
     maxWidth: 1920,
@@ -53,15 +54,14 @@ const styles = (theme) => ({
 
 function ContentCourseList(props) {
   const { classes } = props;
-  const [dataEdit, setDataEdit] = useState({});
-
-  const [buttonEdit, setButtonEdit] = useState(false);
-  const [isClickEdit, setIsClickEdit] = useState(false);
+  // show popup edit course
+  const [showPopUpEdit, setShowPopUpEdit] = useState(false);
+  const handleEditCourse = () => {
+    setShowPopUpEdit((show) => !show);
+  };
   // Show popup add Course
   const [showPopUp, setShowPopUp] = useState(false);
   const btnAddCourse = () => {
-    setDataEdit(null);
-
     setShowPopUp((prev) => !prev);
   };
 
@@ -80,23 +80,17 @@ function ContentCourseList(props) {
     arrNew = arr;
   };
 
-  const handleEditCourse = () => {
-    setIsClickEdit((prev) => !prev);
-    setShowPopUp((prev) => !prev);
-  };
-
-  const onEditChildToParent = (arr) => {
-    console.log(arr);
-    setDataEdit(arr);
-  };
   const history = useHistory();
-  const handlelView = () => {
-    history.push(`/admin/user-management/${maKH}`);
-  };
-
   let maKH = "";
   const onView = (arr) => {
     maKH = arr;
+  };
+  const onEdit = (arr) => {
+    maKH = arr;
+  };
+
+  const handlelView = () => {
+    history.push(`/admin/user-management/${maKH}`);
   };
 
   return (
@@ -124,7 +118,6 @@ function ContentCourseList(props) {
                 />
               </Grid>
               <Grid item>
-                {/* {buttonEdit ? ( */}
                 <Button
                   variant="contained"
                   color="primary"
@@ -133,18 +126,15 @@ function ContentCourseList(props) {
                 >
                   View
                 </Button>
-                {/* ) : null} */}
-                {buttonEdit ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.editCourse}
-                    onClick={handleEditCourse}
-                  >
-                    Edit Course
-                  </Button>
-                ) : null}
 
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.editCourse}
+                  onClick={handleEditCourse}
+                >
+                  Edit Course
+                </Button>
                 <Button
                   variant="contained"
                   color="primary"
@@ -153,6 +143,7 @@ function ContentCourseList(props) {
                 >
                   Add Course
                 </Button>
+
                 <Button
                   variant="contained"
                   color="secondary"
@@ -174,19 +165,17 @@ function ContentCourseList(props) {
           <Typography color="textSecondary" align="center">
             <CoureseDataTable
               onView={onView}
-              onEdit={onEditChildToParent}
               onDelete={onDeleteCourse}
-              inHideEditButton={setButtonEdit}
-              isDeleteCheckBox={isClickEdit}
-            ></CoureseDataTable>
+              onEdit={onEdit}
+            />
           </Typography>
         </div>
       </Paper>
-      <FromAddCourse
-        showPopUp={showPopUp}
-        setShowPopUp={setShowPopUp}
-        data={dataEdit}
-        inHideEditButton={setButtonEdit}
+      <FromAddCourse showPopUp={showPopUp} setShowPopUp={setShowPopUp} />
+      <FormEditCourse
+        showPopUpEdit={showPopUpEdit}
+        setShowPopUpEdit={setShowPopUpEdit}
+        onEdit={onEdit}
       />
     </div>
   );

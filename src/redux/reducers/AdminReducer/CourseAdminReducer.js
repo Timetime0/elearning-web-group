@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   courseListAdmin: [],
-  userInCourse: {},
+  userInCourse: [],
   courseNotRegister: [],
 };
 
@@ -16,8 +16,7 @@ const CourseListAdminrReducer = (state = initialState, action) => {
       return { ...state, courseListAdmin: action.data };
     }
     case GET_USER_IN_COURSE_ADMIN: {
-      state.userInCourse[action.maKhoaHoc.maKhoaHoc] = action.data;
-      return { ...state };
+      return { ...state, userInCourse: action.data };
     }
     case GET_COURSE_NOT_REGISTER: {
       return { ...state, courseNotRegister: action.data };
