@@ -7,8 +7,6 @@ import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListTyp
 import "../ContentUserList/FormStyle.css";
 function FormEditCourse(props) {
   let courseEdit = props.data;
-  let maKH = props.maKH;
-  console.log(maKH);
   const { showPopUpEdit, setShowPopUpEdit } = props;
   // close popup add user
   // Show alert to close menu

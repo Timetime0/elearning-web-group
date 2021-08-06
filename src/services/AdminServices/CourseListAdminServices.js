@@ -25,7 +25,7 @@ export function AddCourseAmdminServices(course) {
 export function AddImageCourse(img) {
   return Axios({
     method: "POST",
-    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc",
+    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh",
     data: img,
   });
 }

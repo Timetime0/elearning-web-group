@@ -71,6 +71,7 @@ export default function CourseDataTable(props) {
     onView(e.row.maKhoaHoc);
     onDelete(e.row.maKhoaHoc);
     onEdit(e.row.maKhoaHoc);
+    console.log(e.row.maKhoaHoc);
   };
 
   // const [selectionModel, setSelectionModel] = useState([]); // To keep selected file

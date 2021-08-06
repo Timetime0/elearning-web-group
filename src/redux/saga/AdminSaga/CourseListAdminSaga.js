@@ -91,12 +91,8 @@ export function* followAddCourseApi() {
 
 function* addImgCourse(action) {
   try {
-    let form_data = new FormData();
-    for (let key in action.course) {
-      form_data.append(key, action.course[key]);
-    }
     let res = yield call(() => {
-      return AddImageCourse(form_data);
+      return AddImageCourse(action.img);
     });
     console.log(res);
   } catch (err) {

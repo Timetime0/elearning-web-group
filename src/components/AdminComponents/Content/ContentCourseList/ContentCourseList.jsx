@@ -175,7 +175,7 @@ function ContentCourseList(props) {
       <FormEditCourse
         showPopUpEdit={showPopUpEdit}
         setShowPopUpEdit={setShowPopUpEdit}
-        maKH={maKH}
+        onEdit={onEdit}
       />
     </div>
   );
