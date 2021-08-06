@@ -111,6 +111,7 @@ export const clientRouters = [
     Component: ProfileUserPage,
   },
 ];
+
 export const adminRouters = [
   {
     path: "/admin",

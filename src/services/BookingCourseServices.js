@@ -17,7 +17,6 @@ export function BookingCourseServices(user) {
 // Hủy đăng ký
 export function UnBookingCourseServices(user) {
   const admin = JSON.parse(localStorage.getItem("user"));
-
   return Axios({
     method: "POST",
     url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/HuyGhiDanh",
