@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { ADD_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 import "./FormStyle.css";
-function FormAdduser(props) {
-  const { showPopUp, setShowPopUp } = props;
+function FormEditUser(props) {
+  const { showPopUpEditUser, setShowPopUpEditUser } = props;
   // close popup add user
   // Show alert to close menu
   const swalWithBootstrapButtons = Swal.mixin({
@@ -15,7 +15,7 @@ function FormAdduser(props) {
     buttonsStyling: false,
   });
   const btnClose = () => {
-    setShowPopUp((prev) => !prev);
+    setShowPopUpEditUser((prev) => !prev);
     swalWithBootstrapButtons
       .fire({
         title: "Are you sure?",
@@ -28,7 +28,7 @@ function FormAdduser(props) {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          setShowPopUp((prev) => !prev);
+          setShowPopUpEditUser((prev) => !prev);
 
           // showPopUp;
         } else if (
@@ -75,10 +75,10 @@ function FormAdduser(props) {
   };
   return (
     <div>
-      {showPopUp ? (
-        <div className={`admin_for ${showPopUp && `in_animation`}`}>
+      {showPopUpEditUser ? (
+        <div className={`admin_for ${showPopUpEditUser && `in_animation`}`}>
           <div className="form_container">
-            <div className="title">Add User</div>
+            <div className="title">Edit User</div>
             <div className="content">
               <form onSubmit={(event) => onSubmitRes(event)} method="POST">
                 <div className="user-details">
@@ -197,4 +197,4 @@ function FormAdduser(props) {
   );
 }
 
-export default FormAdduser;
+export default FormEditUser;

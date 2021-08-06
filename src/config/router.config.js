@@ -1,6 +1,9 @@
 import TeacherDetails from "../components/ClientComponent/TeacherDetails/TeacherDetails.jsx";
+import CourseManagerPage from "../pages/AdminPage/CourseManagerPage/CourseManagerPage.jsx";
 import Dashboard from "../pages/AdminPage/Dashboard/Dashboard.jsx";
 import LoginAdmin from "../pages/AdminPage/LoginAdmin/LoginAdmin.jsx";
+import ProfileAdminPage from "../pages/AdminPage/ProfileAdminPage/ProfileAdminPage.jsx";
+import UserManagerPage from "../pages/AdminPage/UserManagerPage/UserManagerPage.jsx";
 import About from "../pages/ClientPage/About/About.jsx";
 import BecomeTeacher from "../pages/ClientPage/BecomeTeacher/BecomeTeacher.jsx";
 import Contact from "../pages/ClientPage/Contact/Contact.jsx";
@@ -122,12 +125,24 @@ export const adminRouters = [
     path: "/admin/dashboard",
     exact: false,
     checkLogin: true,
-
     Component: Dashboard,
   },
   {
-    path: "/admin/user-management",
+    path: "/admin/user-management/:maKhoaHoc",
     exact: false,
-    // Component: UserManagement,
+    checkLogin: true,
+    Component: UserManagerPage,
+  },
+  {
+    path: "/admin/course-management/:taiKhoan",
+    exact: false,
+    checkLogin: true,
+    Component: CourseManagerPage,
+  },
+  {
+    path: "/admin/profile-admin/:taiKhoan",
+    exact: false,
+    checkLogin: true,
+    Component: ProfileAdminPage,
   },
 ];

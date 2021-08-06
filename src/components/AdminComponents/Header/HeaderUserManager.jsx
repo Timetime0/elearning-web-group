@@ -2,15 +2,13 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
-import Avatar from "@material-ui/core/Avatar";
+
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
-import Hidden from "@material-ui/core/Hidden";
+
 import IconButton from "@material-ui/core/IconButton";
-import Link from "@material-ui/core/Link";
-import MenuIcon from "@material-ui/icons/Menu";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -19,8 +17,10 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
 import SwipeableViews from "react-swipeable-views";
-import ContentUserList from "../Content/ContentUserList/ContentUserList";
-import ContentCourseList from "../Content/ContentCourseList/ContentCourseList";
+import ContentUserManager from "../Content/ContentUserManager/ContentUserManager";
+import AppBarComponent from "./AppBarComponent";
+import ContentUserNotInCourse from "../Content/ContentUserManager/ContentUserNotInCourse";
+import ContentUserWaitingAccept from "../Content/ContentUserManager/ContentUserWaitingAccept";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
@@ -79,8 +79,8 @@ function a11yProps(index) {
   };
 }
 
-function Header(props) {
-  const { classes, onDrawerToggle } = props;
+function HeaderUserManager(props) {
+  const { classes } = props;
   const theme = useTheme();
 
   const [value, setValue] = React.useState(0);
@@ -95,42 +95,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <AppBar color="primary" position="sticky" elevation={0}>
-        <Toolbar>
-          <Grid container spacing={1} alignItems="center">
-            <Hidden smUp>
-              <Grid item>
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={onDrawerToggle}
-                  className={classes.menuButton}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Grid>
-            </Hidden>
-            <Grid item xs />
-            <Grid item>
-              <Link className={classes.link} href="#" variant="body2">
-                Go to docs
-              </Link>
-            </Grid>
-            <Grid item>
-              <Tooltip title="Alerts • No alerts">
-                <IconButton color="inherit">
-                  <NotificationsIcon />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-            <Grid item>
-              <IconButton color="inherit" className={classes.iconButtonAvatar}>
-                <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
-              </IconButton>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+      <AppBarComponent />
       <AppBar
         component="div"
         className={classes.secondaryBar}
@@ -142,7 +107,7 @@ function Header(props) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                Authentication
+                User Manager
               </Typography>
             </Grid>
             <Grid item>
@@ -175,8 +140,10 @@ function Header(props) {
             variant="fullWidth"
             aria-label="full width tabs example"
           >
-            <Tab label="Add Course" {...a11yProps(0)} />
-            <Tab label="Add User" {...a11yProps(1)} />
+            <Tab label="User In Course" {...a11yProps(0)} />
+            <Tab label="User Not Register" {...a11yProps(1)} />
+            <Tab label="User Waiting For Accept" {...a11yProps(2)} />
+            <Tab label="Information User" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -185,10 +152,13 @@ function Header(props) {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <ContentCourseList />
+            <ContentUserManager />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <ContentUserList />
+            <ContentUserNotInCourse />
+          </TabPanel>
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <ContentUserWaitingAccept />
           </TabPanel>
         </SwipeableViews>
       </div>
@@ -196,9 +166,9 @@ function Header(props) {
   );
 }
 
-Header.propTypes = {
+HeaderUserManager.propTypes = {
   classes: PropTypes.object.isRequired,
   onDrawerToggle: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(Header);
+export default withStyles(styles)(HeaderUserManager);

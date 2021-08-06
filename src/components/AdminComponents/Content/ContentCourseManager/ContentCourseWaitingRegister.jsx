@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,10 +12,15 @@ import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
-import { useDispatch, useSelector } from "react-redux";
-import { DELETE_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
-import InfomationCourseDataTable from "../../DataTable/InfomationData/InfomationCourseDataTable";
-import { GET_USER_IN_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { useDispatch } from "react-redux";
+
+import {
+  REGISTER_COURSE_SAGA,
+  UNREGISTER_COURSE_SAGA,
+} from "../../../../redux/types/AdminType/RegisterCourse";
+import { useParams } from "react-router-dom";
+
+import CourseWaitingRegisterDataTable from "../../DataTable/CourseManagerDataTable/CourseWaitingRegisterDataTable";
 
 const styles = (theme) => ({
   container: {
@@ -41,7 +46,7 @@ const styles = (theme) => ({
   dellUser: {
     backgroundColor: "red",
   },
-  viewUser: {
+  editUser: {
     backgroundColor: "green",
     margin: "0 8px",
   },
@@ -59,53 +64,35 @@ const styles = (theme) => ({
   },
 });
 
-function ContentInfomationCourse(props) {
+function ContentCourseWaitingRegister(props) {
+  const { classes } = props;
   const dispatch = useDispatch();
 
-  const { classes, course } = props;
+  const { taiKhoan } = useParams();
+  let maKhoaHoc = {};
 
-
-  // console.log(props.course);
-  // Search data
-  // const getData = useSelector((state) => state.UserReducer.userList);
-  // const [data, setData] = useState([]);
-
-  // const [search, setSearch] = useState("");
-  // function searchList(list) {
-  //   const columns = list[0] && Object.keys(list[0]);
-  //   return list.filter((list) =>
-  //     columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
-  //   );
-  // }
-
-  let arrNew = [];
-  const handleDeleteUser = () => {
-    for (let item in arrNew) {
-      dispatch({
-        type: DELETE_USER_SAGA,
-        taiKhoan: arrNew[item],
-      });
-    }
-  };
-
-  const onDeleteChildToParent = (arr) => {
-    arrNew = arr;
-  };
-
-  // Add User
-
-  // Show popup add User
-  const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddUser = () => {};
-
-  useEffect(() => {
+  const handleRegisterCourse = () => {
+    // for (let item in maKhoaHoc) {
     dispatch({
-      type: GET_USER_IN_COURSE_ADMIN_SAGA,
-      maKhoaHoc: { maKhoaHoc: course.maKhoaHoc },
+      type: REGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
     });
-  }, [course.maKhoaHoc]);
+    // }
+    console.log(maKhoaHoc);
+  };
 
+  const handleUnRegister = () => {
+    // for (let item in taiKhoan) {
+    dispatch({
+      type: UNREGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
+    });
+    // }
+  };
 
+  const onUnRegister = (arr) => {
+    maKhoaHoc = arr;
+  };
 
   return (
     <div className={classes.container}>
@@ -135,27 +122,19 @@ function ContentInfomationCourse(props) {
                 <Button
                   variant="contained"
                   color="primary"
-                  className={classes.viewUser}
+                  className={classes.addUser}
+                  onClick={handleRegisterCourse}
                 >
-                  Edit User
+                  Register Course
                 </Button>
                 <Button
                   variant="contained"
                   color="primary"
-                  className={classes.addUser}
-                  onClick={btnAddUser}
-                >
-                  Add User
-                </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
                   className={classes.dellUser}
-                  onClick={() => handleDeleteUser()}
+                  onClick={handleUnRegister}
                 >
-                  Delete User
+                  UnRegister Course
                 </Button>
-
                 <Tooltip title="Reload">
                   <IconButton>
                     <RefreshIcon className={classes.block} color="inherit" />
@@ -167,10 +146,7 @@ function ContentInfomationCourse(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <InfomationCourseDataTable
-              onDelete={onDeleteChildToParent}
-              data={course.maKhoaHoc}
-            />
+            <CourseWaitingRegisterDataTable onUnRegister={onUnRegister} />
           </Typography>
         </div>
       </Paper>
@@ -178,8 +154,8 @@ function ContentInfomationCourse(props) {
   );
 }
 
-ContentInfomationCourse.propTypes = {
+ContentCourseWaitingRegister.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentInfomationCourse);
+export default withStyles(styles)(ContentCourseWaitingRegister);

@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  createTheme,
+  createMuiTheme,
   ThemeProvider,
   withStyles,
 } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Hidden from "@material-ui/core/Hidden";
 import Navigator from "../../../components/AdminComponents/Navigator/Navigator";
-import Header from "../../../components/AdminComponents/Header/Header";
+import HeaderCourseManager from "../../../components/AdminComponents/Header/HeaderCourseManager";
 
-let theme = createTheme({
+let theme = createMuiTheme({
   palette: {
     primary: {
       light: "#63ccff",
@@ -149,7 +149,7 @@ const styles = {
   },
 };
 
-function DashBoard(props) {
+function CourseManagerPage(props) {
   const { classes } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -175,15 +175,15 @@ function DashBoard(props) {
           </Hidden>
         </nav>
         <div className={classes.app}>
-          <Header onDrawerToggle={handleDrawerToggle} />
+          <HeaderCourseManager onDrawerToggle={handleDrawerToggle} />
         </div>
       </div>
     </ThemeProvider>
   );
 }
 
-DashBoard.propTypes = {
+CourseManagerPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DashBoard);
+export default withStyles(styles)(CourseManagerPage);

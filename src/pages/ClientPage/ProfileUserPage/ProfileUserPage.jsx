@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import {
   EDIT_PROFILE_USER_SAGA,
   VIEW_PROFILE_USER_SAGA,
 } from "../../../redux/types/AdminType/GetUserListType";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DataCourseUserProfile from "./DataCourseUserProfile";
 import { Button, makeStyles } from "@material-ui/core";
 

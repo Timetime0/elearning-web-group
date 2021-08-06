@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,13 +12,15 @@ import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshIcon from "@material-ui/icons/Refresh";
-import CoureseDataTable from "../../DataTable/CourseData/CoureseDataTable";
-import FromAddCourse from "./FormAddCourse";
 import { useDispatch } from "react-redux";
-import { DELETE_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
-import { useHistory } from "react-router-dom";
-import FormEditCourse from "./FormEditCourse";
+import UserManagerDataTable from "../../DataTable/UserManagerDataTable/UserManagerDataTable";
+import { UNREGISTER_COURSE_SAGA } from "../../../../redux/types/AdminType/RegisterCourse";
+import { useParams } from "react-router-dom";
+
 const styles = (theme) => ({
+  container: {
+    position: "relative !important",
+  },
   paper: {
     maxWidth: 1920,
     margin: "auto",
@@ -39,55 +41,46 @@ const styles = (theme) => ({
   dellUser: {
     backgroundColor: "red",
   },
-  contentWrapper: {
-    margin: "40px 16px",
-  },
-  editCourse: {
+  editUser: {
     backgroundColor: "green",
     margin: "0 8px",
   },
-  View: {
-    backgroundColor: "#9f890e",
-    margin: "0 8px",
+  contentWrapper: {
+    margin: "40px 16px",
+  },
+
+  center_popup: {
+    position: "absolute",
+    width: "63%",
+    top: "50%",
+    right: "50%",
+    transform: "translate(50%,-50%)",
+    backgroundColor: "red",
   },
 });
 
-function ContentCourseList(props) {
+function ContentUserManager(props) {
   const { classes } = props;
-  // show popup edit course
-  const [showPopUpEdit, setShowPopUpEdit] = useState(false);
-  const handleEditCourse = () => {
-    setShowPopUpEdit((show) => !show);
-  };
-  // Show popup add Course
-  const [showPopUp, setShowPopUp] = useState(false);
-  const btnAddCourse = () => {
-    setShowPopUp((prev) => !prev);
-  };
-
-  // Delete course
   const dispatch = useDispatch();
-  const [edit, setEdit] = useState("");
+  const { maKhoaHoc } = useParams();
 
-  const handleDeleteCourse = () => {
+  let taiKhoan = {};
+
+  const handleUnRegister = () => {
+    // for (let item in taiKhoan) {
     dispatch({
-      type: DELETE_COURSE_ADMIN_SAGA,
-      maKhoaHoc: edit,
+      type: UNREGISTER_COURSE_SAGA,
+      data: { maKhoaHoc, taiKhoan },
     });
+    // }
   };
 
-  const history = useHistory();
-
-  const onDataMaKhoaHoc = (arr) => {
-    setEdit(arr);
-  };
-
-  const handlelView = () => {
-    history.push(`/admin/user-management/${edit}`);
+  const onUnRegister = (arr) => {
+    taiKhoan = arr;
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       <Paper className={classes.paper}>
         <AppBar
           className={classes.searchBar}
@@ -113,38 +106,13 @@ function ContentCourseList(props) {
               <Grid item>
                 <Button
                   variant="contained"
-                  color="primary"
-                  className={classes.View}
-                  onClick={() => handlelView()}
-                >
-                  View
-                </Button>
-
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.editCourse}
-                  onClick={handleEditCourse}
-                >
-                  Edit Course
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.addUser}
-                  onClick={btnAddCourse}
-                >
-                  Add Course
-                </Button>
-
-                <Button
-                  variant="contained"
                   color="secondary"
                   className={classes.dellUser}
-                  onClick={() => handleDeleteCourse()}
+                  onClick={() => handleUnRegister()}
                 >
-                  Delete Course
+                  UnRegister
                 </Button>
+
                 <Tooltip title="Reload">
                   <IconButton>
                     <RefreshIcon className={classes.block} color="inherit" />
@@ -156,22 +124,16 @@ function ContentCourseList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <CoureseDataTable onDataMaKhoaHoc={onDataMaKhoaHoc} />
+            <UserManagerDataTable onUnRegister={onUnRegister} />
           </Typography>
         </div>
       </Paper>
-      <FromAddCourse showPopUp={showPopUp} setShowPopUp={setShowPopUp} />
-      <FormEditCourse
-        showPopUpEdit={showPopUpEdit}
-        setShowPopUpEdit={setShowPopUpEdit}
-        onEdit={edit}
-      />
     </div>
   );
 }
 
-ContentCourseList.propTypes = {
+ContentUserManager.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContentCourseList);
+export default withStyles(styles)(ContentUserManager);

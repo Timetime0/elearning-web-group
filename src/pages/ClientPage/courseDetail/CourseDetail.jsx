@@ -29,18 +29,12 @@ function CourseDetail() {
   const detailList = (value) => {
     history.push("/course-from-list/" + value);
   };
-  // change button
-  const [changeButton, setChangeButton] = useState(false);
+
   // đăng ký khóa học
 
   const user = JSON.parse(localStorage.getItem("user"));
 
   let [bookingRes] = useState({
-    maKhoaHoc: maKhoaHoc,
-    taiKhoan: user.taiKhoan,
-  });
-
-  let [unBooking] = useState({
     maKhoaHoc: maKhoaHoc,
     taiKhoan: user.taiKhoan,
   });
@@ -60,8 +54,6 @@ function CourseDetail() {
           type: BOOKING_COURSE_SAGA,
           user: bookingRes,
         });
-        setChangeButton((change) => !change);
-        console.log(bookingRes);
       }
     });
   };

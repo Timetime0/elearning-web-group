@@ -3,20 +3,14 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_COURSE_LIST_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { useEffect } from "react";
-import { useState } from "react";
 
 export default function CourseDataTable(props) {
   const dispatch = useDispatch();
-  const onDelete = props.onDelete;
-  const onEdit = props.onEdit;
-
-  const inHideEditButton = props.inHideEditButton;
-  const isDeleteCheckBox = props.isDeleteCheckBox;
+  const onDataMaKhoaHoc = props.onDataMaKhoaHoc;
 
   let list = useSelector(
     (state) => state.CourseListAdminrReducer.courseListAdmin
   );
-  let button = <button>ffffff</button>;
   let rows = list.map((listKey, index) => {
     return {
       id: index,
@@ -31,7 +25,6 @@ export default function CourseDataTable(props) {
       soLuongHocVien: listKey.soLuongHocVien,
       nguoiTao: listKey.nguoiTao.hoTen,
       danhMuc: listKey.danhMucKhoaHoc.tenDanhMucKhoaHoc,
-      viewCourse: button,
     };
   });
   const columns = [
@@ -39,7 +32,7 @@ export default function CourseDataTable(props) {
     { field: "maKhoaHoc", headerName: "Mã Khóa Hoc", width: 180 },
     { field: "biDanh", headerName: "Bí Danh", width: 340 },
     { field: "tenKhoaHoc", headerName: "Tên Khóa Học", width: 340 },
-    { field: "moTa", headerName: "Mô Tả", type: "textArea", width: 350 },
+    { field: "moTa", headerName: "Mô Tả", width: 350 },
     { field: "luotXem", headerName: "Lượt Xem", width: 140 },
     { field: "hinhAnh", headerName: "Hình Ảnh", width: 150 },
     { field: "maNhom", headerName: "Mã Nhóm", width: 200 },
@@ -52,18 +45,13 @@ export default function CourseDataTable(props) {
     },
     { field: "nguoiTao", headerName: "Người Tạo", width: 200 },
     { field: "danhMuc", headerName: "Danh Mục Khóa Học", width: 250 },
-    {
-      field: "viewCourse",
-      headerName: "",
-      width: 200,
-    },
   ];
   useEffect(() => {
-    deleteSelectedFile();
+    // deleteSelectedFile();
     dispatch({
       type: GET_COURSE_LIST_ADMIN_SAGA,
     });
-  }, [dispatch, isDeleteCheckBox]);
+  }, [dispatch]);
 
   // lấy item trong rows
   let arrTest = [];
@@ -77,56 +65,23 @@ export default function CourseDataTable(props) {
     console.log(arrTest);
   }
 
-  let arrNew = [];
   const handleRowSelection = (e) => {
-    const { data, isSelected } = e;
-    if (isSelected) {
-      const result = arrNew.some((item) => item === data.maKhoaHoc);
-      if (!result) {
-        arrNew.push(data.maKhoaHoc);
-        console.log(arrNew);
-      }
-    } else {
-      const result = arrNew.some((item) => item === data.maKhoaHoc);
-      if (result) {
-        arrNew = arrNew.filter((item) => item !== data.maKhoaHoc);
-      }
-    }
-
-    if (arrNew.length !== 0) {
-      inHideEditButton(true);
-    } else {
-      inHideEditButton(false);
-    }
-    console.log(e);
-    onDelete(arrNew);
-    onEdit(e.data);
+    onDataMaKhoaHoc(e.row.maKhoaHoc);
   };
 
-  const clickTest = (e) => {
-    alert(list.maKhoaHoc);
-  };
-  console.log(list);
+  // const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
 
-  const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
+  // const deleteSelectedFile = () => {
+  //   setSelectionModel([]);
+  // };
 
-  const deleteSelectedFile = () => {
-    setSelectionModel([]);
-  };
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={8}
-        checkboxSelection={true}
         data={props.data}
-        onRowSelected={handleRowSelection}
-        onRowDoubleClick={clickTest}
-        onSelectionModelChange={(newSelection) => {
-          setSelectionModel(newSelection.selectionModel);
-        }}
-        selectionModel={selectionModel}
+        onRowClick={handleRowSelection}
       />
     </div>
   );

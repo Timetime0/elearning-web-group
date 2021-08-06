@@ -77,3 +77,33 @@ export function EditProfileUserServices(user) {
     },
   });
 }
+
+//=======================================================================================================================
+// Lấy danh sách người dùng chưa ghi danh
+
+export function GetUserNotInCourseServices(maKhoaHoc) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "POST",
+    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungChuaGhiDanh",
+    data: maKhoaHoc,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}
+
+//=======================================================================================================================
+// Lấy danh sách người dùng chờ ghi danh
+
+export function GetUserWaitingAcceptServices(maKhoaHoc) {
+  const admin = JSON.parse(localStorage.getItem("user"));
+  return Axios({
+    method: "POST",
+    url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachHocVienChoXetDuyet",
+    data: maKhoaHoc,
+    headers: {
+      Authorization: `Bearer ${admin.accessToken}`,
+    },
+  });
+}

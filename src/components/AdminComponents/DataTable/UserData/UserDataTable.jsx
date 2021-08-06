@@ -1,15 +1,14 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { GET_USER_LIST_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
-
-let arrNew = [];
 
 export default function UserDataTable(props) {
   const onDelete = props.onDelete;
   const onEdit = props.onEdit;
-  const inHideEditButton = props.inHideEditButton;
+  const onView = props.onView;
+
   const isDeleteCheckBox = props.isDeleteCheckBox;
 
   const dispatch = useDispatch();
@@ -27,11 +26,10 @@ export default function UserDataTable(props) {
     {
       field: "taiKhoan",
       headerName: "Tài Khoản",
-      type: "text",
       width: 200,
     },
-    { field: "hoTen", headerName: "Họ Tên", type: "text", width: 280 },
-    { field: "email", headerName: "Email", type: "text", width: 320 },
+    { field: "hoTen", headerName: "Họ Tên", width: 280 },
+    { field: "email", headerName: "Email", width: 320 },
     {
       field: "soDt",
       headerName: "Số điện thoại",
@@ -42,7 +40,6 @@ export default function UserDataTable(props) {
   ];
 
   useEffect(() => {
-    deleteSelectedFile();
     dispatch({
       type: GET_USER_LIST_SAGA,
     });
@@ -59,32 +56,10 @@ export default function UserDataTable(props) {
   }
 
   const handleRowSelection = (e) => {
-    const { data, isSelected } = e;
-    if (isSelected) {
-      const result = arrNew.some((item) => item === data.taiKhoan);
-      if (!result) {
-        arrNew.push(data.taiKhoan);
-      }
-    } else {
-      const result = arrNew.some((item) => item === data.taiKhoan);
-      if (result) {
-        arrNew = arrNew.filter((item) => item !== data.taiKhoan);
-      }
-    }
+    console.log(e.row);
+    onView(e.row.taiKhoan);
 
-    if (arrNew.length !== 0) {
-      inHideEditButton(true);
-    } else {
-      inHideEditButton(false);
-    }
-    onDelete(arrNew);
-    onEdit(e.data);
-  };
-
-  const [selectionModel, setSelectionModel] = useState([]); // To keep selected file
-
-  const deleteSelectedFile = () => {
-    setSelectionModel([]);
+    onDelete(e.row.taiKhoan);
   };
 
   // view profile user
@@ -93,14 +68,9 @@ export default function UserDataTable(props) {
       <DataGrid
         rows={list}
         columns={columns}
-        pageSize={8}
-        checkboxSelection={true}
+        // checkboxSelection={true}
         data={props.data}
-        onRowSelected={handleRowSelection}
-        onSelectionModelChange={(newSelection) => {
-          setSelectionModel(newSelection.selectionModel);
-        }}
-        selectionModel={selectionModel}
+        onRowClick={handleRowSelection}
       />
     </div>
   );
