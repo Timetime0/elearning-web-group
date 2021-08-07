@@ -26,9 +26,6 @@ function ProfileUserPage() {
       user: taiKhoan,
     });
   }, [dispatch, taiKhoan]);
-  console.log(taiKhoan);
-  console.log(profile);
-
   // see password
   const [visible, setVisible] = useState(false);
   const clickVisible = () => {
@@ -57,7 +54,7 @@ function ProfileUserPage() {
 
   // Edit profile
   let [userRes, setUserRes] = useState({
-    taiKhoan: "",
+    taiKhoan: `${user.taiKhoan}`,
     matKhau: "",
     hoTen: "",
     soDT: "",
@@ -192,23 +189,10 @@ function ProfileUserPage() {
                     <div className="col-md-6">
                       <label>User Id</label>
                     </div>
-                    {showEdit ? (
-                      <div className="col-md-6">
-                        <p>
-                          <input
-                            name="taiKhoan"
-                            type="text"
-                            placeholder={`${profile.taiKhoan}`}
-                            className="input_editProfile_user"
-                            onChange={(e) => handleChange(e)}
-                          />
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="col-md-6">
-                        <p>{profile.taiKhoan}</p>
-                      </div>
-                    )}
+
+                    <div className="col-md-6">
+                      <p>{profile.taiKhoan}</p>
+                    </div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
@@ -351,7 +335,7 @@ function ProfileUserPage() {
                     <div className="col-md-6">
                       <p>
                         {course?.map((key, index) => {
-                          return <span>{index}</span>;
+                          return <span>{index++}</span>;
                         })}
                       </p>
                     </div>

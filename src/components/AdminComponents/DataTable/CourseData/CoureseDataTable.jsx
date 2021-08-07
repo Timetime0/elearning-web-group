@@ -7,7 +7,6 @@ import { useEffect } from "react";
 export default function CourseDataTable(props) {
   const dispatch = useDispatch();
   const onDataMaKhoaHoc = props.onDataMaKhoaHoc;
-
   let list = useSelector(
     (state) => state.CourseListAdminrReducer.courseListAdmin
   );
@@ -27,6 +26,7 @@ export default function CourseDataTable(props) {
       danhMuc: listKey.danhMucKhoaHoc.tenDanhMucKhoaHoc,
     };
   });
+
   const columns = [
     { field: "id", headerName: "Id", width: 90 },
     { field: "maKhoaHoc", headerName: "Mã Khóa Hoc", width: 180 },

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Swal from "sweetalert2";
 import {
   ADD_COURSE_ADMIN_SAGA,
   ADD_COURSE_IMAGE_ADMIN_SAGA,
 } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import Swal from "sweetalert2";
 function FromAddCourse(props) {
   const { showPopUp, setShowPopUp } = props;
   // close popup add user
@@ -98,7 +100,7 @@ function FromAddCourse(props) {
       maDanhMucKhoaHoc: "BackEnd",
       taiKhoanNguoiTao: `${user.taiKhoan}`,
     });
-  }, [dispatch]);
+  }, [dispatch, date, user.taiKhoan]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -107,6 +109,11 @@ function FromAddCourse(props) {
       [name]: value,
     });
   };
+  const handleCkeditorState = (event, editor) => {
+    const data = editor.getData();
+    setCourseRes({ ...courseRes, moTa: data });
+  };
+
   const handleChangeImage = (e) => {
     let target = e.target;
     if (target.name === "hinhAnh") {
@@ -237,12 +244,21 @@ function FromAddCourse(props) {
                   <div className="input-box">
                     <span className="details">Mô Tả</span>
 
-                    <textarea
+                    {/* <textarea
                       className="form_description"
                       placeholder="Nhập mô tả...."
                       type="text"
                       name="moTa"
                       onChange={(e) => handleChange(e)}
+                      required
+                    /> */}
+                    <CKEditor
+                      editor={ClassicEditor}
+                      onInit={(editor) => {}}
+                      className="form_description"
+                      // placeholder="Nhập mô tả...."
+                      // name="moTa"
+                      onChange={handleCkeditorState}
                       required
                     />
                   </div>

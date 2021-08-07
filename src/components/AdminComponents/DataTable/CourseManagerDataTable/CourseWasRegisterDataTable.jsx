@@ -19,7 +19,7 @@ export default function CourseWasRegisterDataTable(props) {
       type: GET_COURSE_WAS_REGISTER_SAGA,
       taiKhoan: tk,
     });
-  }, [dispatch]);
+  }, [dispatch, tk]);
 
   let users = useSelector((state) => state.UserReducer.courseWasRegister);
   const rows = users.map((item, index) => {

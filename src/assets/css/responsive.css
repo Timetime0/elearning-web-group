@@ -214,8 +214,8 @@
   }
 
   .header-navigation .container .right-side-box {
-    top: 20px;
-    right: 15px;
+    top: 42px;
+    right: 10px;
     -webkit-transform: translateY(0%);
     transform: translateY(0%);
   }

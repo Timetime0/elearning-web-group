@@ -17,7 +17,7 @@ export default function UserNotInCourseDataTable(props) {
       type: GET_USER_NOT_IN_COURSE_SAGA,
       maKhoaHoc: { maKhoaHoc: maKhoaHoc },
     });
-  }, [dispatch]);
+  }, [dispatch, maKhoaHoc]);
 
   let user = useSelector((state) => state.UserReducer.userNotInCourse);
   const rows = user?.map((item, index) => {

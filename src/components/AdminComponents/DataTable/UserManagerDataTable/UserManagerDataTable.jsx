@@ -16,7 +16,7 @@ export default function UserManagerDataTable(props) {
       type: GET_USER_IN_COURSE_ADMIN_SAGA,
       maKhoaHoc: { maKhoaHoc: maKhoaHoc },
     });
-  }, [dispatch]);
+  }, [dispatch, maKhoaHoc]);
 
   let users = useSelector(
     (state) => state.CourseListAdminrReducer.userInCourse
@@ -34,13 +34,10 @@ export default function UserManagerDataTable(props) {
       const result = arrNew.some((item) => item === e.row.taiKhoan);
       if (!result) {
         arrNew.push(e.row.taiKhoan);
-        console.log(arrNew);
       } else {
         arrNew = arrNew.filter((item) => item !== e.row.taiKhoan);
-        console.log(arrNew);
       }
     }
-    console.log(e.row.taiKhoan);
 
     onUnRegister(e.row.taiKhoan);
   };
