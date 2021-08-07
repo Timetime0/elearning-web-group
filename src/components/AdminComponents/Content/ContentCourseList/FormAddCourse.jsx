@@ -9,6 +9,7 @@ import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListTyp
 import "../ContentUserList/FormStyle.css";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+
 import Swal from "sweetalert2";
 function FromAddCourse(props) {
   const { showPopUp, setShowPopUp } = props;

@@ -96,19 +96,20 @@ function FormEditCourse(props) {
 
   useEffect(() => {
     setCourseRes({
-      maKhoaHoc: "",
-      biDanh: "",
-      tenKhoaHoc: "",
-      moTa: "",
-      luotXem: 0,
-      danhGia: 0,
-      hinhAnh: ``,
-      maNhom: "GP01",
-      ngayTao: `${ngayTao(date)}`,
-      maDanhMucKhoaHoc: "BackEnd",
-      taiKhoanNguoiTao: `${user.taiKhoan}`,
+      maKhoaHoc: data.maKhoaHoc,
+      biDanh: data.biDanh,
+      tenKhoaHoc: data.tenKhoaHoc,
+      moTa: data.moTa,
+      luotXem: data.luotXem,
+      danhGia: data.tenKhoaHoc,
+      hinhAnh: data.hinhAnh,
+      maNhom: data.maNhom,
+      ngayTao: data.ngayTao,
+      maDanhMucKhoaHoc: data.danhMucKhoaHoc?.maDanhMucKhoahoc,
+      taiKhoanNguoiTao: data.nguoiTao?.taiKhoan,
     });
-  }, [dispatch, date, user.taiKhoan]);
+    setImage(data.hinhAnh)
+  }, [data]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -154,6 +155,7 @@ function FormEditCourse(props) {
                       type="text"
                       placeholder="Nhập mã khóa học..."
                       required
+                      value={courseRes.maKhoaHoc}
                       onChange={(e) => handleChange(e)}
                     />
                   </div>
@@ -221,7 +223,7 @@ function FormEditCourse(props) {
                       className="input_uploadImages"
                       onChange={(e) => handleChange(e)}
                     />
-                    <img src={image} alt={""} />
+                    <img src={image} alt={""} width={100} />
                   </div>
                   <div className="input-box">
                     <span className="details">Mô Tả</span>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -57,6 +57,7 @@ function ContentCourseList(props) {
   // show popup edit course
   const [showPopUpEdit, setShowPopUpEdit] = useState(false);
   const handleEditCourse = () => {
+    setEdit(newValue)
     setShowPopUpEdit((show) => !show);
   };
   // Show popup add Course
@@ -70,24 +71,29 @@ function ContentCourseList(props) {
   const [edit, setEdit] = useState("");
 
   const handleDeleteCourse = () => {
-    dispatch({
-      type: DELETE_COURSE_ADMIN_SAGA,
-      maKhoaHoc: edit,
-    });
+    if(newValue){
+      dispatch({
+        type: DELETE_COURSE_ADMIN_SAGA,
+        maKhoaHoc: newValue,
+      });
+    }
   };
 
   const history = useHistory();
+  let newValue = "";
 
   const onDataMaKhoaHoc = (arr) => {
-    setEdit(arr);
+    newValue = arr;
   };
 
   const handlelView = () => {
-    history.push(`/admin/user-management/${edit}`);
+    if (newValue) {
+      history.push(`/admin/user-management/${newValue}`);
+    }
   };
 
+  
   // Search Data
-
   const [search, setSearch] = useState("");
   const handlerSearch = (e) => {
     setSearch(e.target.value);
@@ -125,7 +131,7 @@ function ContentCourseList(props) {
                   variant="contained"
                   color="primary"
                   className={classes.View}
-                  onClick={() => handlelView()}
+                  onClick={handlelView}
                 >
                   View
                 </Button>
@@ -151,7 +157,7 @@ function ContentCourseList(props) {
                   variant="contained"
                   color="secondary"
                   className={classes.dellUser}
-                  onClick={() => handleDeleteCourse()}
+                  onClick={handleDeleteCourse}
                 >
                   Delete Course
                 </Button>

@@ -423,3 +423,7 @@ _ tạo thêm 2 form eidt user và edit course
 #Ngày 07/08/2021 Chun: 
 _ Hoàn thiện ui web site người dùng
 _ thay logo KIPSO => Eleerning
+
+#Ngày 07/08/2021 Tan: 
+- Fix setState in dashboard admin
+- Edit, delete, view course
