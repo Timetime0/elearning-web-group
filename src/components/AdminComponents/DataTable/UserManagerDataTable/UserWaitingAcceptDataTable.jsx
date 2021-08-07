@@ -21,7 +21,7 @@ export default function UserWaitingAcceptDataTable(props) {
       type: GET_USER_WAITING_ACCEPT_SAGA,
       maKhoaHoc: maKH,
     });
-  }, [dispatch]);
+  }, [dispatch, maKH]);
 
   let user = useSelector((state) => state.UserReducer.userWaitingAccept);
   const rows = user?.map((item, index) => {

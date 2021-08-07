@@ -19,7 +19,7 @@ export default function CourseWaitingRegisterDataTable(props) {
       type: GET_COURSE_WAITING_REGISTER_SAGA,
       taiKhoan: tk,
     });
-  }, [dispatch]);
+  }, [dispatch, tk]);
 
   let users = useSelector((state) => state.UserReducer.courseWaitingRegister);
   const rows = users.map((item, index) => {

@@ -81,28 +81,25 @@ function ContentUserList(props) {
   // }
 
   // hide button
+  const [edit, setEdit] = useState("");
+  const onDataTaiKhoan = (arr) => {
+    setEdit(arr);
+  };
 
-  let arrNew = [];
   const history = useHistory();
   const handlelView = () => {
-    history.push(`/admin/course-management/${id}`);
+    history.push(`/admin/course-management/${edit}`);
   };
-  let id = "";
-  const onView = (arr) => {
-    id = arr;
-  };
+
   const handleDeleteUser = () => {
     // for (let item in arrNew) {
     dispatch({
       type: DELETE_USER_SAGA,
-      taiKhoan: arrNew,
+      taiKhoan: edit,
     });
     // }
   };
 
-  const onDeleteChildToParent = (arr) => {
-    arrNew = arr;
-  };
   const [showPopUpEditUser, setShowPopUpEditUser] = useState(false);
 
   const handleEditUser = () => {
@@ -186,7 +183,7 @@ function ContentUserList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <UserDataTable onView={onView} onDelete={onDeleteChildToParent} />
+            <UserDataTable onDataTaiKhoan={onDataTaiKhoan} />
           </Typography>
         </div>
       </Paper>

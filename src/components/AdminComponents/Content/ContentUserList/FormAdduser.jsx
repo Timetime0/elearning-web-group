@@ -58,7 +58,7 @@ function FormAdduser(props) {
       maNhom: "GP01",
       email: "",
     });
-  }, []);
+  }, [dispatch]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserRes({
