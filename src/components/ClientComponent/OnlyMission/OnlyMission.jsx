@@ -8,7 +8,7 @@ function OnlyMission() {
     >
       <div className="container">
         <h2 className="cta-one__title">
-          Kipso one &amp; only <br />
+          Elearning one &amp; only <br />
           mission is to extend <br />
           your knowledge base
         </h2>

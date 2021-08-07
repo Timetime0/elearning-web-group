@@ -16,7 +16,7 @@ export default function CourseManagerDataTable(props) {
       type: GET_COURSE_NOT_REGISTER_SAGA,
       taiKhoan: taiKhoan,
     });
-  }, [dispatch]);
+  }, [dispatch, taiKhoan]);
 
   let users = useSelector(
     (state) => state.CourseListAdminrReducer.courseNotRegister

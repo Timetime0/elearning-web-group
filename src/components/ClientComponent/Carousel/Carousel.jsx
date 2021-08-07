@@ -44,8 +44,9 @@ function Carousel(props) {
                 Start learning with us now
               </h2>
               <p className="slider-three__text">
-                You need to be sure there isn't anything hidden in the middle of
-                text lorem ipsum on the Internet.
+                Online learning is rapidly becoming one of the most
+                cost-effective ways to educate the world’s rapidly expanding
+                workforce.
               </p>
               <form action="#" className="slider-three__search">
                 <input type="text" placeholder="Search courses" />

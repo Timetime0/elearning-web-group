@@ -5,12 +5,8 @@ import { useEffect } from "react";
 import { GET_USER_LIST_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
 
 export default function UserDataTable(props) {
-  const onDelete = props.onDelete;
-  const onEdit = props.onEdit;
-  const onView = props.onView;
-
   const isDeleteCheckBox = props.isDeleteCheckBox;
-
+  const onDataTaiKhoan = props.onDataTaiKhoan;
   const dispatch = useDispatch();
   let userList = useSelector((state) => state.UserReducer.userList);
   let list = userList.map((user, index) => {
@@ -56,10 +52,7 @@ export default function UserDataTable(props) {
   }
 
   const handleRowSelection = (e) => {
-    console.log(e.row);
-    onView(e.row.taiKhoan);
-
-    onDelete(e.row.taiKhoan);
+    onDataTaiKhoan(e.row.taiKhoan);
   };
 
   // view profile user

@@ -86,6 +86,12 @@ function ContentCourseList(props) {
     history.push(`/admin/user-management/${edit}`);
   };
 
+  // Search Data
+
+  const [search, setSearch] = useState("");
+  const handlerSearch = (e) => {
+    setSearch(e.target.value);
+  };
   return (
     <div>
       <Paper className={classes.paper}>
@@ -98,7 +104,11 @@ function ContentCourseList(props) {
           <Toolbar>
             <Grid container spacing={2} alignItems="center">
               <Grid item>
-                <SearchIcon className={classes.block} color="inherit" />
+                <SearchIcon
+                  className={classes.block}
+                  color="inherit"
+                  onChange={(e) => handlerSearch(e)}
+                />
               </Grid>
               <Grid item xs>
                 <TextField
@@ -156,7 +166,10 @@ function ContentCourseList(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <CoureseDataTable onDataMaKhoaHoc={onDataMaKhoaHoc} />
+            <CoureseDataTable
+              onDataMaKhoaHoc={onDataMaKhoaHoc}
+              search={search}
+            />
           </Typography>
         </div>
       </Paper>

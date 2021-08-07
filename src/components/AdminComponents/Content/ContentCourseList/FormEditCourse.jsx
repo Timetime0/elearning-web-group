@@ -7,7 +7,6 @@ import { DETAIL_COURSE_SERVICES_SAGA } from "../../../../redux/types/CourseDetai
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
 function FormEditCourse(props) {
-  let courseEdit = props.data;
   const onEdit = props.onEdit;
   console.log(onEdit);
   const { showPopUpEdit, setShowPopUpEdit } = props;
@@ -69,7 +68,7 @@ function FormEditCourse(props) {
         data: onEdit,
       });
     }
-  }, [onEdit]);
+  }, [dispatch, onEdit]);
   const data = useSelector((state) => state.CourseReducer.courseDetail);
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -109,7 +108,7 @@ function FormEditCourse(props) {
       maDanhMucKhoaHoc: "BackEnd",
       taiKhoanNguoiTao: `${user.taiKhoan}`,
     });
-  }, [courseEdit]);
+  }, [dispatch, date, user.taiKhoan]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -156,7 +155,6 @@ function FormEditCourse(props) {
                       placeholder="Nhập mã khóa học..."
                       required
                       onChange={(e) => handleChange(e)}
-                      value={courseRes.maKhoaHoc}
                     />
                   </div>
 

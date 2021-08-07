@@ -6,7 +6,6 @@ import {
 } from "../../../../redux/types/AdminType/GetUserListType";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import { Button, makeStyles } from "@material-ui/core";
 import { useParams } from "react-router-dom";
 
 function ProfileAdminData() {
@@ -14,7 +13,7 @@ function ProfileAdminData() {
 
   // Get userProfile
   let profile = useSelector((state) => state.UserReducer.profileUser);
-  const course = profile.chiTietKhoaHocGhiDanh;
+
   const dispatch = useDispatch();
   const { taiKhoan } = useParams();
   let [tk] = useState({
@@ -34,37 +33,12 @@ function ProfileAdminData() {
   };
 
   // show edit
-  const [showEdit, setShowEdit] = useState(false);
-  const clickToShowEdit = () => {
-    setShowEdit((show) => !show);
-  };
-
-  const useStyles = makeStyles((theme) => ({
-    buttonConfirm: {
-      // margin: theme.spacing(1),
-      margin: "50px 10px",
-      background: "green",
-    },
-
-    buttonCancel: {
-      margin: "50px 10px",
-      background: "red",
-    },
-  }));
-  const classes = useStyles();
 
   // Edit profile
   let [userRes, setUserRes] = useState({});
   useEffect(() => {
     setUserRes();
   }, [dispatch]);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserRes({
-      ...userRes,
-      [name]: value,
-    });
-  };
 
   const onSubmitRes = (event) => {
     event.preventDefault();
@@ -94,7 +68,7 @@ function ProfileAdminData() {
             <div className="profile-head">
               <h5>{profile.hoTen}</h5>
               <h6>{profile.maLoaiNguoiDung}</h6>
-              <p className="proile-rating">
+              <p className="profile-rating">
                 RANKINGS : <span>8/10</span>
               </p>
               <ul className="nav nav-tabs" id="myTab" role="tablist">
