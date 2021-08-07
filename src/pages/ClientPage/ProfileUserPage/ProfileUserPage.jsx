@@ -333,11 +333,7 @@ function ProfileUserPage() {
                       <label>Courses</label>
                     </div>
                     <div className="col-md-6">
-                      <p>
-                        {course?.map((key, index) => {
-                          return <span>{index++}</span>;
-                        })}
-                      </p>
+                      <p>{course.length - 1}</p>
                     </div>
                   </div>
                   <div className="row">

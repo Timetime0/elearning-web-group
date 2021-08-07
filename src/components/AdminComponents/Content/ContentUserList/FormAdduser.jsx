@@ -77,7 +77,7 @@ function FormAdduser(props) {
     <div>
       {showPopUp ? (
         <div className={`admin_for ${showPopUp && `in_animation`}`}>
-          <div className="form_container">
+          <div className="form_container" style={{ top: "65%" }}>
             <div className="title">Add User</div>
             <div className="content">
               <form onSubmit={(event) => onSubmitRes(event)} method="POST">

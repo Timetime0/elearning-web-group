@@ -427,3 +427,11 @@ _ thay logo KIPSO => Eleerning
 #Ngày 07/08/2021 Tan: 
 - Fix setState in dashboard admin
 - Edit, delete, view course
+
+
+#Ngày 07/08/2021 Chun lần 2: 
+_ Hoàn thiện ui web site người dùng
+_ fix hết các lỗi warning
+_ fix lỗi edit user
+*********** chưa làm tìm kiếm khóa học và người dùng 
+*********** chưa làm thêm hình ảnh và upload hình ảnh 

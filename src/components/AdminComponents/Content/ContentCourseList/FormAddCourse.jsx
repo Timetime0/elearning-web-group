@@ -118,26 +118,32 @@ function FromAddCourse(props) {
   const handleChangeImage = (e) => {
     let target = e.target;
     if (target.name === "hinhAnh") {
-      setImage(URL.createObjectURL(e.target.files[0]));
+      setCourseRes({ hinhAnh: e.target.files[0] }, () => {
+        console.log(this.state);
+      });
     } else {
-      setImage({ [e.target.name]: e.target.value });
+      setCourseRes({ [e.target.name]: e.target.value }, () => {
+        console.log(this.state);
+      });
     }
-    // let form_data = new FormData();
+    setImage(URL.createObjectURL(e.target.files[0]));
   };
 
   const onSubmitRes = (event) => {
+    event.preventDefault();
+
     let formData = new FormData();
     for (let key in setCourseRes) {
       formData.append(key, setCourseRes[key]);
     }
-    event.preventDefault();
     dispatch({
       type: ADD_COURSE_ADMIN_SAGA,
-      course: courseRes,
+      course: formData,
     });
+
     dispatch({
       type: ADD_COURSE_IMAGE_ADMIN_SAGA,
-      img: image,
+      img: formData,
     });
   };
 
@@ -234,31 +240,21 @@ function FromAddCourse(props) {
                       type="file"
                       required
                       className="input_uploadImages"
-                      onChange={(e) => handleChange(e)}
+                      onChange={(e) => handleChangeImage(e)}
                     />
                     <img
                       src={image}
                       alt={""}
-                      style={{ position: "absolute", width: "26%" }}
+                      width={100}
+                      style={{ position: "absolute" }}
                     />
                   </div>
                   <div className="input-box">
                     <span className="details">Mô Tả</span>
-
-                    {/* <textarea
-                      className="form_description"
-                      placeholder="Nhập mô tả...."
-                      type="text"
-                      name="moTa"
-                      onChange={(e) => handleChange(e)}
-                      required
-                    /> */}
                     <CKEditor
                       editor={ClassicEditor}
                       onInit={(editor) => {}}
                       className="form_description"
-                      // placeholder="Nhập mô tả...."
-                      // name="moTa"
                       onChange={handleCkeditorState}
                       required
                     />

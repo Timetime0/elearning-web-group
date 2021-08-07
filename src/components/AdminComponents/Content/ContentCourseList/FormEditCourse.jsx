@@ -6,9 +6,9 @@ import { UPDATE_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetC
 import { DETAIL_COURSE_SERVICES_SAGA } from "../../../../redux/types/CourseDetailType";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
+
 function FormEditCourse(props) {
   const onEdit = props.onEdit;
-  console.log(onEdit);
   const { showPopUpEdit, setShowPopUpEdit } = props;
   // close popup add user
   // Show alert to close menu
@@ -100,16 +100,27 @@ function FormEditCourse(props) {
       biDanh: data.biDanh,
       tenKhoaHoc: data.tenKhoaHoc,
       moTa: data.moTa,
-      luotXem: data.luotXem,
-      danhGia: data.tenKhoaHoc,
+      luotXem: 100,
+      danhGia: 100,
       hinhAnh: data.hinhAnh,
       maNhom: data.maNhom,
-      ngayTao: data.ngayTao,
+      ngayTao: `${ngayTao(date)}`,
       maDanhMucKhoaHoc: data.danhMucKhoaHoc?.maDanhMucKhoahoc,
-      taiKhoanNguoiTao: data.nguoiTao?.taiKhoan,
+      taiKhoanNguoiTao: `${user.taiKhoan}`,
     });
-    setImage(data.hinhAnh)
-  }, [data]);
+    setImage(data.hinhAnh);
+  }, [
+    dispatch,
+    date,
+    user.taiKhoan,
+    data.maKhoaHoc,
+    data.biDanh,
+    data.tenKhoaHoc,
+    data.moTa,
+    data.hinhAnh,
+    data.maNhom,
+    data.danhMucKhoaHoc?.maDanhMucKhoahoc,
+  ]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -156,6 +167,7 @@ function FormEditCourse(props) {
                       placeholder="Nhập mã khóa học..."
                       required
                       value={courseRes.maKhoaHoc}
+                      disabled
                       onChange={(e) => handleChange(e)}
                     />
                   </div>
@@ -246,7 +258,7 @@ function FormEditCourse(props) {
                     className="button_submit"
                     onClick={onSubmitRes}
                   >
-                    Add
+                    Confirm
                   </button>
 
                   <button className="button_close" onClick={btnClose}>

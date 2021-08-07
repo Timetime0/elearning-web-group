@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -57,7 +57,7 @@ function ContentCourseList(props) {
   // show popup edit course
   const [showPopUpEdit, setShowPopUpEdit] = useState(false);
   const handleEditCourse = () => {
-    setEdit(newValue)
+    setEdit(newValue);
     setShowPopUpEdit((show) => !show);
   };
   // Show popup add Course
@@ -71,7 +71,7 @@ function ContentCourseList(props) {
   const [edit, setEdit] = useState("");
 
   const handleDeleteCourse = () => {
-    if(newValue){
+    if (newValue) {
       dispatch({
         type: DELETE_COURSE_ADMIN_SAGA,
         maKhoaHoc: newValue,
@@ -92,7 +92,6 @@ function ContentCourseList(props) {
     }
   };
 
-  
   // Search Data
   const [search, setSearch] = useState("");
   const handlerSearch = (e) => {

@@ -27,6 +27,11 @@ export function AddImageCourse(img) {
     method: "POST",
     url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh",
     data: img,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "X-Requested-With": "XMLHttpRequest",
+      proxy: "http://localhost:3000",
+    },
   });
 }
 
