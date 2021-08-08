@@ -105,6 +105,7 @@ function FromAddCourse(props) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setCourseRes({
       ...courseRes,
       [name]: value,
@@ -117,13 +118,14 @@ function FromAddCourse(props) {
 
   const handleChangeImage = (e) => {
     let target = e.target;
+    const { name, value } = e.target;
+
     if (target.name === "hinhAnh") {
-      setCourseRes({ hinhAnh: e.target.files[0] }, () => {
-        console.log(this.state);
-      });
+      setCourseRes({ ...courseRes, hinhAnh: e.target.files[0] });
     } else {
-      setCourseRes({ [e.target.name]: e.target.value }, () => {
-        console.log(this.state);
+      setCourseRes({
+        ...courseRes,
+        [name]: value,
       });
     }
     setImage(URL.createObjectURL(e.target.files[0]));
@@ -132,19 +134,16 @@ function FromAddCourse(props) {
   const onSubmitRes = (event) => {
     event.preventDefault();
 
-    let formData = new FormData();
-    for (let key in setCourseRes) {
-      formData.append(key, setCourseRes[key]);
-    }
-    dispatch({
-      type: ADD_COURSE_ADMIN_SAGA,
-      course: formData,
-    });
-
+    // var form_data = new FormData();
+    // for (let key in courseRes) {
+    //   form_data.append(key, courseRes[key]);
+    //   console.log(key, form_data.entries());
+    // }
     dispatch({
       type: ADD_COURSE_IMAGE_ADMIN_SAGA,
-      img: formData,
+      img: courseRes,
     });
+    console.log(courseRes);
   };
 
   return (
@@ -164,7 +163,6 @@ function FromAddCourse(props) {
                       placeholder="Nhập tên khóa học..."
                       required
                       onChange={(e) => handleChange(e)}
-                      value={courseRes.tenKhoaHoc}
                     />
                   </div>
                   <div className="input-box">

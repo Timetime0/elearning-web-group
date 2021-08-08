@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { UPDATE_COURSE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import {
+  UPDATE_COURSE_ADMIN_SAGA,
+  UPDATE_COURSE_IMAGE_ADMIN_SAGA,
+} from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { DETAIL_COURSE_SERVICES_SAGA } from "../../../../redux/types/CourseDetailType";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
@@ -129,19 +132,41 @@ function FormEditCourse(props) {
       [name]: value,
     });
   };
+  const handleChangeImage = (e) => {
+    let target = e.target;
+    const { name, value } = e.target;
 
+    if (target.name === "hinhAnh") {
+      setCourseRes({ ...courseRes, [name]: value, hinhAnh: e.target.files[0] });
+    } else {
+      setCourseRes({
+        ...courseRes,
+        [name]: value,
+        [e.target.name]: e.target.value,
+      });
+    }
+    setImage(URL.createObjectURL(e.target.files[0]));
+  };
   const onSubmitRes = (event) => {
     event.preventDefault();
+    var form_data = new FormData();
+    for (let key in courseRes) {
+      form_data.append(key, courseRes[key]);
+    }
+
     dispatch({
-      type: UPDATE_COURSE_ADMIN_SAGA,
-      course: courseRes,
+      type: UPDATE_COURSE_IMAGE_ADMIN_SAGA,
+      img: form_data,
     });
   };
 
   return (
     <div>
       {showPopUpEdit ? (
-        <div className={`admin_for ${showPopUpEdit && `in_animation_course`}`}>
+        <div
+          className={`admin_for ${showPopUpEdit && `in_animation_course`}`}
+          style={{ top: "0%" }}
+        >
           <div className="form_container">
             <div className="title">Edit Course</div>
             <div className="content">
@@ -233,7 +258,7 @@ function FormEditCourse(props) {
                       type="file"
                       required
                       className="input_uploadImages"
-                      onChange={(e) => handleChange(e)}
+                      onChange={(e) => handleChangeImage(e)}
                     />
                     <img src={image} alt={""} width={100} />
                   </div>

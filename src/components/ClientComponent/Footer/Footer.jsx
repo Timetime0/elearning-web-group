@@ -42,7 +42,7 @@ function Footer() {
                       <a href="/">Join Us</a>
                     </li>
                     <li>
-                      <a href="/our-news">Our News</a>
+                      <a href="/news">Our News</a>
                     </li>
                   </ul>
                   <ul className="list-unstyled footer-widget__link-list">

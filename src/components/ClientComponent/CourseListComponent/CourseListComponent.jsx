@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_DATA_COURSE_SAGA } from "../../../redux/types/courseType";
+import { PAGE_OFFSET_SAGA } from "../../../redux/types/PageOffset";
 import CardItem from "./CardItem";
 
 function CourseListComponent() {
@@ -11,6 +12,14 @@ function CourseListComponent() {
       type: GET_DATA_COURSE_SAGA,
     });
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch({
+  //     type: PAGE_OFFSET_SAGA,
+  //     number:
+  //   });
+  // }, [dispatch]);
+
   return (
     <section className="course-one course-page">
       <div className="container">
@@ -18,20 +27,6 @@ function CourseListComponent() {
           {course.map((course, index) => {
             return <CardItem course={course} index={index} />;
           })}
-        </div>
-        <div className="post-pagination">
-          <a href="/">
-            <i className="fa fa-angle-double-left" />
-          </a>
-          <a className="active" href="/">
-            1
-          </a>
-          <a href="/">2</a>
-          <a href="/">3</a>
-          <a href="/">4</a>
-          <a href="/">
-            <i className="fa fa-angle-double-right" />
-          </a>
         </div>
       </div>
     </section>

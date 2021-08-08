@@ -58,7 +58,9 @@ function ContentCourseList(props) {
   const [showPopUpEdit, setShowPopUpEdit] = useState(false);
   const handleEditCourse = () => {
     setEdit(newValue);
-    setShowPopUpEdit((show) => !show);
+    if (newValue) {
+      setShowPopUpEdit((show) => !show);
+    }
   };
   // Show popup add Course
   const [showPopUp, setShowPopUp] = useState(false);
