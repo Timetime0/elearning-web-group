@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { MemoryRouter, Route } from "react-router";
 import { Link, useHistory } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_DATA_COURSE_SAGA } from "../../../redux/types/courseType";
 function PageOffset() {
   const history = useHistory();
-  const [page, setPage] = useState();
-  const handleChangPage = (page) => {
-    setPage(page);
-    history.push(`/course-list/${page}`);
-    console.log(page);
-  };
+  const dispatch = useDispatch();
+  let course = useSelector((state) => state.CourseReducer.course);
+
+  useEffect(() => {
+    dispatch({
+      type: GET_DATA_COURSE_SAGA,
+    });
+  }, [dispatch]);
+
   return (
     <div className="post-pagination">
-      <MemoryRouter initialEntries={["/inbox"]} initialIndex={1}>
+      <MemoryRouter initialEntries={["/inbox"]} initialIndex={0}>
         <Route>
           {({ location }) => {
             const query = new URLSearchParams(location.search);
@@ -21,15 +26,20 @@ function PageOffset() {
             return (
               <Pagination
                 page={page}
-                count={10}
-                renderItem={(item) => (
-                  <PaginationItem
-                    component={Link}
-                    to={`/inbox${item.page === 1 ? "" : `?page=${item.page}`}`}
-                    {...item}
-                  />
-                )}
-                onChange={() => handleChangPage(page)}
+                count={Math.ceil((course?.length - 1)/9)}
+                renderItem={(item) => {
+                  history.push(`/course-list/${item.page - 1}`);
+                  return (
+                    <PaginationItem
+                      component={Link}
+                      to={`/inbox${
+                        item.page === 1 ? "" : `?page=${item.page}`
+                      }`}
+                      {...item}
+                    />
+                  );
+                }}
+                // onChange={() => handleChangPage(page)}
               />
             );
           }}

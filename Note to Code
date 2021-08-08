@@ -435,3 +435,7 @@ _ fix hết các lỗi warning
 _ fix lỗi edit user
 *********** chưa làm tìm kiếm khóa học và người dùng 
 *********** chưa làm thêm hình ảnh và upload hình ảnh 
+
+#Ngày 08/08/2021 Tan: 
+- Pagination for courseList
+

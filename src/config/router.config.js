@@ -33,7 +33,7 @@ export const clientRouters = [
   },
   {
     path: "/course-list",
-    exact: false,
+    exact: true,
     Component: CourseList,
   },
   {

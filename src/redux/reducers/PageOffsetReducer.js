@@ -7,11 +7,11 @@ const initialState = {
 const CourseInPage = (state = initialState, action) => {
   switch (action.type) {
     case PAGE_OFFSET: {
-      return { ...state, course: action.data };
+      return { ...state, courseInPage: action.data };
     }
 
     default: {
-      return state;
+      return state; 
     }
   }
 };
