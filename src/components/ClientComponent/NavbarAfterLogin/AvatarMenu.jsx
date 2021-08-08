@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MailIcon from "@material-ui/icons/Mail";
@@ -8,6 +8,8 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import { Badge } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { VIEW_PROFILE_USER_SAGA } from "../../../redux/types/AdminType/GetUserListType";
 
 export default function AvatarMenu() {
   // Get user form localStorage
@@ -52,6 +54,18 @@ export default function AvatarMenu() {
     return Math.floor(Math.random() * 20) + 5;
   };
 
+  let profile = useSelector((state) => state.UserReducer.profileUser);
+  const course = profile.chiTietKhoaHocGhiDanh;
+  const dispatch = useDispatch();
+  let [taiKhoan] = useState({
+    taiKhoan: user.taiKhoan,
+  });
+  useEffect(() => {
+    dispatch({
+      type: VIEW_PROFILE_USER_SAGA,
+      user: taiKhoan,
+    });
+  }, [dispatch, taiKhoan]);
   return (
     <div style={{ display: "flex" }}>
       <div style={{ display: "flex" }}>
@@ -66,7 +80,7 @@ export default function AvatarMenu() {
           </Badge>
         </MenuItem>
         <MenuItem>
-          <Badge badgeContent={random()} color="secondary">
+          <Badge badgeContent={course?.length - 1} color="secondary">
             <ShoppingCartIcon style={{ color: "white" }} />
           </Badge>
         </MenuItem>

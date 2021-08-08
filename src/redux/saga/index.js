@@ -36,6 +36,7 @@ import {
   followRegisterCourseApi,
   followUnRegisterCourseApi,
 } from "./AdminSaga/RegisterCourseSaga";
+import { followGetPageOffsetApi } from "./PageOffsetSaga";
 // cấu hình
 export default function* rootSaga() {
   yield all([
@@ -73,5 +74,8 @@ export default function* rootSaga() {
     // Register Course
     followUnRegisterCourseApi(),
     followRegisterCourseApi(),
+
+    // page offset
+    followGetPageOffsetApi(),
   ]);
 }

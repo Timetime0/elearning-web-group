@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { GET_DATA_COURSE_SAGA } from "../../../redux/types/courseType";
 
-function NewCourse(props) {
+function NewCourse() {
   let course = useSelector((state) => state.CourseReducer.course);
   let item = course.filter((itemFilet) => itemFilet.ngayTao > "26/07/2021");
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ function NewCourse(props) {
   return (
     <div className="course-details__list">
       <h2 className="course-details__list-title">New Courses</h2>
-      {item.map((item, index) => {
+      {item.map((item) => {
         return (
           <div className="course-details__list-item">
             <div className="course-details__list-img">
@@ -32,13 +32,13 @@ function NewCourse(props) {
                 by <span>{item?.nguoiTao?.hoTen}</span>
               </a>
               <h3>
-                <Link
+                <button
                   onClick={() => {
                     detailCourse(item.maKhoaHoc);
                   }}
                 >
                   {item.tenKhoaHoc}
-                </Link>
+                </button>
               </h3>
               <div className="course-details__list-stars">
                 <i className="fas fa-star" />

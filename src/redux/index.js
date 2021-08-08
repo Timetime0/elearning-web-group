@@ -8,6 +8,7 @@ import AdminAuthor from "./reducers/AdminReducer/AdminAuthor";
 import BookingReducer from "./reducers/BookingReducer";
 import LoadingReducer from "./reducers/LoadingReducer";
 import CourseListAdminrReducer from "./reducers/AdminReducer/CourseAdminReducer";
+import CourseInPage from "./reducers/PageOffsetReducer";
 const middleWareSaga = createMiddleWareSaga();
 
 const rootReducer = combineReducers({
@@ -22,6 +23,9 @@ const rootReducer = combineReducers({
 
   // Loading
   LoadingReducer,
+
+  // Page Offset
+  CourseInPage,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

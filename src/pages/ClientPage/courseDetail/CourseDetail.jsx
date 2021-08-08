@@ -103,14 +103,15 @@ function CourseDetail() {
                       </div>
                     </div>
                     <div className="course-details__top-right">
-                      <Link
+                      <p
+                        style={{ padding: "5px 15px", cursor: "pointer" }}
                         className="course-one__category"
                         onClick={() => {
-                          detailList(detail.danhMucKhoaHoc.tenDanhMucKhoaHoc);
+                          detailList(detail?.danhMucKhoaHoc?.maDanhMucKhoahoc);
                         }}
                       >
                         {detail?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
-                      </Link>
+                      </p>
                     </div>
                   </div>
                   <div className="course-one__image">

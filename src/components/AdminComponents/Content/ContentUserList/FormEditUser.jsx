@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { ADD_USER_SAGA } from "../../../../redux/types/AdminType/GetUserListType";
+import {
+  EDIT_USER_SAGA,
+  VIEW_PROFILE_USER_SAGA,
+} from "../../../../redux/types/AdminType/GetUserListType";
 import "./FormStyle.css";
 function FormEditUser(props) {
+  const onEdit = props.onEdit;
   const { showPopUpEditUser, setShowPopUpEditUser } = props;
   // close popup add user
   // Show alert to close menu
@@ -43,22 +47,40 @@ function FormEditUser(props) {
         }
       });
   };
-
-  // function add user
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (onEdit) {
+      dispatch({
+        type: VIEW_PROFILE_USER_SAGA,
+        user: { taiKhoan: onEdit },
+      });
+    }
+  }, [dispatch, onEdit]);
+  const data = useSelector((state) => state.UserReducer.profileUser);
+  // function add user
 
   let [userRes, setUserRes] = useState({});
   useEffect(() => {
     setUserRes({
-      taiKhoan: "",
-      matKhau: "",
-      hoTen: "",
-      soDT: "",
-      maLoaiNguoiDung: "",
-      maNhom: "GP01",
-      email: "",
+      taiKhoan: data.taiKhoan,
+      matKhau: data.matKhau,
+      hoTen: data.hoTen,
+      soDT: data.soDT,
+      maLoaiNguoiDung: data.maLoaiNguoiDung,
+      maNhom: data.maNhom,
+      email: data.email,
     });
-  }, []);
+  }, [
+    dispatch,
+    data.taiKhoan,
+    data.matKhau,
+    data.hoTen,
+    data.soDT,
+    data.maLoaiNguoiDung,
+    data.maNhom,
+    data.email,
+  ]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserRes({
@@ -69,7 +91,7 @@ function FormEditUser(props) {
   const onSubmitRes = (event) => {
     event.preventDefault();
     dispatch({
-      type: ADD_USER_SAGA,
+      type: EDIT_USER_SAGA,
       user: userRes,
     });
   };
@@ -77,7 +99,7 @@ function FormEditUser(props) {
     <div>
       {showPopUpEditUser ? (
         <div className={`admin_for ${showPopUpEditUser && `in_animation`}`}>
-          <div className="form_container">
+          <div className="form_container" style={{ top: "65%" }}>
             <div className="title">Edit User</div>
             <div className="content">
               <form onSubmit={(event) => onSubmitRes(event)} method="POST">
@@ -89,6 +111,7 @@ function FormEditUser(props) {
                       type="text"
                       placeholder="Nhập họ tên User..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.hoTen}
                       required
                     />
                   </div>
@@ -99,6 +122,8 @@ function FormEditUser(props) {
                       type="text"
                       placeholder="Nhập tài khoản User..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.taiKhoan}
+                      disabled
                       required
                     />
                   </div>
@@ -109,6 +134,7 @@ function FormEditUser(props) {
                       type="text"
                       placeholder="Nhập email user..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.email}
                       required
                     />
                   </div>
@@ -119,6 +145,7 @@ function FormEditUser(props) {
                       type="number"
                       placeholder="Nhập điện thoại User..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.soDT}
                       required
                     />
                   </div>
@@ -129,6 +156,7 @@ function FormEditUser(props) {
                       type="text"
                       placeholder="Nhập mật khẩu User..."
                       onChange={(e) => handleChange(e)}
+                      value={userRes.matKhau}
                       required
                     />
                   </div>
@@ -182,10 +210,10 @@ function FormEditUser(props) {
                     className="button_submit"
                     onClick={onSubmitRes}
                   >
-                    Add
+                    Confirm
                   </button>
                   <button className="button_close" onClick={btnClose}>
-                    Cancle
+                    Cancel
                   </button>
                 </div>
               </form>

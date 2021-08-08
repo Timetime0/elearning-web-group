@@ -91,12 +91,38 @@ export function* followAddCourseApi() {
 
 function* addImgCourse(action) {
   try {
-    let res = yield call(() => {
-      return AddImageCourse(action.img);
+    var form_data = new FormData();
+    for (let key in action.img) {
+      form_data.append(key, action.img[key]);
+    }
+    let result = yield call(() => {
+      return AddImageCourse(form_data);
     });
-    console.log(res);
+    console.log(result);
+    if (result.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Thêm khóa học thành công",
+        html: `
+              <div className="text-left"><span className="font-weight">Mã Khóa Học:</span> ${action.course.maKhoaHoc} </div>
+              <div className="text-left"><span className="font-weight">Tên Khóa Học:</span> ${action.course.tenKhoaHoc}</div>
+              <div className="text-left"><span className="font-weight">Mô Tả: </span>${action.course.moTa} </div>
+              <div className="text-left"><span className="font-weight">Hình Ảnh:</span> ${action.course.hinhAnh} </div>
+              <div className="text-left"><span className="font-weight">Mã nhóm:</span> ${action.course.maNhom}</div>
+              <div className="text-left"><span className="font-weight">Ngày Tạo:</span> ${action.course.ngayTao}</div>
+              <div className="text-left"><span className="font-weight">Mã Danh Mục Khóa Học: </span>${action.course.maDanhMucKhoaHoc}</div>
+              <div className="text-left"><span className="font-weight">Tài Khoản Người Tạo: </span>${action.course.taiKhoanNguoiTao}</div>
+
+              `,
+      });
+    }
   } catch (err) {
     console.log(err);
+    Swal.fire({
+      icon: "error",
+      title: `Thất bại`,
+      text: `${err}`,
+    });
   }
 }
 
@@ -108,14 +134,11 @@ export function* followAddImgCourse() {
 // Update Img Course
 function* updataImgCourse(action) {
   try {
-    let form_data = new FormData();
-    for (let key in action.course) {
-      form_data.append(key, action.course[key]);
-    }
-
     let res = yield call(() => {
-      return UpdateAddImageCourse(form_data);
+      return UpdateAddImageCourse(action.img);
     });
+    console.log(res);
+
     if (res.status === 200) {
       Swal.fire({
         icon: "success",
@@ -123,10 +146,10 @@ function* updataImgCourse(action) {
       });
     }
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
     Swal.fire({
       icon: "error",
-      title: `${err.response.data}`,
+      title: `${err.response}`,
     });
   }
 }

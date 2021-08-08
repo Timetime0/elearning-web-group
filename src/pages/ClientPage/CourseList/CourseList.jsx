@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import CourseListComponent from "../../../components/ClientComponent/CourseListComponent/CourseListComponent";
+import PageOffset from "../../../components/ClientComponent/PageOffset/PageOffset";
 
 function CourseList() {
+  const [page, setPage] = useState();
+
   return (
     <div>
       <div>
@@ -18,7 +21,9 @@ function CourseList() {
             <h2 className="inner-banner__title">Courses</h2>
           </div>
         </section>
+
         <CourseListComponent />
+        <PageOffset />
       </div>
     </div>
   );

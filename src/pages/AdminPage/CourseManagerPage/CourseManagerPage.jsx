@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  createMuiTheme,
+  createTheme,
   ThemeProvider,
   withStyles,
 } from "@material-ui/core/styles";
@@ -10,7 +10,7 @@ import Hidden from "@material-ui/core/Hidden";
 import Navigator from "../../../components/AdminComponents/Navigator/Navigator";
 import HeaderCourseManager from "../../../components/AdminComponents/Header/HeaderCourseManager";
 
-let theme = createMuiTheme({
+let theme = createTheme({
   palette: {
     primary: {
       light: "#63ccff",

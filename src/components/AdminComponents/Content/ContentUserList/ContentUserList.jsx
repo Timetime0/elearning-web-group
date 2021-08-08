@@ -68,41 +68,35 @@ const styles = (theme) => ({
 function ContentUserList(props) {
   const { classes } = props;
   const dispatch = useDispatch();
-  // Search data
-  // const getData = useSelector((state) => state.UserReducer.userList);
-  // const [data, setData] = useState([]);
-
-  // const [search, setSearch] = useState("");
-  // function searchList(list) {
-  //   const columns = list[0] && Object.keys(list[0]);
-  //   return list.filter((list) =>
-  //     columns.some((columns) => list[columns].toLowerCase().indexOf(search) > 1)
-  //   );
-  // }
 
   // hide button
+  let newValue = "";
   const [edit, setEdit] = useState("");
+
   const onDataTaiKhoan = (arr) => {
-    setEdit(arr);
+    newValue = arr;
   };
 
   const history = useHistory();
   const handlelView = () => {
-    history.push(`/admin/course-management/${edit}`);
+    if (newValue) {
+      history.push(`/admin/course-management/${newValue}`);
+    }
   };
 
   const handleDeleteUser = () => {
-    // for (let item in arrNew) {
-    dispatch({
-      type: DELETE_USER_SAGA,
-      taiKhoan: edit,
-    });
-    // }
+    if (newValue) {
+      dispatch({
+        type: DELETE_USER_SAGA,
+        taiKhoan: newValue,
+      });
+    }
   };
 
   const [showPopUpEditUser, setShowPopUpEditUser] = useState(false);
 
   const handleEditUser = () => {
+    setEdit(newValue);
     setShowPopUpEditUser((prev) => !prev);
   };
 
@@ -191,6 +185,7 @@ function ContentUserList(props) {
       <FormEditUser
         showPopUpEditUser={showPopUpEditUser}
         setShowPopUpEditUser={setShowPopUpEditUser}
+        onEdit={edit}
       />
     </div>
   );

@@ -33,13 +33,15 @@ export function AddImageCourse(img) {
 // update image course
 
 export function UpdateAddImageCourse(img) {
-  const admin = JSON.parse(localStorage.getItem("admin"));
+  const admin = JSON.parse(localStorage.getItem("user"));
   return Axios({
     method: "POST",
     url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHocUpload",
     data: img,
     headers: {
-      Authorization: `bearer ${admin.accessToken}`,
+      Authorization: `Bearer ${admin.accessToken}`,
+      "Access-Control-Allow-Origin": "*",
+      "X-Requested-With": "XMLHttpRequest",
     },
   });
 }

@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 // import { makeStyles } from "@material-ui/core/styles";
 
-function Carousel(props) {
+function Carousel() {
   return (
     <section className="slider-three">
       <img
