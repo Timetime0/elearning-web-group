@@ -26,7 +26,7 @@ function PageOffset() {
             return (
               <Pagination
                 page={page}
-                count={Math.ceil((course?.length - 1)/9)}
+                count={Math.ceil(course?.length / 9)}
                 renderItem={(item) => {
                   history.push(`/course-list/${item.page - 1}`);
                   return (
@@ -39,7 +39,6 @@ function PageOffset() {
                     />
                   );
                 }}
-                // onChange={() => handleChangPage(page)}
               />
             );
           }}

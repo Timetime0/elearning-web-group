@@ -16,6 +16,8 @@ function ProfileUserPage() {
   // Get userProfile
   let profile = useSelector((state) => state.UserReducer.profileUser);
   const course = profile.chiTietKhoaHocGhiDanh;
+  const idImg = profile?.soDT?.slice(-2);
+
   const dispatch = useDispatch();
   let [taiKhoan] = useState({
     taiKhoan: user.taiKhoan,
@@ -96,10 +98,7 @@ function ProfileUserPage() {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                  alt={""}
-                />
+                <img src={`https://i.pravatar.cc/500?img=${idImg}`} alt={""} />
                 <div className="file btn btn-lg btn-primary">
                   Change Photo
                   <input type="file" name="file" />
@@ -159,21 +158,21 @@ function ProfileUserPage() {
             <div className="col-md-4">
               <div className="profile-work">
                 <p>WORK LINK</p>
-                <a href>Website Link</a>
+                <span>Website Link</span>
                 <br />
-                <a href>Bootsnipp Profile</a>
+                <span>Bootsnipp Profile</span>
                 <br />
-                <a href>Bootply Profile</a>
+                <span>Bootply Profile</span>
                 <p>SKILLS</p>
-                <a href>Web Designer</a>
+                <span>Web Designer</span>
                 <br />
-                <a href>Web Developer</a>
+                <span>Web Developer</span>
                 <br />
-                <a href>WordPress</a>
+                <span>WordPress</span>
                 <br />
-                <a href>WooCommerce</a>
+                <span>WooCommerce</span>
                 <br />
-                <a href>PHP, .Net</a>
+                <span>PHP, .Net</span>
                 <br />
               </div>
             </div>
@@ -333,7 +332,7 @@ function ProfileUserPage() {
                       <label>Courses</label>
                     </div>
                     <div className="col-md-6">
-                      <p>{course.length - 1}</p>
+                      <p>{course?.length}</p>
                     </div>
                   </div>
                   <div className="row">

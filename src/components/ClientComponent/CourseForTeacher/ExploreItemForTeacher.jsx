@@ -1,42 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-function CourseFromListComponent(props) {
-  const { list } = props;
-  const random = () => {
-    return Math.floor(Math.random() * 500) + 100;
-  };
+function ExploreItemForTeacher(props) {
+  const { course, profile } = props;
+  const idImg = profile?.soDT?.slice(-2);
 
   return (
     <div className="col-lg-4">
       <div className="course-one__single">
-        <Link to={`/course-details/${list.maKhoaHoc}`}>
-          <div className="course-one__image">
-            <img src={props.list.hinhAnh} alt={"img"} />
-            <i className="far fa-heart" />
-          </div>
-        </Link>
-
+        <div className="course-one__image">
+          <img src={course.hinhAnh} alt={""} />
+          <i className="far fa-heart" />
+        </div>
         <div className="course-one__content">
-          <Link
-            to={`/course-details/${list.maKhoaHoc}`}
+          <a
+            href={`/course-from-list/${props.item?.danhMucKhoaHoc?.maDanhMucKhoahoc}`}
             className="course-one__category"
           >
-            {props.list.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
-          </Link>
+            {props.course?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
+          </a>
           <div className="course-one__admin">
-            <img src={`https://i.pravatar.cc/500?img=${21}`} alt={"img"} />
-            by{" "}
-            <a href={`teacher-details/${props.list.nguoiTao?.taiKhoan}`}>
-              {props.list.nguoiTao?.hoTen}
-            </a>
+            <img src={`https://i.pravatar.cc/500?img=${idImg}`} alt={""} />
+            by
+            <a href={`/teacher-details/${profile.taiKhoan}`}>{profile.hoTen}</a>
           </div>
           <h2 className="course-one__title">
-            <Link to={`/course-details/${list.maKhoaHoc}`}>
-              {props.list.tenKhoaHoc}
-            </Link>
+            <a href={`/course-details/${course.maKhoaHoc}`}>
+              {props.course.tenKhoaHoc}
+            </a>
           </h2>
-
           <div className="course-one__stars">
             <span className="course-one__stars-wrap">
               <i className="fa fa-star" />
@@ -46,7 +37,7 @@ function CourseFromListComponent(props) {
               <i className="fa fa-star" />
             </span>
             <span className="course-one__count">4.8</span>
-            <span className="course-one__stars-count">{random()}</span>
+            <span className="course-one__stars-count">250</span>
           </div>
           <div className="course-one__meta">
             <a href="course-details.html">
@@ -57,16 +48,16 @@ function CourseFromListComponent(props) {
             </a>
             <a href="course-details.html">$18</a>
           </div>
-          <Link
+          <a
+            href={`/course-details/${course.maKhoaHoc}`}
             className="course-one__link"
-            to={`/course-details/${list.maKhoaHoc}`}
           >
             See Preview
-          </Link>
+          </a>
         </div>
       </div>
     </div>
   );
 }
 
-export default CourseFromListComponent;
+export default ExploreItemForTeacher;

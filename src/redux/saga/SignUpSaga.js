@@ -5,9 +5,7 @@ import { SIGN_UP, SIGN_UP_SAGA } from "../types/SignUpType";
 
 function* getSignUpApi(action) {
   try {
-    console.log(action.user);
     const res = yield call(() => SighUpServices(action.user));
-    console.log(res);
     yield put({
       type: SIGN_UP,
       data: res.data,
@@ -21,7 +19,7 @@ function* getSignUpApi(action) {
       // <Redirect to="/" />;
     }
   } catch (error) {
-    console.log(error.reponse.data);
+    console.log(error.response.data);
   }
 }
 

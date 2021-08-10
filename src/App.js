@@ -51,8 +51,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Loading />
       <ScrollToTop />
+      <Loading />
       <Switch>
         {renderRouterClientList()}
         {renderRouterAdminList()}

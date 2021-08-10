@@ -226,7 +226,7 @@ function Student() {
             </a>
           </li>
           <li>
-            <a className role="tab" data-toggle="tab" href="#curriculum">
+            <a  role="tab" data-toggle="tab" href="#curriculum">
               <img src="/images/team-1-2.jpg" alt={"img"} />
             </a>
           </li>

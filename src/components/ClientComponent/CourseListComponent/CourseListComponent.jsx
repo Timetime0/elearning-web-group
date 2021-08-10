@@ -8,11 +8,9 @@ function CourseListComponent() {
   const dispatch = useDispatch();
   let course = useSelector((state) => state.CourseInPage.courseInPage.items);
   const page = useLocation().pathname;
-  console.log(page);
 
   useEffect(() => {
-    const number = page.match(/\d+/g)[0];
-    console.log(number[0]);
+    const number = page.match(/\d+/g);
     if (number) {
       dispatch({
         type: PAGE_OFFSET_SAGA,
@@ -26,7 +24,7 @@ function CourseListComponent() {
       <div className="container">
         <div className="row">
           {course?.map((course, index) => {
-            return <CardItem course={course} index={index} />;
+            return <CardItem course={course} key={index} />;
           })}
         </div>
       </div>

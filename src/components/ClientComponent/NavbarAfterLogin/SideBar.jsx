@@ -43,7 +43,7 @@ function SideBar() {
         </li>
 
         <li>
-          <button onClick={logOut}>
+          <button onClick={logOut} style={{ paddingRight: "70px" }}>
             <ExitToAppIcon style={{ margin: "0 5px" }} />
             logOut
           </button>

@@ -29,6 +29,7 @@ export default function AvatarMenu() {
     setAnchorEl(null);
   };
   const user = JSON.parse(localStorage.getItem("user"));
+  const idImg = user?.soDT?.slice(-2);
 
   const history = useHistory();
   const handleProfile = () => {
@@ -43,9 +44,8 @@ export default function AvatarMenu() {
     },
 
     circle: {
-      border: "1px solid white",
       borderRadius: "50%",
-      margin: "0 30px",
+      margin: "0 12px 0 30px",
     },
   }));
   const classes = useStyles();
@@ -80,14 +80,14 @@ export default function AvatarMenu() {
           </Badge>
         </MenuItem>
         <MenuItem>
-          <Badge badgeContent={course?.length - 1} color="secondary">
+          <Badge badgeContent={course?.length} color="secondary">
             <ShoppingCartIcon style={{ color: "white" }} />
           </Badge>
         </MenuItem>
       </div>
       <div className={classes.circle}>
         <Avatar
-          src="/broken-image.jpg"
+          src={`https://i.pravatar.cc/500?img=${idImg}`}
           aria-controls="simple-menu"
           aria-haspopup="true"
           onClick={handleClick}
@@ -105,6 +105,7 @@ export default function AvatarMenu() {
           <MenuItem onClick={logOut}>Logout</MenuItem>
         </Menu>
       </div>
+      <span style={{ color: "white" }}>Hi {user.hoTen}</span>
     </div>
   );
 }

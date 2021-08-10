@@ -117,7 +117,7 @@ function AppBarComponent(props) {
 
 AppBarComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  onDrawerToggle: PropTypes.func.isRequired,
+  // onDrawerToggle: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(AppBarComponent);

@@ -106,7 +106,7 @@ function ContentProfile(props) {
         </AppBar>
         <div className={classes.contentWrapper}>
           <Typography color="textSecondary" align="center">
-            <FromProfile />
+            {/* <FromProfile /> */}
           </Typography>
         </div>
       </Paper>

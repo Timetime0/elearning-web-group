@@ -19,6 +19,8 @@ const initialState = {
 
   courseWasRegister: [],
   courseWaitingRegister: [],
+
+  imgCourse: [],
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -30,7 +32,22 @@ const UserReducer = (state = initialState, action) => {
       return { ...state, editUser: action.data };
     }
     case VIEW_PROFILE_USER: {
-      return { ...state, profileUser: action.data };
+      const dataHaveImg = action.data2;
+      const dataHaveInfo = action.data;
+
+      const newData = dataHaveInfo.chiTietKhoaHocGhiDanh.map((item) => {
+        let hinhAnhCourse = "";
+        dataHaveImg.forEach((item2) => {
+          if (item.maKhoaHoc === item2.maKhoaHoc) {
+            hinhAnhCourse = item2.hinhAnh;
+          }
+        });
+        return { ...item, hinhAnh: hinhAnhCourse };
+      });
+
+      const result = { ...action.data, chiTietKhoaHocGhiDanh: newData };
+
+      return { ...state, profileUser: result };
     }
     case GET_USER_NOT_IN_COURSE: {
       return { ...state, userNotInCourse: action.data };

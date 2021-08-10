@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../redux/types/CourseListType";
 import NavbarAfterLogin from "../NavbarAfterLogin/NavbarAfterLogin";
@@ -17,11 +17,6 @@ function NavHeader() {
       type: COURSE_LIST_SERVICES_SAGA,
     });
   }, [dispatch]);
-  const history = useHistory();
-
-  const detailList = (value) => {
-    history.push("/course-from-list/" + value);
-  };
 
   // show search bar
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -114,26 +109,9 @@ function NavHeader() {
         className={` navbar navbar-expand-lg navbar-light header-navigation stricky original
         ${show && `stricked-menu stricky-fixed`}`}
       >
-        <div>
-          <i classname="fab fa-twitter">
-            <i classname="fab fa-facebook-square">
-              <i classname="fab fa-pinterest-p">
-                <i classname="fab fa-instagram">
-                  <i classname="kipso-icon-magnifying-glass"></i>
-                </i>
-              </i>
-            </i>
-          </i>
-        </div>
-
         <div className="container clearfix">
           <div className="logo-box clearfix">
-            <a
-              className="navbar-brand"
-              href="/"
-              exact={true}
-              activeClassName="active"
-            >
+            <a className="navbar-brand" href="/">
               <img
                 src="./../../../assets/images/logo-light.png "
                 className="main-logo"
@@ -225,11 +203,7 @@ function NavHeader() {
                   )}
                 </li>
                 <li>
-                  <NavLink
-                    exact
-                    to="/course-list"
-                    activeClassName="active_menu"
-                  >
+                  <NavLink to="/course-list" activeClassName="active_menu">
                     Courses
                   </NavLink>
                   {showSubMenu2 ? (
@@ -258,12 +232,8 @@ function NavHeader() {
                     <ul className="sub-menu" style={{ display: "block" }}>
                       {listCourse.map((list, index) => {
                         return (
-                          <li key={index} style={{ cursor: "pointer" }}>
-                            <Link
-                              onClick={() => {
-                                detailList(list.maDanhMuc);
-                              }}
-                            >
+                          <li key={index}>
+                            <Link to={`/course-from-list/${list.maDanhMuc}`}>
                               {list.tenDanhMuc}
                             </Link>
                           </li>
@@ -275,11 +245,7 @@ function NavHeader() {
                       {listCourse.map((list, index) => {
                         return (
                           <li key={index} style={{ cursor: "pointer" }}>
-                            <Link
-                              onClick={() => {
-                                detailList(list.maDanhMuc);
-                              }}
-                            >
+                            <Link to={`/course-from-list/${list.maDanhMuc}`}>
                               {list.tenDanhMuc}
                             </Link>
                           </li>
@@ -291,11 +257,7 @@ function NavHeader() {
                     {listCourse.map((list, index) => {
                       return (
                         <li key={index} style={{ cursor: "pointer" }}>
-                          <Link
-                            onClick={() => {
-                              detailList(list.maDanhMuc);
-                            }}
-                          >
+                          <Link to={`/course-from-list/${list.maDanhMuc}`}>
                             {list.tenDanhMuc}
                           </Link>
                         </li>
@@ -304,7 +266,7 @@ function NavHeader() {
                   </ul>
                 </li>
                 <li>
-                  <NavLink to="/teacher" exact activeClassName="active_menu">
+                  <NavLink to="/teacher" activeClassName="active_menu">
                     Teachers
                   </NavLink>
                   {showSubMenu3 ? (
@@ -332,11 +294,7 @@ function NavHeader() {
                   {showSubMenu3 ? (
                     <ul className="sub-menu" style={{ display: "block" }}>
                       <li>
-                        <NavLink
-                          to="/teacher"
-                          exact
-                          activeClassName="active_menu"
-                        >
+                        <NavLink to="/teacher" activeClassName="active_menu">
                           Teachers
                         </NavLink>
                       </li>
@@ -347,11 +305,7 @@ function NavHeader() {
                   ) : (
                     <ul className="sub-menu">
                       <li>
-                        <NavLink
-                          to="/teacher"
-                          exact
-                          activeClassName="active_menu"
-                        >
+                        <NavLink to="/teacher" activeClassName="active_menu">
                           Teachers
                         </NavLink>
                       </li>
@@ -362,12 +316,12 @@ function NavHeader() {
                   )}
                 </li>
                 <li>
-                  <NavLink to="/news" exact activeClassName="active_menu">
+                  <NavLink to="/news" activeClassName="active_menu">
                     News
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contact" exact activeClassName="active_menu">
+                  <NavLink to="/contact" activeClassName="active_menu">
                     Contact
                   </NavLink>
                 </li>
@@ -400,18 +354,14 @@ function NavHeader() {
                 </ul>
               </li>
               <li>
-                <NavLink to="/course-list" exact activeClassName="active_menu">
+                <NavLink to="/course-list" activeClassName="active_menu">
                   Courses
                 </NavLink>
                 <ul className="sub-menu">
                   {listCourse.map((list, index) => {
                     return (
                       <li key={index} style={{ cursor: "pointer" }}>
-                        <Link
-                          onClick={() => {
-                            detailList(list.maDanhMuc);
-                          }}
-                        >
+                        <Link to={`/course-from-list/${list.maDanhMuc}`}>
                           {list.tenDanhMuc}
                         </Link>
                       </li>
@@ -420,7 +370,7 @@ function NavHeader() {
                 </ul>
               </li>
               <li>
-                <NavLink to="/teacher" exact activeClassName="active_menu">
+                <NavLink to="/teacher" activeClassName="active_menu">
                   Teachers
                 </NavLink>
                 <ul className="sub-menu">
@@ -430,12 +380,12 @@ function NavHeader() {
                 </ul>
               </li>
               <li>
-                <NavLink to="/news" exact activeClassName="active_menu">
+                <NavLink to="/news" activeClassName="active_menu">
                   News
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" exact activeClassName="active_menu">
+                <NavLink to="/contact" activeClassName="active_menu">
                   Contact
                 </NavLink>
               </li>

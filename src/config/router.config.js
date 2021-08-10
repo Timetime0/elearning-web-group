@@ -30,6 +30,7 @@ export const clientRouters = [
     path: "/course-details/:maKhoaHoc",
     exact: false,
     Component: CourseDetail,
+    checkLogin: true,
   },
   {
     path: "/course-list",
@@ -92,8 +93,8 @@ export const clientRouters = [
     Component: BecomeTeacher,
   },
   {
-    path: "/teacher-details",
-    exact: false,
+    path: "/teacher-details/:taiKhoan",
+    exact: true,
     Component: TeacherDetails,
   },
 

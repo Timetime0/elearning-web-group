@@ -7587,6 +7587,7 @@ input[type="submit"]:hover {
 /* scroll bar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 10px;
   background-color: #012237;
 }
 
@@ -7596,7 +7597,7 @@ input[type="submit"]:hover {
 
 ::-webkit-scrollbar-thumb {
   background-image: linear-gradient(#38e0d0, #2DA397);
-  border-radius: 0 0 20px 20px;
+  /* border-radius: 0 0 20px 20px; */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -7739,4 +7740,9 @@ input[type="submit"]:hover {
 /* active menu */
 .active_menu {
   color: #f16101 !important;
+}
+
+.MuiPaginationItem-page.Mui-selected {
+  background-color: #012237 !important;
+  color: white;
 }

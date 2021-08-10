@@ -34,10 +34,8 @@ export default function CourseManagerDataTable(props) {
       const result = arrNew.some((item) => item === e.row.maKhoaHoc);
       if (!result) {
         arrNew.push(e.row.maKhoaHoc);
-        console.log(arrNew);
       } else {
         arrNew = arrNew.filter((item) => item !== e.row.maKhoaHoc);
-        console.log(arrNew);
       }
     }
     onUnRegister(e.row.maKhoaHoc);

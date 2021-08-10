@@ -8,7 +8,6 @@ import { LoginAdminService } from "../../../services/AdminServices/LoginAdminSer
 
 function* getLoginAdminApi(action) {
   try {
-    console.log(action);
     const res = yield call(() => LoginAdminService(action.user));
     console.log(res);
     yield put({

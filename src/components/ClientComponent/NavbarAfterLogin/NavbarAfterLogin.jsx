@@ -70,7 +70,7 @@ export default function NavbarAfterLogin() {
   );
 
   return (
-    <div classname="topbar-one" style={{ background: "#2DA397" }}>
+    <div className="topbar-one" style={{ background: "#2DA397" }}>
       <div
         className="container"
         style={{

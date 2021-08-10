@@ -54,10 +54,8 @@ export default function UserWaitingAcceptDataTable(props) {
       const result = arrNew.some((item) => item === e.row.taiKhoan);
       if (!result) {
         arrNew.push(e.row.taiKhoan);
-        console.log(arrNew);
       } else {
         arrNew = arrNew.filter((item) => item !== e.row.taiKhoan);
-        console.log(arrNew);
       }
     }
     onRegisterCourse(e.row.taiKhoan);
