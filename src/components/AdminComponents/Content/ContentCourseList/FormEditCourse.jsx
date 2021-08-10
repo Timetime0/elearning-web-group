@@ -147,16 +147,19 @@ function FormEditCourse(props) {
     }
     setImage(URL.createObjectURL(e.target.files[0]));
   };
-  const onSubmitRes = (event) => {
+  const onsubmitImg = (event) => {
     event.preventDefault();
-    var form_data = new FormData();
-    for (let key in courseRes) {
-      form_data.append(key, courseRes[key]);
-    }
-
     dispatch({
       type: UPDATE_COURSE_IMAGE_ADMIN_SAGA,
-      img: form_data,
+      img: courseRes,
+    });
+  };
+  const onSubmitRes = (event) => {
+    event.preventDefault();
+
+    dispatch({
+      type: UPDATE_COURSE_ADMIN_SAGA,
+      course: courseRes,
     });
   };
 
@@ -222,6 +225,7 @@ function FormEditCourse(props) {
                       {listCourse.map((list, index) => {
                         return (
                           <option
+                            key={index}
                             value={list.maDanhMuc}
                             onChange={(e) => handleChange(e)}
                           >
@@ -284,6 +288,13 @@ function FormEditCourse(props) {
                     onClick={onSubmitRes}
                   >
                     Confirm
+                  </button>
+                  <button
+                    type="submit"
+                    className="button_submit"
+                    onClick={onsubmitImg}
+                  >
+                    Confirm Image
                   </button>
 
                   <button className="button_close" onClick={btnClose}>

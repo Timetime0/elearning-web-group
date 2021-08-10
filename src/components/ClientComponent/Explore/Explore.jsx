@@ -33,7 +33,7 @@ function Explore() {
         <div className="container">
           <div className="course-one__carousel owl-carousel owl-theme">
             {course.map((course, index) => {
-              return <ExploreItem course={course} index={index} />;
+              return <ExploreItem course={course} key={index} />;
             })}
           </div>
         </div>

@@ -97,7 +97,9 @@ function ContentUserList(props) {
 
   const handleEditUser = () => {
     setEdit(newValue);
-    setShowPopUpEditUser((prev) => !prev);
+    if (newValue) {
+      setShowPopUpEditUser((prev) => !prev);
+    }
   };
 
   // Add User

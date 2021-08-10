@@ -22,8 +22,6 @@ function LoginAdmin() {
     });
 
     forceUpdate();
-    //trễ 1 nhịp
-    console.log(adminLogin);
   };
   const history = useHistory();
   const handleLogin = (e) => {

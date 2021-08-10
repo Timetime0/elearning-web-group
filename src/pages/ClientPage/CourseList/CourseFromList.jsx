@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import CourseFromListComponent from "../../../components/ClientComponent/CourseListComponent/CourseFromListComponent";
-import PageOffset from "../../../components/ClientComponent/PageOffset/PageOffset";
 import { GET_DATA_COURSE_SAGA } from "../../../redux/types/courseType";
 import { GET_COURSE_FROM_LIST_TYPE_SAGA } from "../../../redux/types/GetCourseFromListType";
 
@@ -53,7 +52,6 @@ function CourseFromList(props) {
                 );
               })}
             </div>
-            <PageOffset />
           </div>
         </section>
       </div>

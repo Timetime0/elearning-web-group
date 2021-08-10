@@ -11,11 +11,11 @@ function FromProfile() {
           <div className="col-md-4">
             <div className="profile-img">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                src={`https://i.pravatar.cc/500?img=${user.taiKhoan}`}
                 alt={""}
               />
               <div className="file btn btn-lg btn-primary">
-                Change Photo
+                Change Photosss
                 <input type="file" name="file" />
               </div>
             </div>
@@ -111,7 +111,7 @@ function FromProfile() {
                 </div>
                 <div className="row">
                   <div className="col-md-6">
-                    <label>Phone</label>
+                    <label>Phonddde</label>
                   </div>
                   <div className="col-md-6">
                     <p>{user.soDT}</p>

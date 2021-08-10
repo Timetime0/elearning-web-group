@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { LOGIN_SERVICE_SAGA } from "../../../redux/types/LoginType";
-import { Link, NavLink, useHistory } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
+import { NavLink, useHistory } from "react-router-dom";
 
 // import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
@@ -10,10 +9,7 @@ import { GoogleLogin } from "react-google-login";
 //   return Math.floor(Math.random() * 1050) + 100;
 // };
 
-function Login(props) {
-  const responseGoogle = (response) => {
-    console.log(response);
-  };
+function Login() {
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
@@ -26,7 +22,6 @@ function Login(props) {
   });
 
   const history = useHistory();
-  // console.log(history);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserLogin({
@@ -98,23 +93,8 @@ function Login(props) {
               </form>
               <div className="other-links">
                 <span>Or login with</span>
-                <Link to="/">Facebook</Link>
-                <GoogleLogin
-                  clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-                  render={(renderProps) => (
-                    <span
-                      style={{ fontWeight: "bold", cursor: "pointer" }}
-                      onClick={renderProps.onClick}
-                      disabled={renderProps.disabled}
-                    >
-                      Google
-                    </span>
-                  )}
-                  buttonText="Login"
-                  onSuccess={responseGoogle}
-                  onFailure={responseGoogle}
-                  cookiePolicy={"single_host_origin"}
-                />
+                <a href="https://facebook.com">Facebook</a>
+                <a href="https://google.com">Google</a>
               </div>
             </div>
           </div>

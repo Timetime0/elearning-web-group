@@ -13,18 +13,16 @@ function ProfileAdminData() {
 
   // Get userProfile
   let profile = useSelector((state) => state.UserReducer.profileUser);
-
+  const idImg = profile?.soDT?.slice(-2);
   const dispatch = useDispatch();
   const { taiKhoan } = useParams();
-  let [tk] = useState({
-    taiKhoan: taiKhoan,
-  });
+
   useEffect(() => {
     dispatch({
       type: VIEW_PROFILE_USER_SAGA,
-      user: tk,
+      user: { taiKhoan: taiKhoan },
     });
-  }, [dispatch, tk]);
+  }, [dispatch, taiKhoan]);
 
   // see password
   const [visible, setVisible] = useState(false);
@@ -54,10 +52,7 @@ function ProfileAdminData() {
         <div className="row">
           <div className="col-md-4">
             <div className="profile-img">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                alt={""}
-              />
+              <img src={`https://i.pravatar.cc/500?img=${idImg}`} alt={""} />
               <div className="file btn btn-lg btn-primary">
                 Change Photo
                 <input type="file" name="file" />

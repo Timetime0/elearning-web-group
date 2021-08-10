@@ -4,10 +4,16 @@ import { PAGE_OFFSET, PAGE_OFFSET_SAGA } from "../types/PageOffset";
 
 function* getPageOffsetApi(action) {
   try {
+    yield put({
+      type: "DISPLAY_LOADING",
+    });
     let result = yield call(() => PageOffsetServices(action.number));
     yield put({
       type: PAGE_OFFSET,
       data: result.data,
+    });
+    yield put({
+      type: "HIDE_LOADING",
     });
   } catch (err) {
     console.log(err.response);

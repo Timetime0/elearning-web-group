@@ -73,7 +73,6 @@ function ContentCourseManager(props) {
       data: { maKhoaHoc, taiKhoan },
     });
     // }
-    console.log(maKhoaHoc);
   };
 
   const onUnRegister = (arr) => {

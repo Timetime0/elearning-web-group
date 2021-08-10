@@ -78,7 +78,6 @@ function ContentCourseWaitingRegister(props) {
       data: { maKhoaHoc, taiKhoan },
     });
     // }
-    console.log(maKhoaHoc);
   };
 
   const handleUnRegister = () => {

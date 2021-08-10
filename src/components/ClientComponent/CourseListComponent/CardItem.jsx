@@ -10,6 +10,7 @@ function CardItem(props) {
   const detailCourse = () => {
     history.push("/course-details/" + course.maKhoaHoc);
   };
+
   return (
     <div className="col-lg-4">
       <div className="course-one__single">
@@ -25,12 +26,18 @@ function CardItem(props) {
           </div>
         </div>
         <div className="course-one__content">
-          <a href="/" className="course-one__category">
+          <a
+            href={`/course-from-list/${props.course.danhMucKhoaHoc.maDanhMucKhoahoc}`}
+            className="course-one__category"
+          >
             {props.course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
           </a>
           <div className="course-one__admin">
-            <img src="/images/team-1-2.jpg" alt={"img"} />
-            by <a href="/teacher-details">{props.course.nguoiTao.hoTen}</a>
+            <img src={`https://i.pravatar.cc/500?img=${21}`} alt={"img"} />
+            by{" "}
+            <a href={`/teacher-details/${props.course.nguoiTao.taiKhoan}`}>
+              {props.course.nguoiTao.hoTen}
+            </a>
           </div>
           <h2 className="course-one__title">
             <div

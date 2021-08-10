@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  ADD_COURSE_ADMIN_SAGA,
-  ADD_COURSE_IMAGE_ADMIN_SAGA,
-} from "../../../../redux/types/AdminType/GetCourseListAdminType";
+import { ADD_COURSE_IMAGE_ADMIN_SAGA } from "../../../../redux/types/AdminType/GetCourseListAdminType";
 import { COURSE_LIST_SERVICES_SAGA } from "../../../../redux/types/CourseListType";
 import "../ContentUserList/FormStyle.css";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
 
 import Swal from "sweetalert2";
 function FromAddCourse(props) {
@@ -111,10 +106,6 @@ function FromAddCourse(props) {
       [name]: value,
     });
   };
-  const handleCkeditorState = (event, editor) => {
-    const data = editor.getData();
-    setCourseRes({ ...courseRes, moTa: data });
-  };
 
   const handleChangeImage = (e) => {
     let target = e.target;
@@ -133,17 +124,10 @@ function FromAddCourse(props) {
 
   const onSubmitRes = (event) => {
     event.preventDefault();
-
-    // var form_data = new FormData();
-    // for (let key in courseRes) {
-    //   form_data.append(key, courseRes[key]);
-    //   console.log(key, form_data.entries());
-    // }
     dispatch({
       type: ADD_COURSE_IMAGE_ADMIN_SAGA,
       img: courseRes,
     });
-    console.log(courseRes);
   };
 
   return (
@@ -203,6 +187,7 @@ function FromAddCourse(props) {
                       {listCourse.map((list, index) => {
                         return (
                           <option
+                            key={index}
                             value={list.maDanhMuc}
                             onChange={(e) => handleChange(e)}
                           >
@@ -249,11 +234,13 @@ function FromAddCourse(props) {
                   </div>
                   <div className="input-box">
                     <span className="details">Mô Tả</span>
-                    <CKEditor
-                      editor={ClassicEditor}
-                      onInit={(editor) => {}}
+
+                    <textarea
                       className="form_description"
-                      onChange={handleCkeditorState}
+                      placeholder="Nhập mô tả...."
+                      type="text"
+                      name="moTa"
+                      onChange={(e) => handleChange(e)}
                       required
                     />
                   </div>

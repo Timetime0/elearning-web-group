@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { SIGN_UP_SAGA } from "../../../redux/types/SignUpType";
 
 function Register() {
@@ -38,7 +38,7 @@ function Register() {
           <div className="form-content">
             <div className="form-items">
               <div className="website-logo-inside">
-                <a href="index.html">
+                <a href="/">
                   <div className="logo">
                     <img
                       className="logo-size"
@@ -107,9 +107,9 @@ function Register() {
               </form>
               <div className="other-links">
                 <span>Or register with</span>
-                <Link to="/">Facebook</Link>
-                <Link to="/">Google</Link>
-                <Link to="/">Linkedin</Link>
+                <a href="https://facebook.com">Facebook</a>
+                <a href="https://google.com">Google</a>
+                <a href="https://linkedin.com">Linkedin</a>
               </div>
             </div>
           </div>

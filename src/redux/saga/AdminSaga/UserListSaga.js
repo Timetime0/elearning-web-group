@@ -10,6 +10,7 @@ import {
   UserListServices,
   ViewProfileUserServices,
 } from "../../../services/AdminServices/UserList";
+import { CourseServices } from "../../../services/CourseServices";
 import {
   ADD_USER_SAGA,
   DELETE_USER_SAGA,
@@ -152,9 +153,12 @@ export function* followAddUserApi() {
 function* getProfileUserApi(action) {
   try {
     const res = yield call(() => ViewProfileUserServices(action.user));
+    const res2 = yield call(() => CourseServices());
+
     yield put({
       type: VIEW_PROFILE_USER,
       data: res.data,
+      data2: res2.data,
     });
   } catch (err) {
     console.log(err);

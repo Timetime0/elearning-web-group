@@ -54,7 +54,6 @@ function* addCourseApi(action) {
     let result = yield call(() => {
       return AddCourseAmdminServices(action.course);
     });
-    console.log(result);
     if (result.status === 200) {
       Swal.fire({
         icon: "success",
@@ -98,20 +97,19 @@ function* addImgCourse(action) {
     let result = yield call(() => {
       return AddImageCourse(form_data);
     });
-    console.log(result);
     if (result.status === 200) {
       Swal.fire({
         icon: "success",
         title: "Thêm khóa học thành công",
         html: `
-              <div className="text-left"><span className="font-weight">Mã Khóa Học:</span> ${action.course.maKhoaHoc} </div>
-              <div className="text-left"><span className="font-weight">Tên Khóa Học:</span> ${action.course.tenKhoaHoc}</div>
-              <div className="text-left"><span className="font-weight">Mô Tả: </span>${action.course.moTa} </div>
-              <div className="text-left"><span className="font-weight">Hình Ảnh:</span> ${action.course.hinhAnh} </div>
-              <div className="text-left"><span className="font-weight">Mã nhóm:</span> ${action.course.maNhom}</div>
-              <div className="text-left"><span className="font-weight">Ngày Tạo:</span> ${action.course.ngayTao}</div>
-              <div className="text-left"><span className="font-weight">Mã Danh Mục Khóa Học: </span>${action.course.maDanhMucKhoaHoc}</div>
-              <div className="text-left"><span className="font-weight">Tài Khoản Người Tạo: </span>${action.course.taiKhoanNguoiTao}</div>
+              <div className="text-left"><span className="font-weight">Mã Khóa Học:</span> ${action.img.maKhoaHoc} </div>
+              <div className="text-left"><span className="font-weight">Tên Khóa Học:</span> ${action.img.tenKhoaHoc}</div>
+              <div className="text-left"><span className="font-weight">Mô Tả: </span>${action.img.moTa} </div>
+              <div className="text-left"><span className="font-weight">Hình Ảnh:</span> ${action.img.hinhAnh} </div>
+              <div className="text-left"><span className="font-weight">Mã nhóm:</span> ${action.img.maNhom}</div>
+              <div className="text-left"><span className="font-weight">Ngày Tạo:</span> ${action.img.ngayTao}</div>
+              <div className="text-left"><span className="font-weight">Mã Danh Mục Khóa Học: </span>${action.img.maDanhMucKhoaHoc}</div>
+              <div className="text-left"><span className="font-weight">Tài Khoản Người Tạo: </span>${action.img.taiKhoanNguoiTao}</div>
 
               `,
       });
@@ -134,15 +132,19 @@ export function* followAddImgCourse() {
 // Update Img Course
 function* updataImgCourse(action) {
   try {
+    var form_data = new FormData();
+    for (let key in action.img) {
+      form_data.append(key, action.img[key]);
+    }
     let res = yield call(() => {
-      return UpdateAddImageCourse(action.img);
+      return UpdateAddImageCourse(form_data);
     });
     console.log(res);
 
     if (res.status === 200) {
       Swal.fire({
         icon: "success",
-        title: "Cập nhật thành công",
+        title: `${res.data}`,
       });
     }
   } catch (err) {

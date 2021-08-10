@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 const random = () => {
   return Math.floor(Math.random() * 500) + 100;
 };
@@ -7,11 +7,8 @@ const random2 = () => {
   return Math.floor(Math.random() * 6) + 100;
 };
 function ExploreItem(props) {
-  const history = useHistory();
   const { course } = props;
-  const detailCourse = () => {
-    history.push("/course-details/" + course.maKhoaHoc);
-  };
+
   return (
     <div className="item">
       <div className={`course-one__single color-${random2()}`}>
@@ -20,19 +17,21 @@ function ExploreItem(props) {
           <i className="far fa-heart" />
         </div>
         <div className="course-one__content">
-          <a href="/" className="course-one__category">
+          <Link
+            to={`/course-from-list/${props.course.danhMucKhoaHoc.maDanhMucKhoahoc}`}
+            className="course-one__category"
+          >
             {props.course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
-          </a>
+          </Link>
           <div className="course-one__admin">
             <img src="/images/team-1-1.jpg" alt={"img"} />
-            by <a href="teacher-details.html">{props.course.nguoiTao.hoTen}</a>
+            by{" "}
+            <a href={`teacher-details/${props.course.nguoiTao.taiKhoan}`}>
+              {props.course.nguoiTao.hoTen}
+            </a>
           </div>
           <h2 className="course-one__title">
-            <Link
-              onClick={() => {
-                detailCourse();
-              }}
-            >
+            <Link to={`/course-details/${course.maKhoaHoc}`}>
               {props.course.tenKhoaHoc}
             </Link>
           </h2>
@@ -49,18 +48,16 @@ function ExploreItem(props) {
             <span className="course-one__stars-count">{random()}</span>
           </div>
           <div className="course-one__meta">
-            <a href="course-details.html">
+            <Link to={`/course-details/${course.maKhoaHoc}`}>
               <i className="far fa-clock" /> 10 Hours
-            </a>
-            <a href="course-details.html">
+            </Link>
+            <Link to={`/course-details/${course.maKhoaHoc}`}>
               <i className="far fa-folder-open" /> 6 Lectures
-            </a>
-            <a href="course-details.html">$18</a>
+            </Link>
+            <Link to={`/course-details/${course.maKhoaHoc}`}>$18</Link>
           </div>
           <Link
-            onClick={() => {
-              detailCourse();
-            }}
+            to={`/course-details/${course.maKhoaHoc}`}
             className="course-one__link"
           >
             See Preview

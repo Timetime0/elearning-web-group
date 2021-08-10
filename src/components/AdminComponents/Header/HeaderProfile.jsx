@@ -13,7 +13,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
-import FromProfile from "../Content/ContentProfile/FromProfile";
 import AppBarComponent from "./AppBarComponent";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
@@ -106,9 +105,7 @@ function HeaderProfile(props) {
           </Grid>
         </Toolbar>
       </AppBar>
-      <div className={classes.root}>
-        <FromProfile />
-      </div>
+      <div className={classes.root}>{/* <FromProfile /> */}</div>
     </React.Fragment>
   );
 }

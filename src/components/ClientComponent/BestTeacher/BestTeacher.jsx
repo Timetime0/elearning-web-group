@@ -28,18 +28,18 @@ function BestTeacher() {
                   </p>
                 </div>
                 <div className="team-one__social">
-                  <Link href="">
+                  <a href="/">
                     <i className="fab fa-twitter" />
-                  </Link>
-                  <Link href="">
-                    <i clLinkssName="fab fa-facebook-square" />
-                  </Link>
-                  <Link href="">
+                  </a>
+                  <a href="/">
+                    <i className="fab fa-facebook-square" />
+                  </a>
+                  <a href="/">
                     <i className="fab fa-pinterest-p" />
-                  </Link>
-                  <Link href="">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-instagram" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@ function BestTeacher() {
                 </div>
                 <div className="team-one__content">
                   <h2 className="team-one__name">
-                    <Link href="/teacher-details">Christina Newman</Link>
+                    <Link to="/teacher-details">Christina Newman</Link>
                   </h2>
                   <p className="team-one__designation">Teacher</p>
                   <p className="team-one__text">
@@ -58,18 +58,18 @@ function BestTeacher() {
                   </p>
                 </div>
                 <div className="team-one__social">
-                  <Link href="#">
+                  <a href="/">
                     <i className="fab fa-twitter" />
-                  </Link>
-                  <Link href="#">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-facebook-square" />
-                  </Link>
-                  <Link href="#">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-pinterest-p" />
-                  </Link>
-                  <Link href="#">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-instagram" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@ function BestTeacher() {
                 </div>
                 <div className="team-one__content">
                   <h2 className="team-one__name">
-                    <Link href="/teacher-details">Gilbert Daniels</Link>
+                    <Link to="/teacher-details">Gilbert Daniels</Link>
                   </h2>
                   <p className="team-one__designation">Teacher</p>
                   <p className="team-one__text">
@@ -88,18 +88,18 @@ function BestTeacher() {
                   </p>
                 </div>
                 <div className="team-one__social">
-                  <Link href="#">
+                  <a href="/">
                     <i className="fab fa-twitter" />
-                  </Link>
-                  <Link href="#">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-facebook-square" />
-                  </Link>
-                  <Link href="#">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-pinterest-p" />
-                  </Link>
-                  <Link href="#">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-instagram" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@ function BestTeacher() {
                 </div>
                 <div className="team-one__content">
                   <h2 className="team-one__name">
-                    <Link href="/teacher-details">Austin Caldwell</Link>
+                    <Link to="/teacher-details">Austin Caldwell</Link>
                   </h2>
                   <p className="team-one__designation">Teacher</p>
                   <p className="team-one__text">
@@ -118,18 +118,18 @@ function BestTeacher() {
                   </p>
                 </div>
                 <div className="team-one__social">
-                  <Link href="#">
+                  <a href="/">
                     <i className="fab fa-twitter" />
-                  </Link>
-                  <Link href="#">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-facebook-square" />
-                  </Link>
-                  <Link href="#">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-pinterest-p" />
-                  </Link>
-                  <Link href="#">
+                  </a>
+                  <a href="/">
                     <i className="fab fa-instagram" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

@@ -56,13 +56,11 @@ export default function CourseDataTable(props) {
   // lấy item trong rows
   let arrTest = [];
   const { checkboxSelection } = props;
-  // console.log(checkboxSelection);
 
   for (let item in arrTest) {
     if (checkboxSelection.checked) {
       arrTest.push(...item);
     }
-    console.log(arrTest);
   }
 
   const handleRowSelection = (e) => {

@@ -15,7 +15,6 @@ function CourseDetail() {
   let { maKhoaHoc } = useParams();
   let detail = useSelector((state) => state.CourseReducer.courseDetail);
 
-  // console.log(person.hoTen);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -81,7 +80,10 @@ function CourseDetail() {
                 <div className="course-details__content">
                   <p className="course-details__author">
                     <img src="/images/team-1-1.jpg" alt={"img"} />
-                    by <a href="/#">{detail?.nguoiTao?.hoTen}</a>
+                    by{" "}
+                    <a href={`/teacher-details/${detail?.nguoiTao?.taiKhoan}`}>
+                      {detail?.nguoiTao?.hoTen}
+                    </a>
                   </p>
                   <div className="course-details__top">
                     <div className="course-details__top-left">
@@ -143,7 +145,7 @@ function CourseDetail() {
                       </a>
                     </li>
                     <li>
-                      <a className role="tab" data-toggle="tab" href="#review">
+                      <a role="tab" data-toggle="tab" href="#review">
                         Reviews
                       </a>
                     </li>

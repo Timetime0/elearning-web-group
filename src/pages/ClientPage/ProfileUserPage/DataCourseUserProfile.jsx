@@ -64,7 +64,11 @@ export default function DataCourseUserProfile(props) {
               <TableCell component="th" scope="row">
                 {row.maKhoaHoc}
               </TableCell>
-              <TableCell align="left">{row.tenKhoaHoc}</TableCell>
+              <TableCell align="left">
+                <a href={`/course-details/${row.maKhoaHoc}`}>
+                  {row.tenKhoaHoc}
+                </a>
+              </TableCell>
               <TableCell align="left">
                 <Button
                   variant="contained"

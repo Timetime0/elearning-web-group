@@ -322,16 +322,22 @@ function News() {
               </div>
             </div>
             <div className="post-pagination">
-              <a href="/">
+              <a href="/" style={{ padding: "13px 25px" }}>
                 <i className="fa fa-angle-double-left" />
               </a>
-              <a className="active" href="/">
+              <a className="active" href="/" style={{ padding: "13px 25px" }}>
                 1
               </a>
-              <a href="/">2</a>
-              <a href="/">3</a>
-              <a href="/">4</a>
-              <a href="/">
+              <a href="/" style={{ padding: "13px 25px" }}>
+                2
+              </a>
+              <a href="/" style={{ padding: "13px 25px" }}>
+                3
+              </a>
+              <a href="/" style={{ padding: "13px 25px" }}>
+                4
+              </a>
+              <a href="/" style={{ padding: "13px 25px" }}>
                 <i className="fa fa-angle-double-right" />
               </a>
             </div>
